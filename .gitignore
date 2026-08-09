@@ -8,3 +8,7 @@ sweep_*_output*/
 debug_*output*/
 debug_lambda_v6_grainstress/
 sweep_lambda_window_priority_*/
+results/*/
+!results/initial/
+!results/initial/*.csv
+!results/initial/*.png

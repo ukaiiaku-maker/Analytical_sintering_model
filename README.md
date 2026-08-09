@@ -28,6 +28,18 @@ python3 sweep_lambda_window_priority_v4.py \
   --outdir sweep_lambda_window_priority_v6_test
 ```
 
+## Topology-constrained prototype
+
+```bash
+python3 -m pytest -q
+python3 run_topology_diagnostics.py
+python3 search_topology_initial.py --n 12
+```
+
+`topology_constrained_sintering.py` separates topology, stress, serial renewal
+times, event yields, mechanism fluxes, and nonnegative dissipation weights. It
+does not use a scalar total-efficiency multiplier.
+
 ## Development status
 
 The current target is not parameter fitting alone. The model needs a physically credible coupling among renewal-limited densification, grain growth, pore topology, pore-size-distribution evolution, stress generation, and competing dissipation. The existing implementation provides a starting point for automated searches and staged mechanism tests.
