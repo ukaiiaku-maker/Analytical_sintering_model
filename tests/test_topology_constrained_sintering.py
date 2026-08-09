@@ -7,4 +7,18 @@ def test_partition_nonnegative_and_conservative():
 def test_pore_conservation_and_nonnegative_bins():
     r=m.run(m.Params(rho0=.83,G0=100e-9,t_max_s=3600),m.Iso(1300,3600));assert np.all(r['pore_phi']>=0);assert np.all(r['pore_N']>=0);assert np.allclose(r['rho'],1-r['pore_phi'].sum(axis=1),atol=1e-12)
 def test_required_diagnostics():
-    r=m.run(m.Params(t_max_s=60),m.Iso(1300,60));required={'rho','G','pore_phi','f_pore','f_clean','f_PR','f_TL','sigma_base','sigma_concentration','sigma_local','r_nuc','tau_exchange','tau_transport','tau_TL','activity','rho_dot','dGdt','E_G','power_renewal_densification'};assert required<=r.keys()
+    r=m.run(m.Params(t_max_s=60),m.Iso(1300,60));required={'rho','G','pore_phi','f_pore','f_clean','f_PR','f_TL','topology_damage','topology_damage_rate','sigma_base','sigma_concentration','sigma_local','r_nuc','tau_exchange','tau_transport','tau_TL','activity','rho_dot','dGdt','E_G','power_renewal_densification'};assert required<=r.keys()
+def test_topology_memory_flips_heating_rate_sign_and_preserves_two_step():
+    from dataclasses import replace
+    target=.90;p=m.Params();off=replace(p,enable_topology_memory=False)
+    def protocols(q):return [m.run(q,m.RampHold(.2),target),m.run(q,m.RampHold(20),target),m.run(replace(q,G0=75e-9),m.Iso(1350),target),m.run(replace(q,G0=75e-9),m.TwoStep(),target)]
+    enabled=protocols(p);disabled=protocols(off)
+    assert all(m.value_at_density(r,target)[1] for r in enabled+disabled)
+    ge=[m.value_at_density(r,target)[0] for r in enabled];gd=[m.value_at_density(r,target)[0] for r in disabled]
+    assert m.percent_gain(ge[0],ge[1])>0 and m.percent_gain(ge[2],ge[3])>0
+    assert enabled[0]['topology_damage'][-1]>enabled[1]['topology_damage'][-1]
+    assert m.percent_gain(gd[0],gd[1])<0
+    for r in enabled+disabled:
+        assert np.all(r['pore_phi']>=0) and np.all(r['pore_N']>=0)
+        assert np.allclose(r['rho'],1-r['pore_phi'].sum(axis=1),atol=1e-12)
+        assert np.max(r['sigma_local'])<=p.stress_cap

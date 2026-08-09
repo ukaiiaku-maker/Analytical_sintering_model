@@ -15,7 +15,7 @@ def main():
         G,reached=m.value_at_density(r,args.target);rows.append({'protocol':name,'reached_target':reached,'rho_final':r['rho'][-1],'G_at_target_nm':G*1e9,'time_final_h':r['t'][-1]/3600,'median_E_G':float(np.median(r['E_G']))})
     q={x['protocol']:x for x in rows};metrics={'HR_pct':m.percent_gain(q['slow_0p2']['G_at_target_nm'],q['fast_20']['G_at_target_nm']),'TS_pct':m.percent_gain(q['high_1350']['G_at_target_nm'],q['two_1350_1250']['G_at_target_nm'])}
     for name,data in [('protocol_summary.csv',rows),('percent_metrics.csv',[metrics])]:
-        with (out/name).open('w',newline='') as f:w=csv.DictWriter(f,fieldnames=data[0].keys());w.writeheader();w.writerows(data)
+        with (out/name).open('w',newline='') as f:w=csv.DictWriter(f,fieldnames=data[0].keys(),lineterminator='\n');w.writeheader();w.writerows(data)
     fig,ax=plt.subplots(2,2,figsize=(11,8))
     for name,r in runs.items():ax[0,0].plot(r['t']/3600,r['rho'],label=name);ax[0,1].plot(r['G']*1e9,r['rho'],label=name);ax[1,0].plot(r['rho'],r['E_G'],label=name);ax[1,1].plot(r['rho'],r['f_pore'],label=name)
     for x,title in zip(ax.flat,['Density history','Density-grain trajectory','Trajectory efficiency','Pore-boundary coverage']):x.set_title(title);x.grid(alpha=.25)
@@ -24,6 +24,19 @@ def main():
     for G in (50,100,250,500):
         for T in (1150,1250,1350):
             r=m.run(replace(p,rho0=.83,G0=G*1e-9),m.Iso(T,12*3600),.90);window.append({'G0_nm':G,'T_C':T,'rho_final':r['rho'][-1],'activity_median':float(np.median(r['activity'])),'E_G_median':float(np.median(r['E_G']))})
-    with (out/'second_step_window.csv').open('w',newline='') as f:w=csv.DictWriter(f,fieldnames=window[0].keys());w.writeheader();w.writerows(window)
+    with (out/'second_step_window.csv').open('w',newline='') as f:w=csv.DictWriter(f,fieldnames=window[0].keys(),lineterminator='\n');w.writeheader();w.writerows(window)
+    ablation=[]; ablation_runs={}
+    for label,enabled in [('baseline_prototype',False),('topology_memory',True),('topology_memory_disabled',False)]:
+        ap=replace(p,enable_topology_memory=enabled)
+        ar={'slow':m.run(ap,m.RampHold(.2),args.target),'fast':m.run(ap,m.RampHold(20),args.target),'high':m.run(replace(ap,G0=75e-9),m.Iso(1350),args.target),'two':m.run(replace(ap,G0=75e-9),m.TwoStep(),args.target)};ablation_runs[label]=ar
+        gv={name:m.value_at_density(r,args.target) for name,r in ar.items()}
+        ablation.append({'case':label,'memory_enabled':enabled,'all_reached':all(ok for _,ok in gv.values()),'HR_pct':m.percent_gain(gv['slow'][0],gv['fast'][0]),'TS_pct':m.percent_gain(gv['high'][0],gv['two'][0]),'slow_damage_final':ar['slow']['topology_damage'][-1],'fast_damage_final':ar['fast']['topology_damage'][-1]})
+    with (out/'topology_memory_ablation.csv').open('w',newline='') as f:w=csv.DictWriter(f,fieldnames=ablation[0].keys(),lineterminator='\n');w.writeheader();w.writerows(ablation)
+    fig,ax=plt.subplots(1,2,figsize=(11,4.5))
+    for name in ('slow','fast'):
+        r=ablation_runs['topology_memory'][name];ax[0].plot(r['t']/3600,r['topology_damage'],label=name);ax[1].plot(r['rho'],r['E_G'],label=name)
+    ax[0].set(xlabel='Time [h]',ylabel='Topology damage',title='Accumulated surface-coarsening memory');ax[1].set(xlabel='Density',ylabel='E_G',title='Density/grain-growth efficiency')
+    for x in ax:x.grid(alpha=.25);x.legend()
+    fig.tight_layout();fig.savefig(out/'topology_memory_slow_fast.png',dpi=140);plt.close(fig)
     print({**metrics,'all_reached':all(x['reached_target'] for x in rows)})
 if __name__=='__main__':main()
