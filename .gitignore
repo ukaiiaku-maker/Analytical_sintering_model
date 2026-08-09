@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+*.png
+*.csv
+*.zip
+sweep_*_output*/
+debug_*output*/
+debug_lambda_v6_grainstress/
+sweep_lambda_window_priority_*/
