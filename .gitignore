@@ -30,3 +30,9 @@ results/*/
 !results/topology_gate_identifiability/
 !results/topology_gate_identifiability/*.csv
 !results/topology_gate_identifiability/*.png
+!results/two_step_window_map/
+!results/two_step_window_map/*.csv
+!results/two_step_window_map/*.png
+!results/mechanism_discrimination/
+!results/mechanism_discrimination/*.csv
+!results/mechanism_discrimination/*.png

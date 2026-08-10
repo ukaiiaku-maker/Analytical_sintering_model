@@ -40,6 +40,8 @@ python3 density_window_processing_map.py
 python3 initial_condition_factorial_map.py
 python3 smoothing_gate_identifiability.py
 python3 topology_gate_identifiability.py
+python3 two_step_window_map.py
+python3 mechanism_discrimination_study.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal

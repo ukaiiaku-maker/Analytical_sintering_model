@@ -1,0 +1,15 @@
+smoothing_gate_mode,G0_nm,size_window_classification,n_first_step_states,n_windows,max_window_width_C,median_window_center_C
+density,50.0,NO_TWO_STEP_WINDOW_GRAIN_GROWTH,12,0,nan,nan
+density,75.0,NO_TWO_STEP_WINDOW_GRAIN_GROWTH,12,0,nan,nan
+density,100.0,NO_TWO_STEP_WINDOW_GRAIN_GROWTH,12,0,nan,nan
+density,150.0,NO_TWO_STEP_WINDOW_GRAIN_GROWTH,12,0,nan,nan
+density,225.0,NO_TWO_STEP_WINDOW_GRAIN_GROWTH,12,0,nan,nan
+density,300.0,NO_TWO_STEP_WINDOW_GRAIN_GROWTH,12,0,nan,nan
+density,450.0,NO_TWO_STEP_WINDOW_DENSIFICATION_EXHAUSTION,12,0,nan,nan
+connectivity,50.0,NO_TWO_STEP_WINDOW_GRAIN_GROWTH,12,0,nan,nan
+connectivity,75.0,NO_TWO_STEP_WINDOW_GRAIN_GROWTH,12,0,nan,nan
+connectivity,100.0,NO_TWO_STEP_WINDOW_GRAIN_GROWTH,12,0,nan,nan
+connectivity,150.0,NO_TWO_STEP_WINDOW_GRAIN_GROWTH,12,0,nan,nan
+connectivity,225.0,NO_TWO_STEP_WINDOW_GRAIN_GROWTH,12,0,nan,nan
+connectivity,300.0,NO_TWO_STEP_WINDOW_DENSIFICATION_EXHAUSTION,12,0,nan,nan
+connectivity,450.0,NO_TWO_STEP_WINDOW_DENSIFICATION_EXHAUSTION,12,0,nan,nan

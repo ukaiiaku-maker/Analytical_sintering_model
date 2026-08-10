@@ -207,9 +207,21 @@ def combine(m,w):
     z=np.zeros_like(next(iter(m.values())).pore_phi_dot); out=MechanismFlux(pore_phi_dot=z.copy(),pore_N_dot=z.copy())
     for n,f in m.items(): out.rho_dot+=w[n]*f.rho_dot; out.G_dot+=w[n]*f.G_dot; out.pore_phi_dot+=w[n]*f.pore_phi_dot; out.pore_N_dot+=w[n]*f.pore_N_dot; out.power+=w[n]*f.power
     return out
-def run(p,protocol,stop_at_rho:Optional[float]=None):
+def clone_state(s:State,reset_time:bool=False)->State:
+    return State(s.rho,s.G,s.pore_radii.copy(),s.pore_phi.copy(),s.pore_N.copy(),s.topology,s.stress,
+                 0. if reset_time else s.t,s.topology_damage,s.cumulative_redistributed_pore_volume)
+def state_from_result(result,p,index:int=-1,reset_time:bool=True)->State:
+    """Recover an actually simulated state for a subsequent thermal segment."""
+    s=State(float(result['rho'][index]),float(result['G'][index]),initial_state(p).pore_radii,
+            np.asarray(result['pore_phi'][index],float).copy(),np.asarray(result['pore_N'][index],float).copy(),
+            TopologyState(0,0,0,0,0,0),StressState(0,0,0),
+            0. if reset_time else float(result['t'][index]),float(result['topology_damage'][index]),
+            float(result['cumulative_redistributed_pore_volume'][index]))
+    s.topology=infer_topology(s.rho,s.G,s.pore_radii,s.pore_phi,p,s.topology_damage);s.stress=infer_stress(s,p)
+    return s
+def run(p,protocol,stop_at_rho:Optional[float]=None,initial:Optional[State]=None):
     validate_memory_model(p)
-    s=initial_state(p); keys='t T_C rho G f_pore f_clean f_PR f_TL connectivity isolated_pore_fraction smoothing_gate_value topology_damage topology_damage_rate cumulative_redistributed_pore_volume pore_mean_radius large_pore_fraction removable_fine_pore_fraction sigma_base sigma_concentration sigma_local r_nuc tau_exchange tau_transport tau_TL activity rho_dot dGdt E_G'.split(); h={k:[] for k in keys}; h.update(pore_phi=[],pore_N=[],redistribution_flux_by_bin=[]); power_names=[]
+    s=initial_state(p) if initial is None else clone_state(initial); keys='t T_C rho G f_pore f_clean f_PR f_TL connectivity isolated_pore_fraction smoothing_gate_value topology_damage topology_damage_rate cumulative_redistributed_pore_volume pore_mean_radius large_pore_fraction removable_fine_pore_fraction sigma_base sigma_concentration sigma_local r_nuc tau_exchange tau_transport tau_TL activity rho_dot dGdt E_G'.split(); h={k:[] for k in keys}; h.update(pore_phi=[],pore_N=[],redistribution_flux_by_bin=[]); power_names=[]
     while s.t<min(protocol.t_end,p.t_max_s) and s.rho<p.rho_cap:
         T=protocol.T(s.t,s.rho); s.topology=infer_topology(s.rho,s.G,s.pore_radii,s.pore_phi,p,s.topology_damage); s.stress=infer_stress(s,p); k,m=evaluate_mechanisms(s,T,p); damage_rate=topology_damage_rate(s,T,p,k); w=solve_dissipation_partition(s,s.topology,m,p); f=combine(m,w)
         smooth=m['surface_smoothing_redistribution'];redistribution_flux=w['surface_smoothing_redistribution']*smooth.diagnostics['redistribution_flux_by_bin']
