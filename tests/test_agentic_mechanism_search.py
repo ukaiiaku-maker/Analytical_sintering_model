@@ -6,6 +6,7 @@ import numpy as np
 import agentic_mechanism_model as model
 import agentic_mechanism_search as search
 import mechanism_registry
+import adaptive_T2_boundary_search as adaptive
 import pore_location_agentic_sensitivity as prior
 import topology_constrained_sintering as aggregate
 
@@ -98,3 +99,52 @@ def test_persisted_successes_meet_both_criteria():
                 assert float(row["rho2"])>=float(row["rho_target"])-1e-12
                 assert float(row["growth_fraction"])<=float(row["growth_tolerance"])+1e-12
     assert successes>0
+
+
+def synthetic(T,rho,growth,T1=1300):
+    return dict(T2_C=float(T),rho1=.85,rho2=float(rho),growth_fraction=float(growth),T1_C=T1)
+
+
+def test_complete_window_requires_both_bracketed_boundaries():
+    complete=[synthetic(900,.89,.01),synthetic(1000,.90,.02),synthetic(1100,.90,.08)]
+    assert adaptive.status(complete,.05,1300)['boundary_status']=='COMPLETE_WINDOW'
+    no_upper=complete[:2]
+    assert adaptive.status(no_upper,.05,1300)['boundary_status']=='UPPER_BOUND_RIGHT_CENSORED'
+
+
+def test_censored_window_is_not_complete_and_practical_requires_T2_below_T1():
+    points=[synthetic(900,.89,.01,1050),synthetic(1000,.90,.02,1050),synthetic(1100,.90,.08,1050)]
+    assert adaptive.status(points,.05,1050,False)['boundary_status']=='COMPLETE_WINDOW'
+    practical=adaptive.status(points,.05,1050,True)
+    assert practical['boundary_status']=='UPPER_BOUND_RIGHT_CENSORED'
+    assert all(p['T2_C']<1050 for p in points if p['T2_C']<1050)
+
+
+def test_adaptive_constants_preserve_target_budget_and_parameters():
+    assert adaptive.TARGET==search.TARGET==.90
+    assert adaptive.BUDGET==search.BUDGET==96*3600
+    original=adaptive.survivor_params()
+    again=adaptive.survivor_params()
+    assert original==again
+
+
+def test_high_temperature_extension_conserves_pores_and_nonnegative_stores():
+    p=adaptive.survivor_params()['mech_009'];h=model.run(p,aggregate.Iso(1400,600))
+    phi=h['phi_GBseg']+h['phi_TJ']+h['phi_iso']
+    assert np.all(phi>=0) and np.all(h['N_GBseg']>=0) and np.all(h['N_TJ']>=0) and np.all(h['N_iso']>=0)
+    assert np.max(np.abs(h['rho']-(1-phi.sum(axis=1))))<1e-12
+
+
+def test_persisted_adaptive_complete_windows_have_both_brackets():
+    path=Path(__file__).parents[1]/'results'/'agentic_mechanism_search'/'adaptive_window_boundaries.csv'
+    with path.open(newline='') as f:rows=list(csv.DictReader(f))
+    complete=[r for r in rows if r['boundary_status']=='COMPLETE_WINDOW']
+    assert complete
+    assert all(r['lower_bracketed']=='True' and r['upper_bracketed']=='True' for r in complete)
+    assert all(r['boundary_status']!='UPPER_BOUND_RIGHT_CENSORED' for r in complete)
+
+
+def test_persisted_practical_map_contains_only_T2_below_T1():
+    path=Path(__file__).parents[1]/'results'/'agentic_mechanism_search'/'practical_two_step_map.csv'
+    with path.open(newline='') as f:
+        assert all(float(r['T2_C'])<float(r['T1_C']) for r in csv.DictReader(f))

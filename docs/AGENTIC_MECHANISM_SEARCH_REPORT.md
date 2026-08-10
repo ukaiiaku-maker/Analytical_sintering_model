@@ -137,3 +137,86 @@ worker after sandbox multiprocessing was unavailable.
 
 All requested CSVs and deterministic plots are in
 `results/agentic_mechanism_search/`.
+
+## Adaptive boundary search and censored windows
+
+The original 900–1300 C map was a classification grid, not a complete
+per-state boundary search.  The correction retains that grid as stage 1, then
+extends each promising state independently to 800 C when its lower edge is
+left-censored and to a generic, explicitly model-extrapolative 1550 C cap when
+its upper growth boundary is missing.  Only changing 25 C brackets are refined
+at 10 C spacing.  Kinetic maps permit `T2>=T1` to diagnose the mathematical
+window; practical maps require the literal two-step condition `T2<T1`.
+
+### Boundary completion
+
+The adaptive calculation evaluates 3,484 T2 points and produces 576 boundary
+records.  In the kinetic map, no success window is upper-censored at 1550 C:
+every reported success region has a densification-exhaustion point below it
+and a grain-growth-failure point above it.  One 50 nm first-step state for
+`mech_019` is lower-bound-right-censored because no density-attaining T2 is
+found; it is not counted as a window.  All other non-window states are
+reported as `NO_OVERLAP`, not silently discarded.
+
+No prior 150–300 nm success window becomes censored after extension.  Instead,
+the old 1300 C ceiling is shown to have truncated several upper boundaries.
+For `mech_009`, complete 5% kinetic windows occur in all nine first-step groups
+at 150, 225, and 300 nm, with maximum refined widths of 55, 75, and 135 C;
+upper boundaries reach 1310, 1320, and 1375 C.  At 10%, the corresponding
+maximum widths are 75, 90, and 150 C and upper boundaries reach 1325, 1335,
+and 1395 C.  `mech_019` likewise retains all nine groups at 150–300 nm, with
+5% widths up to 65/90/125 C and 10% widths up to 75/105/140 C.  Thus the
+finite 150–300 nm kinetic result survives, but some of it lies above the
+first-step preparation temperature and is diagnostic rather than practical.
+
+### Practical two-step subset
+
+The practical map is substantially narrower.  `mech_009` has complete 5%
+windows only for three groups each at 150 and 225 nm; at 10% it additionally
+has marginal 75–100 nm groups and three groups each at 150 and 225 nm.
+`mech_019` has complete 5% practical windows in selected groups at 75, 100,
+150, and 225 nm and complete 10% cases from 50–150 nm.  The 50 nm point has
+zero sampled success width and remains marginal.  Across both candidates and
+tolerances there are 38 complete practical boundary records, while many
+otherwise successful kinetic states are `UPPER_BOUND_RIGHT_CENSORED` at the
+`T2<T1` boundary or `LOWER_BOUND_RIGHT_CENSORED` because density is not reached
+before that boundary.  They are not accepted as complete practical windows.
+
+Consequently, the model produces both lower densification-exhaustion and upper
+grain-growth failure over the expanded kinetic range, but only a subset is a
+literal two-step processing window.  The kinetic and practical outputs are
+kept in separate CSVs and plots.
+
+### Local parameter refinement
+
+Twenty-two one-at-a-time variants use factors 0.5/2 for persistent resistance,
+production, and event count, factors 0.3/3 for junction lifetime, ±40 kJ/mol
+for the event barrier, and explicit `q=0` alternatives.  All retain lower and
+upper failures in the reduced map and remain `promising_reduced_only`; none is
+promoted without its own adaptive full map.  The `q=1` family generally gives
+more successes, but both visible `q=0` variants retain finite reduced windows
+(4–7 and 7–9 points at 5–10%).  The entire local OAT neighborhood therefore
+remains plausible, which reinforces parameter non-identifiability rather than
+selecting a unique fit.
+
+### Corrected answers
+
+1. **Were upper boundaries bracketed?** Yes for every accepted kinetic
+   window, after extensions reaching as high as roughly 1475 C at 600 nm.
+2. **Did previous windows become censored?** No 150–300 nm kinetic window did;
+   several practical subsets are censored by `T2<T1`.
+3. **Are 150–300 nm windows finite?** Yes in the kinetic map, with both
+   boundaries completed per state.
+4. **Are they practical?** Only selected first-step groups, mainly through
+   225 nm, are complete literal two-step windows.  Higher-G windows are often
+   kinetic-only.
+5. **Are both failure modes retained?** Yes over the adaptive kinetic domain;
+   censor labels replace claims where the practical domain ends first.
+6. **Which parameters remain promising?** Both survivor neighborhoods and
+   both `q` limits retain reduced boundaries; `q=1` is stronger but not
+   uniquely identified.
+
+The new tables are `adaptive_T2_boundary_points.csv`,
+`adaptive_window_boundaries.csv`, `censored_window_cases.csv`,
+`practical_T2_less_than_T1_windows.csv`, `kinetic_window_map.csv`,
+`practical_two_step_map.csv`, and `extended_parameter_refinement.csv`.
