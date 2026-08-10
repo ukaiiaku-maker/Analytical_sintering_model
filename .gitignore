@@ -51,3 +51,6 @@ results/expanded_phase_space/two_step_classifications.csv.gz
 !results/pore_location_topology/
 !results/pore_location_topology/*.csv
 !results/pore_location_topology/*.png
+!results/pore_location_agentic/
+!results/pore_location_agentic/*.csv
+!results/pore_location_agentic/*.png

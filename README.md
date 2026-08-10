@@ -49,6 +49,7 @@ python3 expanded_phase_space_analysis.py
 python3 growth_mechanism_sensitivity.py --workers 4
 python3 pore_junction_pinning_sensitivity.py --workers 4
 python3 pore_location_topology_sensitivity.py
+python3 pore_location_agentic_sensitivity.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
@@ -66,6 +67,10 @@ and limitations are documented in `docs/PORE_JUNCTION_PINNING_MECHANISM.md`.
 The pore-placement ladder resolves GB-segment, triple-junction, and isolated
 pore stores with conservative fluxes; see
 `docs/PORE_LOCATION_TOPOLOGY_COUPLING.md` for its bounded negative result.
+The follow-up action layer allocates local GB-segment, triple-junction,
+capture, isolation, and migration actions through nonnegative competing
+propensities. Its selected Chen-map audit and ablations are documented in
+`docs/AGENTIC_PORE_LOCATION_TOPOLOGY.md`.
 
 ## Development status
 
