@@ -36,3 +36,9 @@ results/*/
 !results/mechanism_discrimination/
 !results/mechanism_discrimination/*.csv
 !results/mechanism_discrimination/*.png
+!results/expanded_phase_space/
+!results/expanded_phase_space/*.csv
+!results/expanded_phase_space/*.csv.gz
+!results/expanded_phase_space/*.png
+results/expanded_phase_space/*_checkpoint.csv
+results/expanded_phase_space/two_step_classifications.csv.gz

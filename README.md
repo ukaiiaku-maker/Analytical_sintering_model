@@ -42,6 +42,10 @@ python3 smoothing_gate_identifiability.py
 python3 topology_gate_identifiability.py
 python3 two_step_window_map.py
 python3 mechanism_discrimination_study.py
+python3 expanded_phase_space_exploration.py --workers 4
+python3 expanded_upper_size_extension.py
+python3 expanded_size_onset_refinement.py
+python3 expanded_phase_space_analysis.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
