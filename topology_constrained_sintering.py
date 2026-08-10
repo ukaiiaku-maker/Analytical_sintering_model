@@ -73,6 +73,9 @@ class TwoStep:
     def T(self,t,rho): return self.T2_C if rho>=self.rho_switch else self.T1_C
 
 def pore_number(phi,r): return np.maximum(phi,0)/np.maximum(4*math.pi*r**3/3,1e-300)
+def pore_distribution_diagnostics(phi,radii,p):
+    total=max(float(np.sum(phi)),1e-300)
+    return {'pore_mean_radius':float(np.sum(phi*radii)/total),'large_pore_fraction':float(np.sum(phi[radii>=4*p.pore_radius0])/total)}
 def infer_topology(rho,G,radii,phi,p,topology_damage=0.):
     N=pore_number(phi,radii); area=float(np.sum(N*math.pi*radii**2)); gb=2/max(G,1e-30)
     fp=1-math.exp(-max(p.coverage_chi*area/gb,0)); conn=sig((p.connectivity_rho_mid-rho)/p.connectivity_rho_width)
@@ -150,10 +153,10 @@ def combine(m,w):
     for n,f in m.items(): out.rho_dot+=w[n]*f.rho_dot; out.G_dot+=w[n]*f.G_dot; out.pore_phi_dot+=w[n]*f.pore_phi_dot; out.pore_N_dot+=w[n]*f.pore_N_dot; out.power+=w[n]*f.power
     return out
 def run(p,protocol,stop_at_rho:Optional[float]=None):
-    s=initial_state(p); keys='t T_C rho G f_pore f_clean f_PR f_TL connectivity isolated_pore_fraction topology_damage topology_damage_rate sigma_base sigma_concentration sigma_local r_nuc tau_exchange tau_transport tau_TL activity rho_dot dGdt E_G'.split(); h={k:[] for k in keys}; h.update(pore_phi=[],pore_N=[]); power_names=[]
+    s=initial_state(p); keys='t T_C rho G f_pore f_clean f_PR f_TL connectivity isolated_pore_fraction topology_damage topology_damage_rate pore_mean_radius large_pore_fraction sigma_base sigma_concentration sigma_local r_nuc tau_exchange tau_transport tau_TL activity rho_dot dGdt E_G'.split(); h={k:[] for k in keys}; h.update(pore_phi=[],pore_N=[]); power_names=[]
     while s.t<min(protocol.t_end,p.t_max_s) and s.rho<p.rho_cap:
         T=protocol.T(s.t,s.rho); s.topology=infer_topology(s.rho,s.G,s.pore_radii,s.pore_phi,p,s.topology_damage); s.stress=infer_stress(s,p); k,m=evaluate_mechanisms(s,T,p); damage_rate=topology_damage_rate(s,T,p,k); w=solve_dissipation_partition(s,s.topology,m,p); f=combine(m,w)
-        vals={'t':s.t,'T_C':T,'rho':s.rho,'G':s.G,'topology_damage':s.topology_damage,'topology_damage_rate':damage_rate,**vars(s.topology),**vars(s.stress),**k,'rho_dot':f.rho_dot,'dGdt':f.G_dot,'E_G':f.rho_dot/(f.G_dot/max(s.G,1e-30)+1e-30)}
+        vals={'t':s.t,'T_C':T,'rho':s.rho,'G':s.G,'topology_damage':s.topology_damage,'topology_damage_rate':damage_rate,**pore_distribution_diagnostics(s.pore_phi,s.pore_radii,p),**vars(s.topology),**vars(s.stress),**k,'rho_dot':f.rho_dot,'dGdt':f.G_dot,'E_G':f.rho_dot/(f.G_dot/max(s.G,1e-30)+1e-30)}
         for key in keys:h[key].append(vals[key])
         h['pore_phi'].append(s.pore_phi.copy()); h['pore_N'].append(s.pore_N.copy())
         if not power_names:

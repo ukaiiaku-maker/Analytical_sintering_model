@@ -12,3 +12,6 @@ results/*/
 !results/initial/
 !results/initial/*.csv
 !results/initial/*.png
+!results/topology_memory_stress/
+!results/topology_memory_stress/*.csv
+!results/topology_memory_stress/*.png

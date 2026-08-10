@@ -34,6 +34,7 @@ python3 sweep_lambda_window_priority_v4.py \
 python3 -m pytest -q
 python3 run_topology_diagnostics.py
 python3 search_topology_initial.py --n 12
+python3 stress_test_topology_memory.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal

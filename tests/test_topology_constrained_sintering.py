@@ -1,3 +1,8 @@
+import ast
+import csv
+import inspect
+from pathlib import Path
+
 import numpy as np
 import topology_constrained_sintering as m
 def test_larger_pores_reduce_coverage_at_fixed_volume():
@@ -17,8 +22,26 @@ def test_topology_memory_flips_heating_rate_sign_and_preserves_two_step():
     ge=[m.value_at_density(r,target)[0] for r in enabled];gd=[m.value_at_density(r,target)[0] for r in disabled]
     assert m.percent_gain(ge[0],ge[1])>0 and m.percent_gain(ge[2],ge[3])>0
     assert enabled[0]['topology_damage'][-1]>enabled[1]['topology_damage'][-1]
-    assert m.percent_gain(gd[0],gd[1])<0
+    disabled_hr=m.percent_gain(gd[0],gd[1])
+    assert np.isclose(disabled_hr,-6.450343467465089,rtol=1e-10,atol=1e-10)
     for r in enabled+disabled:
+        assert np.all((r['topology_damage']>=0)&(r['topology_damage']<=1))
         assert np.all(r['pore_phi']>=0) and np.all(r['pore_N']>=0)
         assert np.allclose(r['rho'],1-r['pore_phi'].sum(axis=1),atol=1e-12)
         assert np.max(r['sigma_local'])<=p.stress_cap
+def test_damage_rate_has_no_schedule_inputs_or_labels():
+    signature=inspect.signature(m.topology_damage_rate)
+    assert tuple(signature.parameters)==('s','T_C','p','k')
+    source=inspect.getsource(m.topology_damage_rate)
+    names={node.id for node in ast.walk(ast.parse(source)) if isinstance(node,ast.Name)}
+    assert not names&{'protocol','schedule','ramp_rate','heating_rate','slow','fast'}
+def test_reported_successes_really_reach_target():
+    root=Path(__file__).parents[1]/'results'/'topology_memory_stress'
+    with (root/'held_out_heating_rates.csv').open() as stream:
+        for row in csv.DictReader(stream):
+            if row['reached_target']=='True':assert float(row['final_density'])>=float(row['target_density'])-1e-12
+    with (root/'held_out_two_step_grid.csv').open() as stream:
+        for row in csv.DictReader(stream):
+            target=float(row['target_density'])
+            if row['high_reached']=='True':assert float(row['high_final_density'])>=target-1e-12
+            if row['two_step_reached']=='True':assert float(row['two_step_final_density'])>=target-1e-12
