@@ -21,3 +21,6 @@ results/*/
 !results/density_window_processing_map/
 !results/density_window_processing_map/*.csv
 !results/density_window_processing_map/*.png
+!results/initial_condition_sensitivity/
+!results/initial_condition_sensitivity/*.csv
+!results/initial_condition_sensitivity/*.png
