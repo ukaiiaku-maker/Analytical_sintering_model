@@ -63,6 +63,7 @@ class Params:
     smoothing_activity_exp: float=1.0
     smoothing_rho_mid: float=.79
     smoothing_rho_width: float=.015
+    smoothing_gate_form: str="logistic"
     smoothing_fine_radius_exp: float=2.0
 
 class ThermalProtocol(Protocol):
@@ -125,6 +126,11 @@ def topology_damage_rate(s,T_C,p,k):
     inactive=(1-k['activity'])**max(p.surface_damage_activity_exp,0)
     pre_densification=sig((p.surface_damage_rho_mid-s.rho)/max(p.surface_damage_rho_width,1e-9))
     return p.surface_damage_rate_s*window*inactive*pre_densification*(1-float(np.clip(s.topology_damage,0,1)))
+def smoothing_density_gate(rho,p):
+    width=max(p.smoothing_rho_width,1e-9)
+    if p.smoothing_gate_form=='logistic':return sig((p.smoothing_rho_mid-rho)/width)
+    if p.smoothing_gate_form=='linear_clipped':return float(np.clip(.5+(p.smoothing_rho_mid-rho)/(2*width),0,1))
+    raise ValueError(f"unsupported smoothing_gate_form {p.smoothing_gate_form!r}")
 def zeros(s): return np.zeros_like(s.pore_phi),np.zeros_like(s.pore_N)
 def renewal_densification(s,T,p,k):
     w=s.pore_phi*(p.pore_radius0/s.pore_radii)**p.removal_radius_exp; w/=max(w.sum(),1e-300)
@@ -157,7 +163,7 @@ def surface_smoothing_redistribution(s,T,p,k):
         return MechanismFlux(pore_phi_dot=z[0],pore_N_dot=z[1],diagnostics={'redistribution_flux_by_bin':z[0]})
     window=math.exp(-.5*((T-p.smoothing_T_mid_C)/max(p.smoothing_T_width_C,1e-9))**2)
     inactive=(1-k['activity'])**max(p.smoothing_activity_exp,0)
-    pre_densification=sig((p.smoothing_rho_mid-s.rho)/max(p.smoothing_rho_width,1e-9))
+    pre_densification=smoothing_density_gate(s.rho,p)
     fine=(p.pore_radius0/np.maximum(s.pore_radii[:-1],1e-30))**max(p.smoothing_fine_radius_exp,0)
     J=p.smoothing_rate_s*window*inactive*pre_densification*np.maximum(s.pore_phi[:-1],0)*fine
     pd=np.zeros_like(s.pore_phi);pd[:-1]-=J;pd[1:]+=J

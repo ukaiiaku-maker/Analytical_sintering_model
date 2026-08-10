@@ -24,3 +24,6 @@ results/*/
 !results/initial_condition_sensitivity/
 !results/initial_condition_sensitivity/*.csv
 !results/initial_condition_sensitivity/*.png
+!results/smoothing_gate_identifiability/
+!results/smoothing_gate_identifiability/*.csv
+!results/smoothing_gate_identifiability/*.png

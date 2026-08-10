@@ -38,6 +38,7 @@ python3 stress_test_topology_memory.py
 python3 stress_test_pore_bin_memory.py
 python3 density_window_processing_map.py
 python3 initial_condition_factorial_map.py
+python3 smoothing_gate_identifiability.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
