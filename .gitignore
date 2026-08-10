@@ -18,3 +18,6 @@ results/*/
 !results/pore_bin_memory_stress/
 !results/pore_bin_memory_stress/*.csv
 !results/pore_bin_memory_stress/*.png
+!results/density_window_processing_map/
+!results/density_window_processing_map/*.csv
+!results/density_window_processing_map/*.png
