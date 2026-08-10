@@ -1,0 +1,4 @@
+case,memory_enabled,all_reached,HR_pct,TS_pct,slow_damage_final,fast_damage_final
+baseline_prototype,False,True,-6.450343467465089,11.534490574644849,0.0,0.0
+topology_memory,True,True,38.08868944160887,11.294894056172204,0.8480607324313366,0.0174177381094411
+topology_memory_disabled,False,True,-6.450343467465089,11.534490574644849,0.0,0.0

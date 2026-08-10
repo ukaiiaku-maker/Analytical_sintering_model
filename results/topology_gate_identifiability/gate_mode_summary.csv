@@ -1,0 +1,17 @@
+smoothing_gate_mode,target_density,n_conditions,fraction_HR_attainable,fraction_TS_attainable,fraction_HR_positive,fraction_TS_positive,mean_HR_pct,mean_TS_pct
+density,0.85,5,0.8,0.8,0.0,0.0,-12.147166059987077,0.0
+density,0.88,5,1.0,1.0,0.0,1.0,-8.946198253854044,9.441795783787452
+density,0.9,5,1.0,1.0,0.6,1.0,1.2963638721373032,11.23661685374995
+density,0.92,5,0.0,0.0,nan,nan,nan,nan
+fine_pore,0.85,5,0.8,0.8,0.0,0.0,-14.070340159198262,0.0
+fine_pore,0.88,5,1.0,1.0,0.0,1.0,-8.83257415942054,9.365027754947768
+fine_pore,0.9,5,1.0,0.4,1.0,1.0,1.3298000598866948,11.001311832006458
+fine_pore,0.92,5,0.0,0.0,nan,nan,nan,nan
+connectivity,0.85,5,0.8,0.8,0.0,0.0,-13.424253550540007,0.0
+connectivity,0.88,5,1.0,1.0,0.0,1.0,-10.120538606620162,9.441663741978203
+connectivity,0.9,5,1.0,1.0,0.6,1.0,0.19430122735883087,11.236376383345004
+connectivity,0.92,5,0.0,0.0,nan,nan,nan,nan
+hybrid_topology,0.85,5,0.8,0.8,0.0,0.0,-15.447967481966693,0.0
+hybrid_topology,0.88,5,1.0,1.0,0.0,1.0,-12.290490237600935,9.441847254567822
+hybrid_topology,0.9,5,1.0,1.0,0.4,1.0,-1.8018679365364758,11.236641760183
+hybrid_topology,0.92,5,0.0,0.0,nan,nan,nan,nan

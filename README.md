@@ -28,6 +28,41 @@ python3 sweep_lambda_window_priority_v4.py \
   --outdir sweep_lambda_window_priority_v6_test
 ```
 
+## Topology-constrained prototype
+
+```bash
+python3 -m pytest -q
+python3 run_topology_diagnostics.py
+python3 search_topology_initial.py --n 12
+python3 stress_test_topology_memory.py
+python3 stress_test_pore_bin_memory.py
+python3 density_window_processing_map.py
+python3 initial_condition_factorial_map.py
+python3 smoothing_gate_identifiability.py
+python3 topology_gate_identifiability.py
+python3 two_step_window_map.py
+python3 mechanism_discrimination_study.py
+python3 expanded_phase_space_exploration.py --workers 4
+python3 expanded_upper_size_extension.py
+python3 expanded_size_onset_refinement.py
+python3 expanded_phase_space_analysis.py
+python3 growth_mechanism_sensitivity.py --workers 4
+python3 pore_junction_pinning_sensitivity.py --workers 4
+```
+
+`topology_constrained_sintering.py` separates topology, stress, serial renewal
+times, event yields, mechanism fluxes, and nonnegative dissipation weights. It
+does not use a scalar total-efficiency multiplier. Its default memory mode is
+the conservative, observable `pore_bin_redistribution`; the former empirical
+topology-damage state remains available as an explicit ablation mode.
+The bounded growth-mobility audit compares the unchanged baseline with
+explicit junction-limited and threshold-mobility grain-migration closures;
+see `docs/NANOSCALE_GROWTH_SUPPRESSION_MECHANISM.md` before interpreting the
+prototype parameters.
+The follow-up pore/junction-pinning audit resolves migration resistance using
+the instantaneous pore-bin and connected-topology state. Its negative result
+and limitations are documented in `docs/PORE_JUNCTION_PINNING_MECHANISM.md`.
+
 ## Development status
 
 The current target is not parameter fitting alone. The model needs a physically credible coupling among renewal-limited densification, grain growth, pore topology, pore-size-distribution evolution, stress generation, and competing dissipation. The existing implementation provides a starting point for automated searches and staged mechanism tests.

@@ -1,0 +1,13 @@
+initial_class,density_window,eligible_points,fraction_attainable,fraction_positive_HR,fraction_positive_TS,mean_HR_pct,mean_TS_pct,median_time_to_target_h,median_grain_size_nm
+loose_fine,early,1,1.0,0.0,0.0,-21.66545348701869,0.0,1.5975744968526533,130.43244165103823
+loose_fine,intermediate,3,1.0,0.3333333333333333,0.6666666666666666,-6.483481326220084,7.114695811830262,11.980297268901243,247.2468736619424
+loose_fine,late,2,0.0,nan,nan,nan,nan,nan,nan
+loose_fine,near_final,1,0.0,nan,nan,nan,nan,nan,nan
+baseline_intermediate,early,1,1.0,0.0,0.0,-7.043489919029609,0.0,1.0559506991176915,157.97395188572239
+baseline_intermediate,intermediate,3,1.0,0.3333333333333333,0.6666666666666666,-4.216886094345452,6.818885720925725,10.606109643291262,253.39889064337052
+baseline_intermediate,late,2,0.0,nan,nan,nan,nan,nan,nan
+baseline_intermediate,near_final,1,0.0,nan,nan,nan,nan,nan,nan
+predensified_partially_isolated,early,0,nan,nan,nan,nan,nan,nan,nan
+predensified_partially_isolated,intermediate,3,1.0,0.0,0.6666666666666666,-6.695966542092527,5.058969419140173,7.855007071461261,284.21544882628575
+predensified_partially_isolated,late,2,0.0,nan,nan,nan,nan,nan,nan
+predensified_partially_isolated,near_final,1,0.0,nan,nan,nan,nan,nan,nan
