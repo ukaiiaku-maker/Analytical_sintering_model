@@ -64,6 +64,13 @@ class Params:
     smoothing_rho_mid: float=.79
     smoothing_rho_width: float=.015
     smoothing_gate_form: str="logistic"
+    smoothing_gate_mode: str="density"
+    smoothing_fine_mid: float=.45
+    smoothing_fine_width: float=.08
+    smoothing_connected_mid: float=.45
+    smoothing_connected_width: float=.06
+    smoothing_isolation_mid: float=.08
+    smoothing_isolation_width: float=.03
     smoothing_fine_radius_exp: float=2.0
 
 class ThermalProtocol(Protocol):
@@ -131,6 +138,20 @@ def smoothing_density_gate(rho,p):
     if p.smoothing_gate_form=='logistic':return sig((p.smoothing_rho_mid-rho)/width)
     if p.smoothing_gate_form=='linear_clipped':return float(np.clip(.5+(p.smoothing_rho_mid-rho)/(2*width),0,1))
     raise ValueError(f"unsupported smoothing_gate_form {p.smoothing_gate_form!r}")
+def smoothing_topology_gate(s,p):
+    """Instantaneous smoothing gate; topology modes contain no schedule state."""
+    mode=p.smoothing_gate_mode
+    if mode=='density':return smoothing_density_gate(s.rho,p)
+    if mode=='none':return 1.
+    pores=pore_distribution_diagnostics(s.pore_phi,s.pore_radii,p)
+    fine=sig((pores['removable_fine_pore_fraction']-p.smoothing_fine_mid)/max(p.smoothing_fine_width,1e-9))
+    connected=s.topology.f_pore*s.topology.connectivity
+    coverage=sig((connected-p.smoothing_connected_mid)/max(p.smoothing_connected_width,1e-9))
+    nonisolated=sig((p.smoothing_isolation_mid-s.topology.isolated_pore_fraction)/max(p.smoothing_isolation_width,1e-9))
+    if mode=='fine_pore':return fine
+    if mode=='connectivity':return coverage
+    if mode=='hybrid_topology':return fine*coverage*nonisolated
+    raise ValueError(f"unsupported smoothing_gate_mode {mode!r}")
 def zeros(s): return np.zeros_like(s.pore_phi),np.zeros_like(s.pore_N)
 def renewal_densification(s,T,p,k):
     w=s.pore_phi*(p.pore_radius0/s.pore_radii)**p.removal_radius_exp; w/=max(w.sum(),1e-300)
@@ -163,7 +184,7 @@ def surface_smoothing_redistribution(s,T,p,k):
         return MechanismFlux(pore_phi_dot=z[0],pore_N_dot=z[1],diagnostics={'redistribution_flux_by_bin':z[0]})
     window=math.exp(-.5*((T-p.smoothing_T_mid_C)/max(p.smoothing_T_width_C,1e-9))**2)
     inactive=(1-k['activity'])**max(p.smoothing_activity_exp,0)
-    pre_densification=smoothing_density_gate(s.rho,p)
+    pre_densification=smoothing_topology_gate(s,p)
     fine=(p.pore_radius0/np.maximum(s.pore_radii[:-1],1e-30))**max(p.smoothing_fine_radius_exp,0)
     J=p.smoothing_rate_s*window*inactive*pre_densification*np.maximum(s.pore_phi[:-1],0)*fine
     pd=np.zeros_like(s.pore_phi);pd[:-1]-=J;pd[1:]+=J
@@ -188,11 +209,11 @@ def combine(m,w):
     return out
 def run(p,protocol,stop_at_rho:Optional[float]=None):
     validate_memory_model(p)
-    s=initial_state(p); keys='t T_C rho G f_pore f_clean f_PR f_TL connectivity isolated_pore_fraction topology_damage topology_damage_rate cumulative_redistributed_pore_volume pore_mean_radius large_pore_fraction removable_fine_pore_fraction sigma_base sigma_concentration sigma_local r_nuc tau_exchange tau_transport tau_TL activity rho_dot dGdt E_G'.split(); h={k:[] for k in keys}; h.update(pore_phi=[],pore_N=[],redistribution_flux_by_bin=[]); power_names=[]
+    s=initial_state(p); keys='t T_C rho G f_pore f_clean f_PR f_TL connectivity isolated_pore_fraction smoothing_gate_value topology_damage topology_damage_rate cumulative_redistributed_pore_volume pore_mean_radius large_pore_fraction removable_fine_pore_fraction sigma_base sigma_concentration sigma_local r_nuc tau_exchange tau_transport tau_TL activity rho_dot dGdt E_G'.split(); h={k:[] for k in keys}; h.update(pore_phi=[],pore_N=[],redistribution_flux_by_bin=[]); power_names=[]
     while s.t<min(protocol.t_end,p.t_max_s) and s.rho<p.rho_cap:
         T=protocol.T(s.t,s.rho); s.topology=infer_topology(s.rho,s.G,s.pore_radii,s.pore_phi,p,s.topology_damage); s.stress=infer_stress(s,p); k,m=evaluate_mechanisms(s,T,p); damage_rate=topology_damage_rate(s,T,p,k); w=solve_dissipation_partition(s,s.topology,m,p); f=combine(m,w)
         smooth=m['surface_smoothing_redistribution'];redistribution_flux=w['surface_smoothing_redistribution']*smooth.diagnostics['redistribution_flux_by_bin']
-        vals={'t':s.t,'T_C':T,'rho':s.rho,'G':s.G,'topology_damage':s.topology_damage,'topology_damage_rate':damage_rate,'cumulative_redistributed_pore_volume':s.cumulative_redistributed_pore_volume,**pore_distribution_diagnostics(s.pore_phi,s.pore_radii,p),**vars(s.topology),**vars(s.stress),**k,'rho_dot':f.rho_dot,'dGdt':f.G_dot,'E_G':f.rho_dot/(f.G_dot/max(s.G,1e-30)+1e-30)}
+        vals={'t':s.t,'T_C':T,'rho':s.rho,'G':s.G,'smoothing_gate_value':smoothing_topology_gate(s,p),'topology_damage':s.topology_damage,'topology_damage_rate':damage_rate,'cumulative_redistributed_pore_volume':s.cumulative_redistributed_pore_volume,**pore_distribution_diagnostics(s.pore_phi,s.pore_radii,p),**vars(s.topology),**vars(s.stress),**k,'rho_dot':f.rho_dot,'dGdt':f.G_dot,'E_G':f.rho_dot/(f.G_dot/max(s.G,1e-30)+1e-30)}
         for key in keys:h[key].append(vals[key])
         h['pore_phi'].append(s.pore_phi.copy()); h['pore_N'].append(s.pore_N.copy())
         h['redistribution_flux_by_bin'].append(redistribution_flux.copy())

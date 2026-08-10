@@ -27,3 +27,6 @@ results/*/
 !results/smoothing_gate_identifiability/
 !results/smoothing_gate_identifiability/*.csv
 !results/smoothing_gate_identifiability/*.png
+!results/topology_gate_identifiability/
+!results/topology_gate_identifiability/*.csv
+!results/topology_gate_identifiability/*.png
