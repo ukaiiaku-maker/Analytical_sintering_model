@@ -50,6 +50,7 @@ python3 growth_mechanism_sensitivity.py --workers 4
 python3 pore_junction_pinning_sensitivity.py --workers 4
 python3 pore_location_topology_sensitivity.py
 python3 pore_location_agentic_sensitivity.py
+python3 agentic_mechanism_search.py --workers 1
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
@@ -71,6 +72,10 @@ The follow-up action layer allocates local GB-segment, triple-junction,
 capture, isolation, and migration actions through nonnegative competing
 propensities. Its selected Chen-map audit and ablations are documented in
 `docs/AGENTIC_PORE_LOCATION_TOPOLOGY.md`.
+The source-grounded discovery layer compares persistent junction populations
+and Class-B TJ multihit completion against that negative control; see
+`docs/SOURCE_MECHANISM_PRIORS.md` and
+`docs/AGENTIC_MECHANISM_SEARCH_REPORT.md`.
 
 ## Development status
 
