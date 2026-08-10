@@ -46,6 +46,7 @@ python3 expanded_phase_space_exploration.py --workers 4
 python3 expanded_upper_size_extension.py
 python3 expanded_size_onset_refinement.py
 python3 expanded_phase_space_analysis.py
+python3 growth_mechanism_sensitivity.py --workers 4
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
@@ -53,6 +54,10 @@ times, event yields, mechanism fluxes, and nonnegative dissipation weights. It
 does not use a scalar total-efficiency multiplier. Its default memory mode is
 the conservative, observable `pore_bin_redistribution`; the former empirical
 topology-damage state remains available as an explicit ablation mode.
+The bounded growth-mobility audit compares the unchanged baseline with
+explicit junction-limited and threshold-mobility grain-migration closures;
+see `docs/NANOSCALE_GROWTH_SUPPRESSION_MECHANISM.md` before interpreting the
+prototype parameters.
 
 ## Development status
 

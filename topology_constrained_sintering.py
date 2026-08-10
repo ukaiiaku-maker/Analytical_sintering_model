@@ -41,6 +41,16 @@ class Params:
     transport_prefactor_s_m2: float=1e-3; Q_transport: float=360e3
     tl_prefactor_s: float=2e-8; Q_TL: float=285e3
     growth_prefactor_m2_s: float=5e-5; Q_growth: float=410e3
+    growth_mode: str="baseline"
+    junction_Q_J_mol: float=520e3
+    junction_ratio_ref: float=50.0
+    junction_T_ref_C: float=1250.
+    junction_G_ref: float=150e-9
+    junction_size_exp: float=2.0
+    threshold_resistance_ref_Pa: float=1.8e7
+    threshold_Q_J_mol: float=220e3
+    threshold_size_exp: float=2.0
+    threshold_width: float=.18
     pore_drag_resistance: float=3.; tl_drag_resistance: float=2.
     pr_prefactor_s: float=5e-6; Q_PR: float=260e3
     coarsening_prefactor_s: float=2e-5; Q_coarsening: float=300e3
@@ -152,6 +162,22 @@ def smoothing_topology_gate(s,p):
     if mode=='connectivity':return coverage
     if mode=='hybrid_topology':return fine*coverage*nonisolated
     raise ValueError(f"unsupported smoothing_gate_mode {mode!r}")
+def growth_mobility_diagnostics(s,T_C,p):
+    """GB-migration mobility only; densification kinetics are not modified."""
+    mode=p.growth_mode
+    if mode=='baseline':return {'growth_mobility_factor':1.,'junction_time_ratio':0.,'migration_drive_ratio':math.inf}
+    T=T_C+273.15;Tref=p.junction_T_ref_C+273.15;size=max(p.junction_G_ref/max(s.G,1e-30),1e-12)
+    junction_ratio=p.junction_ratio_ref*size**p.junction_size_exp*math.exp(float(np.clip((p.junction_Q_J_mol-p.Q_growth)/R*(1/T-1/Tref),-60,60)))
+    junction_factor=1/(1+junction_ratio)
+    drive=4*p.gamma_s/max(s.G,1e-30)
+    resistance=p.threshold_resistance_ref_Pa*size**p.threshold_size_exp*math.exp(float(np.clip(p.threshold_Q_J_mol/R*(1/T-1/Tref),-60,60)))
+    drive_ratio=drive/max(resistance,1e-300)
+    threshold_factor=sig((drive_ratio-1)/max(p.threshold_width,1e-9))
+    if mode=='junction_limited':factor=junction_factor
+    elif mode=='threshold_mobility':factor=threshold_factor
+    elif mode=='mixed':factor=junction_factor*threshold_factor
+    else:raise ValueError(f"unsupported growth_mode {mode!r}")
+    return {'growth_mobility_factor':factor,'junction_time_ratio':junction_ratio,'migration_drive_ratio':drive_ratio}
 def zeros(s): return np.zeros_like(s.pore_phi),np.zeros_like(s.pore_N)
 def renewal_densification(s,T,p,k):
     w=s.pore_phi*(p.pore_radius0/s.pore_radii)**p.removal_radius_exp; w/=max(w.sum(),1e-300)
@@ -160,10 +186,11 @@ def renewal_densification(s,T,p,k):
     return MechanismFlux(rd,gd,pd,pd/np.maximum(4*math.pi*s.pore_radii**3/3,1e-300),s.stress.sigma_local*rd,
       {'event_rate':rate,'density_gain_per_event':p.event_strain*y,'grain_growth_per_event':p.event_growth_fraction*s.G*(1-y)})
 def clean_GB_migration(s,T,p):
-    gd=s.topology.f_clean*arr(p.growth_prefactor_m2_s,p.Q_growth,T+273.15)/max(s.G,1e-30); z=zeros(s)
-    return MechanismFlux(G_dot=gd,pore_phi_dot=z[0],pore_N_dot=z[1],power=p.gamma_gb*gd/max(s.G**2,1e-300))
+    mobility=growth_mobility_diagnostics(s,T,p);gd_free=s.topology.f_clean*arr(p.growth_prefactor_m2_s,p.Q_growth,T+273.15)/max(s.G,1e-30);gd=gd_free*mobility['growth_mobility_factor']; z=zeros(s)
+    diagnostics={**mobility,'free_G_dot':gd_free,'junction_drag_power':p.gamma_gb*(gd_free-gd)/max(s.G**2,1e-300)}
+    return MechanismFlux(G_dot=gd,pore_phi_dot=z[0],pore_N_dot=z[1],power=p.gamma_gb*gd_free/max(s.G**2,1e-300),diagnostics=diagnostics)
 def pore_connected_GB_migration(s,T,p):
-    f=clean_GB_migration(s,T,p); f.G_dot*=s.topology.f_pore*s.topology.connectivity/max(s.topology.f_clean,1e-12); f.power=p.gamma_gb*f.G_dot/max(s.G**2,1e-300); return f
+    f=clean_GB_migration(s,T,p); scale=s.topology.f_pore*s.topology.connectivity/max(s.topology.f_clean,1e-12);f.G_dot*=scale;f.power*=scale;return f
 def pore_drag(s,T,p):
     gd=clean_GB_migration(s,T,p).G_dot; z=zeros(s); return MechanismFlux(pore_phi_dot=z[0],pore_N_dot=z[1],power=p.pore_drag_resistance*s.topology.f_pore*gd**2/max(s.G,1e-30))
 def triple_line_drag(s,T,p,k):
@@ -221,11 +248,11 @@ def state_from_result(result,p,index:int=-1,reset_time:bool=True)->State:
     return s
 def run(p,protocol,stop_at_rho:Optional[float]=None,initial:Optional[State]=None):
     validate_memory_model(p)
-    s=initial_state(p) if initial is None else clone_state(initial); keys='t T_C rho G f_pore f_clean f_PR f_TL connectivity isolated_pore_fraction smoothing_gate_value topology_damage topology_damage_rate cumulative_redistributed_pore_volume pore_mean_radius large_pore_fraction removable_fine_pore_fraction sigma_base sigma_concentration sigma_local r_nuc tau_exchange tau_transport tau_TL activity rho_dot dGdt E_G'.split(); h={k:[] for k in keys}; h.update(pore_phi=[],pore_N=[],redistribution_flux_by_bin=[]); power_names=[]
+    s=initial_state(p) if initial is None else clone_state(initial); keys='t T_C rho G f_pore f_clean f_PR f_TL connectivity isolated_pore_fraction smoothing_gate_value growth_mobility_factor junction_time_ratio migration_drive_ratio junction_drag_power topology_damage topology_damage_rate cumulative_redistributed_pore_volume pore_mean_radius large_pore_fraction removable_fine_pore_fraction sigma_base sigma_concentration sigma_local r_nuc tau_exchange tau_transport tau_TL activity rho_dot dGdt E_G'.split(); h={k:[] for k in keys}; h.update(pore_phi=[],pore_N=[],redistribution_flux_by_bin=[]); power_names=[]
     while s.t<min(protocol.t_end,p.t_max_s) and s.rho<p.rho_cap:
         T=protocol.T(s.t,s.rho); s.topology=infer_topology(s.rho,s.G,s.pore_radii,s.pore_phi,p,s.topology_damage); s.stress=infer_stress(s,p); k,m=evaluate_mechanisms(s,T,p); damage_rate=topology_damage_rate(s,T,p,k); w=solve_dissipation_partition(s,s.topology,m,p); f=combine(m,w)
         smooth=m['surface_smoothing_redistribution'];redistribution_flux=w['surface_smoothing_redistribution']*smooth.diagnostics['redistribution_flux_by_bin']
-        vals={'t':s.t,'T_C':T,'rho':s.rho,'G':s.G,'smoothing_gate_value':smoothing_topology_gate(s,p),'topology_damage':s.topology_damage,'topology_damage_rate':damage_rate,'cumulative_redistributed_pore_volume':s.cumulative_redistributed_pore_volume,**pore_distribution_diagnostics(s.pore_phi,s.pore_radii,p),**vars(s.topology),**vars(s.stress),**k,'rho_dot':f.rho_dot,'dGdt':f.G_dot,'E_G':f.rho_dot/(f.G_dot/max(s.G,1e-30)+1e-30)}
+        vals={'t':s.t,'T_C':T,'rho':s.rho,'G':s.G,'smoothing_gate_value':smoothing_topology_gate(s,p),**growth_mobility_diagnostics(s,T,p),'junction_drag_power':m['clean_GB_migration'].diagnostics['junction_drag_power'],'topology_damage':s.topology_damage,'topology_damage_rate':damage_rate,'cumulative_redistributed_pore_volume':s.cumulative_redistributed_pore_volume,**pore_distribution_diagnostics(s.pore_phi,s.pore_radii,p),**vars(s.topology),**vars(s.stress),**k,'rho_dot':f.rho_dot,'dGdt':f.G_dot,'E_G':f.rho_dot/(f.G_dot/max(s.G,1e-30)+1e-30)}
         for key in keys:h[key].append(vals[key])
         h['pore_phi'].append(s.pore_phi.copy()); h['pore_N'].append(s.pore_N.copy())
         h['redistribution_flux_by_bin'].append(redistribution_flux.copy())

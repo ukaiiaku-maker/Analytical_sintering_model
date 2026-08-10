@@ -42,3 +42,6 @@ results/*/
 !results/expanded_phase_space/*.png
 results/expanded_phase_space/*_checkpoint.csv
 results/expanded_phase_space/two_step_classifications.csv.gz
+!results/growth_mechanism_sensitivity/
+!results/growth_mechanism_sensitivity/*.csv
+!results/growth_mechanism_sensitivity/*.png
