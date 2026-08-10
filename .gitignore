@@ -45,3 +45,6 @@ results/expanded_phase_space/two_step_classifications.csv.gz
 !results/growth_mechanism_sensitivity/
 !results/growth_mechanism_sensitivity/*.csv
 !results/growth_mechanism_sensitivity/*.png
+!results/pore_junction_pinning/
+!results/pore_junction_pinning/*.csv
+!results/pore_junction_pinning/*.png

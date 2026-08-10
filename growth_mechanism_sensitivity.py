@@ -54,11 +54,14 @@ def group_task(args:tuple)->list[dict]:
                 "second_final_rho_dot":float(second["rho_dot"][j]),"second_final_dGdt_nm_s":float(second["dGdt"][j])*1e9,
                 "median_E_G":float(np.median(second["E_G"])),"initial_growth_mobility_factor":float(second["growth_mobility_factor"][0]),
                 "final_growth_mobility_factor":float(second["growth_mobility_factor"][j]),"initial_junction_time_ratio":float(second["junction_time_ratio"][0]),
+                "initial_pinning_time_ratio":float(second["pinning_time_ratio"][0]),"final_pinning_time_ratio":float(second["pinning_time_ratio"][j]),
+                "initial_pore_junction_occupancy":float(second["pore_junction_occupancy"][0]),"final_pore_junction_occupancy":float(second["pore_junction_occupancy"][j]),
+                "initial_pore_line_density_m2":float(second["pore_line_density_m2"][0]),"initial_connected_pinning_coverage":float(second["connected_pinning_coverage"][0]),
                 "initial_migration_drive_ratio":float(second["migration_drive_ratio"][0]),"final_connected_coverage":float(second["f_pore"][j]*second["connectivity"][j]),
                 "final_mean_radius_nm":float(second["pore_mean_radius"][j])*1e9,"final_fine_fraction":float(second["removable_fine_pore_fraction"][j]),
                 "final_isolation":float(second["isolated_pore_fraction"][j])}
         else:
-            diagnostics={key:np.nan for key in ("rho2","G2_nm","density_gain","growth_fraction","second_initial_rho_dot","second_initial_dGdt_nm_s","second_final_rho_dot","second_final_dGdt_nm_s","median_E_G","initial_growth_mobility_factor","final_growth_mobility_factor","initial_junction_time_ratio","initial_migration_drive_ratio","final_connected_coverage","final_mean_radius_nm","final_fine_fraction","final_isolation")}
+            diagnostics={key:np.nan for key in ("rho2","G2_nm","density_gain","growth_fraction","second_initial_rho_dot","second_initial_dGdt_nm_s","second_final_rho_dot","second_final_dGdt_nm_s","median_E_G","initial_growth_mobility_factor","final_growth_mobility_factor","initial_junction_time_ratio","initial_pinning_time_ratio","final_pinning_time_ratio","initial_pore_junction_occupancy","final_pore_junction_occupancy","initial_pore_line_density_m2","initial_connected_pinning_coverage","initial_migration_drive_ratio","final_connected_coverage","final_mean_radius_nm","final_fine_fraction","final_isolation")}
         rows.append({**common,"T2_C":T2,**diagnostics})
     return rows
 
