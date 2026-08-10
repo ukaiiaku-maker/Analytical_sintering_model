@@ -48,6 +48,7 @@ python3 expanded_size_onset_refinement.py
 python3 expanded_phase_space_analysis.py
 python3 growth_mechanism_sensitivity.py --workers 4
 python3 pore_junction_pinning_sensitivity.py --workers 4
+python3 pore_location_topology_sensitivity.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
@@ -62,6 +63,9 @@ prototype parameters.
 The follow-up pore/junction-pinning audit resolves migration resistance using
 the instantaneous pore-bin and connected-topology state. Its negative result
 and limitations are documented in `docs/PORE_JUNCTION_PINNING_MECHANISM.md`.
+The pore-placement ladder resolves GB-segment, triple-junction, and isolated
+pore stores with conservative fluxes; see
+`docs/PORE_LOCATION_TOPOLOGY_COUPLING.md` for its bounded negative result.
 
 ## Development status
 

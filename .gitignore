@@ -48,3 +48,6 @@ results/expanded_phase_space/two_step_classifications.csv.gz
 !results/pore_junction_pinning/
 !results/pore_junction_pinning/*.csv
 !results/pore_junction_pinning/*.png
+!results/pore_location_topology/
+!results/pore_location_topology/*.csv
+!results/pore_location_topology/*.png
