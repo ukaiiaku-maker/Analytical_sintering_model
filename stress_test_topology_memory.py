@@ -48,6 +48,11 @@ def heating_rate_audit(params: model.Params, target: float) -> tuple[list[dict],
             "G_at_target_nm": grain_nm,
             "topology_damage_final": result["topology_damage"][-1],
             "damage_rate_max_s": np.max(result["topology_damage_rate"]),
+            "redistribution_flux_max_s": np.max(np.sum(result["redistribution_flux_by_bin"], axis=1)),
+            "cumulative_redistributed_pore_volume": result["cumulative_redistributed_pore_volume"][-1],
+            "pore_mean_radius_final_nm": result["pore_mean_radius"][-1] * 1e9,
+            "large_pore_fraction_final": result["large_pore_fraction"][-1],
+            "removable_fine_pore_fraction_final": result["removable_fine_pore_fraction"][-1],
             "median_E_G": finite_median(result["E_G"]),
             "HR_pct_vs_0p2": np.nan,
         })
@@ -78,6 +83,10 @@ def two_step_audit(params: model.Params, target: float) -> tuple[list[dict], dic
                     "benefit_positive": bool(success and model.percent_gain(high_G, two_G) > 0),
                     "high_damage_final": high_runs[T1]["topology_damage"][-1],
                     "two_step_damage_final": two["topology_damage"][-1],
+                    "high_redistributed_volume": high_runs[T1]["cumulative_redistributed_pore_volume"][-1],
+                    "two_step_redistributed_volume": two["cumulative_redistributed_pore_volume"][-1],
+                    "high_mean_radius_nm": high_runs[T1]["pore_mean_radius"][-1] * 1e9,
+                    "two_step_mean_radius_nm": two["pore_mean_radius"][-1] * 1e9,
                 })
     return rows, {"high": high_runs, "two_step": runs}
 
@@ -215,7 +224,7 @@ def main() -> None:
     args = parser.parse_args()
     outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)
-    params = model.Params()
+    params = model.Params(memory_model="empirical_topology_damage")
 
     heating_rows, heating_runs = heating_rate_audit(params, args.target)
     two_step_rows, two_step_runs = two_step_audit(params, args.target)

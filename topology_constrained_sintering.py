@@ -22,6 +22,7 @@ class State:
     rho: float; G: float; pore_radii: np.ndarray; pore_phi: np.ndarray; pore_N: np.ndarray
     topology: TopologyState; stress: StressState; t: float=0.0
     topology_damage: float=0.0
+    cumulative_redistributed_pore_volume: float=0.0
 @dataclass
 class MechanismFlux:
     rho_dot: float=0.; G_dot: float=0.
@@ -47,6 +48,7 @@ class Params:
     drho_max: float=1e-3; dG_fraction_max: float=.01; dT_max_C: float=2.; rho_cap: float=.985; t_max_s: float=8e5
     enable_PR: bool=True; enable_TL_drag: bool=True; enable_pore_coarsening: bool=True
     enable_topology_memory: bool=True
+    memory_model: str="pore_bin_redistribution"
     surface_damage_rate_s: float=2e-5
     surface_damage_T_mid_C: float=1025.
     surface_damage_T_width_C: float=180.
@@ -55,6 +57,13 @@ class Params:
     surface_damage_rho_width: float=.015
     damage_coverage_strength: float=.65
     damage_isolation_strength: float=.35
+    smoothing_rate_s: float=2e-5
+    smoothing_T_mid_C: float=1025.
+    smoothing_T_width_C: float=180.
+    smoothing_activity_exp: float=1.0
+    smoothing_rho_mid: float=.79
+    smoothing_rho_width: float=.015
+    smoothing_fine_radius_exp: float=2.0
 
 class ThermalProtocol(Protocol):
     t_end: float
@@ -75,12 +84,18 @@ class TwoStep:
 def pore_number(phi,r): return np.maximum(phi,0)/np.maximum(4*math.pi*r**3/3,1e-300)
 def pore_distribution_diagnostics(phi,radii,p):
     total=max(float(np.sum(phi)),1e-300)
-    return {'pore_mean_radius':float(np.sum(phi*radii)/total),'large_pore_fraction':float(np.sum(phi[radii>=4*p.pore_radius0])/total)}
+    removable=float(np.sum(phi*(p.pore_radius0/np.maximum(radii,1e-30))**p.removal_radius_exp)/total)
+    return {'pore_mean_radius':float(np.sum(phi*radii)/total),'large_pore_fraction':float(np.sum(phi[radii>=4*p.pore_radius0])/total),'removable_fine_pore_fraction':removable}
+def empirical_memory_enabled(p): return p.enable_topology_memory and p.memory_model in ('empirical_topology_damage','combined')
+def redistribution_memory_enabled(p): return p.memory_model in ('pore_bin_redistribution','combined')
+def validate_memory_model(p):
+    allowed={'none','empirical_topology_damage','pore_bin_redistribution','combined'}
+    if p.memory_model not in allowed:raise ValueError(f"memory_model must be one of {sorted(allowed)}, got {p.memory_model!r}")
 def infer_topology(rho,G,radii,phi,p,topology_damage=0.):
     N=pore_number(phi,radii); area=float(np.sum(N*math.pi*radii**2)); gb=2/max(G,1e-30)
     fp=1-math.exp(-max(p.coverage_chi*area/gb,0)); conn=sig((p.connectivity_rho_mid-rho)/p.connectivity_rho_width)
     iso=sig((rho-p.isolation_rho_mid)/p.isolation_rho_width)
-    if p.enable_topology_memory:
+    if empirical_memory_enabled(p):
         damage=float(np.clip(topology_damage,0,1))
         fp*=math.exp(-p.damage_coverage_strength*damage)
         iso+=p.damage_isolation_strength*damage*(1-iso)
@@ -103,7 +118,7 @@ def kinetic_diagnostics(s,T_C,p):
     total=tn+te+tt+tl; completion=1/max(te+tt+tl,1e-300); L=rn/max(completion,1e-300)
     return dict(r_nuc=rn,tau_nuc=tn,tau_exchange=te,tau_transport=tt,tau_TL=tl,tau_event=total,completion_rate=completion,Lambda=L,activity=L/(1+L))
 def topology_damage_rate(s,T_C,p,k):
-    if not p.enable_topology_memory:return 0.
+    if not empirical_memory_enabled(p):return 0.
     # Surface smoothing is strongest in an intermediate-temperature window;
     # low renewal activity leaves that motion non-densifying and cumulative.
     window=math.exp(-.5*((T_C-p.surface_damage_T_mid_C)/max(p.surface_damage_T_width_C,1e-9))**2)
@@ -136,12 +151,25 @@ def PR_desintering(s,T,p,k):
 def pore_coarsening(s,T,p):
     rate=arr(p.coarsening_prefactor_s,p.Q_coarsening,T+273.15) if p.enable_pore_coarsening else 0; pd,nd=up_flux(s,rate)
     return MechanismFlux(pore_phi_dot=pd,pore_N_dot=nd,power=p.gamma_s*float(np.sum(abs(pd)/s.pore_radii)))
+def surface_smoothing_redistribution(s,T,p,k):
+    z=zeros(s)
+    if not redistribution_memory_enabled(p):
+        return MechanismFlux(pore_phi_dot=z[0],pore_N_dot=z[1],diagnostics={'redistribution_flux_by_bin':z[0]})
+    window=math.exp(-.5*((T-p.smoothing_T_mid_C)/max(p.smoothing_T_width_C,1e-9))**2)
+    inactive=(1-k['activity'])**max(p.smoothing_activity_exp,0)
+    pre_densification=sig((p.smoothing_rho_mid-s.rho)/max(p.smoothing_rho_width,1e-9))
+    fine=(p.pore_radius0/np.maximum(s.pore_radii[:-1],1e-30))**max(p.smoothing_fine_radius_exp,0)
+    J=p.smoothing_rate_s*window*inactive*pre_densification*np.maximum(s.pore_phi[:-1],0)*fine
+    pd=np.zeros_like(s.pore_phi);pd[:-1]-=J;pd[1:]+=J
+    nd=pd/np.maximum(4*math.pi*s.pore_radii**3/3,1e-300)
+    power=p.gamma_s*float(np.sum(J/np.maximum(s.pore_radii[:-1],1e-30)))
+    return MechanismFlux(pore_phi_dot=pd,pore_N_dot=nd,power=power,diagnostics={'redistribution_flux_by_bin':np.r_[J,0.]})
 def exchange_dissipation(s,k):
     z=zeros(s); return MechanismFlux(pore_phi_dot=z[0],pore_N_dot=z[1],power=k['tau_exchange']/k['tau_event'])
 def transport_dissipation(s,k):
     z=zeros(s); return MechanismFlux(pore_phi_dot=z[0],pore_N_dot=z[1],power=k['tau_transport']/k['tau_event'])
 def evaluate_mechanisms(s,T,p):
-    k=kinetic_diagnostics(s,T,p); m={'renewal_densification':renewal_densification(s,T,p,k),'clean_GB_migration':clean_GB_migration(s,T,p),'pore_connected_GB_migration':pore_connected_GB_migration(s,T,p),'pore_drag':pore_drag(s,T,p),'triple_line_drag':triple_line_drag(s,T,p,k),'PR_desintering':PR_desintering(s,T,p,k),'pore_coarsening':pore_coarsening(s,T,p),'exchange_dissipation':exchange_dissipation(s,k),'transport_dissipation':transport_dissipation(s,k)}
+    k=kinetic_diagnostics(s,T,p); m={'renewal_densification':renewal_densification(s,T,p,k),'clean_GB_migration':clean_GB_migration(s,T,p),'pore_connected_GB_migration':pore_connected_GB_migration(s,T,p),'pore_drag':pore_drag(s,T,p),'triple_line_drag':triple_line_drag(s,T,p,k),'PR_desintering':PR_desintering(s,T,p,k),'pore_coarsening':pore_coarsening(s,T,p),'surface_smoothing_redistribution':surface_smoothing_redistribution(s,T,p,k),'exchange_dissipation':exchange_dissipation(s,k),'transport_dissipation':transport_dissipation(s,k)}
     return k,m
 def solve_dissipation_partition(state,topology,mechanisms,params):
     compat={'renewal_densification':topology.f_pore*topology.connectivity*(1-topology.isolated_pore_fraction),'clean_GB_migration':topology.f_clean,'pore_connected_GB_migration':topology.f_pore,'pore_drag':topology.f_pore,'triple_line_drag':topology.f_TL,'PR_desintering':topology.f_PR}
@@ -153,12 +181,15 @@ def combine(m,w):
     for n,f in m.items(): out.rho_dot+=w[n]*f.rho_dot; out.G_dot+=w[n]*f.G_dot; out.pore_phi_dot+=w[n]*f.pore_phi_dot; out.pore_N_dot+=w[n]*f.pore_N_dot; out.power+=w[n]*f.power
     return out
 def run(p,protocol,stop_at_rho:Optional[float]=None):
-    s=initial_state(p); keys='t T_C rho G f_pore f_clean f_PR f_TL connectivity isolated_pore_fraction topology_damage topology_damage_rate pore_mean_radius large_pore_fraction sigma_base sigma_concentration sigma_local r_nuc tau_exchange tau_transport tau_TL activity rho_dot dGdt E_G'.split(); h={k:[] for k in keys}; h.update(pore_phi=[],pore_N=[]); power_names=[]
+    validate_memory_model(p)
+    s=initial_state(p); keys='t T_C rho G f_pore f_clean f_PR f_TL connectivity isolated_pore_fraction topology_damage topology_damage_rate cumulative_redistributed_pore_volume pore_mean_radius large_pore_fraction removable_fine_pore_fraction sigma_base sigma_concentration sigma_local r_nuc tau_exchange tau_transport tau_TL activity rho_dot dGdt E_G'.split(); h={k:[] for k in keys}; h.update(pore_phi=[],pore_N=[],redistribution_flux_by_bin=[]); power_names=[]
     while s.t<min(protocol.t_end,p.t_max_s) and s.rho<p.rho_cap:
         T=protocol.T(s.t,s.rho); s.topology=infer_topology(s.rho,s.G,s.pore_radii,s.pore_phi,p,s.topology_damage); s.stress=infer_stress(s,p); k,m=evaluate_mechanisms(s,T,p); damage_rate=topology_damage_rate(s,T,p,k); w=solve_dissipation_partition(s,s.topology,m,p); f=combine(m,w)
-        vals={'t':s.t,'T_C':T,'rho':s.rho,'G':s.G,'topology_damage':s.topology_damage,'topology_damage_rate':damage_rate,**pore_distribution_diagnostics(s.pore_phi,s.pore_radii,p),**vars(s.topology),**vars(s.stress),**k,'rho_dot':f.rho_dot,'dGdt':f.G_dot,'E_G':f.rho_dot/(f.G_dot/max(s.G,1e-30)+1e-30)}
+        smooth=m['surface_smoothing_redistribution'];redistribution_flux=w['surface_smoothing_redistribution']*smooth.diagnostics['redistribution_flux_by_bin']
+        vals={'t':s.t,'T_C':T,'rho':s.rho,'G':s.G,'topology_damage':s.topology_damage,'topology_damage_rate':damage_rate,'cumulative_redistributed_pore_volume':s.cumulative_redistributed_pore_volume,**pore_distribution_diagnostics(s.pore_phi,s.pore_radii,p),**vars(s.topology),**vars(s.stress),**k,'rho_dot':f.rho_dot,'dGdt':f.G_dot,'E_G':f.rho_dot/(f.G_dot/max(s.G,1e-30)+1e-30)}
         for key in keys:h[key].append(vals[key])
         h['pore_phi'].append(s.pore_phi.copy()); h['pore_N'].append(s.pore_N.copy())
+        h['redistribution_flux_by_bin'].append(redistribution_flux.copy())
         if not power_names:
             power_names=list(m)
             for n in power_names:h['power_'+n]=[];h['weight_'+n]=[]
@@ -170,7 +201,7 @@ def run(p,protocol,stop_at_rho:Optional[float]=None):
         if f.G_dot>0:dt=min(dt,p.dG_fraction_max*s.G/f.G_dot)
         dt=max(p.dt_min_s,dt); total=max(float(s.pore_phi.sum())-f.rho_dot*dt,0); new=np.maximum(s.pore_phi+f.pore_phi_dot*dt,0)
         if new.sum()>0:new*=total/new.sum()
-        s.pore_phi=new;s.rho=1-float(new.sum());s.pore_N=pore_number(new,s.pore_radii);s.G=max(s.G+f.G_dot*dt,1e-9);s.topology_damage=float(np.clip(s.topology_damage+damage_rate*dt,0,1));s.t+=dt
+        s.pore_phi=new;s.rho=1-float(new.sum());s.pore_N=pore_number(new,s.pore_radii);s.G=max(s.G+f.G_dot*dt,1e-9);s.topology_damage=float(np.clip(s.topology_damage+damage_rate*dt,0,1));s.cumulative_redistributed_pore_volume+=float(np.sum(redistribution_flux))*dt;s.t+=dt
     return {k:np.asarray(v,float) for k,v in h.items()}
 def value_at_density(result,target):
     i=np.flatnonzero(result['rho']>=target); return (float(result['G'][i[0]]),True) if i.size else (math.nan,False)

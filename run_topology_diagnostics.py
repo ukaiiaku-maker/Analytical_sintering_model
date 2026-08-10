@@ -8,7 +8,7 @@ import topology_constrained_sintering as m
 
 def main():
     a=argparse.ArgumentParser();a.add_argument('--outdir',default='results/initial');a.add_argument('--target',type=float,default=.90);args=a.parse_args()
-    out=Path(args.outdir);out.mkdir(parents=True,exist_ok=True);p=m.Params()
+    out=Path(args.outdir);out.mkdir(parents=True,exist_ok=True);p=m.Params(memory_model='empirical_topology_damage')
     runs={'slow_0p2':m.run(p,m.RampHold(.2),args.target),'fast_20':m.run(p,m.RampHold(20),args.target),'high_1350':m.run(replace(p,G0=75e-9),m.Iso(1350),args.target),'two_1350_1250':m.run(replace(p,G0=75e-9),m.TwoStep(),args.target)}
     rows=[]
     for name,r in runs.items():

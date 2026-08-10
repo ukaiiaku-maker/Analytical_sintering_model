@@ -35,11 +35,14 @@ python3 -m pytest -q
 python3 run_topology_diagnostics.py
 python3 search_topology_initial.py --n 12
 python3 stress_test_topology_memory.py
+python3 stress_test_pore_bin_memory.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
 times, event yields, mechanism fluxes, and nonnegative dissipation weights. It
-does not use a scalar total-efficiency multiplier.
+does not use a scalar total-efficiency multiplier. Its default memory mode is
+the conservative, observable `pore_bin_redistribution`; the former empirical
+topology-damage state remains available as an explicit ablation mode.
 
 ## Development status
 

@@ -15,3 +15,6 @@ results/*/
 !results/topology_memory_stress/
 !results/topology_memory_stress/*.csv
 !results/topology_memory_stress/*.png
+!results/pore_bin_memory_stress/
+!results/pore_bin_memory_stress/*.csv
+!results/pore_bin_memory_stress/*.png
