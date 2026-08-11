@@ -73,14 +73,14 @@ to be unique. The new migration-only ablation distinguishes:
 - `C_TJ_relaxed`: pore occupancy that relaxes/bypasses compatibility;
 - `C_TJ_pinned`: occupancy contributing to Class-A pore drag.
 
-`current_all_TJ_multihit` exactly recovers the prior closure. In the bounded
-audit, current-all is joint-positive for 2/4 bases, pore-relaxed for 3/4,
-mixed for 3/4, and pore-pinned drag for 4/4. Relaxation generally reduces the
-number of beneficial cases; explicit pore drag preserves fewer but still
+`current_all_TJ_multihit` exactly recovers the prior closure. In the corrected
+bounded audit, current-all is joint-positive for 2/4 bases, pore-relaxed for
+3/4, and both mixed and pore-pinned drag for 4/4. Explicit pore drag preserves
 finite benefits and reports its dissipation separately. The q0 and q1 variants
 do not give identical mode rankings. Therefore the best current evidence favors
-pore occupancy acting at least partly as a drag site, but does not identify a
-unique partition between relaxation and structural constraint.
+pore occupancy relaxing and/or dragging the junction rather than being
+identified wholesale with structural constraint, but it does not uniquely
+identify the partition.
 
 TJ pore densification remains a separate unchanged channel. `P_TJ_multihit`,
 `P_TJ_pore_drag`, and TJ-assisted densification power are reported separately;

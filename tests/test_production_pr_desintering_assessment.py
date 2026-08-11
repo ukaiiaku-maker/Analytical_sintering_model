@@ -46,6 +46,10 @@ def test_TJ_constraint_modes_modify_migration_not_densification():
     for mode in discovery.TJ_CONSTRAINT_MODES:
         p=replace(p0,base=replace(p0.base,TJ_constraint_mode=mode));d=memory.local_competition(state,1200,p);rates.append(d["rho_dot"])
         assert d["P_TJ_assisted_densification"]==d["P_TJ_dens"]
+        for key in ("C_TJ_total","C_TJ_pore","C_TJ_structural","C_TJ_constraint","C_TJ_relaxed","C_TJ_pinned"):
+            assert 0<=d[key]<=1
+        assert d["C_TJ_relaxed"]+d["C_TJ_pinned"]<=d["C_TJ_pore"]+1e-12
+        assert d["C_TJ_constraint"]<=d["C_TJ_total"]+1e-12
     assert np.allclose(rates,rates[0],rtol=0,atol=0)
 
 
@@ -58,8 +62,13 @@ def test_current_all_TJ_mode_is_exact_default_and_diagnostics_are_separate():
 def test_TJ_ablation_is_nonuniversal_and_keeps_power_channels_separate():
     table=rows("TJ_constraint_ablation.csv");assert {r["TJ_constraint_mode"] for r in table}==set(discovery.TJ_CONSTRAINT_MODES)
     assert all(int(r["n_fast_beneficial"])<int(r["n_fast_attained"]) for r in table)
-    pinned=[r for r in table if r["TJ_constraint_mode"]=="pore_pinned_TJ_drag"]
+    pinned=[r for r in table if r["TJ_constraint_mode"]=="pore_pinned_drag"]
     assert all(float(r["P_TJ_pore_drag_median"])>0 and r["joint_positive"]=="True" for r in pinned)
+
+
+def test_current_all_TJ_persisted_audit_recovers_prior_counts():
+    current=[r for r in rows("tj_constraint_mode_summary.csv") if r["TJ_constraint_mode"]=="current_all_TJ_multihit"]
+    assert {r["base_mechanism"]:int(r["n_fast_beneficial"]) for r in current}=={"mech_009":28,"mech_019":8,"mech_009_q0":31,"mech_019_q0":8}
 
 
 def test_local_TJ_and_PR_laws_have_no_schedule_leakage():

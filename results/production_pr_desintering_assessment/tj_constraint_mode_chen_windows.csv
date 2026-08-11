@@ -1,0 +1,17 @@
+base_mechanism,TJ_constraint_mode,q_TJ,chen_boundary_status,complete_practical_chen,joint_positive
+mech_009,current_all_TJ_multihit,1,COMPLETE_WINDOW,False,False
+mech_009,pore_relaxed_TJ,1,COMPLETE_WINDOW,True,True
+mech_009,pore_pinned_drag,1,COMPLETE_WINDOW,True,True
+mech_009,mixed_relaxed_pinned,1,COMPLETE_WINDOW,True,True
+mech_019,current_all_TJ_multihit,1,COMPLETE_WINDOW,True,True
+mech_019,pore_relaxed_TJ,1,COMPLETE_WINDOW,True,True
+mech_019,pore_pinned_drag,1,COMPLETE_WINDOW,True,True
+mech_019,mixed_relaxed_pinned,1,COMPLETE_WINDOW,True,True
+mech_009_q0,current_all_TJ_multihit,0,COMPLETE_WINDOW,False,False
+mech_009_q0,pore_relaxed_TJ,0,COMPLETE_WINDOW,False,False
+mech_009_q0,pore_pinned_drag,0,COMPLETE_WINDOW,True,True
+mech_009_q0,mixed_relaxed_pinned,0,COMPLETE_WINDOW,True,True
+mech_019_q0,current_all_TJ_multihit,0,COMPLETE_WINDOW,True,True
+mech_019_q0,pore_relaxed_TJ,0,COMPLETE_WINDOW,True,True
+mech_019_q0,pore_pinned_drag,0,COMPLETE_WINDOW,True,True
+mech_019_q0,mixed_relaxed_pinned,0,COMPLETE_WINDOW,True,True

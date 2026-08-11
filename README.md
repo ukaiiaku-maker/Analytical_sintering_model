@@ -97,6 +97,8 @@ non-densifying pore redistribution competing with renewal removal.
 The production confirmation, local PR robustness audit, and pore-occupied
 versus structurally constrained TJ ablation are reported in
 `docs/PRODUCTION_PR_DESINTERING_ASSESSMENT.md`.
+The dedicated interpretation and focused q0/q1 evidence for pore-filled versus
+structurally constrained TJs are in `docs/TJ_PORE_CONSTRAINT_INTERPRETATION.md`.
 
 ## Development status
 

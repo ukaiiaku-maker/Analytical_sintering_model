@@ -12,7 +12,7 @@ import topology_constrained_sintering as aggregate
 
 R=aggregate.R
 MODES=("action_baseline","persistent_junction","tj_multihit_q0","tj_multihit_q1","persistent_tj_multihit_q0","persistent_tj_multihit_q1")
-TJ_CONSTRAINT_MODES=("current_all_TJ_multihit","pore_relaxed_TJ_multihit","pore_pinned_TJ_drag","mixed_TJ_constraint")
+TJ_CONSTRAINT_MODES=("current_all_TJ_multihit","pore_relaxed_TJ","pore_pinned_drag","mixed_relaxed_pinned")
 
 
 @dataclass
@@ -34,6 +34,7 @@ class DiscoveryParams:
     packet_G_ref: float=150e-9
     TJ_constraint_mode: str="current_all_TJ_multihit"
     eta_TJ_pore_relax: float=.6
+    eta_TJ_pore_pin: float=.8
     TJ_structural_background: float=.25
     A_TJ_pore_drag: float=8.
     Q_TJ_unpin_J_mol: float=220e3
@@ -50,7 +51,7 @@ def validate(p):
     if p.A_J<0 or p.XJ_capacity<=0 or p.tau_J_ref_s<=0 or p.lambda_TJ_ref<0 or p.K_TJ0<1:raise ValueError("invalid nonnegative mechanism parameter")
     if p.q_TJ not in (0,1):raise ValueError("q_TJ must be 0 or 1")
     if p.TJ_constraint_mode not in TJ_CONSTRAINT_MODES:raise ValueError("invalid TJ_constraint_mode")
-    if not 0<=p.eta_TJ_pore_relax<=1 or p.A_TJ_pore_drag<0:raise ValueError("invalid TJ constraint parameters")
+    if not 0<=p.eta_TJ_pore_relax<=1 or not 0<=p.eta_TJ_pore_pin<=1 or p.A_TJ_pore_drag<0:raise ValueError("invalid TJ constraint parameters")
 
 
 def poisson_completion(k,lam):
@@ -75,11 +76,13 @@ def local_mechanism(s:DiscoveryState,T_C:float,p:DiscoveryParams):
     q=1 if p.mechanism_mode.endswith('q1') else p.q_TJ
     K=p.K_TJ0*(max(s.pore.G,1e-30)/p.packet_G_ref)**q
     thermal=math.exp(float(np.clip(-p.Q_TJ_event_J_mol/R*(1/T-1/Tr),-50,50)))
-    C_pore=float(np.clip(top['C_TJ'],0,1));C_structural=float(np.clip(C_pore+p.TJ_structural_background*(1-C_pore),0,1));mode=p.TJ_constraint_mode
+    C_pore=float(np.clip(top['C_TJ'],0,1));C_total=float(np.clip(C_pore+p.TJ_structural_background*(1-C_pore),0,1));C_structural=max(C_total-C_pore,0.);mode=p.TJ_constraint_mode
     if mode=='current_all_TJ_multihit':C_constraint=C_pore;C_relaxed=0.;C_pinned=0.
-    elif mode=='pore_relaxed_TJ_multihit':C_relaxed=p.eta_TJ_pore_relax*C_pore;C_constraint=max(C_pore-C_relaxed,0);C_pinned=0.
-    elif mode=='pore_pinned_TJ_drag':C_relaxed=C_pore;C_constraint=max(C_structural-C_pore,0);C_pinned=C_pore
-    else:C_relaxed=p.eta_TJ_pore_relax*C_pore;C_pinned=(1-p.eta_TJ_pore_relax)*C_pore;C_constraint=max(C_structural-C_relaxed,0)
+    elif mode=='pore_relaxed_TJ':C_relaxed=p.eta_TJ_pore_relax*C_pore;C_pinned=0.;C_constraint=C_structural+(1-p.eta_TJ_pore_relax)*C_pore
+    elif mode=='pore_pinned_drag':C_relaxed=0.;C_pinned=p.eta_TJ_pore_pin*C_pore;C_constraint=C_structural+(1-p.eta_TJ_pore_pin)*C_pore
+    else:
+        C_relaxed=p.eta_TJ_pore_relax*C_pore;C_pinned=min(p.eta_TJ_pore_pin,1-p.eta_TJ_pore_relax)*C_pore;C_constraint=C_structural+max(1-p.eta_TJ_pore_relax-p.eta_TJ_pore_pin,0)*C_pore
+    C_constraint=float(np.clip(C_constraint,0,C_total));C_relaxed=float(np.clip(C_relaxed,0,C_pore));C_pinned=float(np.clip(C_pinned,0,C_pore-C_relaxed))
     available=max(C_constraint+.05,0)*max(top['f_clean_GB'],.02)
     Lambda=p.lambda_TJ_ref*available*thermal*(p.packet_G_ref/max(s.pore.G,1e-30))
     gamma=poisson_completion(K,Lambda) if multihit else 1.
@@ -89,7 +92,7 @@ def local_mechanism(s:DiscoveryState,T_C:float,p:DiscoveryParams):
     preg=max(d['P_clean_GB'],0)*(1-mobility_multiplier);den=d['rho_dot']
     regime='smooth' if Lambda/max(K,1e-30)>3 else ('stagnant' if Lambda/max(K,1e-30)<.3 else 'intermittent')
     denom=max(Rpersistent+R_pore+(1-gamma),1e-30)
-    return {**d,'rho_dot':den,'G_dot':Gdot,'X_J':s.X_J,'X_J_dot':Xdot,'X_J_production':production,'X_J_relaxation':relaxation,'R_J_persistent':Rpersistent,'C_TJ_pore':C_pore,'C_TJ_constraint':C_constraint,'C_TJ_relaxed':C_relaxed,'C_TJ_pinned':C_pinned,'R_TJ_pore_drag':R_pore,'Lambda_TJ':Lambda,'K_TJ':K,'Lambda_over_K_TJ':Lambda/max(K,1e-30),'P_comp_TJ':gamma,'TJ_regime':regime,'growth_mobility_discovery':d['growth_mobility_factor']*mobility_multiplier,'P_persistent_junction_drag':preg*Rpersistent/denom if persistent else 0.,'P_TJ_multihit':preg*(1-gamma)/denom if multihit else 0.,'P_TJ_pore_drag':preg*R_pore/denom,'P_TJ_assisted_densification':d['P_TJ_dens'],'P_clean_GB_discovery':migration_part*mobility_multiplier}
+    return {**d,'rho_dot':den,'G_dot':Gdot,'X_J':s.X_J,'X_J_dot':Xdot,'X_J_production':production,'X_J_relaxation':relaxation,'R_J_persistent':Rpersistent,'C_TJ_total':C_total,'C_TJ_pore':C_pore,'C_TJ_structural':C_structural,'C_TJ_constraint':C_constraint,'C_TJ_relaxed':C_relaxed,'C_TJ_pinned':C_pinned,'R_TJ_pore_drag':R_pore,'Lambda_TJ':Lambda,'Lambda_TJ_structural':Lambda,'K_TJ':K,'K_TJ_structural':K,'Lambda_over_K_TJ':Lambda/max(K,1e-30),'P_comp_TJ':gamma,'P_comp_TJ_structural':gamma,'TJ_regime':regime,'growth_mobility_discovery':d['growth_mobility_factor']*mobility_multiplier,'P_persistent_junction_drag':preg*Rpersistent/denom if persistent else 0.,'P_TJ_multihit':preg*(1-gamma)/denom if multihit else 0.,'P_TJ_pore_drag':preg*R_pore/denom,'P_TJ_assisted_densification':d['P_TJ_dens'],'P_clean_GB_discovery':migration_part*mobility_multiplier}
 
 
 def initial_state(p):return DiscoveryState(fixed.initial_state(prior.effective_location_params(p.action)),0.)
@@ -99,7 +102,7 @@ def clone_state(s,reset_time=False):return DiscoveryState(fixed.clone_state(s.po
 def run(p:DiscoveryParams,protocol,stop_at_rho:Optional[float]=None,initial:Optional[DiscoveryState]=None):
     validate(p)
     if p.mechanism_mode=='action_baseline':return prior.run(p.action,protocol,stop_at_rho=stop_at_rho,initial=None if initial is None else initial.pore)
-    s=initial_state(p) if initial is None else clone_state(initial);scalars='t T_C rho G C_GBseg C_TJ f_clean_GB f_iso activity rho_dot G_dot E_G growth_mobility_factor growth_mobility_discovery sigma_base sigma_GBseg_pore sigma_TJ_pore sigma_clean_GB sigma_iso sigma_act_total X_J X_J_dot X_J_production X_J_relaxation R_J_persistent C_TJ_pore C_TJ_constraint C_TJ_relaxed C_TJ_pinned R_TJ_pore_drag Lambda_TJ K_TJ Lambda_over_K_TJ P_comp_TJ P_persistent_junction_drag P_TJ_multihit P_TJ_pore_drag P_TJ_assisted_densification P_clean_GB_discovery'.split();powers='P_GBseg_dens P_TJ_dens P_clean_GB P_GBseg_drag P_TJ_drag P_GBseg_to_TJ P_TJ_to_GBseg_capture P_TJ_iso'.split();fluxes='action_flux_GBseg_remove action_flux_TJ_remove action_flux_GB_smooth action_flux_GB_to_TJ action_flux_TJ_to_GBseg_capture action_flux_TJ_to_iso'.split();h={k:[] for k in scalars+powers+fluxes};h.update(TJ_regime=[],phi_GBseg=[],phi_TJ=[],phi_iso=[],N_GBseg=[],N_TJ=[],N_iso=[])
+    s=initial_state(p) if initial is None else clone_state(initial);scalars='t T_C rho G C_GBseg C_TJ f_clean_GB f_iso activity rho_dot G_dot E_G growth_mobility_factor growth_mobility_discovery sigma_base sigma_GBseg_pore sigma_TJ_pore sigma_clean_GB sigma_iso sigma_act_total X_J X_J_dot X_J_production X_J_relaxation R_J_persistent C_TJ_total C_TJ_pore C_TJ_structural C_TJ_constraint C_TJ_relaxed C_TJ_pinned R_TJ_pore_drag Lambda_TJ Lambda_TJ_structural K_TJ K_TJ_structural Lambda_over_K_TJ P_comp_TJ P_comp_TJ_structural P_persistent_junction_drag P_TJ_multihit P_TJ_pore_drag P_TJ_assisted_densification P_clean_GB_discovery'.split();powers='P_GBseg_dens P_TJ_dens P_clean_GB P_GBseg_drag P_TJ_drag P_GBseg_to_TJ P_TJ_to_GBseg_capture P_TJ_iso'.split();fluxes='action_flux_GBseg_remove action_flux_TJ_remove action_flux_GB_smooth action_flux_GB_to_TJ action_flux_TJ_to_GBseg_capture action_flux_TJ_to_iso'.split();h={k:[] for k in scalars+powers+fluxes};h.update(TJ_regime=[],phi_GBseg=[],phi_TJ=[],phi_iso=[],N_GBseg=[],N_TJ=[],N_iso=[])
     lp=prior.effective_location_params(p.action)
     while s.pore.t<min(protocol.t_end,lp.base.t_max_s) and s.pore.rho<lp.base.rho_cap:
         T=protocol.T(s.pore.t,s.pore.rho);d=local_mechanism(s,T,p);vals={'t':s.pore.t,'T_C':T,'rho':s.pore.rho,'G':s.pore.G,'E_G':d['rho_dot']/(d['G_dot']/max(s.pore.G,1e-30)+1e-30),**d}
