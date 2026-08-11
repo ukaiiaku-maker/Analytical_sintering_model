@@ -64,6 +64,7 @@ python3 production_pr_postprocess.py
 python3 generate_paper_figures.py
 python3 generate_supplement_figures.py
 python3 observable_trajectory_effect_audit.py
+python3 joint_heterogeneity_residual_stress_search.py --workers 4
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
@@ -109,6 +110,9 @@ documented in `docs/FIGURE_MANIFEST.md`, `docs/FIGURE_CAPTION_DRAFTS.md`, and
 The subsequent observable trajectory-effect audit replaces the weak internal
 `HR_pct > 1%` criterion with a matched-density ratio and finite-span test; see
 `docs/OBSERVABLE_TRAJECTORY_EFFECT_AUDIT.md` before making fast-firing claims.
+The bounded weighted-cohort and residual-stress follow-up is documented in
+`docs/HETEROGENEITY_RESIDUAL_STRESS_TRAJECTORY_SEARCH.md`; it retains the
+observable finite-density-span criterion and reports a negative result.
 
 ## Development status
 

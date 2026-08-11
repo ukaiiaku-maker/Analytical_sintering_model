@@ -139,3 +139,10 @@ results/observable_trajectory_effect_audit/*
 !results/observable_trajectory_effect_audit/*.csv
 !results/observable_trajectory_effect_audit/*.pdf
 !results/observable_trajectory_effect_audit/*.png
+!results/heterogeneity_residual_stress_search/
+results/heterogeneity_residual_stress_search/*
+!results/heterogeneity_residual_stress_search/*.csv
+!results/heterogeneity_residual_stress_search/figures/
+results/heterogeneity_residual_stress_search/figures/*
+!results/heterogeneity_residual_stress_search/figures/*.pdf
+!results/heterogeneity_residual_stress_search/figures/*.png
