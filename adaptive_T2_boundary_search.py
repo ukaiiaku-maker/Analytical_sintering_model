@@ -62,11 +62,9 @@ def intervals_for_refinement(points,tol):
     return intervals
 
 
-def adaptive_group(pid,p,G,T1,sw):
-    lp=replace(p.action.location,base=replace(p.action.location.base,G0=G*1e-9));p=replace(p,action=replace(p.action,location=lp));h1=model.run(p,aggregate.Iso(T1,BUDGET),stop_at_rho=sw);rho1=float(h1['rho'][-1])
-    if rho1<sw-1e-12:
-        base=dict(parameter_id=pid,G0_nm=G,T1_C=T1,rho_switch=sw,boundary_status='UNATTAINABLE_FIRST_STEP',n_success=0);return [],[{**base,'growth_tolerance':tol,'map_type':kind} for tol in search.TOLS for kind in ('kinetic','practical')]
-    state=model.final_state(h1,p);pts=[point(state,p,pid,G,T1,sw,T,'coarse') for T in COARSE]
+def adaptive_from_state(pid,p,G,T1,sw,state):
+    """Run the adaptive second step from an externally prepared local state."""
+    pts=[point(state,p,pid,G,T1,sw,T,'coarse') for T in COARSE]
     # Downward extension is needed only when density is already attained at the left edge.
     if pts[0]['rho2']>=TARGET-1e-12:
         for T in reversed(DOWN):
@@ -94,6 +92,13 @@ def adaptive_group(pid,p,G,T1,sw):
     for r in pts:
         for tol in search.TOLS:r[f'classification_{int(tol*100)}pct']=search.classify(True,r['rho1'],r['rho2'],r['growth_fraction'],tol)
     return pts,rows
+
+
+def adaptive_group(pid,p,G,T1,sw):
+    lp=replace(p.action.location,base=replace(p.action.location.base,G0=G*1e-9));p=replace(p,action=replace(p.action,location=lp));h1=model.run(p,aggregate.Iso(T1,BUDGET),stop_at_rho=sw);rho1=float(h1['rho'][-1])
+    if rho1<sw-1e-12:
+        base=dict(parameter_id=pid,G0_nm=G,T1_C=T1,rho_switch=sw,boundary_status='UNATTAINABLE_FIRST_STEP',n_success=0);return [],[{**base,'growth_tolerance':tol,'map_type':kind} for tol in search.TOLS for kind in ('kinetic','practical')]
+    return adaptive_from_state(pid,p,G,T1,sw,model.final_state(h1,p))
 
 
 def refinement_design():

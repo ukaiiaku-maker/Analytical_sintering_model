@@ -7,6 +7,7 @@ import agentic_mechanism_model as model
 import agentic_mechanism_search as search
 import mechanism_registry
 import adaptive_T2_boundary_search as adaptive
+import preparation_window_search as preparation
 import pore_location_agentic_sensitivity as prior
 import topology_constrained_sintering as aggregate
 
@@ -148,3 +149,37 @@ def test_persisted_practical_map_contains_only_T2_below_T1():
     path=Path(__file__).parents[1]/'results'/'agentic_mechanism_search'/'practical_two_step_map.csv'
     with path.open(newline='') as f:
         assert all(float(r['T2_C'])<float(r['T1_C']) for r in csv.DictReader(f))
+
+
+def test_preparation_protocol_has_fixed_budget_and_visible_q0_modes():
+    assert preparation.FixedBudgetRamp(.2,1500).t_end==96*3600
+    modes={p.mechanism_mode for p in preparation.mechanisms().values()}
+    assert 'persistent_tj_multihit_q0' in modes
+    assert 'persistent_tj_multihit_q1' in modes
+
+
+def test_preparation_factorial_and_rejection_persistence():
+    root=Path(__file__).parents[1]/'results'/'preparation_window_search'
+    with (root/'first_step_preparation_states.csv').open(newline='') as f:states=list(csv.DictReader(f))
+    with (root/'preparation_rejected_cases.csv').open(newline='') as f:rejected=list(csv.DictReader(f))
+    assert len(states)==4*6*5*6*6
+    assert rejected and all(r['reason'] for r in rejected)
+
+
+def test_complete_preparation_windows_obey_independent_growth_and_process_rules():
+    path=Path(__file__).parents[1]/'results'/'preparation_window_search'/'practical_two_step_windows.csv'
+    with path.open(newline='') as f:rows=list(csv.DictReader(f))
+    successful=[r for r in rows if r['practical_success']=='True']
+    assert successful
+    for r in successful:
+        assert r['boundary_status']=='COMPLETE_WINDOW'
+        assert float(r['T_last_success_C'])<float(r['T1_C'])
+        assert float(r['first_step_growth_fraction'])<=float(r['preparation_growth_tolerance'])+1e-12
+        assert r['lower_bracketed']=='True' and r['upper_bracketed']=='True'
+
+
+def test_no_strict_five_percent_practical_window_below_150_nm():
+    path=Path(__file__).parents[1]/'results'/'preparation_window_search'/'practical_two_step_windows.csv'
+    with path.open(newline='') as f:rows=list(csv.DictReader(f))
+    strict=[r for r in rows if r['practical_success']=='True' and float(r['preparation_growth_tolerance'])==.05 and float(r['growth_tolerance'])==.05]
+    assert strict and min(float(r['G0_nm']) for r in strict)>=150

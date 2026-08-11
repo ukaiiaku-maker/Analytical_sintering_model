@@ -57,3 +57,6 @@ results/expanded_phase_space/two_step_classifications.csv.gz
 !results/agentic_mechanism_search/
 !results/agentic_mechanism_search/*.csv
 !results/agentic_mechanism_search/*.png
+!results/preparation_window_search/
+!results/preparation_window_search/*.csv
+!results/preparation_window_search/*.png

@@ -52,6 +52,7 @@ python3 pore_location_topology_sensitivity.py
 python3 pore_location_agentic_sensitivity.py
 python3 agentic_mechanism_search.py --workers 1
 python3 adaptive_T2_boundary_search.py
+python3 preparation_window_search.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
