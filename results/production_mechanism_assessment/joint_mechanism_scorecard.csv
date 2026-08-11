@@ -1,0 +1,5 @@
+mechanism_id,Tier_A_count,Tier_B_count,min_G1_Tier_A_nm,max_Tier_A_width_C,complete_lower_upper,positive_fast_firing_count,harmful_fast_firing_count,positive_density_min,positive_density_max,positive_topologies,joint_positive
+mech_009,570,668,150.89939874214303,145.0,True,0,6098,nan,nan,,False
+mech_019,641,853,151.08121032368274,160.0,True,0,6311,nan,nan,,False
+mech_009_q0,0,153,nan,nan,True,0,6400,nan,nan,,False
+mech_019_q0,497,1132,182.56166111622738,85.0,True,0,6385,nan,nan,,False

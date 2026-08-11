@@ -1,0 +1,5 @@
+mechanism_id,Tier_A_count,Tier_B_count,min_G1_Tier_A_nm,max_Tier_A_width_C,complete_lower_upper
+mech_009,570,668,150.89939874214303,145.0,True
+mech_019,641,853,151.08121032368274,160.0,True
+mech_009_q0,0,153,nan,nan,True
+mech_019_q0,497,1132,182.56166111622738,85.0,True

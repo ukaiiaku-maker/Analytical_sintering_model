@@ -60,3 +60,17 @@ results/expanded_phase_space/two_step_classifications.csv.gz
 !results/preparation_window_search/
 !results/preparation_window_search/*.csv
 !results/preparation_window_search/*.png
+!results/production_mechanism_assessment/
+results/production_mechanism_assessment/*
+!results/production_mechanism_assessment/figures/
+results/production_mechanism_assessment/figures/*
+!results/production_mechanism_assessment/figures/*.png
+!results/production_mechanism_assessment/production_window_summary.csv
+!results/production_mechanism_assessment/production_fast_firing_summary.csv
+!results/production_mechanism_assessment/joint_mechanism_scorecard.csv
+!results/production_mechanism_assessment/successful_practical_windows.csv
+!results/production_mechanism_assessment/successful_fast_firing_cases.csv
+!results/production_mechanism_assessment/failed_or_censored_cases.csv
+!results/production_mechanism_assessment/representative_path_diagnostics.csv
+!results/production_mechanism_assessment/mechanism_ingredient_table.csv
+!results/production_mechanism_assessment/runtime_summary.csv

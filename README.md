@@ -53,6 +53,8 @@ python3 pore_location_agentic_sensitivity.py
 python3 agentic_mechanism_search.py --workers 1
 python3 adaptive_T2_boundary_search.py
 python3 preparation_window_search.py
+python3 production_mechanism_assessment.py
+python3 production_mechanism_postprocess.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
@@ -78,6 +80,10 @@ The source-grounded discovery layer compares persistent junction populations
 and Class-B TJ multihit completion against that negative control; see
 `docs/SOURCE_MECHANISM_PRIORS.md` and
 `docs/AGENTIC_MECHANISM_SEARCH_REPORT.md`.
+The frozen-mechanism production campaign and its negative joint-response result
+are documented in `docs/PRODUCTION_MECHANISM_ASSESSMENT.md`. Raw point tables
+are intentionally ignored; compact review tables and seven figures are kept in
+`results/production_mechanism_assessment/`.
 
 ## Development status
 
