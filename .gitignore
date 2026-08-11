@@ -134,3 +134,8 @@ results/paper_figures/supplement/*
 !results/paper_figures/supplement/*.pdf
 !results/paper_figures/supplement/*.png
 !results/paper_figures/supplement/figure_inventory.csv
+!results/observable_trajectory_effect_audit/
+results/observable_trajectory_effect_audit/*
+!results/observable_trajectory_effect_audit/*.csv
+!results/observable_trajectory_effect_audit/*.pdf
+!results/observable_trajectory_effect_audit/*.png

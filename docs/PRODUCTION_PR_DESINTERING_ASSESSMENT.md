@@ -112,6 +112,13 @@ specific experiment.
 
 ## Figure package and manuscript presentation
 
+**Correction:** the later observable-effect audit supersedes the nominal
+`HR_pct > 1%` success interpretation below. No production fast-firing path
+reaches a 1.5 grain-size ratio below density 0.92, and the current result must
+be presented as mechanistically useful but experimentally weak/insufficient.
+See `OBSERVABLE_TRAJECTORY_EFFECT_AUDIT.md` and
+`FIGURE_MANIFEST_REVISED.md`.
+
 The recommended main-text sequence is M1–M3 for model structure, P1–P4 for
 physical pathways, P5–P7 for the two production responses and their joint
 score, and P8–P11 for mechanistic interpretation and TJ ablation. Exhaustive

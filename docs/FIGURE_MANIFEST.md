@@ -1,5 +1,10 @@
 # Figure Manifest
 
+> **Scientific interpretation update:** this original package is retained for
+> reproducibility, but its fast-firing success language is superseded by
+> `FIGURE_MANIFEST_REVISED.md` and `OBSERVABLE_TRAJECTORY_EFFECT_AUDIT.md`.
+> The current trajectory effect does not pass the new observable threshold.
+
 The figure story proceeds from variables and channel separation to protocol
 histories, observable microstructure pathways, processing maps, and finally
 mechanism discrimination. Main-text figures carry the concise causal argument;

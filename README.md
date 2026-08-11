@@ -63,6 +63,7 @@ python3 tj_constraint_ablation.py
 python3 production_pr_postprocess.py
 python3 generate_paper_figures.py
 python3 generate_supplement_figures.py
+python3 observable_trajectory_effect_audit.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
@@ -105,6 +106,9 @@ The manuscript-ready figure package is reproducibly generated into
 `results/paper_figures/`; its ordering, captions, and visual conventions are
 documented in `docs/FIGURE_MANIFEST.md`, `docs/FIGURE_CAPTION_DRAFTS.md`, and
 `docs/PLOT_STYLE_GUIDE.md`.
+The subsequent observable trajectory-effect audit replaces the weak internal
+`HR_pct > 1%` criterion with a matched-density ratio and finite-span test; see
+`docs/OBSERVABLE_TRAJECTORY_EFFECT_AUDIT.md` before making fast-firing claims.
 
 ## Development status
 
