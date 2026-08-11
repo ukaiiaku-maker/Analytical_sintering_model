@@ -122,3 +122,15 @@ results/production_pr_desintering_assessment/figures/*
 !results/production_pr_desintering_assessment/tj_constraint_figures/
 results/production_pr_desintering_assessment/tj_constraint_figures/*
 !results/production_pr_desintering_assessment/tj_constraint_figures/*.png
+!results/paper_figures/
+results/paper_figures/*
+!results/paper_figures/main/
+results/paper_figures/main/*
+!results/paper_figures/main/*.pdf
+!results/paper_figures/main/*.png
+!results/paper_figures/main/figure_inventory.csv
+!results/paper_figures/supplement/
+results/paper_figures/supplement/*
+!results/paper_figures/supplement/*.pdf
+!results/paper_figures/supplement/*.png
+!results/paper_figures/supplement/figure_inventory.csv

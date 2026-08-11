@@ -1,0 +1,8 @@
+figure_id,filename_pdf,filename_png,short_title,source_table_or_script,purpose,manuscript_location
+S1,S1_frozen_base_fast_maps.pdf,S1_frozen_base_fast_maps.png,Frozen-base fast maps,production_fast_firing_summary.csv,Show response for each base,supplement
+S2,S2_q0_q1_TJ_modes.pdf,S2_q0_q1_TJ_modes.png,q0 versus q1,tj_constraint_mode_summary.csv,Resolve size-exponent sensitivity by TJ mode,supplement
+S3,S3_PR_parameter_sensitivity.pdf,S3_PR_parameter_sensitivity.png,PR parameter sensitivity,PR_parameter_sensitivity.csv,Show bounded OAT robustness,supplement
+S4,S4_TJ_population_histories.pdf,S4_TJ_population_histories.png,TJ population histories,tj_constraint_mode_diagnostics.csv,Show full population decomposition,supplement
+S5,S5_power_stress_histories.pdf,S5_power_stress_histories.png,Power and stress histories,representative histories,Expose detailed diagnostic channels,supplement
+S6,S6_failure_censoring.pdf,S6_failure_censoring.png,Failure and censoring,failed_or_censored_cases.csv,Document honest boundary failures,supplement
+S7,S7_attainment_map.pdf,S7_attainment_map.png,Attainment map,production_fast_firing_summary.csv,Show parameter-space completeness,supplement

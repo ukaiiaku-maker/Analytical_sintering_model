@@ -61,6 +61,8 @@ python3 pr_desintering_postprocess.py
 python3 production_pr_desintering_assessment.py --workers 8
 python3 tj_constraint_ablation.py
 python3 production_pr_postprocess.py
+python3 generate_paper_figures.py
+python3 generate_supplement_figures.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
@@ -99,6 +101,10 @@ versus structurally constrained TJ ablation are reported in
 `docs/PRODUCTION_PR_DESINTERING_ASSESSMENT.md`.
 The dedicated interpretation and focused q0/q1 evidence for pore-filled versus
 structurally constrained TJs are in `docs/TJ_PORE_CONSTRAINT_INTERPRETATION.md`.
+The manuscript-ready figure package is reproducibly generated into
+`results/paper_figures/`; its ordering, captions, and visual conventions are
+documented in `docs/FIGURE_MANIFEST.md`, `docs/FIGURE_CAPTION_DRAFTS.md`, and
+`docs/PLOT_STYLE_GUIDE.md`.
 
 ## Development status
 

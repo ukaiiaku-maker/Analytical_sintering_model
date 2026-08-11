@@ -1,0 +1,15 @@
+figure_id,filename_pdf,filename_png,short_title,source_table_or_script,purpose,manuscript_location
+M1,M1_mechanism_overview.pdf,M1_mechanism_overview.png,Mechanism overview,generate_paper_figures.py,"Separate densification, PR memory, migration, and TJ channels",main text: model formulation
+M2,M2_variable_definitions.pdf,M2_variable_definitions.png,Variable definitions,generate_paper_figures.py,Define manuscript observables and notation,main text: model formulation
+M3,M3_TJ_mode_schematic.pdf,M3_TJ_mode_schematic.png,TJ population modes,tj_constraint_mode_summary.csv,"Explain relaxed, pinned, and constrained TJ partitions",main text: model formulation
+P1,P1_thermal_histories.pdf,P1_thermal_histories.png,Thermal histories,representative histories,Define protocol families,main text: results
+P2,P2_evolution_histories.pdf,P2_evolution_histories.png,Evolution histories,representative histories,"Compare density, grain, and pore evolution",main text: results
+P3,P3_density_grain_trajectories.pdf,P3_density_grain_trajectories.png,Density–grain trajectories,representative histories,Show sintering efficiency directly,main text: results
+P4,P4_density_pore_trajectories.pdf,P4_density_pore_trajectories.png,Density–pore trajectories,representative histories,Show pore-distribution pathway memory,main text: results
+P5,P5_fast_firing_map.pdf,P5_fast_firing_map.png,Fast-firing response map,production_fast_firing_summary.csv,"Locate beneficial, neutral, and harmful response",main text: results
+P6,P6_chen_window_map.pdf,P6_chen_window_map.png,Practical Chen window,successful_practical_windows.csv,Show finite lower and upper boundaries,main text: results
+P7,P7_joint_scorecard.pdf,P7_joint_scorecard.png,Joint scorecard,production_joint_scorecard.csv,Summarize joint-positive frozen bases,main text: results
+P8,P8_PR_memory.pdf,P8_PR_memory.png,PR-memory comparison,representative_slow_fast_histories.csv,Connect fast firing to observable pore memory,main text: results
+P9,P9_two_step_migration.pdf,P9_two_step_migration.png,Two-step migration suppression,representative_two_step_histories.csv,Explain persistent-junction and multihit histories,main text: results
+P10,P10_TJ_ablation.pdf,P10_TJ_ablation.png,TJ-mode ablation,tj_constraint_mode_summary.csv,"Test pore relaxation, pinning, and constraint",main text: results
+P11,P11_success_correlations.pdf,P11_success_correlations.png,Success correlations,compact production tables,"Relate response to PR, topology, and TJ activity",main text: results

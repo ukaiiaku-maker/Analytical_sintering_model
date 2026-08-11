@@ -109,3 +109,13 @@ none of the TJ constraint modes directly removes pore volume.
 
 This is a production robustness result, not material validation or a fit to a
 specific experiment.
+
+## Figure package and manuscript presentation
+
+The recommended main-text sequence is M1–M3 for model structure, P1–P4 for
+physical pathways, P5–P7 for the two production responses and their joint
+score, and P8–P11 for mechanistic interpretation and TJ ablation. Exhaustive
+frozen-base, q0/q1, sensitivity, diagnostic, censoring, and attainment views
+are reserved for S1–S7. Vector PDFs, 600-dpi PNGs, caption drafts, and source
+inventories are generated reproducibly by `generate_paper_figures.py` and
+`generate_supplement_figures.py`; see `docs/FIGURE_MANIFEST.md`.
