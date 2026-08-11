@@ -23,3 +23,25 @@ The observable gate remains unchanged: mean-grain ratio at least 1.5 over a
 jointly attained `Delta rho >= 0.03`. Censored or unattained intervals are not
 scored.
 
+## Selected-branch prototype result
+
+The selected branch was implemented with an ablatable large-pore/crack-like
+defect fraction, defect D90 and connectedness, stored PR work, and stored
+shear-coupled stress. A fixed-parameter reduced matrix crossed rho0 =
+0.65/0.70/0.75, G0 = 75/150/225 nm, peaks 1350--1500 C, and fast rates 20/100
+C/min against the 1 C/min reference (144 comparisons including disabled
+controls).
+
+No comparison jointly attains the complete 0.85--0.92 interval, and none
+passes the finite-span criterion. Persistent memory raises the largest local
+ratio from 2.04 (disabled transient control) to 3.73, but the high ratios remain
+unattained/short-span artifacts and are rejected. The mechanism stores pore
+damage more effectively, yet its reduction of densification eligibility makes
+the reference path terminate earlier. This fixed closure is therefore not a
+successful trajectory mechanism.
+
+Late-stage physics remains deferred. The negative result instead sharpens the
+next question: persistence must alter migration/growth without destroying
+joint density attainment, or densification eligibility needs a more local
+connected-sink treatment rather than a cohort-wide penalty.
+

@@ -151,3 +151,10 @@ results/rejected_case_failure_decomposition/*
 !results/rejected_case_failure_decomposition/*.csv
 !results/rejected_case_failure_decomposition/*.pdf
 !results/rejected_case_failure_decomposition/*.png
+!results/persistent_defect_topology_stress_memory/
+results/persistent_defect_topology_stress_memory/*
+!results/persistent_defect_topology_stress_memory/*.csv
+!results/persistent_defect_topology_stress_memory/figures/
+results/persistent_defect_topology_stress_memory/figures/*
+!results/persistent_defect_topology_stress_memory/figures/*.pdf
+!results/persistent_defect_topology_stress_memory/figures/*.png

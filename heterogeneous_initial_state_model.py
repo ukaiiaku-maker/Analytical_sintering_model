@@ -80,7 +80,7 @@ def aggregate_histories(items):
     t=items[0][1]["t"].copy() if len(items)==1 else np.arange(0,end+dt*.25,dt)
     weights=np.array([s.weight for s,_ in items]);weights/=weights.sum();out={"t":t}
     scalar=["T_C","rho","G","connected_fine_pore_fraction","pore_mean_radius","large_pore_fraction","cumulative_PR_desintering_work"]
-    scalar += [k for k in ("sigma_res_GBseg","sigma_res_TJ","sigma_res_large_pore","sigma_res_crack_like","residual_defect_flux") if all(k in h for _,h in items)]
+    scalar += [k for k in ("sigma_res_GBseg","sigma_res_TJ","sigma_res_large_pore","sigma_res_crack_like","residual_defect_flux","f_defect_large_pore","f_crack_like_pore","defect_D90","defect_connectedness","stored_PR_work","stored_shear_coupled_stress","persistent_eligibility","persistent_growth_factor") if all(k in h for _,h in items)]
     vals={k:np.vstack([np.interp(t,h["t"],h[k]) for _,h in items]) for k in scalar}
     for k in scalar:out[k]=np.average(vals[k],axis=0,weights=weights)
     out["G_mean"]=out["G"]
