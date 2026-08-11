@@ -146,3 +146,8 @@ results/heterogeneity_residual_stress_search/*
 results/heterogeneity_residual_stress_search/figures/*
 !results/heterogeneity_residual_stress_search/figures/*.pdf
 !results/heterogeneity_residual_stress_search/figures/*.png
+!results/rejected_case_failure_decomposition/
+results/rejected_case_failure_decomposition/*
+!results/rejected_case_failure_decomposition/*.csv
+!results/rejected_case_failure_decomposition/*.pdf
+!results/rejected_case_failure_decomposition/*.png
