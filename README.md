@@ -55,6 +55,9 @@ python3 adaptive_T2_boundary_search.py
 python3 preparation_window_search.py
 python3 production_mechanism_assessment.py
 python3 production_mechanism_postprocess.py
+python3 joint_pr_desintering_search.py --workers 8
+python3 joint_pr_desintering_search.py --full --selected-variant PR_attrition_moderate --workers 8 --resume-chen
+python3 pr_desintering_postprocess.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
@@ -84,6 +87,10 @@ The frozen-mechanism production campaign and its negative joint-response result
 are documented in `docs/PRODUCTION_MECHANISM_ASSESSMENT.md`. Raw point tables
 are intentionally ignored; compact review tables and seven figures are kept in
 `results/production_mechanism_assessment/`.
+The follow-up local PR/de-sintering competition test is documented in
+`docs/PR_DESINTERING_FAST_FIRING_MEMORY.md`. It preserves the frozen negative
+control as `early_memory_mode="disabled"` and adds only conservative,
+non-densifying pore redistribution competing with renewal removal.
 
 ## Development status
 

@@ -1,0 +1,17 @@
+candidate_id,base_mechanism,variant,early_memory_mode,k_PR_ref_s,Q_PR_J_mol,T_PR_ref_C,renewal_gate_mid,renewal_gate_width,renewal_power,fine_radius_mid_ratio,fine_radius_width_ratio,q_PR,topology_power,smoothing_share,GB_to_TJ_share,TJ_to_iso_share,attrition_factor
+mech_009_disabled,mech_009,disabled,disabled,2e-05,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_009_PR_comp,mech_009,PR_comp,PR_desintering_competition,0.0002,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_009_PR_attrition_moderate,mech_009,PR_attrition_moderate,PR_plus_connected_fine_attrition,0.0002,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_009_PR_attrition_strong,mech_009,PR_attrition_strong,PR_plus_connected_fine_attrition,0.0005,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_019_disabled,mech_019,disabled,disabled,2e-05,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_019_PR_comp,mech_019,PR_comp,PR_desintering_competition,0.0002,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_019_PR_attrition_moderate,mech_019,PR_attrition_moderate,PR_plus_connected_fine_attrition,0.0002,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_019_PR_attrition_strong,mech_019,PR_attrition_strong,PR_plus_connected_fine_attrition,0.0005,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_009_q0_disabled,mech_009_q0,disabled,disabled,2e-05,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_009_q0_PR_comp,mech_009_q0,PR_comp,PR_desintering_competition,0.0002,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_009_q0_PR_attrition_moderate,mech_009_q0,PR_attrition_moderate,PR_plus_connected_fine_attrition,0.0002,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_009_q0_PR_attrition_strong,mech_009_q0,PR_attrition_strong,PR_plus_connected_fine_attrition,0.0005,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_019_q0_disabled,mech_019_q0,disabled,disabled,2e-05,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_019_q0_PR_comp,mech_019_q0,PR_comp,PR_desintering_competition,0.0002,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_019_q0_PR_attrition_moderate,mech_019_q0,PR_attrition_moderate,PR_plus_connected_fine_attrition,0.0002,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
+mech_019_q0_PR_attrition_strong,mech_019_q0,PR_attrition_strong,PR_plus_connected_fine_attrition,0.0005,180000.0,1050.0,0.35,0.1,2.0,1.0,0.25,1.0,1.0,0.65,0.25,0.1,1.8
