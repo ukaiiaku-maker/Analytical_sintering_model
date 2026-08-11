@@ -58,6 +58,9 @@ python3 production_mechanism_postprocess.py
 python3 joint_pr_desintering_search.py --workers 8
 python3 joint_pr_desintering_search.py --full --selected-variant PR_attrition_moderate --workers 8 --resume-chen
 python3 pr_desintering_postprocess.py
+python3 production_pr_desintering_assessment.py --workers 8
+python3 tj_constraint_ablation.py
+python3 production_pr_postprocess.py
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal
@@ -91,6 +94,9 @@ The follow-up local PR/de-sintering competition test is documented in
 `docs/PR_DESINTERING_FAST_FIRING_MEMORY.md`. It preserves the frozen negative
 control as `early_memory_mode="disabled"` and adds only conservative,
 non-densifying pore redistribution competing with renewal removal.
+The production confirmation, local PR robustness audit, and pore-occupied
+versus structurally constrained TJ ablation are reported in
+`docs/PRODUCTION_PR_DESINTERING_ASSESSMENT.md`.
 
 ## Development status
 

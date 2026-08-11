@@ -1,0 +1,6 @@
+candidate_id,complete_practical_5_5,complete_practical_all_tolerances,beneficial_fast_count,harmful_count,neutral_count,unattainable_count,universal_fast,joint_positive
+mech_009,563,4633,1437,3278,3987,25858,False,True
+mech_019,633,5974,655,4328,3658,25919,False,True
+mech_009_q0,106,2537,1518,3337,3863,25842,False,True
+mech_019_q0,643,7037,605,4295,3732,25928,False,True
+disabled_control,production_negative_control,production_negative_control,0,see prior production,see prior production,see prior production,False,False
