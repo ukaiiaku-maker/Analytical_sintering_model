@@ -1,0 +1,2 @@
+material_id,topology_id,q_TJ,G0_nm,G1_nm,T1_C,rho_switch,T2_first_success_C,T2_last_success_C,T_lower_density_C,T_upper_growth_C,window_width_C,first_step_growth_fraction,maximum_second_step_growth_fraction,prep_growth_tolerance,second_step_growth_tolerance,practical_T2_less_T1,tier,rejection_reason,heating_rate_T1_C_min
+E0021,D0048,1,600,653.0471761169587,1500,0.88,1190.0,1290.0,1180.0,1300.0,100.0,0.088411960194931,0.0850090579033797,0.1,0.1,True,Tier_C,nan,20.0

@@ -220,3 +220,12 @@ results/strict_chen_window_production/figures/*
 !results/visual_inspection_candidate_plots/figures/
 !results/visual_inspection_candidate_plots/figures/**/*.pdf
 !results/visual_inspection_candidate_plots/figures/**/*.png
+!results/visual_inspection_candidate_plots_v2/
+!results/visual_inspection_candidate_plots_v2/*.json
+!results/visual_inspection_candidate_plots_v2/tables/
+!results/visual_inspection_candidate_plots_v2/tables/*.csv
+!results/visual_inspection_candidate_plots_v2/histories/
+!results/visual_inspection_candidate_plots_v2/histories/*.csv
+!results/visual_inspection_candidate_plots_v2/figures/
+!results/visual_inspection_candidate_plots_v2/figures/**/*.pdf
+!results/visual_inspection_candidate_plots_v2/figures/**/*.png

@@ -1,0 +1,4 @@
+material_id,topology_id,q_TJ,topology_mode,T1_C,T2_C,rho_switch,role
+E0142,D0087,1,mixed_q1,1500,1050,0.88,lower_failure
+E0142,D0087,1,mixed_q1,1500,1080,0.88,success
+E0142,D0087,1,mixed_q1,1500,1110,0.88,upper_failure

@@ -1,0 +1,7 @@
+role,stage,n_points
+lower_failure,first_step,1665
+lower_failure,second_step,1774
+success,first_step,1665
+success,second_step,1774
+upper_failure,first_step,1665
+upper_failure,second_step,1774
