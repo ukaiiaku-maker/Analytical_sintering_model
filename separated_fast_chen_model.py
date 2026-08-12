@@ -26,6 +26,7 @@ class TopologyGrowthClosure:
     mode:str="disabled";TJ_drag_strength:float=0.;pore_drag_strength:float=0.
     XJ_capacity:float=.5;XJ_relaxation:float=1e-5;lambda_ref:float=2.
     K_ref:float=2.;q_TJ:int=0;pore_relax_fraction:float=.5;pore_drag_fraction:float=.5
+    XJ_prod_TJ:float=1.;XJ_prod_sweep:float=0.;Q_TJ_event:float=380e3
 
 def material_rates(rho,G,phi,radii,T_C,p:MaterialKinetics):
     """Instantaneous material law evaluated from thermodynamic state."""
@@ -53,7 +54,9 @@ def topology_growth_factor(state,T_C,p:TopologyGrowthClosure):
     """Migration-only factor; never enters material densification rates."""
     if p.mode=="disabled":return 1.,dict(X_J=0.,Lambda_over_K=0.,pore_drag=0.)
     X=state.get("X_J",0);coverage=state.get("connected_coverage",0);G=state["G"]
-    structural=max(X-p.pore_relax_fraction*coverage,0);K=p.K_ref*(G/150e-9)**p.q_TJ;completion=(p.lambda_ref+max(T_C-1200,0)/150)/max(K,1e-30)
+    structural=max(X-p.pore_relax_fraction*coverage,0);K=p.K_ref*(G/150e-9)**p.q_TJ
+    thermal=math.exp(float(np.clip(-p.Q_TJ_event/R*(1/(T_C+273.15)-1/1473.15),-30,30)))
+    completion=p.lambda_ref*thermal/max(K,1e-30)
     drag=p.TJ_drag_strength*structural/(1+completion)+p.pore_drag_strength*p.pore_drag_fraction*coverage
     return 1/(1+max(drag,0)),dict(X_J=X,Lambda_over_K=completion,pore_drag=drag)
 
@@ -79,7 +82,9 @@ def run(material,topology,protocol,dt_max=600.,max_steps=6000,initial=None,stop_
         if Gdot:dt=min(dt,.01*s["G"]/Gdot)
         # Conservative adjacent-bin PR redistribution.
         move=np.minimum(d["PR_propensity"]*s["phi"][:-1]*dt,.2*s["phi"][:-1]);s["phi"][:-1]-=move;s["phi"][1:]+=move
-        dr=min(d["rho_dot"]*dt,np.sum(s["phi"])*.2);weights=s["phi"]*(material.pore_radius0/s["radii"])**2;weights/=max(weights.sum(),1e-300);s["phi"]=np.maximum(s["phi"]-dr*weights,0);s["rho"]=1-float(np.sum(s["phi"]));s["G"]+=Gdot*dt;s["PR_exposure"]+=d["PR_propensity"]*dt;s["X_J"]=float(np.clip(s["X_J"]+(d["PR_propensity"]*(topology.XJ_capacity-s["X_J"])-topology.XJ_relaxation*d["activity"]*s["X_J"])*dt,0,topology.XJ_capacity));s["t"]+=dt
+        dr=min(d["rho_dot"]*dt,np.sum(s["phi"])*.2);weights=s["phi"]*(material.pore_radius0/s["radii"])**2;weights/=max(weights.sum(),1e-300);s["phi"]=np.maximum(s["phi"]-dr*weights,0);s["rho"]=1-float(np.sum(s["phi"]));s["G"]+=Gdot*dt;s["PR_exposure"]+=d["PR_propensity"]*dt
+        production=(topology.XJ_prod_TJ*d["PR_propensity"]+topology.XJ_prod_sweep*d["activity"])*d["connected_fine"]*(topology.XJ_capacity-s["X_J"])
+        s["X_J"]=float(np.clip(s["X_J"]+(production-topology.XJ_relaxation*d["activity"]*s["X_J"])*dt,0,topology.XJ_capacity));s["t"]+=dt
     if s["t"]<protocol.t_end and s["rho"]<.995:
         numerical_censored=True
     result={k:np.asarray(v,float) for k,v in out.items()}

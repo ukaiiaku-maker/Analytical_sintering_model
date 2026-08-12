@@ -200,3 +200,9 @@ results/nucleation_limited_fast_firing_chen_production/production_figures/*
 !results/nucleation_limited_fast_firing_chen_production/production_figures/*.pdf
 !results/nucleation_limited_fast_firing_chen_production/production_figures/*.png
 results/nucleation_limited_fast_firing_chen_production/raw_archive/
+!results/dynamic_chen_topology_for_nucleation_materials/
+!results/dynamic_chen_topology_for_nucleation_materials/*.csv
+!results/dynamic_chen_topology_for_nucleation_materials/figures/
+results/dynamic_chen_topology_for_nucleation_materials/figures/*
+!results/dynamic_chen_topology_for_nucleation_materials/figures/*.pdf
+!results/dynamic_chen_topology_for_nucleation_materials/figures/*.png

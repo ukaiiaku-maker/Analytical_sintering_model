@@ -1,0 +1,3 @@
+figure_id,filename_pdf,filename_png,short_title,source_table_or_script,purpose,manuscript_location
+1,E0142_C08_refined_T2_scan.pdf,E0142_C08_refined_T2_scan.png,E0142+C08 refinement,E0142_C08_near_hit_refinement.csv,Tests isolated point at 10 C,Results
+2,topology_search_outcome_map.pdf,topology_search_outcome_map.png,Topology search outcomes,dynamic_topology_screen_summary.csv,Shows broad search classifications,Results
