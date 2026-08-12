@@ -212,3 +212,11 @@ results/dynamic_chen_topology_for_nucleation_materials/figures/*
 results/strict_chen_window_production/figures/*
 !results/strict_chen_window_production/figures/*.pdf
 !results/strict_chen_window_production/figures/*.png
+!results/visual_inspection_candidate_plots/
+!results/visual_inspection_candidate_plots/*.csv
+!results/visual_inspection_candidate_plots/*.md
+!results/visual_inspection_candidate_plots/tables/
+!results/visual_inspection_candidate_plots/tables/*.csv
+!results/visual_inspection_candidate_plots/figures/
+!results/visual_inspection_candidate_plots/figures/**/*.pdf
+!results/visual_inspection_candidate_plots/figures/**/*.png
