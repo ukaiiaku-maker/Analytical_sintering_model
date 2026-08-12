@@ -16,7 +16,7 @@ class ResidualStressParams:
     sigma_ref_Pa:float=5e7;alpha_comp:float=.35;alpha_tensile_penalty:float=.25
     beta_PR:float=1.;beta_crack:float=1.5;A_PR_stress:float=2e-3
     A_shear_stress:float=2e-7;k_relax_dens:float=8.;tau_res_ref_s:float=2e4
-    Q_res_J_mol:float=180e3;T_ref_C:float=1100.;large_defect_fraction:float=.02
+    Q_res_J_mol:float=180e3;T_ref_C:float=1100.;large_defect_fraction:float=.02;max_steps:int=1000
     large_defect_radius_factor:float=8.;crack_like_aspect_proxy:float=4.;defect_stress_concentration:float=2.
 
 
@@ -73,7 +73,9 @@ def run(base_params:memory.PRMemoryParams,protocol,p:ResidualStressParams,cohort
     scalar="t T_C rho G connected_fine_pore_fraction pore_mean_radius large_pore_fraction cumulative_PR_desintering_work residual_densification_factor residual_PR_factor residual_defect_flux sigma_res_GBseg sigma_res_TJ sigma_res_large_pore sigma_res_crack_like PR_work_dot rho_dot G_dot".split()
     h={k:[] for k in scalar};h.update(phi_GBseg=[],phi_TJ=[],phi_iso=[],N_GBseg=[],N_TJ=[],N_iso=[])
     lp=memory.action.effective_location_params(base_params.base.action)
-    while s.base.pore.t<min(protocol.t_end,lp.base.t_max_s) and s.base.pore.rho<lp.base.rho_cap:
+    steps=0
+    while s.base.pore.t<min(protocol.t_end,lp.base.t_max_s) and s.base.pore.rho<lp.base.rho_cap and steps<p.max_steps:
+        steps+=1
         pore=s.base.pore;T_C=protocol.T(pore.t,pore.rho);raw=memory.local_competition(s,T_C,base_params);d=local_residual_coupling(raw,rs,T_C,p)
         values={**d,"t":pore.t,"T_C":T_C,"rho":pore.rho,"G":pore.G,"cumulative_PR_desintering_work":s.cumulative_PR_desintering_work,
                 "sigma_res_GBseg":rs.sigma_res_GBseg,"sigma_res_TJ":rs.sigma_res_TJ,"sigma_res_large_pore":rs.sigma_res_large_pore,"sigma_res_crack_like":rs.sigma_res_crack_like}
@@ -92,7 +94,7 @@ def run(base_params:memory.PRMemoryParams,protocol,p:ResidualStressParams,cohort
         pore.rho=1-float(np.sum(pore.phi_total));pore.N_GBseg=memory.location._number(pore.phi_GBseg,pore.pore_radii);pore.N_TJ=memory.location._number(pore.phi_TJ,pore.pore_radii);pore.N_iso=memory.location._number(pore.phi_iso,pore.pore_radii)
         pore.G=max(pore.G+d["G_dot"]*dt,1e-9);s.base.X_J=float(np.clip(s.base.X_J+d["X_J_dot"]*dt,0,base_params.base.XJ_capacity));s.cumulative_PR_desintering_work+=d["PR_work_dot"]*dt
         update(rs,derivatives(rs,d,T_C,p),dt);pore.t+=dt
-    out={k:np.asarray(v,float) for k,v in h.items()};out["pore_radii"]=s.base.pore.pore_radii.copy();return out
+    out={k:np.asarray(v,float) for k,v in h.items()};out["pore_radii"]=s.base.pore.pore_radii.copy();out["numerical_censored"]=steps>=p.max_steps and s.base.pore.t<min(protocol.t_end,lp.base.t_max_s);return out
 
 
 LOCAL_FUNCTIONS=(local_residual_coupling,derivatives)

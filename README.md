@@ -67,6 +67,7 @@ python3 observable_trajectory_effect_audit.py
 python3 joint_heterogeneity_residual_stress_search.py --workers 4
 python3 rejected_case_failure_decomposition.py
 python3 persistent_defect_memory_screen.py --workers 4
+python3 local_connected_sink_defect_search.py --workers 4
 ```
 
 `topology_constrained_sintering.py` separates topology, stress, serial renewal

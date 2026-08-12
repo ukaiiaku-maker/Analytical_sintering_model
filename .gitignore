@@ -158,3 +158,10 @@ results/persistent_defect_topology_stress_memory/*
 results/persistent_defect_topology_stress_memory/figures/*
 !results/persistent_defect_topology_stress_memory/figures/*.pdf
 !results/persistent_defect_topology_stress_memory/figures/*.png
+!results/local_connected_sink_defect_memory/
+results/local_connected_sink_defect_memory/*
+!results/local_connected_sink_defect_memory/*.csv
+!results/local_connected_sink_defect_memory/figures/
+results/local_connected_sink_defect_memory/figures/*
+!results/local_connected_sink_defect_memory/figures/*.pdf
+!results/local_connected_sink_defect_memory/figures/*.png

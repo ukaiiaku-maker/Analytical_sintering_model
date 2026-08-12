@@ -77,7 +77,12 @@ def weighted_quantile(values,weights,q):
 def aggregate_histories(items):
     """Interpolate cohort histories on common time and report full distributions."""
     end=max(h["t"][-1] for _,h in items);dt=max(min(np.median(np.diff(h["t"])) for _,h in items if len(h["t"])>1),1.)
-    t=items[0][1]["t"].copy() if len(items)==1 else np.arange(0,end+dt*.25,dt)
+    # Cohorts retain their adaptive integration grids.  The common grid is a
+    # diagnostic/interpolation grid and is bounded to avoid a single stiff
+    # cohort imposing hundreds of thousands of aggregate samples.
+    if len(items)==1:t=items[0][1]["t"].copy()
+    else:
+        dt=max(dt,end/5000);t=np.arange(0,end+dt*.25,dt)
     weights=np.array([s.weight for s,_ in items]);weights/=weights.sum();out={"t":t}
     scalar=["T_C","rho","G","connected_fine_pore_fraction","pore_mean_radius","large_pore_fraction","cumulative_PR_desintering_work"]
     scalar += [k for k in ("sigma_res_GBseg","sigma_res_TJ","sigma_res_large_pore","sigma_res_crack_like","residual_defect_flux","f_defect_large_pore","f_crack_like_pore","defect_D90","defect_connectedness","stored_PR_work","stored_shear_coupled_stress","persistent_eligibility","persistent_growth_factor") if all(k in h for _,h in items)]
