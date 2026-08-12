@@ -1,0 +1,12 @@
+mechanism,no_Chen_window,Chen_but_no_fast,internal_pore_memory_weak_Grho,high_ratio_short_span,high_ratio_unattained_censored,density_attainment_destroyed,high_density_unsupported,Chen_boundary_lost,parameter_nonidentifiability,mean_field_cohort_averaging_suspected
+Aggregate fixed model / PR #2 control,True,False,False,False,False,False,True,True,True,False
+Pore-placement topology,True,False,False,False,False,False,True,True,False,False
+Pore-location action layer,True,False,False,False,False,False,True,True,False,False
+Persistent junction + TJ multihit,False,True,False,False,False,False,True,False,False,False
+Practical preparation-window search,False,True,False,False,False,False,True,False,False,False
+Production PR/de-sintering memory,False,True,True,False,False,False,True,False,True,False
+Observable trajectory audit,False,True,True,False,False,False,True,False,False,False
+Heterogeneous initial state + stress,True,False,True,True,False,False,True,True,False,True
+Persistent defect/topology-stress,True,False,False,False,True,True,True,True,False,True
+Local connected-sink defect memory,True,False,False,False,True,True,True,True,False,True
+Late-stage closed-pore audit,False,True,True,False,True,False,False,False,False,False

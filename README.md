@@ -7,6 +7,17 @@ Reduced-order analytical sintering models and automated search scripts for findi
 
 The current code is intentionally exploratory. It is a compact 0-D model intended for mechanism search and Codex-driven refactoring, not a final calibrated materials model.
 
+## Current scientific status
+
+- Chen-style two-step windows are achieved in the source-grounded
+  migration-suppression family.
+- Observable fast-firing `G(rho)` separation has **not** been achieved under
+  the ratio >= 1.5 over `Delta rho >= 0.03` criterion.
+- Early-stage and explicit late-stage reduced closures tested so far are
+  insufficient.
+- The current next step is a decision between experimental calibration and a
+  new spatial/network model; another scalar closure is not recommended.
+
 ## Repository contents
 
 - `sinter_reference_model_v3_multibin.py` — self-contained multi-bin pore-population reference model.

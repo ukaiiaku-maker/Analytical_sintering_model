@@ -172,3 +172,10 @@ results/late_stage_closed_pore_trajectory/*
 results/late_stage_closed_pore_trajectory/figures/*
 !results/late_stage_closed_pore_trajectory/figures/*.pdf
 !results/late_stage_closed_pore_trajectory/figures/*.png
+!results/reduced_model_falsification_summary/
+results/reduced_model_falsification_summary/*
+!results/reduced_model_falsification_summary/*.csv
+!results/reduced_model_falsification_summary/figures/
+results/reduced_model_falsification_summary/figures/*
+!results/reduced_model_falsification_summary/figures/*.pdf
+!results/reduced_model_falsification_summary/figures/*.png
