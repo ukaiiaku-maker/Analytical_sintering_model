@@ -179,3 +179,8 @@ results/reduced_model_falsification_summary/*
 results/reduced_model_falsification_summary/figures/*
 !results/reduced_model_falsification_summary/figures/*.pdf
 !results/reduced_model_falsification_summary/figures/*.png
+!results/separate_fast_firing_and_chen_mechanisms/
+!results/separate_fast_firing_and_chen_mechanisms/*.csv
+!results/separate_fast_firing_and_chen_mechanisms/figures/
+results/separate_fast_firing_and_chen_mechanisms/figures/*
+!results/separate_fast_firing_and_chen_mechanisms/figures/*.png
