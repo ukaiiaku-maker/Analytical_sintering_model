@@ -229,3 +229,9 @@ results/strict_chen_window_production/figures/*
 !results/visual_inspection_candidate_plots_v2/figures/
 !results/visual_inspection_candidate_plots_v2/figures/**/*.pdf
 !results/visual_inspection_candidate_plots_v2/figures/**/*.png
+!results/first_step_topology_memory_for_chen/
+!results/first_step_topology_memory_for_chen/*.csv
+!results/first_step_topology_memory_for_chen/*.json
+!results/first_step_topology_memory_for_chen/figures/
+!results/first_step_topology_memory_for_chen/figures/*.pdf
+!results/first_step_topology_memory_for_chen/figures/*.png
