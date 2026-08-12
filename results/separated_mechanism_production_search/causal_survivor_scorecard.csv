@@ -1,0 +1,7 @@
+material_id,full_meaningful,full_max_ratio,full_span_ge_1p5,no_PR_meaningful,no_nucleation_meaningful,transport_only_meaningful,exchange_limited_meaningful,survives_causal_gate,plausibility_flag
+M060,True,2.2425625905988946,0.16800000000000015,True,False,nan,False,False,prototype_scale
+M065,True,2.1514087662358827,0.16800000000000015,True,False,nan,False,False,prototype_scale
+M070,True,2.059056319330123,0.17000000000000015,True,False,nan,False,False,prototype_scale
+M185,True,2.8149497348377,0.13800000000000012,True,False,nan,False,False,prototype_scale
+M190,True,2.6124513272474617,0.16900000000000015,True,False,nan,False,False,prototype_scale
+M195,True,2.612451357123857,0.16900000000000015,True,False,nan,False,False,prototype_scale

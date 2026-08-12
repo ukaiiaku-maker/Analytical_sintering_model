@@ -18,6 +18,7 @@ class MaterialKinetics:
     zeta_eta_ratio:float=1.;event_strain:float=4e-3
     pore_radius0:float=22e-9;pore_ln_sigma:float=.65;G0:float=100e-9;rho0:float=.70
     PR_prefactor:float=2e-4;PR_partition:str="balanced";activity_form:str="serial_fraction"
+    ablation_mode:str="full_material_model"
 
 @dataclass(frozen=True)
 class TopologyGrowthClosure:
@@ -31,12 +32,17 @@ def material_rates(rho,G,phi,radii,T_C,p:MaterialKinetics):
     tau_nuc=math.exp(float(np.clip(p.Q_disconnection_nucleation/(R*T)-p.v_star*stress/(KB*T),-50,50)))/p.nu0_nucleation
     tau_exchange=p.tau_exchange_prefactor*math.exp(float(np.clip(p.Q_exchange/(R*T),-50,50)))
     tau_transport=p.tau_transport_prefactor*G**2*math.exp(float(np.clip(p.Q_transport/(R*T),-50,50)))
-    cycle=tau_nuc+tau_exchange+tau_transport
+    if p.ablation_mode=="no_nucleation_limitation":tau_nuc=1e-6*max(tau_exchange+tau_transport,1e-30)
+    if p.ablation_mode=="exchange_limited_variant":tau_nuc=1e-6*max(tau_exchange,1e-30);tau_exchange=max(tau_exchange,100*tau_transport)
+    cycle=tau_transport if p.ablation_mode=="transport_only" else tau_nuc+tau_exchange+tau_transport
     activity=(tau_exchange+tau_transport)/cycle if p.activity_form=="serial_fraction" else 1/(1+tau_nuc/max(tau_exchange+tau_transport,1e-300))
     connected=max(1-(rho-.82)/.18,0);fine=float(np.sum(phi[radii<=2*p.pore_radius0])/max(np.sum(phi),1e-300));geo=connected*fine
     rho_dot=geo*p.event_strain/max(cycle,1e-300)*p.zeta_eta_ratio
+    if p.ablation_mode=="PR_only_no_densification_activation":rho_dot=0.
     surface=p.D_surface_prefactor*math.exp(float(np.clip(-p.Q_surface_diffusion/(R*T),-50,50)))/p.pore_radius0**2
-    pr=p.PR_prefactor*surface*(1-activity)**2*fine
+    low_activity=1. if p.ablation_mode=="no_surface_PR_low_activity_gate" else (1-activity)**2
+    pr=p.PR_prefactor*surface*low_activity*fine
+    if p.ablation_mode=="no_PR_redistribution":pr=0.
     gb=p.D_GB_prefactor*math.exp(float(np.clip(-p.Q_GB_diffusion/(R*T),-50,50)))
     growth_base=gb*p.gamma_GB/max(G,1e-30)
     return dict(tau_nuc=tau_nuc,tau_exchange=tau_exchange,tau_transport=tau_transport,activity=activity,rho_dot=max(rho_dot,0),PR_propensity=max(pr,0),growth_base=max(growth_base,0),connected_fine=geo,stress=stress)

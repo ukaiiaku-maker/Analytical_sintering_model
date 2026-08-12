@@ -184,3 +184,12 @@ results/reduced_model_falsification_summary/figures/*
 !results/separate_fast_firing_and_chen_mechanisms/figures/
 results/separate_fast_firing_and_chen_mechanisms/figures/*
 !results/separate_fast_firing_and_chen_mechanisms/figures/*.png
+!results/separated_mechanism_production_search/
+!results/separated_mechanism_production_search/*.csv
+!results/separated_mechanism_production_search/*.json
+!results/separated_mechanism_production_search/production_figures/
+results/separated_mechanism_production_search/production_figures/*
+!results/separated_mechanism_production_search/production_figures/*.pdf
+!results/separated_mechanism_production_search/production_figures/*.png
+results/separated_mechanism_production_search/raw_outputs/
+results/separated_mechanism_production_search/raw_archive/
