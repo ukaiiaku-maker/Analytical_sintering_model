@@ -1,0 +1,3 @@
+figure_id,filename_pdf,filename_png,short_title,source_table_or_script,purpose,manuscript_location
+1,strict_window_tier_map.pdf,strict_window_tier_map.png,Strict window tiers,strict_window_recheck.csv,Separates publishable and relaxed windows,Results
+2,Chen_window_fill_map_best_candidate.pdf,Chen_window_fill_map_best_candidate.png,Best strict Chen window,strict_window_recheck.csv,Filled finite success interval,Results

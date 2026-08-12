@@ -1,3 +1,3 @@
 # Production Search Status
 
-The deeper 128-closure search found bounded-map finite windows for both E0021 and E0142 after enforcing 20% preparation growth and refining T2 at 10 C. E0142+C08 broadens to 1060--1110 C. The full requested G/T1/rate/switch grid, stricter 5--10% preparation-growth confirmation, and production assemblies remain incomplete; results are not full-grid validation.
+Strict rechecking finds no Tier A result. E0142 retains five unique Tier B windows at G1 about 303--304 nm and widths of 30--40 C; E0021 is Tier C only. The full requested G/T1/rate/switch production grid, topology neighborhood refinement around Tier B, and representative assemblies remain incomplete; this is conditional mechanism confirmation, not validation.
