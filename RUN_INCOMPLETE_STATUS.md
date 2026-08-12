@@ -1,3 +1,3 @@
 # Production Search Status
 
-Phases A and B completed. Phases C/D and Chen/assembly Figures 6--10 were not run because zero material sets survived the mandatory fast-firing causal gate. This is a scientific stop condition, not a hidden target or runtime adjustment.
+The corrected nucleation-only interpretation reclassified 14 plausible strict candidates. Two were subjected to a bounded exact-state dynamic Chen audit across all 11 topology families. No finite practical window survived: E0142+C08 gave isolated 1100 C successes only. The full requested G/T1/rate/switch grid and final assemblies remain incomplete; no common candidate is claimed.

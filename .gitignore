@@ -193,3 +193,10 @@ results/separated_mechanism_production_search/production_figures/*
 !results/separated_mechanism_production_search/production_figures/*.png
 results/separated_mechanism_production_search/raw_outputs/
 results/separated_mechanism_production_search/raw_archive/
+!results/nucleation_limited_fast_firing_chen_production/
+!results/nucleation_limited_fast_firing_chen_production/*.csv
+!results/nucleation_limited_fast_firing_chen_production/production_figures/
+results/nucleation_limited_fast_firing_chen_production/production_figures/*
+!results/nucleation_limited_fast_firing_chen_production/production_figures/*.pdf
+!results/nucleation_limited_fast_firing_chen_production/production_figures/*.png
+results/nucleation_limited_fast_firing_chen_production/raw_archive/

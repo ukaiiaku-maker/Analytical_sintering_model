@@ -19,6 +19,7 @@ class MaterialKinetics:
     pore_radius0:float=22e-9;pore_ln_sigma:float=.65;G0:float=100e-9;rho0:float=.70
     PR_prefactor:float=2e-4;PR_partition:str="balanced";activity_form:str="serial_fraction"
     ablation_mode:str="full_material_model"
+    growth_activity_threshold:float=0.
 
 @dataclass(frozen=True)
 class TopologyGrowthClosure:
@@ -45,6 +46,7 @@ def material_rates(rho,G,phi,radii,T_C,p:MaterialKinetics):
     if p.ablation_mode=="no_PR_redistribution":pr=0.
     gb=p.D_GB_prefactor*math.exp(float(np.clip(-p.Q_GB_diffusion/(R*T),-50,50)))
     growth_base=gb*p.gamma_GB/max(G,1e-30)
+    if p.ablation_mode=="no_growth_before_activation" and activity<p.growth_activity_threshold:growth_base=0.
     return dict(tau_nuc=tau_nuc,tau_exchange=tau_exchange,tau_transport=tau_transport,activity=activity,rho_dot=max(rho_dot,0),PR_propensity=max(pr,0),growth_base=max(growth_base,0),connected_fine=geo,stress=stress)
 
 def topology_growth_factor(state,T_C,p:TopologyGrowthClosure):
@@ -58,14 +60,20 @@ def topology_growth_factor(state,T_C,p:TopologyGrowthClosure):
 def initial_state(p):
     r=np.geomspace(p.pore_radius0/2,p.pore_radius0*12,7);w=np.exp(-.5*(np.log(r/p.pore_radius0)/p.pore_ln_sigma)**2);phi=(1-p.rho0)*w/w.sum();return dict(t=0.,rho=p.rho0,G=p.G0,radii=r,phi=phi,X_J=0.,PR_exposure=0.)
 
-def run(material,topology,protocol,dt_max=600.,max_steps=6000):
-    s=initial_state(material);out={k:[] for k in "t T_C rho G pore_D50 pore_D90 connected_fine large_pore_fraction PR_exposure activity tau_nuc tau_exchange tau_transport rho_dot G_dot X_J Lambda_over_K pore_drag".split()}
+def clone_state(state,reset_time=False):
+    s={k:(v.copy() if isinstance(v,np.ndarray) else v) for k,v in state.items()}
+    if reset_time:s["t"]=0.
+    return s
+
+def run(material,topology,protocol,dt_max=600.,max_steps=6000,initial=None,stop_at_rho=None):
+    s=initial_state(material) if initial is None else clone_state(initial,reset_time=True);out={k:[] for k in "t T_C rho G pore_D50 pore_D90 connected_fine large_pore_fraction PR_exposure activity tau_nuc tau_exchange tau_transport rho_dot G_dot X_J Lambda_over_K pore_drag".split()}
     numerical_censored=False
     while s["t"]<protocol.t_end and s["rho"]<.995 and len(out["t"])<max_steps:
         T=protocol.T(s["t"],s["rho"]);d=material_rates(s["rho"],s["G"],s["phi"],s["radii"],T,material);s["connected_coverage"]=d["connected_fine"];gf,td=topology_growth_factor(s,T,topology);Gdot=d["growth_base"]*gf
         z=max(np.sum(s["phi"]),1e-300);cdf=np.cumsum(s["phi"])/z;D50=s["radii"][min(np.searchsorted(cdf,.5),6)];D90=s["radii"][min(np.searchsorted(cdf,.9),6)]
         vals={**d,**td,"t":s["t"],"T_C":T,"rho":s["rho"],"G":s["G"],"pore_D50":D50,"pore_D90":D90,"large_pore_fraction":float(np.sum(s["phi"][s["radii"]>4*material.pore_radius0])/z),"PR_exposure":s["PR_exposure"],"G_dot":Gdot}
         for k in out:out[k].append(vals[k])
+        if stop_at_rho is not None and s["rho"]>=stop_at_rho:break
         dt=min(dt_max,protocol.t_end-s["t"]);rate=max(d["rho_dot"],0)
         if rate:dt=min(dt,5e-4/rate)
         if Gdot:dt=min(dt,.01*s["G"]/Gdot)
@@ -78,6 +86,7 @@ def run(material,topology,protocol,dt_max=600.,max_steps=6000):
     result["numerical_censored"]=numerical_censored
     result["rho_final"]=s["rho"]
     result["G_final"]=s["G"]
+    result["final_state"]=clone_state(s)
     return result
 
 LOCAL_FUNCTIONS=(material_rates,topology_growth_factor)

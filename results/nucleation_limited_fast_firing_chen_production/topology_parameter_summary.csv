@@ -1,0 +1,12 @@
+topology_id,family,q_TJ,complete_windows
+C00,topology_disabled,0,0
+C01,pore_drag_only,0,0
+C02,TJ_drag_only,0,0
+C03,persistent_junction_only,0,0
+C04,structural_TJ_multihit_q0,0,0
+C05,structural_TJ_multihit_q1,1,0
+C06,persistent_q0_multihit,0,0
+C07,persistent_q1_multihit,1,0
+C08,pore_pinned_structural,0,0
+C09,pore_relaxed_structural,0,0
+C10,mixed_relaxed_pinned,0,0
