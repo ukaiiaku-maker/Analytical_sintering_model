@@ -235,3 +235,9 @@ results/strict_chen_window_production/figures/*
 !results/first_step_topology_memory_for_chen/figures/
 !results/first_step_topology_memory_for_chen/figures/*.pdf
 !results/first_step_topology_memory_for_chen/figures/*.png
+!results/optimizer_latent_topology_memory_search/
+!results/optimizer_latent_topology_memory_search/*.csv
+!results/optimizer_latent_topology_memory_search/*.json
+!results/optimizer_latent_topology_memory_search/figures/
+!results/optimizer_latent_topology_memory_search/figures/*.pdf
+!results/optimizer_latent_topology_memory_search/figures/*.png
