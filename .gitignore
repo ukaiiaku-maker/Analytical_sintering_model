@@ -165,3 +165,10 @@ results/local_connected_sink_defect_memory/*
 results/local_connected_sink_defect_memory/figures/*
 !results/local_connected_sink_defect_memory/figures/*.pdf
 !results/local_connected_sink_defect_memory/figures/*.png
+!results/late_stage_closed_pore_trajectory/
+results/late_stage_closed_pore_trajectory/*
+!results/late_stage_closed_pore_trajectory/*.csv
+!results/late_stage_closed_pore_trajectory/figures/
+results/late_stage_closed_pore_trajectory/figures/*
+!results/late_stage_closed_pore_trajectory/figures/*.pdf
+!results/late_stage_closed_pore_trajectory/figures/*.png

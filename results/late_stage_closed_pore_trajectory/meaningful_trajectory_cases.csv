@@ -1,0 +1,1 @@
+case_id,late_stage_mode,rho_close_mid,rho_close_width,k_closed_level,Q_closed_kJ_mol,q_closed,gas_pressure_ratio,residual_stress_coupling,pore_detachment_level,G0_nm,rho0,initial_topology,peak_T_C,hold_h,fast_rate_C_min,budget_h,reference_rate_C_min,rho_reference_final,rho_fast_final,max_ratio,meaningful,numerical_censored,non_universal
