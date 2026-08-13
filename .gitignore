@@ -10,6 +10,13 @@ debug_*output*/
 debug_lambda_v6_grainstress/
 sweep_lambda_window_priority_*/
 results/*/
+!results/interacting_local_region_pore_network_twostep/
+results/interacting_local_region_pore_network_twostep/*
+!results/interacting_local_region_pore_network_twostep/*.csv
+!results/interacting_local_region_pore_network_twostep/*.json
+!results/interacting_local_region_pore_network_twostep/figures/
+!results/interacting_local_region_pore_network_twostep/figures/*.pdf
+!results/interacting_local_region_pore_network_twostep/figures/*.png
 !results/coupled_pr_sweep_state_for_chen_boundary/
 results/coupled_pr_sweep_state_for_chen_boundary/*
 !results/coupled_pr_sweep_state_for_chen_boundary/*.csv
