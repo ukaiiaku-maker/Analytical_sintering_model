@@ -10,6 +10,13 @@ debug_*output*/
 debug_lambda_v6_grainstress/
 sweep_lambda_window_priority_*/
 results/*/
+!results/coupled_pr_sweep_state_for_chen_boundary/
+results/coupled_pr_sweep_state_for_chen_boundary/*
+!results/coupled_pr_sweep_state_for_chen_boundary/*.csv
+!results/coupled_pr_sweep_state_for_chen_boundary/*.json
+!results/coupled_pr_sweep_state_for_chen_boundary/figures/
+!results/coupled_pr_sweep_state_for_chen_boundary/figures/*.pdf
+!results/coupled_pr_sweep_state_for_chen_boundary/figures/*.png
 !results/bridge_pr_lower_bound_and_high_density_reduction/
 results/bridge_pr_lower_bound_and_high_density_reduction/*
 !results/bridge_pr_lower_bound_and_high_density_reduction/bridge_input_manifest.csv
