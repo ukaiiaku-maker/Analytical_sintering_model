@@ -1,7 +1,3 @@
-# Production Search Status
+# Run status
 
-Strict rechecking finds no Tier A result. E0142 retains five unique Tier B windows at G1 about 303--304 nm and widths of 30--40 C; E0021 is Tier C only. The full requested G/T1/rate/switch production grid, topology neighborhood refinement around Tier B, and representative assemblies remain incomplete; this is conditional mechanism confirmation, not validation.
-
-The first-step topology-memory follow-up registered six families and screened 768 projected candidates. It did not dynamically integrate family-specific states, so no family is confirmed or ranked and no new Chen/overlap tier is claimed. Full dynamic family implementation remains incomplete.
-
-The optimizer follow-up dynamically integrated three latent families for 3,200 PSO evaluations. Both optima remain Tier C because preparation growth is excessive. Full adaptive second-step confirmation, ablations, and production histories remain incomplete; surrogate window widths are not promoted as Chen windows.
+The decoder-corrected campaign is complete: 1,000,000 Stage-0 samples, 20,000 unique Stage-1 fingerprints, and 1,000 unique exact Stage-2 fingerprints. Six candidates survive the preparation-growth and active high-density-support gates. The result remains a conditional Tier-B mechanism prototype, not validation or paper readiness; no Tier A candidate was found.

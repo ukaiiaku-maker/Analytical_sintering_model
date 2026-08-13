@@ -1,0 +1,3 @@
+material_id,source,full_meaningful,full_max_ratio,full_span_ge_1p5,nucleation_facile_meaningful,PR_off_meaningful,preserved,local_region_topology_changes_material_rho_dot,note
+E0021,results/1_Backup_of_prior_runs.zip:nucleation_limited_fast_firing_chen_production/fast_firing_timing_audit.csv,True,1.859543903595372,0.1700000000000001,False,True,True,False,Frozen material baseline; local-region search does not modify MaterialKinetics
+E0142,results/1_Backup_of_prior_runs.zip:nucleation_limited_fast_firing_chen_production/fast_firing_timing_audit.csv,True,1.7961615996597604,0.1700000000000001,False,True,True,False,Frozen material baseline; local-region search does not modify MaterialKinetics
