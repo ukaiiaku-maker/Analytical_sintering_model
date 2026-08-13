@@ -1,0 +1,10 @@
+{
+  "status": "complete",
+  "runtime_s": 1251.942125082016,
+  "anchors_reconstructed": true,
+  "transplants": 17,
+  "morphs": 90,
+  "optimizer_evaluations": 6400,
+  "accepted": 0,
+  "exact_bridge_confirmations": 38
+}

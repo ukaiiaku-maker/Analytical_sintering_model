@@ -1,0 +1,11 @@
+input_file,source,scratch_path,purpose,recovery
+parameter_registry.csv,results/Archive.zip,.scratch_bridge_inputs/parameter_registry.csv,anchor provenance/diagnosis,archive extraction
+production_candidate_summary.csv,results/Archive.zip,.scratch_bridge_inputs/production_candidate_summary.csv,anchor provenance/diagnosis,archive extraction
+stageA_PR_feasibility_screen.csv.gz,results/Archive.zip,.scratch_bridge_inputs/stageA_PR_feasibility_screen.csv.gz,anchor provenance/diagnosis,archive extraction
+stageB_reduced_T2_scan_summary.csv,results/Archive.zip,.scratch_bridge_inputs/stageB_reduced_T2_scan_summary.csv,anchor provenance/diagnosis,archive extraction
+stageC_refined_boundary_summary.csv,results/Archive.zip,.scratch_bridge_inputs/stageC_refined_boundary_summary.csv,anchor provenance/diagnosis,archive extraction
+Chen_window_boundaries.csv,results/Archive.zip,.scratch_bridge_inputs/Chen_window_boundaries.csv,anchor provenance/diagnosis,archive extraction
+high_density_ratio_curves.csv,results/Archive.zip,.scratch_bridge_inputs/high_density_ratio_curves.csv,anchor provenance/diagnosis,archive extraction
+ablation_summary.csv,results/Archive.zip,.scratch_bridge_inputs/ablation_summary.csv,anchor provenance/diagnosis,archive extraction
+rejected_candidates.csv,results/Archive.zip,.scratch_bridge_inputs/rejected_candidates.csv,anchor provenance/diagnosis,archive extraction
+"candidate vectors 155976,4412",deterministic regeneration,,complete anchor parameters,Sobol/LHS seed 20260813 + candidate ID + decoder
