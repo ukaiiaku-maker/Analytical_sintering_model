@@ -1,0 +1,11 @@
+{
+  "candidate_id": 693168,
+  "status": "audit_calculations_complete",
+  "runtime_s": 289.350554227829,
+  "frozen_model_files_changed": false,
+  "dense_history_rows": 2916,
+  "fine_T2_points": 101,
+  "exact_parameter_fingerprint": "b46304a8d7c7055a",
+  "target": 0.98,
+  "switch": 0.88
+}

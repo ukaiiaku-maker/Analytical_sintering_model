@@ -1,0 +1,7 @@
+material_id,mode,G_ref_over_G_fast,density_span_ge_1p5,fast_firing_retained,source,note
+E0021,full,1.859543903595372,0.1700000000000001,True,results/1_Backup_of_prior_runs.zip:nucleation_limited_fast_firing_chen_production/fast_firing_timing_audit.csv,archived frozen material envelope; local-region audit does not modify MaterialKinetics
+E0021,nucleation_facile,1.0,0.0,False,results/1_Backup_of_prior_runs.zip:nucleation_limited_fast_firing_chen_production/fast_firing_timing_audit.csv,archived frozen material envelope; local-region audit does not modify MaterialKinetics
+E0021,PR_off,1.859543903595372,0.1700000000000001,True,results/1_Backup_of_prior_runs.zip:nucleation_limited_fast_firing_chen_production/fast_firing_timing_audit.csv,archived frozen material envelope; local-region audit does not modify MaterialKinetics
+E0142,full,1.7961615996597604,0.1700000000000001,True,results/1_Backup_of_prior_runs.zip:nucleation_limited_fast_firing_chen_production/fast_firing_timing_audit.csv,archived frozen material envelope; local-region audit does not modify MaterialKinetics
+E0142,nucleation_facile,1.0,0.0,False,results/1_Backup_of_prior_runs.zip:nucleation_limited_fast_firing_chen_production/fast_firing_timing_audit.csv,archived frozen material envelope; local-region audit does not modify MaterialKinetics
+E0142,PR_off,1.7961615996597604,0.1700000000000001,True,results/1_Backup_of_prior_runs.zip:nucleation_limited_fast_firing_chen_production/fast_firing_timing_audit.csv,archived frozen material envelope; local-region audit does not modify MaterialKinetics

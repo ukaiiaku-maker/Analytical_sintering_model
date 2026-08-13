@@ -1,0 +1,38 @@
+check,passed,value,requirement
+file:candidate_693168_dashboard.pdf,True,40193,>5000 bytes; no placeholder
+file:candidate_693168_dashboard.png,True,1064720,>5000 bytes; no placeholder
+file:time_evolution/candidate_693168_full_time_evolution.pdf,True,36881,>5000 bytes; no placeholder
+file:time_evolution/candidate_693168_full_time_evolution.png,True,1222081,>5000 bytes; no placeholder
+file:time_evolution/candidate_693168_pore_store_evolution.pdf,True,41950,>5000 bytes; no placeholder
+file:time_evolution/candidate_693168_pore_store_evolution.png,True,1720549,>5000 bytes; no placeholder
+file:time_evolution/candidate_693168_closed_accommodation.pdf,True,51463,>5000 bytes; no placeholder
+file:time_evolution/candidate_693168_closed_accommodation.png,True,1821263,>5000 bytes; no placeholder
+file:time_evolution/candidate_693168_PR_energy_topology_memory.pdf,True,40887,>5000 bytes; no placeholder
+file:time_evolution/candidate_693168_PR_energy_topology_memory.png,True,1639354,>5000 bytes; no placeholder
+file:time_evolution/candidate_693168_migration_topology_channels.pdf,True,42573,>5000 bytes; no placeholder
+file:time_evolution/candidate_693168_migration_topology_channels.png,True,1509001,>5000 bytes; no placeholder
+file:chen_maps/candidate_693168_complete_Chen_classification_map.pdf,True,21983,>5000 bytes; no placeholder
+file:chen_maps/candidate_693168_complete_Chen_classification_map.png,True,172815,>5000 bytes; no placeholder
+file:chen_maps/candidate_693168_complete_Chen_filled_window.pdf,True,17561,>5000 bytes; no placeholder
+file:chen_maps/candidate_693168_complete_Chen_filled_window.png,True,263312,>5000 bytes; no placeholder
+file:chen_maps/candidate_693168_T2_diagnostics.pdf,True,38859,>5000 bytes; no placeholder
+file:chen_maps/candidate_693168_T2_diagnostics.png,True,1142896,>5000 bytes; no placeholder
+file:ablations/candidate_693168_ablation_waterfall.pdf,True,30298,>5000 bytes; no placeholder
+file:ablations/candidate_693168_ablation_waterfall.png,True,1127750,>5000 bytes; no placeholder
+file:comparison/six_TierB_candidate_comparison.pdf,True,24966,>5000 bytes; no placeholder
+file:comparison/six_TierB_candidate_comparison.png,True,957210,>5000 bytes; no placeholder
+file:comparison/candidate_693168_robustness_heatmap.pdf,True,81949,>5000 bytes; no placeholder
+file:comparison/candidate_693168_robustness_heatmap.png,True,254553,>5000 bytes; no placeholder
+file:comparison/fast_firing_preservation_candidate_693168.pdf,True,27660,>5000 bytes; no placeholder
+file:comparison/fast_firing_preservation_candidate_693168.png,True,405999,>5000 bytes; no placeholder
+file:candidate_693168_mechanism_schematic.pdf,True,24882,>5000 bytes; no placeholder
+file:candidate_693168_mechanism_schematic.png,True,318763,>5000 bytes; no placeholder
+file:candidate_693168_final_panel.pdf,True,74463,>5000 bytes; no placeholder
+file:candidate_693168_final_panel.png,True,1219019,>5000 bytes; no placeholder
+required_dense_paths,True,highT_reference;lower_failure;success;upper_failure,four physical paths
+continuous_monotonic_time,True,all paths,time never decreases
+matched_density_095_098,True,0.9000-0.9800,includes 0.95-0.98
+three_boundary_classes,True,DENSIFICATION_EXHAUSTION_FAILURE;GRAIN_GROWTH_FAILURE;SUCCESS,lower/success/upper
+positive_window,True,280.0,positive width
+tier_label,True,conditional Tier B,never Tier A
+no_placeholder_figure,True,Matplotlib data figures only,no placeholders
