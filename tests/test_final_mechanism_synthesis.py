@@ -98,7 +98,9 @@ def test_synthesis_changed_no_model_or_topology_physics_files():
         "final_mechanism_synthesis_plots.py",
         "tests/test_final_mechanism_synthesis.py",
         "equation_functional_form_audit.py",
+        "equation_audit_qc.py",
         "tests/test_equation_audit_outputs.py",
+        "tests/test_equation_audit_qc.py",
         "conftest.py",
     }
     changed = subprocess.check_output(

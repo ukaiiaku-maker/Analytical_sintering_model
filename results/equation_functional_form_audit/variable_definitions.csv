@@ -53,3 +53,42 @@ Delta_rho,continuous attained density span,1,trajectory criterion
 Theta_nuc,nucleation dominance,1,attribution
 S_closed_growth,closed/growth selectivity,1,attribution
 M_PR_closed,PR-closed screening proxy,1,screen only
+sigma_j,local residual-stress value in region j,normalized proxy,local activity
+phi_tot,total local pore-volume fraction,1,local conservation
+w_j,normalized local-region statistical weight,1,local averaging
+f_fine,fine-pore volume fraction,1,fast PR eligibility
+eta_dens,local densification eligibility,1,open-pore shrinkage
+C_rem,connected removable-pore fraction,1,open-pore shrinkage
+g_low,low-renewal PR gate,1,PR competition
+g_top,connected fine-pore topology gate,1,PR competition
+w_i_fine,fine-radius bin weight,1,PR competition
+theta_PR,relative PR Arrhenius factor,1,PR laws
+theta_rho,relative open-shrinkage Arrhenius factor,1,local densification
+theta_closed,relative closed-shrinkage Arrhenius factor,1,closed densification
+theta_g,relative grain-growth Arrhenius factor,1,local migration
+Gamma_A,Class-A migration multiplier,1,migration closure
+Gamma_j,local-region migration multiplier,1,candidate 693168
+D,generic nonnegative migration resistance,1,Class-A closure
+D_j,local drag-resistance sum,1,local migration
+P_TJ,local sigmoid TJ-completion proxy,1 (proxy),local migration
+X_J_prod,persistent-junction production rate,s^-1,TJ closure
+J_cap,TJ-to-GB capture flux,s^-1 proxy,junction production
+J_reloc,GB-to-TJ relocation flux,s^-1 proxy,junction production
+X_cap,persistent-junction capacity,1,TJ closure
+R_J,persistent-junction resistance,1,TJ closure
+xi_r,closed-pore radius proxy,code-normalized proxy,closed shrinkage
+Delta_phi_closed_loss,closed-pore volume removed in one step,1,accommodation consumption
+Delta_t,integration time step,s,state update
+G_1,grain size at the first-step switch,grain-size unit,Chen classification
+G_2,grain size at the end of the second step,grain-size unit,Chen classification
+G_ref,matched-density reference grain size,grain-size unit,fast metric
+G_fast,matched-density fast-path grain size,grain-size unit,fast metric
+W,finite Chen-window width,degC,Chen classification
+T_first_success,lowest successful second-step temperature,degC,Chen classification
+T_last_success,highest successful second-step temperature,degC,Chen classification
+R,molar gas constant,J mol^-1 K^-1,physical constant
+k_B,Boltzmann constant,J K^-1,physical constant
+a_j,local-region activity proxy,1 (proxy),candidate 693168
+tau_J,persistent-junction relaxation time,s,TJ closure
+n,integer summation/event-count index,1,Poisson completion
+J_close,conservative isolated/TJ-to-closed transfer rate,s^-1,closed transition

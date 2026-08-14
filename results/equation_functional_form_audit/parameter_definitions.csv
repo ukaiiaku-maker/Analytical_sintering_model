@@ -45,3 +45,33 @@ k_growth,local growth prefactor,grain unit^2 s^-1,local dictionary,693168
 Q_growth,local growth barrier,J mol^-1,local dictionary,693168
 lambda_TJ,local TJ proxy scale,1,local dictionary,693168 secondary
 K_TJ,local TJ proxy threshold,1,local dictionary,693168 secondary
+gamma_s,surface energy,J m^-2,material/local parameters,stress and PR
+gamma_GB,grain-boundary energy,J m^-2,MaterialKinetics,growth
+stress_concentration,large-pore stress concentration coefficient,1,MaterialKinetics,fast stress
+pore_radius0,reference pore radius,m,MaterialKinetics,fine-pore weighting
+alpha_attr,PR attrition multiplier,1,PRMemoryParams,negative control
+q_PR,PR pore-size exponent,1,PRMemoryParams,negative control
+p_top,PR topology-gate exponent,1,PRMemoryParams,negative control
+a_mid,activity-gate midpoint,1,PR/local parameters,PR gate
+a_width,activity-gate width,1,PR/local parameters,PR gate
+p_a,low-activity power,1,PRMemoryParams,PR gate
+c_D,TJ densification production coefficient,registered scale,DiscoveryParams,prior Chen
+c_R,TJ relocation production coefficient,registered scale,DiscoveryParams,prior Chen
+c_S,TJ sweep production coefficient,registered scale,DiscoveryParams,prior Chen
+X_cap,persistent-junction capacity,1,DiscoveryParams,prior Chen
+Q_J,junction relaxation activation energy,J mol^-1,DiscoveryParams,prior Chen
+T_ref,reference temperature,K,multiple parameter sets,relative Arrhenius factors
+q_J,persistent-junction size exponent,1,DiscoveryParams,prior Chen
+K_0,reference required TJ event count,1,DiscoveryParams,prior Chen
+G_ref_parameter,reference grain size in size-scaled closures,m or model grain unit,multiple parameter sets,migration
+k_tr,closed-transition prefactor,code s^-1,local parameter dictionary,candidate 693168
+k_g,local grain-growth prefactor,code grain unit^2 s^-1,local parameter dictionary,candidate 693168
+r_g,gas/sintering-pressure ratio proxy,1 (proxy),local parameter dictionary,candidate 693168
+q_r,closed-radius exponent,1,local parameter dictionary,candidate 693168
+c_sigma,stress-inhibition or concentration coefficient,1,material/local parameters,context-specific
+g_tol,allowed second-step growth fraction,1,classification constants,Chen classification
+rho_target,target relative density,1,classification constants,attainment
+f_x,multiplicative kinetic-prefactor perturbation,1,property design,attribution
+Delta_Q_x,additive activation-energy perturbation,kJ mol^-1,property design,attribution
+Q_x,generic activation energy under perturbation,J mol^-1,property design,attribution
+k_x,generic kinetic prefactor under perturbation,process-dependent,property design,attribution
