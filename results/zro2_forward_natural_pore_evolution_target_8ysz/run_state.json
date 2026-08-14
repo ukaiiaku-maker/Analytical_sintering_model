@@ -1,0 +1,8 @@
+{
+  "status": "blocked_missing_required_inputs",
+  "barrier_json_loaded": false,
+  "target_pdf_loaded": false,
+  "comparison_run": false,
+  "validation_claim": false,
+  "TSS_schedule_status": "reported final state only; schedule missing from target PDF"
+}

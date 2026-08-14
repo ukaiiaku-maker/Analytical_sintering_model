@@ -1,0 +1,9 @@
+parameter,value,units,status
+D_GB0,0.056,m2_s,baseline
+Q_GB,380000,J_mol,baseline
+D_s0,0.10,m2_s,baseline
+Q_s,380000,J_mol,baseline
+Q_M,405238.394904,J_mol,high-temperature branch only
+M0,2.0e-4,m4_J_s,provisional uncalibrated
+C_TJ,10,dimensionless,provisional geometry
+C_GB,2,dimensionless,provisional geometry

@@ -1,0 +1,9 @@
+source_material: "10 mol% Sc2O3-doped cubic ZrO2 (composition caveat applies to 8YSZ)"
+D_GB0_m2_s: 0.056
+Q_GB_J_mol: 380000
+D_s0_m2_s: 0.10
+Q_s_J_mol: 380000
+D_GB0_unc_m2_s: 0.05
+Q_GB_unc_J_mol: 41000
+D_s0_unc_m2_s: 0.27
+Q_s_unc_J_mol: 28000

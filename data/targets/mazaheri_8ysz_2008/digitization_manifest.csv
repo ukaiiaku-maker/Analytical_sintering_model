@@ -1,0 +1,8 @@
+source,item,output,status,uncertainty,notes
+Table 1,powder properties,powder_properties.csv,pending PDF,,manual brief values only
+Table 2,final properties,final_targets_table2.csv,brief-transcribed,,must verify against PDF
+Figure 2,density vs temperature,density_vs_temperature_digitized.csv,pending PDF,,no points invented
+Figure 4,density vs time,density_vs_time_digitized.csv,pending PDF,,no points invented
+Figure 5,grain size vs temperature,grain_size_vs_temperature_digitized.csv,pending PDF,,no points invented
+Figure 6,grain size vs density,grain_size_vs_density_digitized.csv,pending PDF,,no points invented
+Figure 8,grain-size distributions,grain_size_distributions_digitized.csv,pending PDF,,if feasible

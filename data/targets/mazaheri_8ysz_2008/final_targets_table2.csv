@@ -1,0 +1,5 @@
+method,schedule_type,heating_rate_C_min,peak_T_C,hold_min,final_density,final_G_um,time_to_97pct_min,Hv_GPa,KIC_MPa_m_half
+CS,conventional,5,1500,0,0.975,2.14,300,12.87,1.61
+LMS,microwave_low_rate,5,1500,0,0.980,2.35,260,12.97,1.90
+HMS,microwave_high_rate,50,1500,0,0.980,0.90,29,13.72,3.17
+TSS,two_step,unknown_from_this_pdf,unknown_from_this_pdf,>20h_total,0.976,0.29,unknown,13.51,3.16

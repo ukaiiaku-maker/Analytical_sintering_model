@@ -1,0 +1,8 @@
+quantity,value,units,status
+green_density,2.88,g_cm3,reported
+theoretical_density,5.95,g_cm3,reported
+initial_relative_density,0.4840336134,dimensionless,derived
+initial_grain_size,10.20,nm,reported_XRD
+BET_particle_size,24.5,nm,reported
+TEM_particle_size_range,15-33,nm,reported
+surface_area,41.2,m2_g,reported

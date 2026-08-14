@@ -1,0 +1,3 @@
+field,value,status
+schema,bicrystal_surface_triple_line_arrhenius_EXP_floor_v1,expected but not loaded
+input,data/zro2/bicrystal_creep_barrier_export.json,missing

@@ -1,0 +1,5 @@
+method,path_status,definition
+CS,encoded,"25 C to 1500 C at 5 C/min; no hold"
+LMS,encoded comparison,"25 C to 1500 C at 5 C/min; no hold; microwave-assisted experiment"
+HMS,encoded comparison,"25 C to 1500 C at 50 C/min; no hold; microwave-assisted experiment"
+TSS,reported final state only; schedule missing from target PDF,"schedule-map input only"

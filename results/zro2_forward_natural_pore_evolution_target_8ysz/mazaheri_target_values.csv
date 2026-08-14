@@ -1,0 +1,5 @@
+method,final_density,final_G_um,time_to_97pct_min,source_status
+CS,0.975,2.14,300,task brief only
+LMS,0.980,2.35,260,task brief only
+HMS,0.980,0.90,29,task brief only
+TSS,0.976,0.29,unknown,task brief only

@@ -1,0 +1,4 @@
+comparison,status,result
+CS,blocked missing inputs,no calibration claim
+LMS_HMS,blocked missing inputs,no rate comparison claim
+TSS_Chen_map,blocked missing inputs,no window claim

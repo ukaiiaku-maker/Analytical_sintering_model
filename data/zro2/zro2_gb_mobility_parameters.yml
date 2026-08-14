@@ -1,0 +1,6 @@
+branch: high_temperature_arrhenius_only
+Q_M_eV: 4.2
+Q_M_J_mol: 405238.394904
+M0_m4_J_s: 2.0e-4
+M0_status: "provisional global scale; requires one-time conventional-sintering anchor"
+low_temperature_transition_enabled: false
