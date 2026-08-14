@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "screened_rows": 50655,
+  "lhs_samples": 50000,
+  "exact_fast_promotions": 1000,
+  "exact_two_step_promotions": 1000,
+  "exact_family_OAT": 0,
+  "runtime_s": 6.47139310836792,
+  "max_hours": 10.0,
+  "topology_parameters_modified_primary": false,
+  "model_layers_coupled": false,
+  "large_reduction_penalty": false
+}
