@@ -1,2 +1,3 @@
-input_file,archive_member,access_mode,extracted_path,purpose,regenerated,source_commit
-results/1_Backup_of_prior_runs.zip,visual_inspection_candidate_plots_v2/histories/dense_fast_histories.csv,direct_archive_read,,Frozen E0021/E0142 fast-firing dense histories and causal ablations,False,579367dddf34b5d6b167e4cb0f0b81157f6b1ad7
+input_file,size_bytes,tracking_status,package_action,archive_member,purpose
+results/1_Backup_of_prior_runs.zip,467365223,ignored historical archive,not staged; one named member read directly,visual_inspection_candidate_plots_v2/histories/dense_fast_histories.csv,Frozen E0021/E0142 fast-firing history provenance
+results/interacting_local_region_pore_network_twostep/local_region_histories.csv,87551307,already tracked in branch ancestry,not modified or staged by publication handoff,,Historical dense local-region histories; compact derivatives are packaged instead

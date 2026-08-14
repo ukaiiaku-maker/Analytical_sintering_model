@@ -9,14 +9,37 @@ The current code is intentionally exploratory. It is a compact 0-D model intende
 
 ## Current scientific status
 
-- Chen-style two-step windows are achieved in the source-grounded
-  migration-suppression family.
-- Observable fast-firing `G(rho)` separation has **not** been achieved under
-  the ratio >= 1.5 over `Delta rho >= 0.03` criterion.
-- Early-stage and explicit late-stage reduced closures tested so far are
-  insufficient.
-- The current next step is a decision between experimental calibration and a
-  new spatial/network model; another scalar closure is not recommended.
+- The exact final synthesis contains compatible fast-firing and two-step
+  behavior, produced by different dominant mechanisms.
+- Fast firing is primarily nucleation limited; the causal nucleation-facile
+  ablation removes the effect while PR-off may preserve it.
+- Candidate 693168 produces a complete conditional Tier-B two-step window
+  through PR-prepared bounded closed-pore accommodation memory. This is not a
+  validation claim or paper-ready calibration.
+- Across 1,903 exact-promoted cases, 485 are fast-only, 119 two-step-only, 73
+  both-pass, and 1,226 neither. The 19,880 surrogate both-pass rows are
+  screening evidence only.
+
+## Final synthesis and source-data handoff
+
+- Final synthesis branch: `codex/final-mechanism-synthesis-and-property-windows`
+- Figure source-data branch: `codex/figure-source-data-package`
+- Human handoff: `docs/FINAL_REPOSITORY_HANDOFF.md`
+- Verified branch provenance: `docs/FINAL_GITHUB_BRANCH_INDEX.md`
+- Figure source tables: `results/figure_source_data_package/`
+- Compressed package: `results/figure_source_data_package_20260814.zip`
+- Equation audit: `results/equation_functional_form_audit/`
+
+Run current tests with:
+
+```bash
+python3 -m pytest -q -m "not requires_archived_results"
+python3 -m py_compile *.py
+```
+
+Historical result fixtures are archived to control repository size. Tests that
+require them remain marked `requires_archived_results`; do not restore archived
+result trees merely to run the current/unit suite.
 
 ## Repository contents
 

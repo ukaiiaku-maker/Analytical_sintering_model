@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 import re
 import shutil
 import subprocess
@@ -28,7 +29,7 @@ ARCHIVE = ROOT / "results" / "1_Backup_of_prior_runs.zip"
 ARCHIVE_FAST_MEMBER = (
     "visual_inspection_candidate_plots_v2/histories/dense_fast_histories.csv"
 )
-COMMIT = subprocess.run(
+COMMIT = os.environ.get("FIGURE_SOURCE_COMMIT") or subprocess.run(
     ["git", "rev-parse", "HEAD"], cwd=ROOT, check=True, capture_output=True, text=True
 ).stdout.strip()
 BRANCH = subprocess.run(
@@ -783,7 +784,30 @@ def build_dictionaries_and_docs() -> None:
     archive_dir = OUT / "archive_manifest"
     archive_dir.mkdir(parents=True, exist_ok=True)
     archive_manifest.to_csv(archive_dir / "selective_extraction_manifest.csv", index=False)
-    archive_manifest.to_csv(archive_dir / "raw_outputs_manifest.csv", index=False)
+    raw_outputs = pd.DataFrame(
+        [
+            {
+                "input_file": str(ARCHIVE.relative_to(ROOT)),
+                "size_bytes": ARCHIVE.stat().st_size,
+                "tracking_status": "ignored historical archive",
+                "package_action": "not staged; one named member read directly",
+                "archive_member": ARCHIVE_FAST_MEMBER,
+                "purpose": "Frozen E0021/E0142 fast-firing history provenance",
+            },
+            {
+                "input_file": "results/interacting_local_region_pore_network_twostep/local_region_histories.csv",
+                "size_bytes": (
+                    ROOT
+                    / "results/interacting_local_region_pore_network_twostep/local_region_histories.csv"
+                ).stat().st_size,
+                "tracking_status": "already tracked in branch ancestry",
+                "package_action": "not modified or staged by publication handoff",
+                "archive_member": "",
+                "purpose": "Historical dense local-region histories; compact derivatives are packaged instead",
+            },
+        ]
+    )
+    raw_outputs.to_csv(archive_dir / "raw_outputs_manifest.csv", index=False)
 
     all_rows = []
     for item in DATASETS:

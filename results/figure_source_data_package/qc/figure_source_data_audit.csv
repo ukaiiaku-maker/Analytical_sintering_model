@@ -25,4 +25,4 @@ conditional_TierB_nonclaim,guardrails,True,candidate status stated
 closed_proxy_warning,guardrails,True,"proxy, non-derived-law, and no-hidden-law warnings present"
 no_model_physics_files_changed,git_hygiene,True,unexpected_python_changes=[]
 no_archived_result_deletions_staged,git_hygiene,True,staged_result_deletions=0
-package_archive_exists,archive,True,path=results/figure_source_data_package_20260814.zip bytes=8678793
+package_archive_exists,archive,True,path=results/figure_source_data_package_20260814.zip bytes=8678906
