@@ -1,0 +1,2 @@
+comparison,rho_5,rho_50,G_5_um,G_50_um,smaller_grain_sign,density_target_met_at_50,interpretation
+thermal_rate_50_vs_5_C_min,0.9753769917210872,0.8875606561695272,2.140674977447517,0.5599609887944867,True,False,thermal path only; experiment is microwave-assisted

@@ -1,0 +1,10 @@
+property,value,units,extraction_method
+surface_area,41.2,m2_g,PDF Table 1 text
+BET_particle_size,24.5,nm,PDF Table 1 text
+TEM_particle_size_min,15,nm,PDF Table 1 text
+TEM_particle_size_max,33,nm,PDF Table 1 text
+XRD_crystallite_size,10.20,nm,PDF Table 1 text
+phase,cubic,,PDF Table 1 text
+pressing_pressure,600,MPa,PDF section 2.1 text
+green_density,2.88,g_cm3,PDF section 2.1 text
+theoretical_density,5.95,g_cm3,PDF section 2.1 text

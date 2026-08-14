@@ -1,0 +1,27 @@
+method,T_C,G_um,uncertainty_G_um,extraction_method
+CS,950,0.05,0.04,visual digitization embedded Figure 5
+CS,1050,0.08,0.04,visual digitization embedded Figure 5
+CS,1150,0.15,0.05,visual digitization embedded Figure 5
+CS,1200,0.18,0.05,visual digitization embedded Figure 5
+CS,1250,0.20,0.06,visual digitization embedded Figure 5
+CS,1300,0.42,0.08,visual digitization embedded Figure 5
+CS,1350,0.98,0.10,visual digitization embedded Figure 5
+CS,1500,2.14,0.12,visual digitization embedded Figure 5
+LMS,950,0.05,0.04,visual digitization embedded Figure 5
+LMS,1050,0.10,0.04,visual digitization embedded Figure 5
+LMS,1150,0.21,0.05,visual digitization embedded Figure 5
+LMS,1200,0.46,0.07,visual digitization embedded Figure 5
+LMS,1250,1.03,0.10,visual digitization embedded Figure 5
+LMS,1300,1.83,0.12,visual digitization embedded Figure 5
+LMS,1350,2.09,0.12,visual digitization embedded Figure 5
+LMS,1400,2.35,0.15,visual digitization embedded Figure 5
+HMS,950,0.05,0.04,visual digitization embedded Figure 5
+HMS,1050,0.07,0.04,visual digitization embedded Figure 5
+HMS,1150,0.14,0.05,visual digitization embedded Figure 5
+HMS,1200,0.17,0.05,visual digitization embedded Figure 5
+HMS,1250,0.25,0.06,visual digitization embedded Figure 5
+HMS,1300,0.36,0.07,visual digitization embedded Figure 5
+HMS,1350,0.40,0.08,visual digitization embedded Figure 5
+HMS,1400,0.52,0.08,visual digitization embedded Figure 5
+HMS,1450,0.65,0.09,visual digitization embedded Figure 5
+HMS,1500,0.90,0.10,visual digitization embedded Figure 5

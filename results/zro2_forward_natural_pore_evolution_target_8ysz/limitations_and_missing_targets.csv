@@ -1,4 +1,7 @@
 item,status,consequence
-bicrystal_creep_barrier_export.json,missing,no nucleation prediction or calibration
-Mazaheri target PDF,missing,no independent table extraction or curve digitization
+barrier target-temperature coverage,fit begins at 1557 C,lower-temperature predictions use flagged endpoint clamp
+Mazaheri plotted curves,visually digitized raster data,point uncertainty applies
 prior JACS TSS paper,missing,no exact two-step thermal path
+thermal HMS density,not reproduced,microwave-specific physics likely required
+Chen success band,not found in 84-case physically ordered coarse map,no two-step validation claim
+CS intermediate density trajectory,onset later than Figure 2,endpoint calibration is not trajectory validation

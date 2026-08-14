@@ -1,4 +1,4 @@
-comparison,status,result
-CS,blocked missing inputs,no calibration claim
-LMS_HMS,blocked missing inputs,no rate comparison claim
-TSS_Chen_map,blocked missing inputs,no window claim
+method,model_case,model_final_rho,target_final_rho,model_final_G_um,target_final_G_um,density_error,G_error_um,comparison_scope
+CS,CS_thermal,0.9753769917210872,0.975,2.140674977447517,2.14,0.00037699172108718315,0.0006749774475167669,thermal calibration
+HMS,rate50_thermal,0.8875606561695272,0.98,0.5599609887944867,0.9,-0.09243934383047281,-0.3400390112055133,thermal-only comparison to microwave experiment
+LMS,CS_thermal,0.9753769917210872,0.98,2.140674977447517,2.35,-0.004623008278912821,-0.2093250225524832,same nominal ramp; microwave physics absent

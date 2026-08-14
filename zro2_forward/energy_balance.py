@@ -21,7 +21,7 @@ def solve_effective_stress(rho: float, surface_area_rate_m2_m3_s: float, gamma_s
     if pd(lo) >= ps: sigma, hit = lo, True
     elif pd(hi) < ps: sigma, hit = hi, True
     else:
-        for _ in range(80):
+        for _ in range(32):
             mid = .5*(lo+hi)
             if pd(mid) < ps: lo = mid
             else: hi = mid

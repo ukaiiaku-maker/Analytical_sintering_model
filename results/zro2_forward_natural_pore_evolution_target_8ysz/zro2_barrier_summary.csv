@@ -1,3 +1,7 @@
 field,value,status
-schema,bicrystal_surface_triple_line_arrhenius_EXP_floor_v1,expected but not loaded
-input,data/zro2/bicrystal_creep_barrier_export.json,missing
+schema,bicrystal_surface_triple_line_arrhenius_EXP_floor_v1,loaded
+input,data/zro2/bicrystal_creep_barrier_export.json,loaded unchanged
+slice_count,4,loaded
+fit_temperature_min_K,1830.15,loaded
+fit_temperature_max_K,2325.15,loaded
+below_range_policy,nearest fitted slice clamp,explicitly flagged

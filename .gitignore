@@ -345,3 +345,6 @@ results/strict_chen_window_production/figures/*
 !results/optimizer_latent_topology_memory_search/figures/
 !results/optimizer_latent_topology_memory_search/figures/*.pdf
 !results/optimizer_latent_topology_memory_search/figures/*.png
+
+# Licensed target paper is a local scientific input, not a repository artifact.
+data/targets/mazaheri_8ysz_2008/1-s2.0-S092150930800302X-main.pdf

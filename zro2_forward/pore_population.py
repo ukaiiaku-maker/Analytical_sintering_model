@@ -30,8 +30,8 @@ def initial_population(rho0: float = 2.88/5.95, center_m: float = 24.5e-9,
 
 
 def transfer_fluxes(pop: PorePopulation, rho: float, D_s: float, activity: float,
-                    excess_fraction: float, C_PR: float = 2e-30, C_iso: float = 2e-31,
-                    C_close: float = 1e-31) -> tuple[np.ndarray, np.ndarray, np.ndarray, dict]:
+                    excess_fraction: float, C_PR: float = 1e-23, C_iso: float = 2e-25,
+                    C_close: float = 1e-25) -> tuple[np.ndarray, np.ndarray, np.ndarray, dict]:
     r = pop.radii_m
     open_dot = np.zeros_like(r); iso_dot = np.zeros_like(r); closed_dot = np.zeros_like(r)
     rates = C_PR*D_s/r**4*max(excess_fraction, 0.)*(1-np.clip(activity, 0, 1))

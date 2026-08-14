@@ -1,3 +1,6 @@
 parameter,value,status
-M0_m4_J_s,2.0e-4,provisional not calibrated
-CS_anchor,,not run due missing inputs
+M0_m4_J_s,5.8e-3,calibrated once to CS final grain size
+site_density_multiplier,39.5,calibrated once to CS final density
+surface_power_length2_m2,1e-19,fixed dimensional estimate
+CS_final_density,0.975377,model result
+CS_final_G_um,2.140675,model result

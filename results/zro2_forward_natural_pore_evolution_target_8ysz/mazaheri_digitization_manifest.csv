@@ -1,8 +1,8 @@
-item,status
-Table 1,pending PDF
-Table 2,brief-transcribed pending PDF verification
-Figure 2,pending PDF
-Figure 4,pending PDF
-Figure 5,pending PDF
-Figure 6,pending PDF
-Figure 8,pending PDF
+source,item,output,status,uncertainty,notes
+Table 1,powder properties,powder_properties.csv,extracted,exact text/table,verified from PDF
+Table 2,final properties,final_targets_table2.csv,extracted,exact text/table,verified from PDF
+Figure 2,density vs temperature,density_vs_temperature_digitized.csv,visual digitization,0.006 density,embedded source image
+Figure 4,density vs time,density_vs_time_digitized.csv,visual digitization,0.008-0.01 density; 0.8-30 min,broken time axis
+Figure 5,grain size vs temperature,grain_size_vs_temperature_digitized.csv,visual digitization,0.04-0.15 um,embedded source image
+Figure 6,grain size vs density,grain_size_vs_density_digitized.csv,visual digitization,0.05-0.15 um,embedded source image
+Figure 8,grain-size distributions,grain_size_distributions_digitized.csv,pending PDF,,if feasible

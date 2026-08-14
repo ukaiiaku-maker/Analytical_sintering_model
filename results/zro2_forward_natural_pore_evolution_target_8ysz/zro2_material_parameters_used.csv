@@ -4,6 +4,7 @@ Q_GB,380000,J_mol,baseline
 D_s0,0.10,m2_s,baseline
 Q_s,380000,J_mol,baseline
 Q_M,405238.394904,J_mol,high-temperature branch only
-M0,2.0e-4,m4_J_s,provisional uncalibrated
+M0,5.8e-3,m4_J_s,one-time CS calibration
+site_density_multiplier,39.5,dimensionless,one-time CS calibration
 C_TJ,10,dimensionless,provisional geometry
 C_GB,2,dimensionless,provisional geometry

@@ -21,8 +21,8 @@ class MaterialParameters:
     D_s0_unc_m2_s: float = 0.27
     Q_s_unc_J_mol: float = 28000.0
     Q_M_J_mol: float = 4.2 * EV_MOL
-    M0_m4_J_s: float = 2.0e-4
-    mobility_prefactor_status: str = "provisional global scale; requires one-time CS anchor"
+    M0_m4_J_s: float = 5.8e-3
+    mobility_prefactor_status: str = "calibrated once to conventional-sintering final grain size"
     gamma_s_J_m2: float = 1.0
     gamma_GB_J_m2: float = 0.5
     Omega_m3: float = 3.35e-29
