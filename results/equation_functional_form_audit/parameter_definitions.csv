@@ -1,0 +1,47 @@
+parameter,definition,units,source_container,evidence_scope
+Q_disconnection_nucleation,nucleation barrier,J mol^-1,MaterialKinetics,fast final
+v_star,activation volume,m^3,MaterialKinetics,fast final
+nu0_nucleation,attempt frequency,s^-1,MaterialKinetics,fast final
+Q_exchange,exchange barrier,J mol^-1,MaterialKinetics,fast final
+tau_exchange_prefactor,exchange prefactor,s,MaterialKinetics,fast final
+Q_transport,transport barrier,J mol^-1,MaterialKinetics,fast final
+tau_transport_prefactor,transport prefactor,s m^-2,MaterialKinetics,fast final
+event_strain,density gain/event,1,MaterialKinetics,fast final
+zeta_eta_ratio,density-rate scale ratio,1,MaterialKinetics,fast final
+Q_GB_diffusion,growth barrier,J mol^-1,MaterialKinetics,fast/upper bound
+D_GB_prefactor,growth prefactor,m^2 s^-1,MaterialKinetics,fast/upper bound
+Q_surface_diffusion,surface barrier,J mol^-1,MaterialKinetics,PR ablation
+D_surface_prefactor,surface prefactor,m^2 s^-1,MaterialKinetics,PR ablation
+k_PR_ref_s,PR competition rate,s^-1,PRMemoryParams,negative control
+Q_PR_J_mol,PR barrier,J mol^-1,PRMemoryParams,negative control
+renewal_gate_mid,PR activity midpoint,1,PRMemoryParams,negative control
+renewal_gate_width,PR activity width,1,PRMemoryParams,negative control
+smoothing_share,smoothing partition,1,PRMemoryParams,negative control
+GB_to_TJ_share,GB-to-TJ partition,1,PRMemoryParams,negative control
+TJ_to_iso_share,TJ-to-iso partition,1,PRMemoryParams,negative control
+A_J,junction drag amplitude,1,DiscoveryParams,prior Chen
+tau_J_ref_s,junction relaxation time,s,DiscoveryParams,prior Chen
+Q_relax_J_mol,junction relaxation barrier,J mol^-1,DiscoveryParams,prior Chen
+lambda_TJ_ref,expected-event scale,1,DiscoveryParams,prior Chen
+K_TJ0,required-event reference,1,DiscoveryParams,prior Chen
+q_TJ,packet size exponent,1,DiscoveryParams/local,q0/q1
+k_open,open shrinkage prefactor,code s^-1,local dictionary,693168
+Q_density,open shrinkage barrier,J mol^-1,local dictionary,693168
+k_closed,closed shrinkage prefactor,code s^-1,local dictionary,693168
+Q_closed,closed shrinkage barrier,J mol^-1,local dictionary,693168
+closed_transition,closed-transition rate,code s^-1,local dictionary,693168
+closed_capacity,accommodation capacity,1,local dictionary,693168
+capacity_tau,accommodation recovery time,s,local dictionary,693168
+gas_ratio,gas pressure proxy,1,local dictionary,693168
+closed_radius_exp,closed-radius exponent,1,local dictionary,693168
+k_PR,local PR prefactor,code s^-1,local dictionary,693168
+Q_PR,local PR barrier,J mol^-1,local dictionary,693168
+PR_damaged,damaged-GB partition,1,local decoder,693168
+PR_large,large-attached partition,1,local decoder,693168
+PR_TJ,TJ partition,1,local decoder,693168
+PR_iso,isolated partition,1,local decoder,693168
+PR_closed,closed partition,1,local decoder,693168
+k_growth,local growth prefactor,grain unit^2 s^-1,local dictionary,693168
+Q_growth,local growth barrier,J mol^-1,local dictionary,693168
+lambda_TJ,local TJ proxy scale,1,local dictionary,693168 secondary
+K_TJ,local TJ proxy threshold,1,local dictionary,693168 secondary

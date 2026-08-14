@@ -1,0 +1,55 @@
+variable,definition,units,scope
+T,absolute temperature,K,Arrhenius laws
+T_C,Celsius temperature,degC,protocols
+rho,relative density from pore volume,1,all models
+G,mean/local grain size,m in fast; nm-like local code unit,context required
+phi_i,pore-bin volume fraction,1,aggregate/separated
+phi_GBseg,GB-segment pore store,1,location/local
+phi_TJ,TJ pore store,1,location/local
+phi_iso,isolated pore store,1,location/local
+phi_closed,closed-pore store,1,local-region
+N_i,pore-number proxy,code-normalized,radius proxies
+r_i,pore-bin radius,m,bin models
+r_0,reference pore radius,m,fine weighting
+sigma_loc,fast-law activation stress,Pa,serial fast model
+sigma_res,residual-stress state,normalized proxy,local model
+tau_nuc,nucleation waiting time,s,serial law
+tau_exchange,exchange time,s,serial law
+tau_transport,transport time,s,serial law
+tau_cycle,serial cycle time,s,serial law
+activity,renewal activity,1,serial or local proxy
+eta_geo,connected-fine eligibility,1,fast law
+eta_loc,location eligibility,1,pore-location
+rho_dot,density rate,s^-1,densification
+G_dot,grain-size rate,m s^-1 or local unit s^-1,migration
+E_G,density gain/log grain growth,1,diagnostic
+C_GBseg,GB pore coverage,1,topology
+C_TJ,TJ pore occupancy,1,topology
+f_clean_GB,clean boundary fraction,1,migration
+X_J,persistent junction state,1,TJ closures
+C_TJ_pore,pore-occupied TJ fraction,1,TJ ablation
+C_TJ_constraint,structural constraint fraction,1,TJ multihit
+C_TJ_relaxed,relaxed TJ fraction,1,TJ ablation
+C_TJ_pinned,pinned TJ fraction,1,TJ drag
+Lambda_TJ,expected TJ events,1,Poisson TJ closure
+K_TJ,required TJ events,1,TJ closure
+P_comp_TJ,TJ completion probability,1,migration
+R_J,persistent drag,1,Class A
+Gamma,migration multiplier,1,growth
+J_PR,PR redistribution rate,s^-1,PR
+H_dens,densification hazard,s^-1,competition
+H_PR,PR hazard,s^-1,competition
+w_dens,densification weight,1,competition
+w_PR,PR weight,1,competition
+A_closed,available closed accommodation,1,candidate 693168
+A_cap,accommodation capacity,1,candidate 693168
+tau_A,accommodation recovery time,s,candidate 693168
+gas_ratio,gas/sintering-pressure proxy,1,closed shrinkage
+rho_dot_open,open-pore density rate,s^-1,local model
+rho_dot_closed,closed-pore density rate,s^-1,local model
+R_fast,matched-density grain ratio,1,fast criterion
+g_2,second-step growth fraction,1,Chen criterion
+Delta_rho,continuous attained density span,1,trajectory criterion
+Theta_nuc,nucleation dominance,1,attribution
+S_closed_growth,closed/growth selectivity,1,attribution
+M_PR_closed,PR-closed screening proxy,1,screen only

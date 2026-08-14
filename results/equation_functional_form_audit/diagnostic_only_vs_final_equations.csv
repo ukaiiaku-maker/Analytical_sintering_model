@@ -1,0 +1,68 @@
+equation_id,equation_name,evidence_role,branches_results_using_it,implementation_note
+FF-01,Capillary/pore activation stress,final_evidence,final fast-firing E0021/E0142,paper-form equivalent of implemented code
+FF-02,Stress-assisted nucleation time,final_evidence,final fast-firing E0021/E0142,paper-form equivalent of implemented code
+FF-03,Exchange time,final_evidence,final fast-firing E0021/E0142,paper-form equivalent of implemented code
+FF-04,Transport time,final_evidence,final fast-firing E0021/E0142,paper-form equivalent of implemented code
+FF-05,Serial cycle time,final_evidence,full model and transport-only ablation,paper-form equivalent of implemented code
+FF-06,Renewal activity,final_evidence,final fast-firing E0021/E0142,paper-form equivalent of implemented code
+FF-07,Connected-fine eligibility,implemented_proxy,final fast-firing E0021/E0142,"implemented proxy, not derived physical law"
+FF-08,Serial-cycle densification,final_evidence,final fast-firing E0021/E0142,paper-form equivalent of implemented code
+FF-09,Low-activity surface redistribution,causal_ablation,PR-off fast-firing ablation,paper-form equivalent of implemented code
+FF-10,Intrinsic grain growth,final_evidence,fast growth and upper-bound channel,paper-form equivalent of implemented code
+FF-11,Migration-only topology factor,diagnostic_only,separated topology closures,paper-form equivalent of implemented code
+FF-12,Conservative adjacent-bin PR update,causal_ablation,fast PR ablation,paper-form equivalent of implemented code
+PR-01,Fine-bin logistic weight,negative_control,production PR memory,paper-form equivalent of implemented code
+PR-02,Low-renewal gate,negative_control,production PR memory,paper-form equivalent of implemented code
+PR-03,Relative PR thermal factor,negative_control,production PR memory,paper-form equivalent of implemented code
+PR-04,Connected fine topology gate,negative_control,production PR memory,paper-form equivalent of implemented code
+PR-05,PR source by bin,negative_control,production PR memory,paper-form equivalent of implemented code
+PR-06,Conservative PR partitions,negative_control,production PR memory,paper-form equivalent of implemented code
+PR-07,Densification/PR competition,negative_control,production PR memory,paper-form equivalent of implemented code
+PR-08,Competition-scaled removal,negative_control,production PR memory,paper-form equivalent of implemented code
+PR-09,PR/densifying work proxies,diagnostic_only,production PR diagnostics,paper-form equivalent of implemented code
+PL-01,Three-store pore conservation,negative_control,pore-location topology,paper-form equivalent of implemented code
+PL-02,GB coverage,negative_control,pore-location topology,paper-form equivalent of implemented code
+PL-03,TJ occupancy,negative_control,pore-location/TJ models,paper-form equivalent of implemented code
+PL-04,Location densification eligibility,negative_control,pore-location topology,paper-form equivalent of implemented code
+PL-05,Location density rate,negative_control,pore-location topology,paper-form equivalent of implemented code
+PL-06,Class-A pore pinning,negative_control,pore-location topology,paper-form equivalent of implemented code
+AL-01,Nonnegative action propensity,negative_control,local action allocation,paper-form summary of explicit action score dictionary
+AL-02,Normalized action allocation,negative_control,local action allocation,paper-form equivalent of implemented code
+AL-03,Constrained pair allocation,negative_control,three action-pair groups,paper-form equivalent of implemented code
+TJ-01,Persistent-junction production,negative_control,persistent-junction Chen families,paper-form equivalent of implemented code
+TJ-02,Junction relaxation,negative_control,persistent-junction Chen families,paper-form equivalent of implemented code
+TJ-03,Persistent drag,negative_control,persistent-junction Chen families,paper-form equivalent of implemented code
+TJ-04,Required TJ packet count,negative_control,q0/q1 multihit families,paper-form equivalent of implemented code
+TJ-05,Pore/structural constraint split,negative_control,TJ constraint ablations,"mixed-mode equivalent; code also implements all-TJ, relaxed, and pinned modes"
+TJ-06,Expected TJ events,negative_control,TJ multihit families,paper-form equivalent of implemented code
+TJ-07,Poisson completion,negative_control,TJ multihit families,paper-form equivalent of implemented code
+TJ-08,Coupled TJ mobility,negative_control,persistent+multihit families,paper-form equivalent of implemented code
+LR-01,Four-store density identity,final_evidence,decoder-corrected local-region; 693168,paper-form equivalent of implemented code
+LR-02,Local activity proxy,implemented_proxy,candidate 693168,"implemented proxy, distinct from the serial fast-firing law"
+LR-03,Open-pore shrinkage,final_evidence,candidate 693168,paper-form equivalent of implemented code
+LR-04,Closed-radius proxy,implemented_proxy,candidate 693168,"implemented proxy, not a calibrated physical pore radius"
+LR-05,Closed-pore shrinkage,final_evidence,candidate 693168 high-density support,implemented finite-capacity proxy
+LR-06,Local PR damage,final_evidence,candidate 693168 preparation,paper-form equivalent of implemented code
+LR-07,Conservative PR store partition,final_evidence,candidate 693168 preparation,paper-form equivalent of implemented code
+LR-08,Conservative closed transition,final_evidence,candidate 693168 lower boundary,paper-form equivalent of implemented code
+LR-09,Local TJ completion proxy,implemented_proxy,candidate 693168 secondary migration,"implemented sigmoid proxy, not exact Poisson completion"
+LR-10,Local migration/growth,final_evidence,candidate 693168 upper boundary,paper-form equivalent of implemented code
+LR-11,Closed accommodation update,final_evidence,candidate 693168 lower boundary,implemented proxy; no closed-pore Poisson Lambda/K law
+LR-12,Inverse-size exact growth step,final_evidence,candidate 693168 integration,paper-form equivalent of implemented code
+MET-01,Matched-density interpolation,final_evidence_metric,fast and two-step trajectory audits,paper-form equivalent of implemented code
+MET-02,Fast-firing ratio and rule,final_evidence_metric,1000 exact fast promotions,paper-form equivalent of implemented code
+MET-03,Second-step growth fraction,final_evidence_metric,candidate 693168 Chen map,paper-form equivalent of implemented code
+MET-04,Chen point classification,final_evidence_metric,candidate 693168 Chen map,paper-form equivalent of implemented code
+MET-05,Complete Chen window,final_evidence_metric,dynamic/production Chen windows,paper-form equivalent of implemented code
+MET-06,Two-step matched-density reduction,final_evidence_metric,candidate 693168 trajectory,paper-form equivalent of stored reduction columns
+PROP-01,Activation-energy perturbation,final_evidence_metric,relative-property exact promotion,paper-form equivalent of implemented code
+PROP-02,Prefactor perturbation,final_evidence_metric,relative-property exact promotion,paper-form equivalent of implemented code
+PROP-03,Latin-hypercube design,screening_only,50000-row screen,paper-form equivalent of implemented code
+PROP-04,Nucleation dominance,diagnostic_only,screen and exact-success summary,paper-form equivalent of implemented code
+PROP-05,Closed/growth selectivity,diagnostic_only,screen and exact-success summary,paper-form equivalent of implemented code
+PROP-06,Surrogate fast score,screening_only,50655-row screen,screening surrogate; never final evidence
+PROP-07,Surrogate two-step score,screening_only,50655-row screen,screening surrogate; never final evidence
+PROP-08,Exact joint classification,final_evidence_metric,1903 unique exact-promoted rows,paper-form equivalent of implemented code
+NC-01,Nonnegative dissipation partition,superseded,aggregate architecture,paper-form equivalent of implemented code
+NC-02,Aggregate smoothing redistribution,superseded,aggregate memory negative control,paper-form equivalent of implemented code
+NC-03,Density efficiency,diagnostic_only,cross-model diagnostic,paper-form equivalent of implemented code
