@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "max_hours": 10.0,
+  "runtime_s": 0.04091283306479454,
+  "materials_in_frozen_registry": 512,
+  "causal_materials": 2,
+  "joint_qualitative_materials": 1,
+  "joint_full_evidence_materials": 0,
+  "topology_parameters_modified": false,
+  "new_parameter_search": false
+}

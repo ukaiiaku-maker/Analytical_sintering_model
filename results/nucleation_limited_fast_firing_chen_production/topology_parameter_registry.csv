@@ -1,0 +1,12 @@
+topology_id,family,mode,TJ_drag_strength,pore_drag_strength,XJ_capacity,XJ_relaxation,lambda_ref,K_ref,q_TJ,pore_relax_fraction,pore_drag_fraction
+C00,topology_disabled,disabled,0,0,0.25,1e-05,2,2,0,0,0
+C01,pore_drag_only,pore_drag_only,0,10,0.25,1e-05,2,2,0,0,0
+C02,TJ_drag_only,TJ_drag_only,8,0,0.25,1e-05,2,2,0,0,0
+C03,persistent_junction_only,persistent_junction_only,16,0,0.5,1e-05,2,2,0,0,0
+C04,structural_TJ_multihit_q0,structural_TJ_multihit_q0,16,0,0.25,1e-05,2,2,0,0,0
+C05,structural_TJ_multihit_q1,structural_TJ_multihit_q1,16,0,0.25,1e-05,2,2,1,0,0
+C06,persistent_q0_multihit,persistent_q0_multihit,16,0,0.5,1e-05,2,2,0,0,0
+C07,persistent_q1_multihit,persistent_q1_multihit,16,0,0.5,1e-05,2,2,1,0,0
+C08,pore_pinned_structural,pore_pinned_structural,16,10,0.25,1e-05,2,2,0,0,1
+C09,pore_relaxed_structural,pore_relaxed_structural,16,10,0.25,1e-05,2,2,0,1,0
+C10,mixed_relaxed_pinned,mixed_relaxed_pinned,16,0,0.25,1e-05,2,2,0,1,1

@@ -1,0 +1,8 @@
+{
+  "status": "complete_negative",
+  "runtime_s": 0.16646671295166016,
+  "stageA": 250000,
+  "stageB": 20000,
+  "stageC": 500,
+  "accepted": 0
+}

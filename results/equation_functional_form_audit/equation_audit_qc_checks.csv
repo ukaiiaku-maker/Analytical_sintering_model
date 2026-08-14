@@ -1,0 +1,16 @@
+check_id,category,passed,details
+registry_count,registry,True,67 equations; 67 unique IDs
+registry_required_fields,registry,True,missing entries=[]
+final_source_functions,registry,True,missing=[]
+nonfinal_role_language,evidence,True,nonfinal rows described as final/controlling=[]
+methods_equation_number_map,methods,True,"paper=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]"
+methods_registry_ids,methods,True,mapped IDs=41; unknown=[]
+final_equation_document_coverage,methods_si,True,final IDs=26; missing=[]
+methods_symbol_definitions,variables,True,symbols=126; missing=[]
+methods_symbol_units,variables,True,missing units=[]
+proxy_dimension_labels,variables,True,unmarked proxy keys=[]
+screening_not_final,evidence,True,screening rows incorrectly final=[]
+closed_accommodation_warning,nonclaims,True,missing phrases=[]
+candidate_693168_tier,nonclaims,True,"candidate is explicitly conditional Tier B, not validation"
+large_separation_nonclaim,nonclaims,True,large attained separation is not rejected by magnitude alone
+closed_state_calibration_target,nonclaims,True,closed/accommodation trajectory identified as calibration target

@@ -1,0 +1,13 @@
+candidate_id,base_mechanism,variant,complete_chen_count,beneficial_fast_count,universal_fast_benefit,joint_positive,rejection_reason
+mech_009_PR_comp,mech_009,PR_comp,16,83,False,True,
+mech_009_PR_attrition_moderate,mech_009,PR_attrition_moderate,16,202,False,True,
+mech_009_PR_attrition_strong,mech_009,PR_attrition_strong,16,443,False,True,
+mech_019_PR_comp,mech_019,PR_comp,19,12,False,True,
+mech_019_PR_attrition_moderate,mech_019,PR_attrition_moderate,19,60,False,True,
+mech_019_PR_attrition_strong,mech_019,PR_attrition_strong,19,253,False,True,
+mech_009_q0_PR_comp,mech_009_q0,PR_comp,8,94,False,True,
+mech_009_q0_PR_attrition_moderate,mech_009_q0,PR_attrition_moderate,8,226,False,True,
+mech_009_q0_PR_attrition_strong,mech_009_q0,PR_attrition_strong,8,548,False,True,
+mech_019_q0_PR_comp,mech_019_q0,PR_comp,21,9,False,True,
+mech_019_q0_PR_attrition_moderate,mech_019_q0,PR_attrition_moderate,21,62,False,True,
+mech_019_q0_PR_attrition_strong,mech_019_q0,PR_attrition_strong,21,260,False,True,

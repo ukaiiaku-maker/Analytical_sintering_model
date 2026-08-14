@@ -1,0 +1,5 @@
+path,status,reason
+raw_outputs/,ignored_not_generated,only compact production histories were generated
+local_region_histories.csv,legacy_stale_ignored,pre-correction 42 MB history is neither used nor committed
+Chen_classification_points.csv,legacy_stale_ignored,pre-correction duplicate is neither used nor committed
+Chen_window_boundaries.csv,legacy_stale_ignored,pre-correction duplicate is neither used nor committed

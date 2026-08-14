@@ -1,0 +1,21 @@
+category,metric,value,units,evidence_level,interpretation
+campaign,perturbations_screened,50655,rows,surrogate screen,not final evidence
+campaign,exact_fast_promotions,1000,rows,exact,final
+campaign,exact_two_step_promotions,1000,rows,exact,final
+campaign,unique_exact_cases,1903,rows,exact union,final
+classification,fast_only,485,cases,exact,final
+classification,two_step_only,119,cases,exact,final
+classification,both_pass,73,cases,exact,final
+classification,neither,1226,cases,exact,final
+screen_warning,surrogate_both,19880,cases,surrogate,screen overprediction
+screen_warning,exact_both,73,cases,exact,final
+fast_OAT,Delta_Q_nuc_survival,0 to +50,kJ/mol,exact OAT,-25 and +75 fail
+two_step_OAT,Delta_Q_closed_survival,-25 to +100,kJ/mol,exact OAT,lower boundary absent at -50
+two_step_OAT,Delta_Q_growth_tested_viable,-100 to +100,kJ/mol,exact OAT,limit not found
+two_step_OAT,PR_prefactor_threshold,0.3,x base,exact OAT,0.1x fails
+two_step_OAT,growth_prefactor_threshold,0.1,x base,exact OAT,0.03x loses upper boundary
+family,best_TierB_candidate,693168,candidate_id,exact base,conditional Tier B; not validation
+family,TierB_family_size,6,candidates,exact base,reduced material transfer only
+guardrail,model_physics_changed,False,boolean,synthesis metadata,no
+guardrail,topology_parameters_changed,False,boolean,synthesis metadata,no
+guardrail,validation_claim,False,boolean,synthesis metadata,conditional attribution only

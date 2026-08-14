@@ -1,0 +1,63 @@
+check,passed,value,requirement
+F01:filename_pdf,True,40936,nonblank PDF/600-dpi PNG >5 kB
+F01:filename_png,True,976401,nonblank PDF/600-dpi PNG >5 kB
+F02:filename_pdf,True,28757,nonblank PDF/600-dpi PNG >5 kB
+F02:filename_png,True,615720,nonblank PDF/600-dpi PNG >5 kB
+F03:filename_pdf,True,20746,nonblank PDF/600-dpi PNG >5 kB
+F03:filename_png,True,214232,nonblank PDF/600-dpi PNG >5 kB
+F04:filename_pdf,True,25293,nonblank PDF/600-dpi PNG >5 kB
+F04:filename_png,True,280400,nonblank PDF/600-dpi PNG >5 kB
+F05:filename_pdf,True,49343,nonblank PDF/600-dpi PNG >5 kB
+F05:filename_png,True,420207,nonblank PDF/600-dpi PNG >5 kB
+F06:filename_pdf,True,41867,nonblank PDF/600-dpi PNG >5 kB
+F06:filename_png,True,1040831,nonblank PDF/600-dpi PNG >5 kB
+F07:filename_pdf,True,29175,nonblank PDF/600-dpi PNG >5 kB
+F07:filename_png,True,412101,nonblank PDF/600-dpi PNG >5 kB
+F08:filename_pdf,True,21164,nonblank PDF/600-dpi PNG >5 kB
+F08:filename_png,True,160236,nonblank PDF/600-dpi PNG >5 kB
+F09:filename_pdf,True,23814,nonblank PDF/600-dpi PNG >5 kB
+F09:filename_png,True,153990,nonblank PDF/600-dpi PNG >5 kB
+F10:filename_pdf,True,25555,nonblank PDF/600-dpi PNG >5 kB
+F10:filename_png,True,296787,nonblank PDF/600-dpi PNG >5 kB
+F11:filename_pdf,True,26923,nonblank PDF/600-dpi PNG >5 kB
+F11:filename_png,True,446952,nonblank PDF/600-dpi PNG >5 kB
+F12:filename_pdf,True,42170,nonblank PDF/600-dpi PNG >5 kB
+F12:filename_png,True,304949,nonblank PDF/600-dpi PNG >5 kB
+F13:filename_pdf,True,48587,nonblank PDF/600-dpi PNG >5 kB
+F13:filename_png,True,287848,nonblank PDF/600-dpi PNG >5 kB
+F14:filename_pdf,True,36112,nonblank PDF/600-dpi PNG >5 kB
+F14:filename_png,True,284037,nonblank PDF/600-dpi PNG >5 kB
+F15:filename_pdf,True,30270,nonblank PDF/600-dpi PNG >5 kB
+F15:filename_png,True,573601,nonblank PDF/600-dpi PNG >5 kB
+F16:filename_pdf,True,71315,nonblank PDF/600-dpi PNG >5 kB
+F16:filename_png,True,787269,nonblank PDF/600-dpi PNG >5 kB
+F17:filename_pdf,True,42653,nonblank PDF/600-dpi PNG >5 kB
+F17:filename_png,True,1187949,nonblank PDF/600-dpi PNG >5 kB
+F18:filename_pdf,True,33769,nonblank PDF/600-dpi PNG >5 kB
+F18:filename_png,True,662263,nonblank PDF/600-dpi PNG >5 kB
+F19:filename_pdf,True,26590,nonblank PDF/600-dpi PNG >5 kB
+F19:filename_png,True,839258,nonblank PDF/600-dpi PNG >5 kB
+F20:filename_pdf,True,49258,nonblank PDF/600-dpi PNG >5 kB
+F20:filename_png,True,1081949,nonblank PDF/600-dpi PNG >5 kB
+F21:filename_pdf,True,33725,nonblank PDF/600-dpi PNG >5 kB
+F21:filename_png,True,751461,nonblank PDF/600-dpi PNG >5 kB
+F22:filename_pdf,True,25090,nonblank PDF/600-dpi PNG >5 kB
+F22:filename_png,True,462268,nonblank PDF/600-dpi PNG >5 kB
+F23:filename_pdf,True,19641,nonblank PDF/600-dpi PNG >5 kB
+F23:filename_png,True,358241,nonblank PDF/600-dpi PNG >5 kB
+F24:filename_pdf,True,58369,nonblank PDF/600-dpi PNG >5 kB
+F24:filename_png,True,366019,nonblank PDF/600-dpi PNG >5 kB
+F25:filename_pdf,True,51171,nonblank PDF/600-dpi PNG >5 kB
+F25:filename_png,True,941961,nonblank PDF/600-dpi PNG >5 kB
+T1_T2_dense_grid,True,779,>=500 fixed-grid points
+G1_T2_dense_grid,True,10920,>=5000 fixed-route points
+switch_T2_dense_grid,True,1120,>=500 fixed-grid points
+three_Chen_classes,True,DENSIFICATION_EXHAUSTION_FAILURE;GRAIN_GROWTH_FAILURE;SUCCESS,"density failure, success, growth failure"
+filled_success_area,True,7544,multiple adjacent success tiles
+required_local_paths,True,highT_reference;lowT_isothermal;lower_failure;success;upper_failure,four paths
+continuous_time,True,all local paths,no time reset
+fast_rates,True,1;20;50;100,"1,20,50,100 C/min"
+separate_fast_two_step,True,separate directories,no mixed main plots
+inventory_source_links,True,25,every figure linked
+conditional_Tier_B_label,True,conditional Tier B; not calibrated; not validation,"Tier B, never Tier A"
+model_physics_unchanged,True,presentation scripts only,no local-region model modification

@@ -1,0 +1,13 @@
+figure_id,filename_pdf,filename_png,short_title,source_table_or_script,purpose,manuscript_location
+1,anchor_comparison_summary.pdf,anchor_comparison_summary.png,anchor_comparison_summary,bridge_plots.py,bridge audit,draft
+2,anchor_T2_scans.pdf,anchor_T2_scans.png,anchor_T2_scans,bridge_plots.py,bridge audit,draft
+3,anchor_G_rho_comparison.pdf,anchor_G_rho_comparison.png,anchor_G_rho_comparison,bridge_plots.py,bridge audit,draft
+4,modular_transplant_outcome_map.pdf,modular_transplant_outcome_map.png,modular_transplant_outcome_map,bridge_plots.py,bridge audit,draft
+5,parameter_morph_heatmap.pdf,parameter_morph_heatmap.png,parameter_morph_heatmap,bridge_plots.py,bridge audit,draft
+6,optimizer_convergence.pdf,optimizer_convergence.png,optimizer_convergence,bridge_plots.py,bridge audit,draft
+7,best_bridge_Chen_filled_window.pdf,best_bridge_Chen_filled_window.png,best_bridge_Chen_filled_window,bridge_plots.py,bridge audit,draft
+8,best_bridge_G_rho_high_density.pdf,best_bridge_G_rho_high_density.png,best_bridge_G_rho_high_density,bridge_plots.py,bridge audit,draft
+9,best_bridge_pore_topology_histories.pdf,best_bridge_pore_topology_histories.png,best_bridge_pore_topology_histories,bridge_plots.py,bridge audit,draft
+10,best_bridge_energy_partition.pdf,best_bridge_energy_partition.png,best_bridge_energy_partition,bridge_plots.py,bridge audit,draft
+11,bridge_ablation_waterfall.pdf,bridge_ablation_waterfall.png,bridge_ablation_waterfall,bridge_plots.py,bridge audit,draft
+12,fast_firing_preservation.pdf,fast_firing_preservation.png,fast_firing_preservation,bridge_plots.py,bridge audit,draft

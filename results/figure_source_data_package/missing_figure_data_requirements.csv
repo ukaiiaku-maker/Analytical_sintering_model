@@ -1,0 +1,2 @@
+figure_id,panel_id,requirement,status,reason,handling
+package,all,No unresolved file-level source requirement,complete_with_channel_NaNs,Unavailable diagnostic channels are separately enumerated.,No values invented.

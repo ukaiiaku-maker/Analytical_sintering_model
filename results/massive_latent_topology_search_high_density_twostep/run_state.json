@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "runtime_s": 48.878074208274484,
+  "stage0_evaluated": 1000000,
+  "stage1_evaluated": 5000,
+  "stage2_evaluated": 100,
+  "production_candidates": 10,
+  "updated_utc": "2026-08-12T20:12:20.799298+00:00"
+}

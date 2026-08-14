@@ -1,0 +1,19 @@
+group,metric,n_materials,minimum,maximum,median,interpretation
+causal_fast_firing,Q_nuc_minus_Q_GB_kJ_mol,2,100.0,150.0,125.0,observed exact-material range; not an identified universal threshold
+causal_fast_firing,Q_surface_minus_Q_GB_kJ_mol,2,125.0,275.0,200.0,observed exact-material range; not an identified universal threshold
+causal_fast_firing,Q_transport_minus_Q_exchange_kJ_mol,2,100.0,115.0,107.5,observed exact-material range; not an identified universal threshold
+causal_fast_firing,Q_nuc_over_Q_GB,2,1.2857142857142858,1.4285714285714286,1.3571428571428572,observed exact-material range; not an identified universal threshold
+causal_fast_firing,Q_surface_over_Q_GB,2,1.3571428571428572,1.7857142857142858,1.5714285714285716,observed exact-material range; not an identified universal threshold
+causal_fast_firing,Q_transport_over_Q_exchange,2,1.469387755102041,1.5555555555555556,1.5124716553287982,observed exact-material range; not an identified universal threshold
+joint_qualitative,Q_nuc_minus_Q_GB_kJ_mol,1,100.0,100.0,100.0,single-material observation; no interval identified
+joint_qualitative,Q_surface_minus_Q_GB_kJ_mol,1,275.0,275.0,275.0,single-material observation; no interval identified
+joint_qualitative,Q_transport_minus_Q_exchange_kJ_mol,1,115.0,115.0,115.0,single-material observation; no interval identified
+joint_qualitative,Q_nuc_over_Q_GB,1,1.2857142857142858,1.2857142857142858,1.2857142857142858,single-material observation; no interval identified
+joint_qualitative,Q_surface_over_Q_GB,1,1.7857142857142858,1.7857142857142858,1.7857142857142858,single-material observation; no interval identified
+joint_qualitative,Q_transport_over_Q_exchange,1,1.469387755102041,1.469387755102041,1.469387755102041,single-material observation; no interval identified
+joint_full_evidence,Q_nuc_minus_Q_GB_kJ_mol,0,,,,not identified because no fully coupled material passed
+joint_full_evidence,Q_surface_minus_Q_GB_kJ_mol,0,,,,not identified because no fully coupled material passed
+joint_full_evidence,Q_transport_minus_Q_exchange_kJ_mol,0,,,,not identified because no fully coupled material passed
+joint_full_evidence,Q_nuc_over_Q_GB,0,,,,not identified because no fully coupled material passed
+joint_full_evidence,Q_surface_over_Q_GB,0,,,,not identified because no fully coupled material passed
+joint_full_evidence,Q_transport_over_Q_exchange,0,,,,not identified because no fully coupled material passed

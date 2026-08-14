@@ -1,0 +1,4 @@
+base_mechanism,TJ_constraint_mode,q_TJ,chen_boundary_status,complete_practical_chen,n_fast_attained,n_fast_beneficial,n_fast_harmful,n_fast_neutral,HR_pct_median,C_TJ_pore_median,C_TJ_constraint_median,P_TJ_multihit_median,P_TJ_pore_drag_median,joint_positive
+mech_009,current_all_TJ_multihit,1,COMPLETE_WINDOW,False,62,28,12,22,2.1266606230826977,0.23339919555259397,0.23339919555259397,73.47024466170781,0.0,False
+mech_009_q0,current_all_TJ_multihit,0,COMPLETE_WINDOW,False,62,31,12,19,2.2226884919880976,0.25719317488138305,0.25719317488138305,44.99204570732503,0.0,False
+mech_009_q0,pore_relaxed_TJ,0,COMPLETE_WINDOW,False,62,29,12,21,1.9517354570814147,0.2504052333004526,0.28756078499506793,44.571204985519365,0.0,False

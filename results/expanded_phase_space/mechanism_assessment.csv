@@ -1,0 +1,11 @@
+mechanism,assessment
+fractional grain-growth scaling controls nanoscale penalty,SUPPORTED
+topology independently creates large-size onset,INCONSISTENT_WITH_SWEEP
+topology moves T2 boundary surfaces,SUPPORTED
+initial density controls fundamental size threshold,INCONSISTENT_WITH_SWEEP
+T1/switch history modulates window width/location,SUPPORTED
+closed-pore/late-stage physics above rho=0.92,REQUIRED
+topology has independent matched-state predictive content,NON_IDENTIFIABLE
+fast firing is monotonic across size,INCONSISTENT_WITH_SWEEP
+fast-firing benefit saturates by high rate,SUPPORTED
+rapid T1 heating universally creates two-step eligibility,INCONSISTENT_WITH_SWEEP

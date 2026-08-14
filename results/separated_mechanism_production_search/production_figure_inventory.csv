@@ -1,0 +1,5 @@
+figure_id,filename_pdf,filename_png,short_title,source_table_or_script,purpose,manuscript_location
+2,Figure2_fast_material_phase_map.pdf,Figure2_fast_material_phase_map.png,Fast-firing material phase map,fast_firing_material_screen.csv,Shows strict span before causal rejection,Results
+3,Figure3_causal_ablation_matrix.pdf,Figure3_causal_ablation_matrix.png,Causal ablation matrix,fast_ablation_summary.csv,Demonstrates failure of PR causal gate,Results
+4,Figure4_fast_trajectory_ablation.pdf,Figure4_fast_trajectory_ablation.png,Representative fast-firing ablation,fast_ablation_ratio_curves.csv,Shows PR-off invariance and nucleation sensitivity,Results
+5,Figure5_nucleation_PR_timing.pdf,Figure5_nucleation_PR_timing.png,Nucleation and PR timing,fast_ablation_state_histories.csv,Diagnoses timing without asserting PR causality,Results

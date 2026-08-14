@@ -1,0 +1,19 @@
+{
+  "status": "complete",
+  "runtime_s": 3694.951574087143,
+  "sampled_seed": 20260818,
+  "stage0": 1000000,
+  "stage0_unique_parameter_vectors": 1000000,
+  "stage0_unique_fingerprints": 20000,
+  "stage1": 20000,
+  "stage1_unique_fingerprints": 20000,
+  "stage2": 1000,
+  "stage2_unique_fingerprints": 1000,
+  "production": 50,
+  "accepted": 6,
+  "numerical_invalid_stage1": 0,
+  "numerical_invalid_stage2": 0,
+  "provisional_tier_candidates": 184,
+  "production_accepted": 6,
+  "production_gate_applied": true
+}

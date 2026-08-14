@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+"""Coupled state: PR creates damaged pores on which boundary sweep acts."""
+from dataclasses import dataclass
+import numpy as np
+from massive_latent_topology_models import R,sigmoid
+
+@dataclass
+class State:
+ rho:float=.70;G_nm:float=100.;phi_connected_fine:float=.18;N_connected_fine:float=1.;phi_PR_damaged_connected:float=0.;N_PR_damaged_connected:float=0.;phi_sweep_coalescence_seed:float=0.;N_sweep_coalescence_seed:float=0.;phi_large_attached:float=.02;N_large_attached:float=.02;phi_large_TJ:float=.01;N_large_TJ:float=.01;phi_isolated:float=.09;N_isolated:float=.09;phi_closed:float=0.;N_closed:float=0.;cumulative_PR_surface_energy_loss:float=0.;cumulative_densifying_work:float=0.;cumulative_non_densifying_work:float=0.;PR_damage_memory:float=0.;sweep_coalescence_memory:float=0.;closed_accommodation_capacity:float=1.
+
+def pore_volume(s):return sum(getattr(s,k) for k in ('phi_connected_fine','phi_PR_damaged_connected','phi_sweep_coalescence_seed','phi_large_attached','phi_large_TJ','phi_isolated','phi_closed'))
+def pore_number(s):return sum(getattr(s,k) for k in ('N_connected_fine','N_PR_damaged_connected','N_sweep_coalescence_seed','N_large_attached','N_large_TJ','N_isolated','N_closed'))
+def local_rates(s,T_C,p):
+ T=T_C+273.15;thermal=lambda Q:np.exp(-Q/R*(1/T-1/1473.15));activity=sigmoid((T_C-p['activity_mid'])/p['activity_width']);pr=p['k_PR']*thermal(p['Q_PR'])*(1-activity)**p['activity_power']*s.phi_connected_fine;drag=p['attached_drag']*(s.phi_large_attached+s.phi_large_TJ)/max(pore_volume(s),1e-30);Gdot=p['k_growth']*thermal(p['Q_growth'])/(max(s.G_nm,1)*(1+drag));sweep=p['k_sweep']*(abs(Gdot)/max(s.G_nm,1))**p['sweep_exp']*(s.phi_PR_damaged_connected+s.phi_sweep_coalescence_seed);rem=s.phi_connected_fine/max(pore_volume(s),1e-30);open_flux=p['k_open']*thermal(p['Q_density'])*s.phi_connected_fine*sigmoid((rem-p['removable_threshold'])*12);cap=max(s.closed_accommodation_capacity,0);closed_flux=p['k_closed']*thermal(p['Q_closed'])*s.phi_closed*(1-p['gas_ratio'])*cap;return dict(activity=activity,PR_damage=pr,sweep=sweep,G_dot=Gdot,rho_dot_open=open_flux,rho_dot_closed=closed_flux,drag=drag)
+def advance(s,T,p,dt):
+ r=local_rates(s,T,p);pr=min(r['PR_damage']*dt,s.phi_connected_fine);sw=min(r['sweep']*dt,s.phi_PR_damaged_connected+s.phi_sweep_coalescence_seed);source=max(s.phi_PR_damaged_connected+s.phi_sweep_coalescence_seed,1e-30);a=s.phi_PR_damaged_connected/source;closed=min(p['closed_transition']*s.phi_isolated*dt,s.phi_isolated,s.closed_accommodation_capacity);op=min(r['rho_dot_open']*dt,s.phi_connected_fine-pr);cl=min(r['rho_dot_closed']*dt,s.phi_closed+closed)
+ s.phi_connected_fine-=pr+op;s.phi_PR_damaged_connected+=p['PR_to_damaged']*pr-a*sw;s.phi_sweep_coalescence_seed+=p['PR_to_seed']*pr-(1-a)*sw;s.phi_large_attached+=p['sweep_to_attached']*sw;s.phi_large_TJ+=p['sweep_to_TJ']*sw;s.phi_isolated+=(1-p['PR_to_damaged']-p['PR_to_seed'])*pr+(1-p['sweep_to_attached']-p['sweep_to_TJ'])*sw-closed;s.phi_closed+=closed-cl
+ nloss=min(s.N_PR_damaged_connected+s.N_sweep_coalescence_seed,p['number_loss']*sw);s.N_PR_damaged_connected=max(s.N_PR_damaged_connected+p['PR_to_damaged']*pr-a*nloss,0);s.N_sweep_coalescence_seed=max(s.N_sweep_coalescence_seed+p['PR_to_seed']*pr-(1-a)*nloss,0);s.N_connected_fine=max(s.N_connected_fine-pr,0);s.N_large_attached+=p['sweep_to_attached']*nloss/4;s.N_large_TJ+=p['sweep_to_TJ']*nloss/4;s.N_closed=max(s.N_closed+closed-cl,0)
+ s.closed_accommodation_capacity=max(s.closed_accommodation_capacity-closed+p['capacity_recovery']*(1-s.closed_accommodation_capacity)*dt,0);s.G_nm+=r['G_dot']*dt;s.rho=1-pore_volume(s);s.PR_damage_memory+=pr;s.sweep_coalescence_memory+=sw;s.cumulative_PR_surface_energy_loss+=r['PR_damage']*dt;s.cumulative_non_densifying_work+=r['PR_damage']*dt;s.cumulative_densifying_work+=(r['rho_dot_open']+r['rho_dot_closed'])*dt;return r
+def defaults():return dict(k_PR=1e-5,Q_PR=250e3,activity_mid=1180.,activity_width=70.,activity_power=2.,k_sweep=20.,sweep_exp=1.,k_growth=9e3,Q_growth=500e3,k_open=1.5e-5,Q_density=475e3,k_closed=2e-6,Q_closed=475e3,gas_ratio=.25,closed_transition=2e-5,capacity_recovery=1e-8,removable_threshold=.08,attached_drag=30.,PR_to_damaged=.6,PR_to_seed=.2,sweep_to_attached=.6,sweep_to_TJ=.2,number_loss=3.)
+LOCAL_FUNCTIONS=(local_rates,)

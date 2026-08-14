@@ -1,0 +1,5 @@
+candidate_id,base_mechanism,variant,complete_chen_count,beneficial_fast_count,universal_fast_benefit,joint_positive,rejection_reason
+mech_009_disabled,mech_009,disabled,16,0,False,False,no_beneficial_fast_case
+mech_019_disabled,mech_019,disabled,19,0,False,False,no_beneficial_fast_case
+mech_009_q0_disabled,mech_009_q0,disabled,9,0,False,False,no_beneficial_fast_case
+mech_019_q0_disabled,mech_019_q0,disabled,21,0,False,False,no_beneficial_fast_case

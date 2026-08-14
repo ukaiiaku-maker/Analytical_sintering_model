@@ -1,0 +1,10 @@
+ingredient,behavior,attribution,evidence
+nucleation-limited waiting,fast firing,necessary,nucleation-facile ablation removes exact fast cases
+PR redistribution,fast firing,non-causal in current envelope,PR-off may preserve fast firing
+exchange and transport completion,fast firing,necessary in combination,both paths must attain matched-density interval
+PR-prepared closed store,two-step,necessary for candidate 693168,no-PR damage destroys frozen candidate
+closed shrinkage,two-step,necessary,supports density above 0.95 and lower boundary
+finite closed accommodation,two-step,necessary and calibration-sensitive,infinite-accommodation ablation destroys joint result
+thermally activated migration,two-step,necessary for upper boundary,growth failure brackets success band
+high-density attainment,both,shared constraint,unattained intervals never score
+large grain-size separation,two-step,"outcome, not artifact",allowed when attained and numerically supported

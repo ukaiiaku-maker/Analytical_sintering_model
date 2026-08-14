@@ -1,0 +1,11 @@
+material_id,ablation,PR_redistribution_enabled,nucleation_limitation_enabled,topology_enabled,growth_before_activation_enabled,peak_T_C,hold_time_h,reference_rate_C_min,fast_rate_C_min
+E0021,no_PR_redistribution,False,True,False,True,1550,20,1,100
+E0021,no_nucleation_limitation,True,False,False,True,1550,20,1,100
+E0021,no_growth_before_activation,True,True,False,False,1550,20,1,100
+E0021,transport_only,True,True,False,True,1550,20,1,100
+E0021,exchange_limited_variant,True,True,False,True,1550,20,1,100
+E0142,no_PR_redistribution,False,True,False,True,1550,20,1,100
+E0142,no_nucleation_limitation,True,False,False,True,1550,20,1,100
+E0142,no_growth_before_activation,True,True,False,False,1550,20,1,100
+E0142,transport_only,True,True,False,True,1550,20,1,100
+E0142,exchange_limited_variant,True,True,False,True,1550,20,1,100

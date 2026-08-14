@@ -1,0 +1,36 @@
+candidate_id,rho_target,comparison_attained,n_cases,physics_support,reason
+mech_009_PR_attrition_moderate,0.85,False,5550,True,production table
+mech_009_PR_attrition_moderate,0.85,True,3090,True,production table
+mech_009_PR_attrition_moderate,0.88,False,6289,True,production table
+mech_009_PR_attrition_moderate,0.88,True,2351,True,production table
+mech_009_PR_attrition_moderate,0.9,False,6784,True,production table
+mech_009_PR_attrition_moderate,0.9,True,1856,True,production table
+mech_009_PR_attrition_moderate,0.92,False,7235,True,production table
+mech_009_PR_attrition_moderate,0.92,True,1405,True,production table
+mech_009_q0_PR_attrition_moderate,0.85,False,5545,True,production table
+mech_009_q0_PR_attrition_moderate,0.85,True,3095,True,production table
+mech_009_q0_PR_attrition_moderate,0.88,False,6289,True,production table
+mech_009_q0_PR_attrition_moderate,0.88,True,2351,True,production table
+mech_009_q0_PR_attrition_moderate,0.9,False,6780,True,production table
+mech_009_q0_PR_attrition_moderate,0.9,True,1860,True,production table
+mech_009_q0_PR_attrition_moderate,0.92,False,7228,True,production table
+mech_009_q0_PR_attrition_moderate,0.92,True,1412,True,production table
+mech_019_PR_attrition_moderate,0.85,False,5559,True,production table
+mech_019_PR_attrition_moderate,0.85,True,3081,True,production table
+mech_019_PR_attrition_moderate,0.88,False,6315,True,production table
+mech_019_PR_attrition_moderate,0.88,True,2325,True,production table
+mech_019_PR_attrition_moderate,0.9,False,6796,True,production table
+mech_019_PR_attrition_moderate,0.9,True,1844,True,production table
+mech_019_PR_attrition_moderate,0.92,False,7249,True,production table
+mech_019_PR_attrition_moderate,0.92,True,1391,True,production table
+mech_019_q0_PR_attrition_moderate,0.85,False,5559,True,production table
+mech_019_q0_PR_attrition_moderate,0.85,True,3081,True,production table
+mech_019_q0_PR_attrition_moderate,0.88,False,6320,True,production table
+mech_019_q0_PR_attrition_moderate,0.88,True,2320,True,production table
+mech_019_q0_PR_attrition_moderate,0.9,False,6795,True,production table
+mech_019_q0_PR_attrition_moderate,0.9,True,1845,True,production table
+mech_019_q0_PR_attrition_moderate,0.92,False,7254,True,production table
+mech_019_q0_PR_attrition_moderate,0.92,True,1386,True,production table
+current_open_pore_model,0.95,False,0,False,not sampled; closed-pore treatment absent
+current_open_pore_model,0.98,False,0,False,not sampled; closed-pore treatment absent
+current_open_pore_model,0.99,False,0,False,not sampled; closed-pore treatment absent

@@ -1,0 +1,19 @@
+group,parameter,n,minimum_delta_kJ_mol,maximum_delta_kJ_mol,total_observed_width_kJ_mol,evidence
+fast_pass_exact,Q_nuc_delta_kJ,558,-100.0,99.668156,199.668156,exact promotion envelope
+fast_pass_exact,Q_exchange_delta_kJ,558,-75.0,74.9248423,149.9248423,exact promotion envelope
+fast_pass_exact,Q_transport_delta_kJ,558,-75.0,75.0,150.0,exact promotion envelope
+fast_pass_exact,Q_growth_delta_kJ,558,-100.0,0.0,100.0,exact promotion envelope
+fast_pass_exact,Q_PR_delta_kJ,558,-100.0,100.0,200.0,exact promotion envelope
+fast_pass_exact,Q_closed_delta_kJ,558,-100.0,100.0,200.0,exact promotion envelope
+two_step_pass_exact,Q_nuc_delta_kJ,192,-100.0,100.0,200.0,exact promotion envelope
+two_step_pass_exact,Q_exchange_delta_kJ,192,-75.0,75.0,150.0,exact promotion envelope
+two_step_pass_exact,Q_transport_delta_kJ,192,-75.0,75.0,150.0,exact promotion envelope
+two_step_pass_exact,Q_growth_delta_kJ,192,-100.0,100.0,200.0,exact promotion envelope
+two_step_pass_exact,Q_PR_delta_kJ,192,-100.0,100.0,200.0,exact promotion envelope
+two_step_pass_exact,Q_closed_delta_kJ,192,-99.954587,100.0,199.954587,exact promotion envelope
+both_pass_exact,Q_nuc_delta_kJ,73,0.0,55.5177707,55.5177707,exact promotion envelope
+both_pass_exact,Q_exchange_delta_kJ,73,-75.0,50.0,125.0,exact promotion envelope
+both_pass_exact,Q_transport_delta_kJ,73,-75.0,75.0,150.0,exact promotion envelope
+both_pass_exact,Q_growth_delta_kJ,73,-100.0,0.0,100.0,exact promotion envelope
+both_pass_exact,Q_PR_delta_kJ,73,-100.0,100.0,200.0,exact promotion envelope
+both_pass_exact,Q_closed_delta_kJ,73,-97.214198,100.0,197.214198,exact promotion envelope

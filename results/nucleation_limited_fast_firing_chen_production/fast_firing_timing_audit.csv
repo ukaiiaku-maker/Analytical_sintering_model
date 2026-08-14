@@ -1,0 +1,13 @@
+material_id,ablation_mode,attained,max_ratio,median_ratio,span_ge_1p2,span_ge_1p5,span_ge_2p0,integrated_separation,effect_rho_min,effect_rho_max,meaningful,extreme_warning,promotion_blocked,rejection_reason
+E0021,full_material_model,True,1.8595439035953718,1.6955217568197216,0.17000000000000015,0.17000000000000015,0.0,0.08930593575149838,0.75,0.9200000000000002,True,False,False,
+E0021,no_PR_redistribution,True,1.8595438843118768,1.6955217421144084,0.17000000000000015,0.17000000000000015,0.0,0.08930593563053152,0.75,0.9200000000000002,True,False,False,
+E0021,no_nucleation_limitation,True,1.0000000151540376,1.0000000111553515,0.0,0.0,0.0,1.5561549087478175e-09,nan,nan,False,False,False,ratio_or_span_below_threshold
+E0021,transport_only,False,,,,,,,,,,,,unattained_interval
+E0021,exchange_limited_variant,True,1.0000000158492155,1.000000011393839,0.0,0.0,0.0,1.615575321988922e-09,nan,nan,False,False,False,ratio_or_span_below_threshold
+E0021,no_growth_before_activation,True,0.8786626115150878,0.7568355789798534,0.0,0.0,0.0,0.0,nan,nan,False,False,False,ratio_or_span_below_threshold
+E0142,full_material_model,True,1.7961615996597604,1.7873484720505841,0.17000000000000015,0.17000000000000015,0.0,0.09835654181932427,0.75,0.9200000000000002,True,False,False,
+E0142,no_PR_redistribution,True,1.7961615996550435,1.787348472046075,0.17000000000000015,0.17000000000000015,0.0,0.09835654181906664,0.75,0.9200000000000002,True,False,False,
+E0142,no_nucleation_limitation,True,0.9995444780666941,0.9988991462421928,0.0,0.0,0.0,0.0,nan,nan,False,False,False,ratio_or_span_below_threshold
+E0142,transport_only,False,,,,,,,,,,,,unattained_interval
+E0142,exchange_limited_variant,True,0.9996122689273429,0.9989956418604872,0.0,0.0,0.0,0.0,nan,nan,False,False,False,ratio_or_span_below_threshold
+E0142,no_growth_before_activation,True,1.7959233827203471,1.787173552091906,0.17000000000000015,0.17000000000000015,0.0,0.09833713088344033,0.75,0.9200000000000002,True,False,False,

@@ -1,0 +1,38 @@
+block,parameter,value_155976,value_4412,relative_difference,expected_role
+PR,k_PR_ref,0.0029161189090015516,0.00014866060802980606,-0.949021074699349,lower boundary
+PR,Q_PR,273194.0250908709,259154.3407747003,-0.05139089082018052,lower boundary
+PR,T_PR_ref_C,956.8887958518454,972.0205801692654,0.015813524395955816,lower boundary
+PR,low_activity_gate_mid,0.44305709547811617,0.46881816224501655,0.058143898449703954,lower boundary
+PR,low_activity_gate_width,0.17876158226261038,0.11719684564413803,-0.34439579152991856,lower boundary
+PR,activity_power,3,1,-0.6666666666666666,lower boundary
+PR,PR_to_smoothing_fraction,0.06408035320473232,0.4490214800631984,6.007163000937365,lower boundary
+PR,PR_to_large_tail_fraction,0.3209244034442223,0.3251372729512411,0.013127295592997914,lower boundary
+PR,PR_to_TJ_fraction,0.4877318031373798,0.5199522138963207,0.06606173833996508,lower boundary
+PR,PR_to_isolated_fraction,0.7385700712645599,0.8812533764859649,0.19318858260409405,lower boundary
+PR,PR_to_closed_fraction,0.9805026390063138,0.3091251328758788,-0.6847278930435512,lower boundary
+PR,PR_damage_persistence_tau,4443114.6755872285,8017293.002997207,0.8044308077503298,lower boundary
+PR,Q_PR_damage_relax,137650.05893270188,382142.54694269877,1.7761887637805593,lower boundary
+coalescence,k_sweep_coalesce,16.454706635449735,15.932934476770457,-0.03170959958381641,high-density reduction
+coalescence,k_drag_detach,221.9918904816389,475.93411001782,1.1439256586590707,high-density reduction
+coalescence,k_recapture,0.20195142377656278,0.022793056542371924,-0.887135945287566,high-density reduction
+coalescence,k_TJ_coalescence,1.9924369178922186,1.9924369178922186,0.0,high-density reduction
+coalescence,coalescence_radius_exponent,7.029328313132989,7.029328313132989,0.0,high-density reduction
+coalescence,number_merge_efficiency,2.0,2.0,0.0,high-density reduction
+coalescence,sweep_Gdot_exponent,0.6674184732948423,0.6674184732948423,0.0,high-density reduction
+closed,k_closed_transition,7.04376519188531e-06,2.432110130932544e-06,-0.654714479447096,attainment
+closed,closed_pore_shrinkage_prefactor,0.00035056720503471596,0.00035056720503471596,0.0,attainment
+closed,rho_close_mid,0.92,0.92,0.0,attainment
+closed,rho_close_width,0.02,0.02,0.0,attainment
+closed,gas_pressure_ratio,0.25,0.25,0.0,attainment
+migration,q_TJ,0,0,0.0,upper boundary
+migration,lambda_TJ,0.002642302632525042,0.002642302632525042,0.0,upper boundary
+migration,K_TJ,42.49560899274647,42.49560899274647,0.0,upper boundary
+migration,pore_drag_strength,289.91757705151025,289.91757705151025,0.0,upper boundary
+migration,A_J,10.0,10.0,0.0,upper boundary
+migration,XJ_prod,4.0,4.0,0.0,upper boundary
+migration,tau_J,2000000.0,2000000.0,0.0,upper boundary
+drive,drive_loss_coupling,9.301600441534726,9.47807768387965,0.01897278252857384,eligibility
+drive,connected_sink_loss_coupling,7.2336718154002675,9.167082035023162,0.26727922816552485,eligibility
+drive,removable_fraction_threshold,0.08788795508284525,0.08788795508284525,0.0,eligibility
+drive,activity_T_mid_C,1180.0,1180.0,0.0,eligibility
+drive,activity_T_width_C,70.0,70.0,0.0,eligibility

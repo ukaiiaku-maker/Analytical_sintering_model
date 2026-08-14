@@ -1,0 +1,10 @@
+ingredient,status,rationale
+geometric_eligibility,required,Only pore-connected GB/TJ stores densify
+pore_size_location_memory,required,Heating changes observable pore bins and placement
+separate_densification_migration,required,Migration suppression does not alter shared-state rho_dot
+persistent_X_J,required_for_current_window,Drag persists after connected coverage falls
+TJ_multihit,required_for_upper_boundary,Temperature-sensitive reactivation restores upper growth failure
+adaptive_preparation,required,Finite T1 tradeoff prepares topology
+censor_aware_boundaries,required,Both bounds and T2<T1 enforced
+density_gate_only,insufficient,Moves crossover without observable topology
+connected_pinning_only,insufficient,Releases as coverage falls

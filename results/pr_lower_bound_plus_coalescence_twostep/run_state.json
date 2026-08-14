@@ -1,0 +1,8 @@
+{
+  "status": "complete",
+  "runtime_s": 607.2942259311676,
+  "stageA": 250000,
+  "stageB": 5000,
+  "stageC": 500,
+  "production": 20
+}

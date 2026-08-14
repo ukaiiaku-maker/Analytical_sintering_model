@@ -1,0 +1,17 @@
+figure_id,filename_pdf,filename_png,short_title,source_table_or_script,purpose,manuscript_location
+1,decoder_fingerprint_diversity.pdf,decoder_fingerprint_diversity.png,Decoder fingerprint diversity,decoder_fingerprint_summary.csv,Verify true decoder diversity,Results
+2,optimizer_or_screen_convergence.pdf,optimizer_or_screen_convergence.png,Screen convergence,stage0_massive_screen.csv.gz,Show retained-score decay,Results
+3,stage0_phase_map.pdf,stage0_phase_map.png,Stage-0 phase map,stage0_massive_screen.csv.gz,Display surrogate boundary trade-off,Results
+4,pareto_front.pdf,pareto_front.png,Exact Pareto front,stage2_exact_dynamic_summary.csv,Compare window width and matched-density benefit,Results
+5,best_highT_vs_twostep_G_rho.pdf,best_highT_vs_twostep_G_rho.png,Best G-rho trajectories,local_region_state_histories_compact.csv,Show matched-density separation,Results
+6,reduction_TS_vs_density_best.pdf,reduction_TS_vs_density_best.png,Two-step reduction versus density,two_step_ratio_curves.csv,Show attained density span,Results
+7,best_physical_time_histories.pdf,best_physical_time_histories.png,Physical-time histories,local_region_state_histories_compact.csv,Show continuous path timing,Results
+8,local_region_topology_histories.pdf,local_region_topology_histories.png,Local topology histories,local_region_state_histories_compact.csv,Show evolving topology memory,Results
+9,pore_connectivity_distribution_histories.pdf,pore_connectivity_distribution_histories.png,Pore connectivity distribution,local_region_state_histories_compact.csv,Show network heterogeneity,Results
+10,pore_number_D90_location_histories.pdf,pore_number_D90_location_histories.png,"Pore number, radius, and location",local_region_state_histories_compact.csv,Show observable pore evolution,Results
+11,closed_pore_and_accommodation_histories.pdf,closed_pore_and_accommodation_histories.png,Closed-pore support,closed_pore_histories_compact.csv,Show high-density support state,Results
+12,Chen_filled_window_best.pdf,Chen_filled_window_best.png,Chen filled window,chen_classification_points_compact.csv,Show finite success interval,Results
+13,Chen_classification_map_best.pdf,Chen_classification_map_best.png,Chen classification map,chen_classification_points_compact.csv,Distinguish boundary failure modes,Results
+14,robustness_heatmap_rho0_G0.pdf,robustness_heatmap_rho0_G0.png,Initial-condition robustness,robustness_summary.csv,Check bounded robustness,Results
+15,ablation_waterfall_best.pdf,ablation_waterfall_best.png,Causal ablation waterfall,ablation_summary.csv,Identify named controlling channels,Results
+16,fast_firing_preservation.pdf,fast_firing_preservation.png,Fast-firing preservation,fast_firing_preservation.csv,Verify frozen material causality,Results

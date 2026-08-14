@@ -1,0 +1,28 @@
+check_id,category,passed,details
+citation_sources_exist,coverage,True,33 figure references checked
+manifest_files_exist,coverage,True,52 exported scientific datasets checked
+scientific_tables_nonempty,schema,True,empty=[]
+scientific_table_metadata,schema,True,missing=[]
+evidence_levels_explicit,evidence,True,"levels=['diagnostic', 'exact', 'schematic']"
+exact_counts_reproduced,evidence,True,"observed={'screened_rows': 50655, 'unique_exact_cases': 1903, 'fast_only': 485, 'two_step_only': 119, 'both_pass': 73, 'neither': 1226, 'surrogate_both': 19880}"
+exact_union_rows,evidence,True,rows=1903
+surrogate_not_final,evidence,True,screening tables are explicitly non-final
+fast_firing_ablations_present,fast_firing,True,"ablations=['PR-off', 'full', 'nucleation-facile']"
+fast_firing_materials_present,fast_firing,True,"materials=['E0021', 'E0142']"
+fast_matched_density_attained,fast_firing,True,rho_range=0.700-0.920
+candidate_693168_density_interval,candidate_693168,True,success_rho_range=0.9-0.98
+continuous_physical_time,candidate_693168,True,issues=[]
+fine_T2_three_regions,Chen_map,True,"classes=['DENSIFICATION_EXHAUSTION_FAILURE', 'GRAIN_GROWTH_FAILURE', 'SUCCESS']"
+fine_T2_not_success_only,Chen_map,True,points=101 failures=45
+complete_Chen_maps,Chen_map,True,"chen_maps/chen_map_T1_T2_classification.csv:779:['DENSIFICATION_EXHAUSTION_FAILURE', 'GRAIN_GROWTH_FAILURE', 'SUCCESS']; chen_maps/chen_map_G1_T2_classification.csv:10920:['DENSIFICATION_EXHAUSTION_FAILURE', 'GRAIN_GROWTH_FAILURE', 'SUCCESS']; chen_maps/chen_map_switch_density_T2_classification.csv:1120:['DENSIFICATION_EXHAUSTION_FAILURE', 'GRAIN_GROWTH_FAILURE', 'SUCCESS']"
+six_TierB_candidates,family,True,"ids=[85161, 295003, 366094, 581668, 693168, 822940]"
+surrogate_exact_warning_counts,evidence,True,"values={'surrogate_both': 19880.0, 'exact_both': 73.0, 'overprediction_factor': 272.32876712328766}"
+all_columns_defined,dictionary,True,missing=[]
+all_units_present,dictionary,True,gaps=0
+all_labels_present,dictionary,True,gaps=0
+missing_channels_honest,guardrails,True,channels=9
+conditional_TierB_nonclaim,guardrails,True,candidate status stated
+closed_proxy_warning,guardrails,True,"proxy, non-derived-law, and no-hidden-law warnings present"
+no_model_physics_files_changed,git_hygiene,True,unexpected_python_changes=[]
+no_archived_result_deletions_staged,git_hygiene,True,staged_result_deletions=0
+package_archive_exists,archive,True,path=results/figure_source_data_package_20260814.zip bytes=8678906

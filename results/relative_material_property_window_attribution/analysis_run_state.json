@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "screened_rows": 50655,
+  "exact_union_rows": 1903,
+  "exact_fast_rows": 1000,
+  "exact_two_step_rows": 1000,
+  "fast_only": 485,
+  "two_step_only": 119,
+  "both_pass": 73,
+  "neither": 1226,
+  "surrogate_both": 19880,
+  "screen_is_exact": false,
+  "model_layers_coupled": false
+}

@@ -1,0 +1,11 @@
+criterion,density,connectivity,hybrid_topology
+finite two-step window,SUPPORTED_AT_10PCT_ONLY,SUPPORTED_AT_10PCT_ONLY,NOT_EVALUATED
+nanoscale two-step robustness,INCONSISTENT_WITH_SWEEP,INCONSISTENT_WITH_SWEEP,NOT_EVALUATED
+two-step size boundary,INCONSISTENT_WITH_SWEEP,INCONSISTENT_WITH_SWEEP,NOT_EVALUATED
+matched-density topology identifiability,NON_IDENTIFIABLE,NON_IDENTIFIABLE,NON_IDENTIFIABLE
+high-heating-rate advantage,SUPPORTED,SUPPORTED,NOT_EVALUATED
+heating-rate robustness across particle size,SUPPORTED,PARTIAL,NOT_EVALUATED
+heating-rate robustness across initial density,SUPPORTED,PARTIAL,NOT_EVALUATED
+grain-growth failure reproduced,SUPPORTED,SUPPORTED,NOT_EVALUATED
+densification-exhaustion failure reproduced,SUPPORTED,SUPPORTED,NOT_EVALUATED
+unattainable-first-step region reproduced,INCONSISTENT_WITH_SWEEP,INCONSISTENT_WITH_SWEEP,NOT_EVALUATED

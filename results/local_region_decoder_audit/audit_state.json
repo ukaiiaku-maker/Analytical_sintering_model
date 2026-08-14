@@ -1,0 +1,9 @@
+{
+  "sampled_rows": 10000,
+  "unique_parameter_vectors": 10000,
+  "unique_dynamic_fingerprints": 10000,
+  "unique_N_regions": 3,
+  "passed": true,
+  "unused_columns": 0,
+  "dynamically_influential_columns": 47
+}

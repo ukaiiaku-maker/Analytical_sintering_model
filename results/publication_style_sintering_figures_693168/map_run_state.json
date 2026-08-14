@@ -1,0 +1,10 @@
+{
+  "status": "complete",
+  "candidate_id": 693168,
+  "physics_changed": false,
+  "runtime_s": 49.72341203689575,
+  "T1_T2_points": 779,
+  "G1_T2_points": 10920,
+  "switch_T2_points": 1120,
+  "total_map_points": 12819
+}

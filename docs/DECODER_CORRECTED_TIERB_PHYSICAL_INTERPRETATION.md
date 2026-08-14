@@ -1,0 +1,5 @@
+# Decoder-corrected Tier-B physical interpretation
+
+The decoder-corrected campaign supports a narrow mechanistic statement: conservative PR redistribution during preparation can populate a closed-pore store whose finite accommodation supports high-density shrinkage at intermediate second-step temperature. Too little thermal activation exhausts the processing budget below target; too much activates grain growth. This produces a finite Chen-style band while preserving the separate nucleation-limited fast-firing envelope.
+
+The audit does **not** support quantitative validation. Model closed-store fractions are large, physical pore diameters and gas pressures are absent, and high-temperature reference growth is extreme. Migration-side TJ, drag, persistent-junction, and network closures are secondary for candidate 693168, although residual stress changes the magnitude. The immediate experimental target is the open-to-closed topology transition and closed-pore shrinkage trajectory between density 0.88 and 0.98.
