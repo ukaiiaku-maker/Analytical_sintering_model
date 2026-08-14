@@ -6,6 +6,8 @@ CURRENT={
  'test_bridge_pr_reduction.py','test_pr_lower_bound_coalescence.py',
  'test_grain_growth_pore_coalescence.py','test_massive_latent_topology_search.py',
  'test_coupled_pr_sweep_state.py',
+ 'test_relative_material_property_window_attribution.py',
+ 'test_final_mechanism_synthesis.py',
 }
 ARCHIVED_MODULES={'test_paper_figures.py'}
 

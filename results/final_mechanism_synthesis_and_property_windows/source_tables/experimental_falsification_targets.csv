@@ -1,0 +1,10 @@
+measurement,mechanism_constrained,falsifiable_expected_signature
+"Matched-density G_mean, G50, G90",fast and two-step trajectory separation,fast path smaller after onset; two-step distribution remains finer
+Densification-onset time during ramps,nucleation-limited waiting,nucleation-facile material weakens heating-rate separation
+Exchange and transport relaxation,post-nucleation attainment,completion remains fast after the onset threshold
+3D open/closed pore fraction,PR-prepared closed store,first step increases a persistent closed inventory
+"Pore D50, D90, and large-pore tail",PR/surface redistribution,schedule-dependent distribution at matched density
+Connected fine-pore fraction/percolation,removable-pore topology,connectivity changes across first-step preparation
+Trapped-gas pressure or accommodation proxy,finite closed accommodation,low-T2 exhaustion accompanies accommodation depletion
+Grain-growth mobility versus T2,upper Chen boundary,migration rises across the upper success boundary
+Interrupted first/second-step tomography,memory persistence,prepared topology persists long enough to affect G(rho)

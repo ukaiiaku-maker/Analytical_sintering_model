@@ -1,0 +1,5 @@
+classification,surrogate_count,exact_count,evidence_note,surrogate_to_exact_ratio
+fast_only,6142,485,surrogate is screening only; exact is final,12.663917525773195
+two_step_only,20814,119,surrogate is screening only; exact is final,174.9075630252101
+both_pass,19880,73,surrogate is screening only; exact is final,272.32876712328766
+neither,3791,1226,surrogate is screening only; exact is final,3.092169657422512

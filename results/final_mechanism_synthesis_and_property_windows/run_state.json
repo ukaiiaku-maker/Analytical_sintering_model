@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "new_search_run": false,
+  "model_physics_changed": false,
+  "topology_parameters_changed": false,
+  "material_parameters_retuned": false,
+  "screened_rows": 50655,
+  "unique_exact_cases": 1903,
+  "exact_fast_only": 485,
+  "exact_two_step_only": 119,
+  "exact_both_pass": 73,
+  "exact_neither": 1226,
+  "surrogate_both": 19880,
+  "candidate_693168_status": "conditional Tier B; not validation"
+}
