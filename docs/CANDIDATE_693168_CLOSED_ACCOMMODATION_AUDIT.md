@@ -22,19 +22,19 @@ The original production helper enforces a 30-minute minimum for second-step call
 
 ## Absolute trajectory magnitude
 
-The magnitude is extreme. Over matched density 0.95–0.98, the 5-minute reconstruction has:
+The magnitude is a large experimental-scale separation of the kind sought in two-step sintering. Over matched density 0.95–0.98, the 5-minute reconstruction has:
 
 - high-temperature reference grain size 858–1123 nm;
 - representative 1100 °C two-step grain size 117.7–118.4 nm;
 - minimum/median/maximum reduction 85.0%/86.5%/87.3% for the 15-minute reconstruction, 87.3%/88.3%/88.8% at 5 minutes, and 88.3%/89.4%/90.4% for the production-compatible 30-minute reconstruction.
 
-Thus the large ratio is not interpolation censoring: both paths attain the interval and all support flags are true. It is caused by very large absolute high-temperature reference growth combined with nearly arrested second-step growth. This is a prototype-scale prediction and cannot be treated as quantitatively plausible without grain-growth and pore-topology calibration.
+Thus the large ratio is not interpolation censoring: both paths attain the interval and all support flags are true. High-temperature submicron/micron-scale grains versus a retained nanoscale two-step structure are consistent with the intended qualitative experimental response. Candidate 693168 remains Tier B because this prototype-scale magnitude is not quantitatively fitted, its first-step growth exceeds the Tier-A limit, and its closed-pore/accommodation state is unconstrained—not because the grain-size ratio is large.
 
 ## Closed-pore trajectory
 
 At the switch, the remaining-pore composition is 64.94% closed and the available accommodation is 0.152 on a capacity of 0.909. The successful path reaches the target with approximately 94.5% of the remaining pore volume closed. The high-temperature reference approaches a fully closed remaining-pore population. These fractions are model store fractions, not measured stereological closed porosity.
 
-Closed-pore shrinkage supplies most of the density gain after the switch and is essential for reaching 0.98. This makes the predicted closed population and accommodation history the primary falsification target. The trajectory is internally conservative and bounded, but its magnitude is physically aggressive.
+Closed-pore shrinkage supplies most of the density gain after the switch and is essential for reaching 0.98. This makes the predicted closed population and accommodation history the primary falsification target. The trajectory is internally conservative and bounded, but the mapping of these state magnitudes to measurable porosity and gas accommodation remains calibration-sensitive.
 
 Finite accommodation creates the lower boundary. At low (T_2), closed shrinkage becomes too slow relative to the fixed time budget and the path stalls below 0.98. The finite state remains nonnegative and no greater than capacity. Infinite accommodation does not make low temperatures universally successful in this candidate; instead, it changes the prepared topology and destroys the joint trajectory/window result. Therefore the relevant claim is that finite accommodation is required for this candidate—not the stronger claim that its removal erases only the lower boundary.
 
@@ -58,14 +58,14 @@ Frozen E0021 and E0142 material records remain meaningful with maximum ratios 1.
 
 1. **Timestep reproduction:** yes; the candidate survives 30/15/5-minute limits.
 2. **Absolute grain sizes:** high-T 858–1123 nm versus two-step 118 nm over 0.95–0.98.
-3. **Physical plausibility:** numerically supported but physically extreme.
+3. **Physical plausibility:** numerically supported, experimentally plausible in magnitude, and calibration-sensitive in its closed-pore/accommodation interpretation.
 4. **Closed fraction at switch:** 64.94% of remaining pore volume.
 5. **High-density support:** predominantly the closed-shrinkage channel.
 6. **Finite accommodation:** required for the joint candidate and controls low-temperature exhaustion together with thermal shrinkage.
 7. **Lower boundary:** insufficient closed-pore shrinkage/accommodation within the common time budget.
 8. **Upper boundary:** thermally activated grain growth.
 9. **Destructive ablations:** no PR damage, no closed transition, no closed shrinkage, infinite accommodation.
-10. **Candidate-family context:** 693168 is the strongest and an extreme member, not the only Tier-B result.
+10. **Candidate-family context:** 693168 is the strongest large-separation member, not the only Tier-B result.
 11. **Best falsification experiment:** interrupted first-step and second-step measurements of open/closed pore fraction, pore-number distribution, internal gas pressure/accommodation proxy, and absolute grain size at matched density.
 12. **Before validation:** calibrate the mapping from model stores to 3D connected/closed porosity, closed-pore shrinkage kinetics, gas accommodation capacity/recovery, and high-temperature grain-growth kinetics.
 

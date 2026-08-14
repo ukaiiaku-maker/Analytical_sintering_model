@@ -1,0 +1,2 @@
+n_candidates,n_plausible_Tier_B,n_calibration_sensitive_Tier_B,n_likely_artifact,n_large_plausible,median_reduction,median_window_width_C,interpretation
+6,1,5,0,1,0.3672082385067824,237.5,exact qualitative Tier-B family; not quantitatively calibrated or validated

@@ -6,15 +6,15 @@ Experimental-style thermal, densification, and grain-growth histories for the fr
 
 ## Figure 2 — Two-step trajectory
 
-Continuous physical-time histories for the high-temperature reference, lower density-exhaustion failure, successful two-step schedule, and upper grain-growth failure. Grain size versus density and matched-density reduction expose the absolute prototype-scale magnitude. Candidate 693168 is a conditional Tier B prototype, not calibrated and not validation.
+Continuous physical-time histories for the high-temperature reference, lower density-exhaustion failure, successful two-step schedule, and upper grain-growth failure. The high-temperature reference coarsens to submicron/micron-scale grains while the two-step route remains near the prepared nanoscale grain size. This large experimental-scale separation is the intended qualitative signature of two-step sintering. Candidate 693168 is conditional Tier B because calibration is missing, not because the ratio is large; it is not validation.
 
 ## Figure 3 — Complete Chen map
 
-Filled fixed-parameter processing maps in T1–T2 and prepared-G1–T2 space, accompanied by final-density and growth diagnostics. The filled Chen map distinguishes density exhaustion, success, and grain-growth failure; untested and unattainable regions are not promoted or hidden.
+Filled fixed-parameter processing maps in T1–T2 and prepared-G1–T2 space, accompanied by final-density and growth diagnostics. The filled map shows a complete practical processing window bounded below by density exhaustion and above by grain-growth activation; untested and unattainable regions are not promoted or hidden.
 
 ## Figure 4 — Mechanism interpretation
 
-Conservative pore-store evolution, finite closed accommodation, open and closed shrinkage, PR-prepared memory, and exact ablations for candidate 693168. Closed-pore fraction and accommodation are the key falsification targets. Internal states are shown only after the observable trajectory comparison.
+Conservative pore-store evolution, finite closed accommodation, open and closed shrinkage, PR-prepared memory, and exact ablations for candidate 693168. The main falsification target is the predicted closed-pore fraction and accommodation trajectory. Internal states are shown only after the observable trajectory comparison.
 
 ## Figure 5 — Candidate dashboard
 

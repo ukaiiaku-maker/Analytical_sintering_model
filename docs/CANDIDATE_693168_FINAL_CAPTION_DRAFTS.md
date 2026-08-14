@@ -2,11 +2,11 @@
 
 ## Overview dashboard
 
-Candidate 693168, a conditional Tier-B and uncalibrated prototype, exhibits a finite two-step window and a large matched-density grain-size separation. Absolute trajectories, closed accommodation, boundary classification, and registered ablations are shown together; the magnitude is a falsification target, not a validation result.
+Candidate 693168, a conditional Tier-B and uncalibrated prototype, exhibits a finite two-step window and a large experimental-scale matched-density grain-size separation. Absolute trajectories, closed accommodation, boundary classification, and registered ablations are shown together. The separation is consistent with the intended two-step response; the closed-pore/accommodation state is the primary falsification target. This is not a validation result.
 
 ## Full time evolution
 
-Continuous physical-time histories for the high-temperature reference, a lower densification-exhaustion failure, an intermediate-​(T_2) success, and an upper grain-growth failure. Second-step time is not reset. The successful trajectory reaches density 0.98 with limited second-step growth, whereas the high-temperature reference coarsens strongly.
+Continuous physical-time histories for the high-temperature reference, a lower densification-exhaustion failure, an intermediate-​(T_2) success, and an upper grain-growth failure. Second-step time is not reset. The high-temperature reference coarsens to submicron/micron-scale grains while the successful two-step route remains near its prepared nanoscale grain size—the intended qualitative two-step signature.
 
 ## Pore stores and closed accommodation
 

@@ -8,7 +8,7 @@ The earlier candidate audit established numerical reproducibility but emphasized
 
 Candidate 693168 remains a **conditional Tier B prototype**. It is not Tier A, calibrated, validated, or paper-ready. Its parameters, local laws, density target (0.98), growth tolerance (20%), and 500 h budgets are frozen. No optimization or parameter search is performed.
 
-The switch is near density 0.88, with initial mean grain size near 103 nm, prepared mean size near 117 nm, and first-step growth near 13.7%. The original-route window is approximately 925–1205 °C. The candidate predicts an approximately 89% high-density grain-size reduction, but this is driven partly by extreme high-temperature reference growth. Roughly 65% of the remaining pore volume is already assigned to the closed store at the switch. These magnitudes are shown, not hidden.
+The switch is near density 0.88, with initial mean grain size near 103 nm, prepared mean size near 117 nm, and first-step growth near 13.7%. The original-route window is approximately 925–1205 °C. The candidate predicts an approximately 89% high-density grain-size reduction: the high-temperature reference coarsens to submicron/micron scale while the two-step route remains nanoscale. This is the intended qualitative two-step response and is not an artifact criterion by itself. Roughly 65% of the remaining pore volume is already assigned to the closed store at the switch; that state and its accommodation trajectory remain the main calibration and falsification targets.
 
 ## 3. Experimental-style conventions
 
