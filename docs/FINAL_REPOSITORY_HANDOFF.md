@@ -36,6 +36,13 @@ Candidate 693168 status: conditional Tier B; not validation.
 The verified local/remote branch heads, purposes, and controlling reports are
 listed in [FINAL_GITHUB_BRANCH_INDEX.md](FINAL_GITHUB_BRANCH_INDEX.md).
 
+## Release tag
+
+The immutable annotated-tag policy is defined in
+[RELEASE_TAG_CONVENTION.md](RELEASE_TAG_CONVENTION.md). The handoff milestone is
+published as `final-sintering-mechanism-synthesis-2026-08-14`. A pushed tag is
+never moved or reused; corrections receive a new dated or `-revN` tag.
+
 ## Key reports
 
 - [Final mechanism synthesis](FINAL_FAST_FIRING_AND_TWO_STEP_MECHANISM_SYNTHESIS.md)
