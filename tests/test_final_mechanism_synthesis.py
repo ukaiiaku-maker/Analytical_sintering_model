@@ -101,6 +101,9 @@ def test_synthesis_changed_no_model_or_topology_physics_files():
         "equation_audit_qc.py",
         "tests/test_equation_audit_outputs.py",
         "tests/test_equation_audit_qc.py",
+        "build_figure_source_data_package.py",
+        "audit_figure_source_data_package.py",
+        "tests/test_figure_source_data_package.py",
         "conftest.py",
     }
     changed = subprocess.check_output(

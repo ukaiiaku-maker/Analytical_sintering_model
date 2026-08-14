@@ -1,0 +1,9 @@
+figure_id,panel_id,x_column,y_column,hue_column,style_column,units,suggested_axis_label_x,suggested_axis_label_y,recommended_plot_type,notes,suggested_scale
+Figure 1,nodes,node_id,mechanism_group,causal_status,mechanism_group,categorical,Mechanism node,Mechanism group,schematic,Use external layout; no aesthetics encoded.,categorical
+Figure 2,phase_map,Theta_nuc,S_closed_growth,exact_behavior_class,design_stage,dimensionless,Nucleation dominance,Closed-shrinkage/growth selectivity,scatter,Use exact classes only.,linear
+Figure 3,matched_density,rho,R_fast,material_id,ablation,dimensionless,Relative density,G_ref/G_fast,line,Shade jointly attained threshold intervals.,linear
+Figure 4,matched_density,rho,R_TS,path_pair_id,density_window_label,dimensionless,Relative density,G_highT/G_two-step,line,Highlight 0.95-0.98 only where attained.,linear
+Figure 5,fine_classification,G1_nm,T2_C,classification,candidate_id,mixed,Prepared grain size [nm],T2 [degC],filled_categorical_map,Retain all failure categories.,categorical
+Figure 6,candidate_summary,closed_fraction_at_switch,median_reduction,candidate_id,tier_status,dimensionless,Closed fraction at switch,Median reduction,scatter,Conditional Tier-B family.,linear
+Figure 7,confusion,surrogate_predicted_class,exact_class,count,false_positive_reason,count,Surrogate class,Exact class,heatmap,Surrogate is screening only.,categorical
+Figure 8,targets,measurement,priority,mechanism_constrained,figure_panel_group,categorical,Measurement,Priority,bar,"Planning schematic, not evidence.",categorical

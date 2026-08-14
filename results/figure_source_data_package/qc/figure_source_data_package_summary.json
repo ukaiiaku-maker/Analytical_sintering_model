@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "checks_total": 27,
+  "checks_passed": 27,
+  "checks_failed": 0,
+  "figure_references": 33,
+  "figure_references_complete": 33,
+  "scientific_tables": 52,
+  "exact_counts": {
+    "screened_rows": 50655,
+    "unique_exact_cases": 1903,
+    "fast_only": 485,
+    "two_step_only": 119,
+    "both_pass": 73,
+    "neither": 1226,
+    "surrogate_both": 19880
+  },
+  "candidate_693168": {
+    "dense_histories": true,
+    "fine_Chen_map": true,
+    "matched_density_curves": true,
+    "ablations": true
+  },
+  "fast_firing": {
+    "full": true,
+    "PR_off": true,
+    "nucleation_facile": true
+  },
+  "Chen_maps": {
+    "T1_T2": true,
+    "G1_T2": true,
+    "switch_density_T2": true
+  },
+  "archive": "results/figure_source_data_package_20260814.zip",
+  "archive_bytes": 8678793
+}

@@ -9,6 +9,7 @@ CURRENT={
  'test_relative_material_property_window_attribution.py',
  'test_final_mechanism_synthesis.py',
  'test_equation_audit_outputs.py','test_equation_audit_qc.py',
+ 'test_figure_source_data_package.py',
 }
 ARCHIVED_MODULES={'test_paper_figures.py'}
 
