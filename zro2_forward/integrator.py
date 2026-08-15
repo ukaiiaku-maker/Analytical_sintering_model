@@ -30,6 +30,17 @@ class ModelParameters:
     closed_tau0_s: float = 1e5
     stress_min_Pa: float = 1e3
     stress_max_Pa: float = 2.5e8
+    stress_work_factor: float = 1.0
+    open_removal_multiplier: float = 1.0
+    rho_iso_mid: float = .82
+    rho_iso_width: float = .04
+    rho_close_mid: float = .90
+    rho_close_width: float = .03
+    A_closed_capacity: float = 1.0
+    zener_length_factor: float = 1.0
+    mobile_drag_coefficient: float = 1e-28
+    effective_nucleation_activity_multiplier: float = 1.0
+    microwave_mode: str = "none"
 
 
 class ForwardModel:
@@ -46,19 +57,20 @@ class ForwardModel:
         area = float(np.sum(p.number_open*4*np.pi*p.radii_m**2))
         r_eff=float(np.sum(p.phi_open*p.radii_m)/max(float(p.phi_open.sum()),1e-300))
         area_rate = -q.surface_power_length2_m2*m.D_s(T_K)*area/max(r_eff**4,1e-300)
-        def erate(s): return kinetic_state(s,T_K,state.G_m,conn,self.barrier,m,q.sink_time_factor,q.site_density_multiplier)["edot_sinv"]
+        def erate(s): return kinetic_state(s,T_K,state.G_m,conn,self.barrier,m,q.sink_time_factor,q.site_density_multiplier,q.effective_nucleation_activity_multiplier)["edot_sinv"]
         power=solve_effective_stress(state.rho,area_rate,m.gamma_s_J_m2,erate,
-                                     sigma_min=q.stress_min_Pa,sigma_max=q.stress_max_Pa)
-        kin=kinetic_state(power.sigma_eff_Pa,T_K,state.G_m,conn,self.barrier,m,q.sink_time_factor,q.site_density_multiplier)
-        rd=density_rate(state.rho,kin["edot_sinv"])
+                                     eta_geom=q.stress_work_factor,sigma_min=q.stress_min_Pa,sigma_max=q.stress_max_Pa)
+        kin=kinetic_state(power.sigma_eff_Pa,T_K,state.G_m,conn,self.barrier,m,q.sink_time_factor,q.site_density_multiplier,q.effective_nucleation_activity_multiplier)
+        rd=q.open_removal_multiplier*density_rate(state.rho,kin["edot_sinv"])
         od=-removal_weights(p)*rd
         excess=power.P_excess_W_m3/(power.P_surf_W_m3+1e-300)
-        po,pi,pc,flux=transfer_fluxes(p,state.rho,m.D_s(T_K),kin["activity"],excess,q.C_PR_m2,q.C_iso_m2,q.C_close_m2)
+        po,pi,pc,flux=transfer_fluxes(p,state.rho,m.D_s(T_K),kin["activity"],excess,q.C_PR_m2,q.C_iso_m2,q.C_close_m2,
+                                      q.rho_iso_mid,q.rho_iso_width,q.rho_close_mid,q.rho_close_width)
         # Bounded accommodation proxy; only the named closed reservoir shrinks.
         tau0=q.closed_tau0_s*(p.radii_m/25e-9)**4/(max(kin["activity"]*state.A_closed,1e-12))
         shrink=p.phi_closed/tau0
         pc-=shrink
-        growth=growth_state(state.G_m,p.radii_m,p.phi_open,T_K,m)
+        growth=growth_state(state.G_m,p.radii_m,p.phi_open,T_K,m,q.zener_length_factor,q.mobile_drag_coefficient)
         open_total=od+po
         tau=np.full_like(p.radii_m,np.inf)
         mask=(p.phi_open>0)&(open_total<0); tau[mask]=p.phi_open[mask]/(-open_total[mask])
@@ -75,16 +87,19 @@ class ForwardModel:
                **power.__dict__,**diagnostics(p),**arrays}
 
     def step(self,state,T_K,dt_s):
+        q=self.parameters
         od,ii,cc,closed_rate,growth,diag=self.rates(state,T_K)
         p=state.pores.copy(); p.phi_open=np.maximum(0,p.phi_open+dt_s*od); p.phi_iso=np.maximum(0,p.phi_iso+dt_s*ii); p.phi_closed=np.maximum(0,p.phi_closed+dt_s*cc)
-        A=np.clip(state.A_closed+dt_s*(-0.2*closed_rate+(1-state.A_closed)/1e6),0,1)
+        A=np.clip(state.A_closed+dt_s*(-0.2*closed_rate+(q.A_closed_capacity-state.A_closed)/1e6),0,q.A_closed_capacity)
         nxt=ModelState(state.t_s+dt_s,T_K,1-p.total,state.G_m+dt_s*growth["G_dot_m_s"],p,float(A))
         return nxt,diag
 
-    def run(self, thermal_path, dt_s=10., record_every_s=60.):
+    def run(self, thermal_path, dt_s=10., record_every_s=60., max_steps=500000):
         state=self.initial_state(); rows=[]
         next_record=0.
+        steps=0
         while state.t_s < thermal_path.t_end_s:
+            if steps >= max_steps: break
             T=thermal_path.temperature_K(state.t_s,state.rho)
             trial=min(dt_s,thermal_path.t_end_s-state.t_s)
             od,ii,cc,_,growth,_=self.rates(state,T)
@@ -92,6 +107,7 @@ class ForwardModel:
             trial=min(trial,2e-3/maximum,.01*state.G_m/max(growth["G_dot_m_s"],1e-300))
             trial=max(min(trial,thermal_path.t_end_s-state.t_s),1e-6)
             state,d=self.step(state,T,trial)
+            steps+=1
             if state.t_s+1e-9 >= next_record or state.t_s >= thermal_path.t_end_s:
                 rows.append({"t_s":state.t_s,"T_K":T,"rho":state.rho,"G_m":state.G_m,
                              "A_closed":state.A_closed,**d})

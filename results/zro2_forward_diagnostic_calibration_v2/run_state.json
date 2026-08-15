@@ -1,0 +1,11 @@
+{
+  "status": "diagnostic_complete_not_validated",
+  "model_physics_changed": false,
+  "barrier_modes": [
+    "nearest_slice_clamp",
+    "pchip_extrapolate",
+    "fixed_lowT_slope",
+    "generic_anchor_barrier"
+  ],
+  "validation_claim": false
+}

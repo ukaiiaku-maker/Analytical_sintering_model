@@ -25,6 +25,7 @@ class BarrierModel:
     sigmahat_Pa: np.ndarray
     n: np.ndarray
     schema: str
+    mode: str = "nearest_slice_clamp"
 
     @classmethod
     def load(cls, path: str | Path) -> "BarrierModel":
@@ -57,6 +58,11 @@ class BarrierModel:
         a = np.asarray(vals, float)
         return cls(a[:, 0], a[:, 1], a[:, 2], a[:, 3], a[:, 4], a[:, 5], schema)
 
+    def with_mode(self, mode: str) -> "BarrierModel":
+        allowed={"nearest_slice_clamp","pchip_extrapolate","fixed_lowT_slope","generic_anchor_barrier"}
+        if mode not in allowed: raise BarrierInputError(f"unknown barrier mode {mode!r}")
+        return BarrierModel(self.temperatures_K,self.G0_J,self.Gfloor_J,self.a,self.sigmahat_Pa,self.n,self.schema,mode)
+
     def _p(self, values: np.ndarray, T_K: float) -> float:
         """Evaluate the Fritsch-Carlson PCHIP, including endpoint extrapolation."""
         x, y = self.temperatures_K, np.asarray(values, float)
@@ -73,10 +79,9 @@ class BarrierModel:
             return value
         slopes[0]=endpoint(h[0],h[1],delta[0],delta[1])
         slopes[-1]=endpoint(h[-1],h[-2],delta[-1],delta[-2])
-        # Predictions outside the fitted temperatures use the nearest measured
-        # slice. Cubic extrapolation makes sigmahat negative far below the fit.
-        # The range flag keeps this conservative clamp visible in every output.
-        T_eval=float(np.clip(T_K,x[0],x[-1]))
+        if T_K < x[0] and self.mode == "fixed_lowT_slope":
+            return float(y[0]+(T_K-x[0])*(y[1]-y[0])/(x[1]-x[0]))
+        T_eval=float(T_K if self.mode=="pchip_extrapolate" else np.clip(T_K,x[0],x[-1]))
         j = 0 if T_eval <= x[0] else count-2 if T_eval >= x[-1] else int(np.searchsorted(x,T_eval)-1)
         u=(T_eval-x[j])/h[j]
         return float((2*u**3-3*u**2+1)*y[j]+(u**3-2*u**2+u)*h[j]*slopes[j]
@@ -86,13 +91,20 @@ class BarrierModel:
         return bool(self.temperatures_K[0] <= T_K <= self.temperatures_K[-1])
 
     def Gstar(self, sigma_Pa: float, T_K: float) -> float:
+        if self.mode == "generic_anchor_barrier":
+            # Non-JSON diagnostic anchored near the observed CS onset.
+            base=3.75*1.602176634e-19
+            return max(.25*1.602176634e-19,base-4.0e-29*max(sigma_Pa,0.))
         G0, floor = self._p(self.G0_J, T_K), self._p(self.Gfloor_J, T_K)
         a, sh, n = self._p(self.a, T_K), self._p(self.sigmahat_Pa, T_K), self._p(self.n, T_K)
-        return floor + (G0 - floor) * np.exp(-a * (max(sigma_Pa, 0.0) / sh) ** n)
+        eV=1.602176634e-19
+        sh=max(abs(sh),1e6); a=max(a,0.); n=max(n,.05)
+        value=floor+(G0-floor)*np.exp(-a*(max(sigma_Pa,0.)/sh)**n)
+        return float(np.clip(value,.05*eV,20*eV))
 
     def diagnostics(self, sigma_Pa: float, T_K: float) -> dict[str, float]:
         dT = max(0.1, T_K * 1e-4); ds = max(1e3, sigma_Pa * 1e-4)
         return {"Gstar_J": self.Gstar(sigma_Pa, T_K),
                 "Sstar_J_K": -(self.Gstar(sigma_Pa, T_K+dT)-self.Gstar(sigma_Pa, T_K-dT))/(2*dT),
                 "Vstar_m3": -(self.Gstar(sigma_Pa+ds, T_K)-self.Gstar(max(0., sigma_Pa-ds), T_K))/(2*ds),
-                "temperature_extrapolated": not self.temperature_in_fit_range(T_K)}
+                "temperature_extrapolated": not self.temperature_in_fit_range(T_K),"barrier_mode":self.mode}

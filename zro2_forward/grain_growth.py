@@ -14,4 +14,5 @@ def growth_state(G_m: float, radii_m, phi_open, T_K: float, material,
     mobile = Kpd/(Kclean+Kpd+1e-300)
     factor = mobile+(1-mobile)*Sz
     return {"G_dot_m_s": clean*factor, "G_dot_clean_m_s": clean,
-            "R_Z_eff_m": Rz, "S_Z": Sz, "Gamma_growth": factor, "P_Z_Pa": material.gamma_GB_J_m2*moment}
+            "R_Z_eff_m": Rz, "S_Z": Sz, "Gamma_mobile": mobile,
+            "Gamma_growth": factor, "P_Z_Pa": material.gamma_GB_J_m2*moment}

@@ -1,0 +1,9 @@
+mode,multiplier,final_rho,final_G_um,target_reached,thermal_validation_evidence
+effective_nucleation_activity_multiplier,1.0,0.8875603381269556,0.5599608484355925,False,False
+effective_nucleation_activity_multiplier,3.0,0.91967970322382,0.648145327449787,False,False
+effective_nucleation_activity_multiplier,10.0,0.9489827476642949,0.6864498302953211,False,False
+effective_nucleation_activity_multiplier,30.0,0.963685343965829,0.6942488921669351,False,False
+effective_nucleation_activity_multiplier,100.0,0.9736782687312567,0.6944756705007393,False,False
+effective_nucleation_activity_multiplier,300.0,0.9794829124912069,0.694475909280829,False,False
+effective_nucleation_activity_multiplier,1000.0,0.9837353965188517,0.6944759093059955,True,False
+effective_nucleation_activity_multiplier,347.29739136157957,0.98,,True,False

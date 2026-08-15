@@ -1,0 +1,4 @@
+objective_mode,site_density_multiplier,stress_work_factor,M0_m4_J_s
+endpoint_only,39.5,1.0,0.0058
+density_curve_only,160.0,10.0,0.0058
+density_plus_grain_endpoint,160.0,10.0,0.0058

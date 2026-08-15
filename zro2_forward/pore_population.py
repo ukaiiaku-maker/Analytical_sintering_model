@@ -31,15 +31,17 @@ def initial_population(rho0: float = 2.88/5.95, center_m: float = 24.5e-9,
 
 def transfer_fluxes(pop: PorePopulation, rho: float, D_s: float, activity: float,
                     excess_fraction: float, C_PR: float = 1e-23, C_iso: float = 2e-25,
-                    C_close: float = 1e-25) -> tuple[np.ndarray, np.ndarray, np.ndarray, dict]:
+                    C_close: float = 1e-25, rho_iso_mid: float = .82,
+                    rho_iso_width: float = .04, rho_close_mid: float = .90,
+                    rho_close_width: float = .03) -> tuple[np.ndarray, np.ndarray, np.ndarray, dict]:
     r = pop.radii_m
     open_dot = np.zeros_like(r); iso_dot = np.zeros_like(r); closed_dot = np.zeros_like(r)
     rates = C_PR*D_s/r**4*max(excess_fraction, 0.)*(1-np.clip(activity, 0, 1))
     crossings = rates[:-1]*pop.phi_open[:-1]
     open_dot[:-1] -= crossings; open_dot[1:] += crossings
     large = (r/r[-1])**2
-    gi = 1/(1+np.exp(-(rho-.82)/.04))*large
-    gc = 1/(1+np.exp(-(rho-.90)/.03))
+    gi = 1/(1+np.exp(-(rho-rho_iso_mid)/rho_iso_width))*large
+    gc = 1/(1+np.exp(-(rho-rho_close_mid)/rho_close_width))
     ji = C_iso*D_s/r**4*gi*pop.phi_open
     jc_o = C_close*D_s/r**4*gc*pop.phi_open
     jc_i = C_close*D_s/r**4*gc*pop.phi_iso

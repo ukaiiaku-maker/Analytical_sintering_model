@@ -1,0 +1,5 @@
+barrier_mode,success_count,density_ok_count,growth_ok_count,cases
+nearest_slice_clamp,0,3,1,12
+pchip_extrapolate,0,0,1,12
+fixed_lowT_slope,0,3,1,12
+generic_anchor_barrier,3,3,3,12
