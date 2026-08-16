@@ -1,0 +1,14 @@
+{
+  "status": "complete_negative_resolved_rule_result",
+  "mechanism_mode": "resolved_rules",
+  "barrier_changed": false,
+  "diffusivities_changed": false,
+  "strict_success_count": 0,
+  "finite_window_count": 0,
+  "boundary_gap_C": {"min": -300.0, "median": -200.0, "max": -200.0},
+  "required_shift_for_25C_window_C": 225.0,
+  "fast_rate": {"final_rho": 0.900504, "final_G_um": 0.258471, "smaller_G_fraction": 0.94, "smaller_D90_fraction": 0.14},
+  "pathway_state": {"max_closed_fraction_at_switch": 0.075777, "max_A_closed_at_switch": 0.994638},
+  "ablation_causality": "not testable because parent context has no finite window",
+  "non_validation": true
+}

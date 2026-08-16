@@ -1,0 +1,2 @@
+groups,strict_success_count,finite_window_count,both_boundaries_count,min_gap_C,median_gap_C,max_gap_C
+60,0,0,18,-300.0,-200.0,-200.0

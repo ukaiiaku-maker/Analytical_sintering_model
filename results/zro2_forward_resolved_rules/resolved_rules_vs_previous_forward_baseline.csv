@@ -1,0 +1,8 @@
+metric,previous,resolved
+strict_success_count,0.0,0.0
+finite_window_count,0.0,0.0
+smallest_required_shift_C,125.0,225.0
+fast_50_final_rho,0.959215,0.9005037465317097
+fast_50_final_G_um,0.687985,0.25847102380067877
+closed_fraction_at_switch,0.0,0.07577683403316474
+accommodation_at_switch,0.0,0.9946383010982258

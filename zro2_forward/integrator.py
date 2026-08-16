@@ -17,6 +17,8 @@ class ModelState:
     G_m: float
     pores: PorePopulation
     A_closed: float = 1.
+    PR_memory: float = 0.
+    cumulative_PR_work: float = 0.
 
 
 @dataclass

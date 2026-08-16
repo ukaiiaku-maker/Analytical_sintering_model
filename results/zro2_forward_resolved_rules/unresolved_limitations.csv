@@ -1,0 +1,6 @@
+limitation,status
+barrier extrapolation below fitted range,unchanged
+resolved parameters not independently calibrated,conditional implementation
+exact Mazaheri TSS schedule unavailable,map diagnostic
+GB mobility uncertain,separate bounded audit
+no validation,explicit

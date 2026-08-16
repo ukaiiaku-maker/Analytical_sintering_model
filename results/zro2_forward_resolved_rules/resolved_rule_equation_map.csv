@@ -1,0 +1,6 @@
+rule,equation,density_effect
+serial densification,tau_cycle=tau_nuc+tau_exchange+tau_transport,open shrinkage only
+PR preparation,adjacent-bin conservative transfer plus named precursor transition,no direct density
+closed shrinkage,phi_closed/tau_closed times bounded accommodation,closed density flux
+growth,M_GB gamma/G times Gamma_migration,growth only
+density identity,1-sum(open+isolated+closed),all states
