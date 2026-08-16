@@ -1,0 +1,5 @@
+group,classification,interpretation
+trusted physical inputs,physical_input_inside_range,"stress-resolved nucleation, GB/surface diffusion, and growth branch broadly compatible"
+resolved PR alternate,physical_input_uncertain,180 kJ/mol is reduced PR parameter; alternate mapping only
+closed apparent slope,apparent_proxy_outside_reduced_coordinate,coordinate does not map cleanly; not physical pass/fail
+closed rate magnitude,mapping_unidentified,"inventory, prefactor, availability, and accommodation coupling unresolved"

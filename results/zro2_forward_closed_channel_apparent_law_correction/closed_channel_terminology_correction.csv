@@ -1,0 +1,6 @@
+old_term,new_term,meaning,use_as_physical_property,allowed_use
+Q_closed,Q_closed_app,apparent closed-channel slope,False,diagnostic only
+Q_closed_eff,Q_closed_proxy,finite-difference emergent slope,False,diagnostic only
+closed activation barrier,apparent closed-channel coordinate,reduced composite coordinate,False,diagnostic only
+out-of-bound Q_closed,closed-channel mapping gap,failure to map physical inputs to reduced coordinate,False,diagnostic interpretation
+closed property gap,closed-channel rate/inventory/availability gap,model closure gap,False,model closure gap

@@ -1,0 +1,8 @@
+multiplier,low_T2_density_attained,intermediate_T2_density_attained,high_T2_density_attained,lower_boundary_preserved,upper_boundary_preserved,finite_window_possible,risk_of_universal_density_success,risk_of_losing_lower_boundary,classification,analysis_only
+1,False,False,True,True,True,False,False,False,no_effect,True
+3,False,True,True,True,True,False,False,False,still_growth_limited,True
+10,False,True,True,True,True,False,False,False,still_growth_limited,True
+30,False,True,True,True,True,False,False,False,still_growth_limited,True
+100,False,True,True,True,True,False,False,False,still_growth_limited,True
+300,True,True,True,False,True,False,True,True,universal_density_success,True
+1000,True,True,True,False,True,False,True,True,universal_density_success,True

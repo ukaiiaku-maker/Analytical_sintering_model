@@ -1,0 +1,16 @@
+parameter,status,optimization_rule
+Q_closed_app,apparent diagnostic only,should not be optimized directly
+k_closed_prefactor,empirical optimizable parameter,only in explicitly empirical branch
+closed_inventory_fraction,physically derivable but not yet implemented,measure/evolve by microstructure law
+shrinkable_closed_fraction,physically derivable but not yet implemented,measure or derive
+closed_pore_radius,known physical input,measure/evolve
+radius_exponent,physically derivable but not yet implemented,derive from transport law
+A_closed_max,empirical optimizable parameter,bounded proxy with caveat
+A_closed_recovery_rate,empirical optimizable parameter,measure or bounded fit
+accommodation_usage_factor,physically derivable but not yet implemented,derive/measure
+gas_pressure_factor,physically derivable but not yet implemented,requires trapped-gas model
+D_eff_choice,physically derivable but not yet implemented,derive; do not optimize
+activity_closed_coupling,physically derivable but not yet implemented,derive from serial cycle
+closed/open handoff threshold,empirical optimizable parameter,only empirical prototype
+precursor_to_closed_rate,empirical optimizable parameter,measure/evolve
+closed_shrinkage_rate_scale,empirical optimizable parameter,analysis only until explicit empirical branch

@@ -1,0 +1,9 @@
+{
+  "status": "complete_not_validated",
+  "model_physics_changed": false,
+  "Q_closed_reclassified_as_apparent": true,
+  "barrier_sha256": "fa7c9a2fb30e55596d9cdf47d2b03d530ef073cbe15f6210282285b2fcee7f37",
+  "apparent_slope_not_material_property": true,
+  "candidate_laws_installed": false,
+  "validation_claim": false
+}

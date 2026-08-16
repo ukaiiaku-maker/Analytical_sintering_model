@@ -1,0 +1,9 @@
+evidence,value,interpretation,non_validation
+relative audit physics,unchanged,no model physics changed,True
+nucleation,"stress-resolved G*(sigma,T)",fitted function evaluated at effective stress,True
+GB diffusivity,380,kJ/mol fixed,True
+surface diffusivity,380,kJ/mol fixed,True
+growth branch,405.238,kJ/mol high-temperature branch retained,True
+mobility envelope,0,all-gate cases,True
+closed channel,primary unresolved group,mapping/rate/inventory/availability gap,True
+prior closed slope language,apparent/proxy,not physical property,True

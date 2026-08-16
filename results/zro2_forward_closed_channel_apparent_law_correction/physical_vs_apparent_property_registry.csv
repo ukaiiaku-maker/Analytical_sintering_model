@@ -1,0 +1,11 @@
+quantity,registry_type,source,use_for_bound_audit,meaning
+Gstar_sigma_T,fitted_physical_function,ZrO2 barrier JSON,yes,stress-resolved function
+Q_GB_380_kJ_mol,transferred_literature_input,ZrO2/ScSZ GB diffusivity paper,yes,physical transport input
+Q_s_380_kJ_mol,transferred_literature_input,ZrO2/ScSZ surface diffusivity paper,yes,physical surface input
+Q_growth_4p2_eV,transferred_literature_input,high-temperature 8YSZ mobility trend,yes_with_uncertainty,uncertain mobility branch
+Q_PR_180_kJ_mol,reduced_model_coordinate,resolved PR closure,alternate_mapping_only,implemented reduced PR parameter
+Q_closed_app_118_137_kJ_mol,apparent_model_coordinate,finite-difference closed-channel rate slope,no,emergent diagnostic only; not a material property
+k_closed_eff,diagnostic_proxy,state-normalized closed rate,diagnostic_only,apparent rate coordinate
+A_closed,diagnostic_proxy,bounded accommodation state,diagnostic_only,state variable / bounded proxy
+closed_pore_fraction,diagnostic_proxy,evolving pore stores,diagnostic_only,evolving microstructure state
+closed_channel_availability,diagnostic_proxy,instantaneous state function,diagnostic_only,evolving microstructure state/function
