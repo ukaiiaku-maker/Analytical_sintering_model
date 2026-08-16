@@ -1,0 +1,2 @@
+T_start_C,rho_start,G_start_nm,pore_D50_nominal_nm,rate5_final_rho,rate5_final_G_um,rate50_final_rho,rate50_final_G_um,HMS_density_miss,fast_smaller_G_fraction,fast_smaller_D90_fraction,conditioned_Chen_cases,strict_success_count,finite_window_count,barrier_mode,non_claims
+950,0.66,50,25,0.995040523414922,2.1924763021582634,0.9592159606659444,0.6879934162881018,-0.020784039334055593,0.8,0.06,195,0,0,nearest_slice_clamp,controlled sensitivity; microwave targets are not thermal validation; no validation claim

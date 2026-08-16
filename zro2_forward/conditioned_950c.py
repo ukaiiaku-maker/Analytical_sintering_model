@@ -24,10 +24,12 @@ class ConditionedTwoStep:
         return min(self.T1_C,self.start_C+self.rate*t_s)+273.15
 
 def make_pdf_conditioned_initial_state(rho=.66,G_nm=50.,T_C=950.,pore_mode="common_open_lognormal",
-                                       pore_D50_nm=25.,pore_log_width=.65,phi_iso_fraction=0.):
+                                       pore_D50_nm=25.,pore_log_width=.65,phi_iso_fraction=0.,phi_closed_fraction=0.):
     if pore_mode!="common_open_lognormal": raise ValueError("unsupported common pore mode")
     pop=initial_population(rho0=rho,center_m=.5*pore_D50_nm*1e-9,ln_sigma=pore_log_width)
-    isolated=pop.phi_open*phi_iso_fraction; pop.phi_open-=isolated; pop.phi_iso=isolated
+    if phi_iso_fraction+phi_closed_fraction >= 1: raise ValueError("non-open fractions must sum below one")
+    isolated=pop.phi_open*phi_iso_fraction; closed=pop.phi_open*phi_closed_fraction
+    pop.phi_open-=isolated+closed; pop.phi_iso=isolated; pop.phi_closed=closed
     return ModelState(0.,T_C+273.15,rho,G_nm*1e-9,pop,1.)
 
 def model(params=None,M0=5.8e-3,barrier_mode="nearest_slice_clamp"):

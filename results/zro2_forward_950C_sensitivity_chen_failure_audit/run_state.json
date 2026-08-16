@@ -1,0 +1,43 @@
+{
+  "status": "complete_diagnostic_nonvalidation",
+  "source_branch": "codex/zro2-forward-pdf-conditioned-950C-comparison",
+  "source_commit": "b60f2bf",
+  "common_state_conditions": {
+    "primary": 405,
+    "diagnostic_closed_initial_state": 2
+  },
+  "dominant_fast_density_factor": {
+    "factor": "pore_D50_nm",
+    "mean_final_rho_50_at_10nm": 0.974325,
+    "mean_final_rho_50_at_60nm": 0.796379,
+    "range": 0.177945
+  },
+  "trajectory_signs": {
+    "primary_cases_fast_smaller_grain_majority": 32,
+    "primary_cases_fast_smaller_D90_majority": 43,
+    "primary_case_count": 405
+  },
+  "strict_chen": {
+    "case_count": 195,
+    "success_count": 0,
+    "finite_window_count": 0,
+    "groups_with_both_estimated_boundaries": 28,
+    "estimated_gap_range_C": [-200, -100]
+  },
+  "relaxed_diagnostic": {
+    "successes_at_rho_0p976_G_1um": 8,
+    "finite_windows_at_rho_0p976_G_1um": 0,
+    "finite_windows_at_rho_0p95_G_2um": 8
+  },
+  "oat": {
+    "case_count": 43,
+    "pathway_consistent_count": 0,
+    "accepted_for_future_calibration_count": 0
+  },
+  "validation": {
+    "pytest": "environment_exit_139",
+    "direct_guardrails": "13 groups passed",
+    "py_compile": "passed"
+  },
+  "non_claim": "Sensitivity and relaxed-target results are diagnostic only; no validation claim."
+}

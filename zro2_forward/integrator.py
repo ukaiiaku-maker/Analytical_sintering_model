@@ -28,6 +28,10 @@ class ModelParameters:
     C_iso_m2: float = 2e-25
     C_close_m2: float = 1e-25
     closed_tau0_s: float = 1e5
+    rho_close_mid: float = .90
+    rho_close_width: float = .03
+    zener_strength: float = 1.
+    mobile_drag_scale: float = 1.
     stress_min_Pa: float = 1e3
     stress_max_Pa: float = 2.5e8
 
@@ -53,12 +57,12 @@ class ForwardModel:
         rd=density_rate(state.rho,kin["edot_sinv"])
         od=-removal_weights(p)*rd
         excess=power.P_excess_W_m3/(power.P_surf_W_m3+1e-300)
-        po,pi,pc,flux=transfer_fluxes(p,state.rho,m.D_s(T_K),kin["activity"],excess,q.C_PR_m2,q.C_iso_m2,q.C_close_m2)
+        po,pi,pc,flux=transfer_fluxes(p,state.rho,m.D_s(T_K),kin["activity"],excess,q.C_PR_m2,q.C_iso_m2,q.C_close_m2,q.rho_close_mid,q.rho_close_width)
         # Bounded accommodation proxy; only the named closed reservoir shrinks.
         tau0=q.closed_tau0_s*(p.radii_m/25e-9)**4/(max(kin["activity"]*state.A_closed,1e-12))
         shrink=p.phi_closed/tau0
         pc-=shrink
-        growth=growth_state(state.G_m,p.radii_m,p.phi_open,T_K,m)
+        growth=growth_state(state.G_m,p.radii_m,p.phi_open,T_K,m,zener_strength=q.zener_strength,mobile_drag_scale=q.mobile_drag_scale)
         open_total=od+po
         tau=np.full_like(p.radii_m,np.inf)
         mask=(p.phi_open>0)&(open_total<0); tau[mask]=p.phi_open[mask]/(-open_total[mask])
