@@ -1,0 +1,17 @@
+mobility_case_id,gb_mobility_mode,M0_factor,Q_M_kJ_mol,strict_Chen_success_count,finite_strict_Chen_window_count,T_lower_density_C,T_upper_growth_C,boundary_gap_C,pathway_consistency_flag,non_validation_flag
+mobility_00,fixed_highT_literature,1.0,405.238394904,0,0,1300.0,1000.0,-200.0,False,True
+mobility_01,CS_endpoint_calibrated,1.0,405.238394904,0,0,1300.0,1000.0,-200.0,False,True
+mobility_02,CS_curve_regularized,1.0,405.238394904,0,0,1300.0,1000.0,-200.0,False,True
+mobility_03,bounded_uncertainty_factor,0.03,405.238394904,0,0,,1200.0,,False,True
+mobility_04,bounded_uncertainty_factor,0.1,405.238394904,0,0,,1200.0,,False,True
+mobility_05,bounded_uncertainty_factor,0.3,405.238394904,0,0,1300.0,1200.0,-100.0,False,True
+mobility_06,bounded_uncertainty_factor,1.0,405.238394904,0,0,1300.0,1000.0,-200.0,False,True
+mobility_07,bounded_uncertainty_factor,3.0,405.238394904,0,0,1300.0,1000.0,-300.0,False,True
+mobility_08,bounded_uncertainty_factor,10.0,405.238394904,0,0,1300.0,1000.0,-200.0,False,True
+mobility_09,bounded_uncertainty_factor,30.0,405.238394904,0,0,1300.0,1000.0,-200.0,False,True
+mobility_10,activation_energy_envelope,0.000794104078081272,300.0,0,0,1300.0,1000.0,-300.0,False,True
+mobility_11,activation_energy_envelope,0.023592944567730503,350.0,0,0,1300.0,1000.0,-300.0,False,True
+mobility_12,activation_energy_envelope,0.700949722762961,400.0,0,0,1300.0,1000.0,-200.0,False,True
+mobility_13,activation_energy_envelope,20.82531548493079,450.0,0,0,1300.0,1100.0,-200.0,False,True
+mobility_14,activation_energy_envelope,618.7230709463591,500.0,0,0,1300.0,1200.0,-100.0,False,True
+mobility_15,activation_energy_envelope,18382.35002001775,550.0,0,0,1300.0,1200.0,-100.0,False,True

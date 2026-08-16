@@ -1,0 +1,129 @@
+mobility_case_id,T1_C,switch_density,hold_h,lower_boundary_present,upper_boundary_present,T_lower_density_C,T_upper_growth_C,success_count,success_min_T2_C,success_max_T2_C,finite_window,window_width_C,boundary_gap_C,gb_mobility_mode,M0_factor,Q_M_kJ_mol,M0_or_K0_value,M0_refit,calibration_target_used,non_validation_flag
+mobility_00,1300,0.8,20,False,True,,1100.0,0,,,False,,,fixed_highT_literature,1.0,405.238394904,0.0058,False,current high-T estimate,True
+mobility_00,1300,0.8,40,False,True,,1100.0,0,,,False,,,fixed_highT_literature,1.0,405.238394904,0.0058,False,current high-T estimate,True
+mobility_00,1300,0.9,20,False,True,,1100.0,0,,,False,,,fixed_highT_literature,1.0,405.238394904,0.0058,False,current high-T estimate,True
+mobility_00,1300,0.9,40,False,True,,1000.0,0,,,False,,,fixed_highT_literature,1.0,405.238394904,0.0058,False,current high-T estimate,True
+mobility_00,1400,0.8,20,True,True,1300.0,1100.0,0,,,False,,-200.0,fixed_highT_literature,1.0,405.238394904,0.0058,False,current high-T estimate,True
+mobility_00,1400,0.8,40,True,True,1300.0,1100.0,0,,,False,,-200.0,fixed_highT_literature,1.0,405.238394904,0.0058,False,current high-T estimate,True
+mobility_00,1400,0.9,20,True,True,1300.0,1100.0,0,,,False,,-200.0,fixed_highT_literature,1.0,405.238394904,0.0058,False,current high-T estimate,True
+mobility_00,1400,0.9,40,True,True,1300.0,1000.0,0,,,False,,-300.0,fixed_highT_literature,1.0,405.238394904,0.0058,False,current high-T estimate,True
+mobility_01,1300,0.8,20,False,True,,1100.0,0,,,False,,,CS_endpoint_calibrated,1.0,405.238394904,0.0058,True,inherited global CS endpoint calibration,True
+mobility_01,1300,0.8,40,False,True,,1100.0,0,,,False,,,CS_endpoint_calibrated,1.0,405.238394904,0.0058,True,inherited global CS endpoint calibration,True
+mobility_01,1300,0.9,20,False,True,,1100.0,0,,,False,,,CS_endpoint_calibrated,1.0,405.238394904,0.0058,True,inherited global CS endpoint calibration,True
+mobility_01,1300,0.9,40,False,True,,1000.0,0,,,False,,,CS_endpoint_calibrated,1.0,405.238394904,0.0058,True,inherited global CS endpoint calibration,True
+mobility_01,1400,0.8,20,True,True,1300.0,1100.0,0,,,False,,-200.0,CS_endpoint_calibrated,1.0,405.238394904,0.0058,True,inherited global CS endpoint calibration,True
+mobility_01,1400,0.8,40,True,True,1300.0,1100.0,0,,,False,,-200.0,CS_endpoint_calibrated,1.0,405.238394904,0.0058,True,inherited global CS endpoint calibration,True
+mobility_01,1400,0.9,20,True,True,1300.0,1100.0,0,,,False,,-200.0,CS_endpoint_calibrated,1.0,405.238394904,0.0058,True,inherited global CS endpoint calibration,True
+mobility_01,1400,0.9,40,True,True,1300.0,1000.0,0,,,False,,-300.0,CS_endpoint_calibrated,1.0,405.238394904,0.0058,True,inherited global CS endpoint calibration,True
+mobility_02,1300,0.8,20,False,True,,1100.0,0,,,False,,,CS_curve_regularized,1.0,405.238394904,0.0058,True,inherited CS curve/final-G regularized calibration,True
+mobility_02,1300,0.8,40,False,True,,1100.0,0,,,False,,,CS_curve_regularized,1.0,405.238394904,0.0058,True,inherited CS curve/final-G regularized calibration,True
+mobility_02,1300,0.9,20,False,True,,1100.0,0,,,False,,,CS_curve_regularized,1.0,405.238394904,0.0058,True,inherited CS curve/final-G regularized calibration,True
+mobility_02,1300,0.9,40,False,True,,1000.0,0,,,False,,,CS_curve_regularized,1.0,405.238394904,0.0058,True,inherited CS curve/final-G regularized calibration,True
+mobility_02,1400,0.8,20,True,True,1300.0,1100.0,0,,,False,,-200.0,CS_curve_regularized,1.0,405.238394904,0.0058,True,inherited CS curve/final-G regularized calibration,True
+mobility_02,1400,0.8,40,True,True,1300.0,1100.0,0,,,False,,-200.0,CS_curve_regularized,1.0,405.238394904,0.0058,True,inherited CS curve/final-G regularized calibration,True
+mobility_02,1400,0.9,20,True,True,1300.0,1100.0,0,,,False,,-200.0,CS_curve_regularized,1.0,405.238394904,0.0058,True,inherited CS curve/final-G regularized calibration,True
+mobility_02,1400,0.9,40,True,True,1300.0,1000.0,0,,,False,,-300.0,CS_curve_regularized,1.0,405.238394904,0.0058,True,inherited CS curve/final-G regularized calibration,True
+mobility_03,1300,0.8,20,False,False,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.03,405.238394904,0.00017399999999999997,False,bounded intrinsic M0 uncertainty,True
+mobility_03,1300,0.8,40,False,False,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.03,405.238394904,0.00017399999999999997,False,bounded intrinsic M0 uncertainty,True
+mobility_03,1300,0.9,20,False,False,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.03,405.238394904,0.00017399999999999997,False,bounded intrinsic M0 uncertainty,True
+mobility_03,1300,0.9,40,False,False,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.03,405.238394904,0.00017399999999999997,False,bounded intrinsic M0 uncertainty,True
+mobility_03,1400,0.8,20,False,False,,1300.0,0,,,False,,,bounded_uncertainty_factor,0.03,405.238394904,0.00017399999999999997,False,bounded intrinsic M0 uncertainty,True
+mobility_03,1400,0.8,40,False,False,,1300.0,0,,,False,,,bounded_uncertainty_factor,0.03,405.238394904,0.00017399999999999997,False,bounded intrinsic M0 uncertainty,True
+mobility_03,1400,0.9,20,False,False,,1300.0,0,,,False,,,bounded_uncertainty_factor,0.03,405.238394904,0.00017399999999999997,False,bounded intrinsic M0 uncertainty,True
+mobility_03,1400,0.9,40,False,False,,1300.0,0,,,False,,,bounded_uncertainty_factor,0.03,405.238394904,0.00017399999999999997,False,bounded intrinsic M0 uncertainty,True
+mobility_04,1300,0.8,20,False,False,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.1,405.238394904,0.00058,False,bounded intrinsic M0 uncertainty,True
+mobility_04,1300,0.8,40,False,False,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.1,405.238394904,0.00058,False,bounded intrinsic M0 uncertainty,True
+mobility_04,1300,0.9,20,False,False,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.1,405.238394904,0.00058,False,bounded intrinsic M0 uncertainty,True
+mobility_04,1300,0.9,40,False,False,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.1,405.238394904,0.00058,False,bounded intrinsic M0 uncertainty,True
+mobility_04,1400,0.8,20,False,False,,1300.0,0,,,False,,,bounded_uncertainty_factor,0.1,405.238394904,0.00058,False,bounded intrinsic M0 uncertainty,True
+mobility_04,1400,0.8,40,False,True,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.1,405.238394904,0.00058,False,bounded intrinsic M0 uncertainty,True
+mobility_04,1400,0.9,20,False,False,,1300.0,0,,,False,,,bounded_uncertainty_factor,0.1,405.238394904,0.00058,False,bounded intrinsic M0 uncertainty,True
+mobility_04,1400,0.9,40,False,True,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.1,405.238394904,0.00058,False,bounded intrinsic M0 uncertainty,True
+mobility_05,1300,0.8,20,False,False,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.3,405.238394904,0.0017399999999999998,False,bounded intrinsic M0 uncertainty,True
+mobility_05,1300,0.8,40,False,False,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.3,405.238394904,0.0017399999999999998,False,bounded intrinsic M0 uncertainty,True
+mobility_05,1300,0.9,20,False,False,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.3,405.238394904,0.0017399999999999998,False,bounded intrinsic M0 uncertainty,True
+mobility_05,1300,0.9,40,False,False,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.3,405.238394904,0.0017399999999999998,False,bounded intrinsic M0 uncertainty,True
+mobility_05,1400,0.8,20,False,True,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.3,405.238394904,0.0017399999999999998,False,bounded intrinsic M0 uncertainty,True
+mobility_05,1400,0.8,40,True,True,1300.0,1200.0,0,,,False,,-100.0,bounded_uncertainty_factor,0.3,405.238394904,0.0017399999999999998,False,bounded intrinsic M0 uncertainty,True
+mobility_05,1400,0.9,20,False,True,,1200.0,0,,,False,,,bounded_uncertainty_factor,0.3,405.238394904,0.0017399999999999998,False,bounded intrinsic M0 uncertainty,True
+mobility_05,1400,0.9,40,True,True,1300.0,1200.0,0,,,False,,-100.0,bounded_uncertainty_factor,0.3,405.238394904,0.0017399999999999998,False,bounded intrinsic M0 uncertainty,True
+mobility_06,1300,0.8,20,False,True,,1100.0,0,,,False,,,bounded_uncertainty_factor,1.0,405.238394904,0.0058,False,bounded intrinsic M0 uncertainty,True
+mobility_06,1300,0.8,40,False,True,,1100.0,0,,,False,,,bounded_uncertainty_factor,1.0,405.238394904,0.0058,False,bounded intrinsic M0 uncertainty,True
+mobility_06,1300,0.9,20,False,True,,1100.0,0,,,False,,,bounded_uncertainty_factor,1.0,405.238394904,0.0058,False,bounded intrinsic M0 uncertainty,True
+mobility_06,1300,0.9,40,False,True,,1000.0,0,,,False,,,bounded_uncertainty_factor,1.0,405.238394904,0.0058,False,bounded intrinsic M0 uncertainty,True
+mobility_06,1400,0.8,20,True,True,1300.0,1100.0,0,,,False,,-200.0,bounded_uncertainty_factor,1.0,405.238394904,0.0058,False,bounded intrinsic M0 uncertainty,True
+mobility_06,1400,0.8,40,True,True,1300.0,1100.0,0,,,False,,-200.0,bounded_uncertainty_factor,1.0,405.238394904,0.0058,False,bounded intrinsic M0 uncertainty,True
+mobility_06,1400,0.9,20,True,True,1300.0,1100.0,0,,,False,,-200.0,bounded_uncertainty_factor,1.0,405.238394904,0.0058,False,bounded intrinsic M0 uncertainty,True
+mobility_06,1400,0.9,40,True,True,1300.0,1000.0,0,,,False,,-300.0,bounded_uncertainty_factor,1.0,405.238394904,0.0058,False,bounded intrinsic M0 uncertainty,True
+mobility_07,1300,0.8,20,False,True,,1100.0,0,,,False,,,bounded_uncertainty_factor,3.0,405.238394904,0.0174,False,bounded intrinsic M0 uncertainty,True
+mobility_07,1300,0.8,40,False,True,,1000.0,0,,,False,,,bounded_uncertainty_factor,3.0,405.238394904,0.0174,False,bounded intrinsic M0 uncertainty,True
+mobility_07,1300,0.9,20,False,False,,,0,,,False,,,bounded_uncertainty_factor,3.0,405.238394904,0.0174,False,bounded intrinsic M0 uncertainty,True
+mobility_07,1300,0.9,40,True,False,1200.0,,0,,,False,,,bounded_uncertainty_factor,3.0,405.238394904,0.0174,False,bounded intrinsic M0 uncertainty,True
+mobility_07,1400,0.8,20,False,True,,1100.0,0,,,False,,,bounded_uncertainty_factor,3.0,405.238394904,0.0174,False,bounded intrinsic M0 uncertainty,True
+mobility_07,1400,0.8,40,True,True,1300.0,1000.0,0,,,False,,-300.0,bounded_uncertainty_factor,3.0,405.238394904,0.0174,False,bounded intrinsic M0 uncertainty,True
+mobility_07,1400,0.9,20,True,False,1300.0,,0,,,False,,,bounded_uncertainty_factor,3.0,405.238394904,0.0174,False,bounded intrinsic M0 uncertainty,True
+mobility_07,1400,0.9,40,True,False,1200.0,,0,,,False,,,bounded_uncertainty_factor,3.0,405.238394904,0.0174,False,bounded intrinsic M0 uncertainty,True
+mobility_08,1300,0.8,20,False,True,,1000.0,0,,,False,,,bounded_uncertainty_factor,10.0,405.238394904,0.057999999999999996,False,bounded intrinsic M0 uncertainty,True
+mobility_08,1300,0.8,40,True,True,1200.0,1000.0,0,,,False,,-200.0,bounded_uncertainty_factor,10.0,405.238394904,0.057999999999999996,False,bounded intrinsic M0 uncertainty,True
+mobility_08,1300,0.9,20,False,False,,,0,,,False,,,bounded_uncertainty_factor,10.0,405.238394904,0.057999999999999996,False,bounded intrinsic M0 uncertainty,True
+mobility_08,1300,0.9,40,True,False,1200.0,,0,,,False,,,bounded_uncertainty_factor,10.0,405.238394904,0.057999999999999996,False,bounded intrinsic M0 uncertainty,True
+mobility_08,1400,0.8,20,True,True,1300.0,1000.0,0,,,False,,-300.0,bounded_uncertainty_factor,10.0,405.238394904,0.057999999999999996,False,bounded intrinsic M0 uncertainty,True
+mobility_08,1400,0.8,40,True,True,1200.0,1000.0,0,,,False,,-200.0,bounded_uncertainty_factor,10.0,405.238394904,0.057999999999999996,False,bounded intrinsic M0 uncertainty,True
+mobility_08,1400,0.9,20,True,False,1300.0,,0,,,False,,,bounded_uncertainty_factor,10.0,405.238394904,0.057999999999999996,False,bounded intrinsic M0 uncertainty,True
+mobility_08,1400,0.9,40,True,False,1200.0,,0,,,False,,,bounded_uncertainty_factor,10.0,405.238394904,0.057999999999999996,False,bounded intrinsic M0 uncertainty,True
+mobility_09,1300,0.8,20,False,True,,1000.0,0,,,False,,,bounded_uncertainty_factor,30.0,405.238394904,0.174,False,bounded intrinsic M0 uncertainty,True
+mobility_09,1300,0.8,40,True,True,1200.0,1000.0,0,,,False,,-200.0,bounded_uncertainty_factor,30.0,405.238394904,0.174,False,bounded intrinsic M0 uncertainty,True
+mobility_09,1300,0.9,20,False,False,,,0,,,False,,,bounded_uncertainty_factor,30.0,405.238394904,0.174,False,bounded intrinsic M0 uncertainty,True
+mobility_09,1300,0.9,40,True,False,1200.0,,0,,,False,,,bounded_uncertainty_factor,30.0,405.238394904,0.174,False,bounded intrinsic M0 uncertainty,True
+mobility_09,1400,0.8,20,True,True,1300.0,1000.0,0,,,False,,-300.0,bounded_uncertainty_factor,30.0,405.238394904,0.174,False,bounded intrinsic M0 uncertainty,True
+mobility_09,1400,0.8,40,True,True,1200.0,1000.0,0,,,False,,-200.0,bounded_uncertainty_factor,30.0,405.238394904,0.174,False,bounded intrinsic M0 uncertainty,True
+mobility_09,1400,0.9,20,True,False,1300.0,,0,,,False,,,bounded_uncertainty_factor,30.0,405.238394904,0.174,False,bounded intrinsic M0 uncertainty,True
+mobility_09,1400,0.9,40,True,False,1200.0,,0,,,False,,,bounded_uncertainty_factor,30.0,405.238394904,0.174,False,bounded intrinsic M0 uncertainty,True
+mobility_10,1300,0.8,20,False,True,,1000.0,0,,,False,,,activation_energy_envelope,0.000794104078081272,300.0,4.605803652871378e-06,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_10,1300,0.8,40,False,True,,1000.0,0,,,False,,,activation_energy_envelope,0.000794104078081272,300.0,4.605803652871378e-06,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_10,1300,0.9,20,False,False,,,0,,,False,,,activation_energy_envelope,0.000794104078081272,300.0,4.605803652871378e-06,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_10,1300,0.9,40,True,False,1200.0,,0,,,False,,,activation_energy_envelope,0.000794104078081272,300.0,4.605803652871378e-06,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_10,1400,0.8,20,True,True,1300.0,1000.0,0,,,False,,-300.0,activation_energy_envelope,0.000794104078081272,300.0,4.605803652871378e-06,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_10,1400,0.8,40,True,True,1300.0,1000.0,0,,,False,,-300.0,activation_energy_envelope,0.000794104078081272,300.0,4.605803652871378e-06,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_10,1400,0.9,20,True,False,1300.0,,0,,,False,,,activation_energy_envelope,0.000794104078081272,300.0,4.605803652871378e-06,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_10,1400,0.9,40,True,False,1200.0,,0,,,False,,,activation_energy_envelope,0.000794104078081272,300.0,4.605803652871378e-06,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_11,1300,0.8,20,False,True,,1100.0,0,,,False,,,activation_energy_envelope,0.023592944567730503,350.0,0.00013683907849283691,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_11,1300,0.8,40,False,True,,1000.0,0,,,False,,,activation_energy_envelope,0.023592944567730503,350.0,0.00013683907849283691,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_11,1300,0.9,20,False,False,,,0,,,False,,,activation_energy_envelope,0.023592944567730503,350.0,0.00013683907849283691,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_11,1300,0.9,40,False,False,,,0,,,False,,,activation_energy_envelope,0.023592944567730503,350.0,0.00013683907849283691,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_11,1400,0.8,20,False,True,,1100.0,0,,,False,,,activation_energy_envelope,0.023592944567730503,350.0,0.00013683907849283691,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_11,1400,0.8,40,True,True,1300.0,1000.0,0,,,False,,-300.0,activation_energy_envelope,0.023592944567730503,350.0,0.00013683907849283691,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_11,1400,0.9,20,True,False,1300.0,,0,,,False,,,activation_energy_envelope,0.023592944567730503,350.0,0.00013683907849283691,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_11,1400,0.9,40,True,False,1200.0,,0,,,False,,,activation_energy_envelope,0.023592944567730503,350.0,0.00013683907849283691,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_12,1300,0.8,20,False,True,,1100.0,0,,,False,,,activation_energy_envelope,0.700949722762961,400.0,0.004065508392025173,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_12,1300,0.8,40,False,True,,1100.0,0,,,False,,,activation_energy_envelope,0.700949722762961,400.0,0.004065508392025173,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_12,1300,0.9,20,False,True,,1000.0,0,,,False,,,activation_energy_envelope,0.700949722762961,400.0,0.004065508392025173,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_12,1300,0.9,40,False,True,,1000.0,0,,,False,,,activation_energy_envelope,0.700949722762961,400.0,0.004065508392025173,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_12,1400,0.8,20,True,True,1300.0,1100.0,0,,,False,,-200.0,activation_energy_envelope,0.700949722762961,400.0,0.004065508392025173,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_12,1400,0.8,40,True,True,1300.0,1100.0,0,,,False,,-200.0,activation_energy_envelope,0.700949722762961,400.0,0.004065508392025173,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_12,1400,0.9,20,True,True,1300.0,1000.0,0,,,False,,-300.0,activation_energy_envelope,0.700949722762961,400.0,0.004065508392025173,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_12,1400,0.9,40,True,True,1300.0,1000.0,0,,,False,,-300.0,activation_energy_envelope,0.700949722762961,400.0,0.004065508392025173,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_13,1300,0.8,20,False,False,,1200.0,0,,,False,,,activation_energy_envelope,20.82531548493079,450.0,0.12078682981259857,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_13,1300,0.8,40,False,True,,1100.0,0,,,False,,,activation_energy_envelope,20.82531548493079,450.0,0.12078682981259857,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_13,1300,0.9,20,False,True,,1100.0,0,,,False,,,activation_energy_envelope,20.82531548493079,450.0,0.12078682981259857,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_13,1300,0.9,40,False,True,,1100.0,0,,,False,,,activation_energy_envelope,20.82531548493079,450.0,0.12078682981259857,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_13,1400,0.8,20,False,True,,1200.0,0,,,False,,,activation_energy_envelope,20.82531548493079,450.0,0.12078682981259857,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_13,1400,0.8,40,True,True,1300.0,1100.0,0,,,False,,-200.0,activation_energy_envelope,20.82531548493079,450.0,0.12078682981259857,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_13,1400,0.9,20,True,True,1300.0,1100.0,0,,,False,,-200.0,activation_energy_envelope,20.82531548493079,450.0,0.12078682981259857,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_13,1400,0.9,40,True,True,1300.0,1100.0,0,,,False,,-200.0,activation_energy_envelope,20.82531548493079,450.0,0.12078682981259857,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_14,1300,0.8,20,False,False,,1200.0,0,,,False,,,activation_energy_envelope,618.7230709463591,500.0,3.5885938114888827,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_14,1300,0.8,40,False,False,,1200.0,0,,,False,,,activation_energy_envelope,618.7230709463591,500.0,3.5885938114888827,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_14,1300,0.9,20,False,False,,1200.0,0,,,False,,,activation_energy_envelope,618.7230709463591,500.0,3.5885938114888827,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_14,1300,0.9,40,False,False,,1200.0,0,,,False,,,activation_energy_envelope,618.7230709463591,500.0,3.5885938114888827,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_14,1400,0.8,20,False,True,,1200.0,0,,,False,,,activation_energy_envelope,618.7230709463591,500.0,3.5885938114888827,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_14,1400,0.8,40,True,True,1300.0,1200.0,0,,,False,,-100.0,activation_energy_envelope,618.7230709463591,500.0,3.5885938114888827,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_14,1400,0.9,20,False,True,,1200.0,0,,,False,,,activation_energy_envelope,618.7230709463591,500.0,3.5885938114888827,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_14,1400,0.9,40,True,True,1300.0,1200.0,0,,,False,,-100.0,activation_energy_envelope,618.7230709463591,500.0,3.5885938114888827,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_15,1300,0.8,20,False,False,,1200.0,0,,,False,,,activation_energy_envelope,18382.35002001775,550.0,106.61763011610294,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_15,1300,0.8,40,False,False,,1200.0,0,,,False,,,activation_energy_envelope,18382.35002001775,550.0,106.61763011610294,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_15,1300,0.9,20,False,False,,1200.0,0,,,False,,,activation_energy_envelope,18382.35002001775,550.0,106.61763011610294,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_15,1300,0.9,40,False,False,,1200.0,0,,,False,,,activation_energy_envelope,18382.35002001775,550.0,106.61763011610294,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_15,1400,0.8,20,False,True,,1200.0,0,,,False,,,activation_energy_envelope,18382.35002001775,550.0,106.61763011610294,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_15,1400,0.8,40,True,True,1300.0,1200.0,0,,,False,,-100.0,activation_energy_envelope,18382.35002001775,550.0,106.61763011610294,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_15,1400,0.9,20,False,True,,1200.0,0,,,False,,,activation_energy_envelope,18382.35002001775,550.0,106.61763011610294,True,M0 refit to preserve M_GB at 1500 C anchor,True
+mobility_15,1400,0.9,40,True,True,1300.0,1200.0,0,,,False,,-100.0,activation_energy_envelope,18382.35002001775,550.0,106.61763011610294,True,M0 refit to preserve M_GB at 1500 C anchor,True

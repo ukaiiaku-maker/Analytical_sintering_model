@@ -1,0 +1,17 @@
+mobility_case_id,gb_mobility_mode,M0_factor,Q_M_kJ_mol,M0_or_K0_value,M0_refit,calibration_target_used
+mobility_00,fixed_highT_literature,1.0,405.238394904,0.0058,False,current high-T estimate
+mobility_01,CS_endpoint_calibrated,1.0,405.238394904,0.0058,True,inherited global CS endpoint calibration
+mobility_02,CS_curve_regularized,1.0,405.238394904,0.0058,True,inherited CS curve/final-G regularized calibration
+mobility_03,bounded_uncertainty_factor,0.03,405.238394904,0.00017399999999999997,False,bounded intrinsic M0 uncertainty
+mobility_04,bounded_uncertainty_factor,0.1,405.238394904,0.00058,False,bounded intrinsic M0 uncertainty
+mobility_05,bounded_uncertainty_factor,0.3,405.238394904,0.0017399999999999998,False,bounded intrinsic M0 uncertainty
+mobility_06,bounded_uncertainty_factor,1.0,405.238394904,0.0058,False,bounded intrinsic M0 uncertainty
+mobility_07,bounded_uncertainty_factor,3.0,405.238394904,0.0174,False,bounded intrinsic M0 uncertainty
+mobility_08,bounded_uncertainty_factor,10.0,405.238394904,0.057999999999999996,False,bounded intrinsic M0 uncertainty
+mobility_09,bounded_uncertainty_factor,30.0,405.238394904,0.174,False,bounded intrinsic M0 uncertainty
+mobility_10,activation_energy_envelope,0.000794104078081272,300.0,4.605803652871378e-06,True,M0 refit to preserve M_GB at 1500 C anchor
+mobility_11,activation_energy_envelope,0.023592944567730503,350.0,0.00013683907849283691,True,M0 refit to preserve M_GB at 1500 C anchor
+mobility_12,activation_energy_envelope,0.700949722762961,400.0,0.004065508392025173,True,M0 refit to preserve M_GB at 1500 C anchor
+mobility_13,activation_energy_envelope,20.82531548493079,450.0,0.12078682981259857,True,M0 refit to preserve M_GB at 1500 C anchor
+mobility_14,activation_energy_envelope,618.7230709463591,500.0,3.5885938114888827,True,M0 refit to preserve M_GB at 1500 C anchor
+mobility_15,activation_energy_envelope,18382.35002001775,550.0,106.61763011610294,True,M0 refit to preserve M_GB at 1500 C anchor

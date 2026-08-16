@@ -1,0 +1,16 @@
+{
+  "status": "complete_negative_mobility_envelope",
+  "barrier_changed": false,
+  "diffusivities_changed": false,
+  "mobility_modes": ["fixed_highT_literature", "CS_endpoint_calibrated", "CS_curve_regularized", "bounded_uncertainty_factor", "activation_energy_envelope"],
+  "M0_factor_range": [0.000794104078081272, 18382.35002001775],
+  "bounded_M0_factor_range": [0.03, 30.0],
+  "Q_M_kJ_mol_range": [300.0, 550.0],
+  "strict_success_count": 0,
+  "finite_window_count": 0,
+  "best_boundary_gap_C": -100.0,
+  "all_pathway_gate_count": 0,
+  "CS_acceptable_count": 0,
+  "dong_chen_transition_used": false,
+  "non_validation": true
+}
