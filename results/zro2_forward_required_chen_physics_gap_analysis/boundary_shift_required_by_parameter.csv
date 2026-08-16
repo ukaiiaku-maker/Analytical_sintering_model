@@ -1,0 +1,11 @@
+parameter,scale,dT_lower_density,dT_upper_growth,dgap,n_lower_finite,n_upper_finite,n_gap_finite,primary_boundary_role,any_pathway_consistent,strict_window_count,required_gap_improvement_C,estimated_coordinate_change,direction_to_improve_gap,estimate_status,not_a_tuning_recommendation
+PR_scale,log10,0.0,,,5,0,0,sparse_or_censored_gap_response; destroys_or_fails_pathway_consistency,False,0,125.0,,unidentified,censored_or_not_estimable,True
+closed_accommodation_capacity,log10,0.0,,,3,0,0,sparse_or_censored_gap_response; destroys_or_fails_pathway_consistency,False,0,125.0,,unidentified,censored_or_not_estimable,True
+closed_shrinkage_prefactor,log10,0.0,,,5,0,0,sparse_or_censored_gap_response; destroys_or_fails_pathway_consistency,False,0,125.0,,unidentified,censored_or_not_estimable,True
+mobile_drag_scale,log10,0.0,,,5,0,0,sparse_or_censored_gap_response; destroys_or_fails_pathway_consistency,False,0,125.0,,unidentified,censored_or_not_estimable,True
+pore_D50_nm,log10,152.0819351834107,0.0,,5,2,2,sparse_or_censored_gap_response; destroys_or_fails_pathway_consistency,False,0,125.0,,unidentified,censored_or_not_estimable,True
+pore_log_width,linear,0.0,,,3,0,0,sparse_or_censored_gap_response; destroys_or_fails_pathway_consistency,False,0,125.0,,unidentified,censored_or_not_estimable,True
+rho_close_mid,per_0p01,0.0,,,4,0,0,sparse_or_censored_gap_response; destroys_or_fails_pathway_consistency,False,0,125.0,,unidentified,censored_or_not_estimable,True
+rho_close_width,per_0p01,0.0,,,3,0,0,sparse_or_censored_gap_response; destroys_or_fails_pathway_consistency,False,0,125.0,,unidentified,censored_or_not_estimable,True
+tau_remove_scale,log10,0.0,,,5,0,0,sparse_or_censored_gap_response; destroys_or_fails_pathway_consistency,False,0,125.0,,unidentified,censored_or_not_estimable,True
+zener_strength,log10,0.0,191.24892893931977,,5,2,2,sparse_or_censored_gap_response; destroys_or_fails_pathway_consistency,False,0,125.0,,unidentified,censored_or_not_estimable,True

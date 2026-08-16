@@ -1,0 +1,27 @@
+{
+  "status": "complete_read_only_diagnostic",
+  "source_commit": "acf6692375f87ff8e8d6eeeff65978808cf2f891",
+  "model_physics_changed": false,
+  "simulations_rerun": false,
+  "strict_chen": {
+    "success_count": 0,
+    "finite_window_count": 0,
+    "first_step_groups": 60,
+    "both_boundaries_estimated": 28,
+    "negative_gap_count": 28,
+    "gap_min_C": -200.0,
+    "gap_median_C": -200.0,
+    "gap_max_C": -100.0,
+    "smallest_required_shift_for_25C_window_C": 125.0
+  },
+  "dominant_fast_density_factor": "pore_D50_nm",
+  "dominant_boundary_gap_factor": "not identifiable from censored OAT mini-maps",
+  "relaxed_diagnostic": "successes begin at 1.0 um without a window; eight finite windows require both 2.0 um and rho 0.95 relaxation",
+  "all_pathway_gates_pass_count": 0,
+  "validation": {
+    "pytest": "inherited environment exit 139",
+    "direct_guardrails": "8 groups passed",
+    "py_compile": "passed"
+  },
+  "non_claim": "Read-only diagnostic analysis; the model is not validated."
+}

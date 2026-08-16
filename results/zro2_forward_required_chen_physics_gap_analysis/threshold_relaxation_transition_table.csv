@@ -1,0 +1,13 @@
+density_target,grain_threshold_um,evidence_type,success_count,finite_window_count,lower_boundary_count,upper_boundary_count,best_T1_C,best_T2_C,best_rho,best_G_um,overwrites_strict,threshold_class,relaxation_requirement,TSS_like,diagnostic_only
+0.95,0.29,relaxed_diagnostic,0,0,48,37,1200,1100,0.9490574804266556,0.5873119219343043,False,strict_failure,density_relaxation_required,False,True
+0.95,0.5,relaxed_diagnostic,0,0,48,50,1300,1100,0.950326487350012,0.5909025736560378,False,strict_failure,grain_relaxation_required,False,True
+0.95,1.0,relaxed_diagnostic,30,0,48,40,1300,1100,0.950326487350012,0.5909025736560378,False,relaxed_success_no_window,grain_relaxation_required,False,True
+0.95,2.0,relaxed_diagnostic,60,8,48,30,1300,1100,0.950326487350012,0.5909025736560378,False,relaxed_finite_window,both_relaxations_required,False,True
+0.976,0.29,strict,0,0,42,37,1400,1200,0.9667262789444152,0.765569737329132,False,strict_failure,none_strict,False,False
+0.976,0.5,relaxed_diagnostic,0,0,42,50,1300,1200,0.9769855651714584,0.9612515639946628,False,strict_failure,grain_relaxation_required,False,True
+0.976,1.0,relaxed_diagnostic,8,0,42,40,1300,1200,0.9769855651714584,0.9612515639946628,False,relaxed_success_no_window,grain_relaxation_required,False,True
+0.976,2.0,relaxed_diagnostic,38,0,42,30,1300,1200,0.9769855651714584,0.9612515639946628,False,relaxed_success_no_window,grain_relaxation_required,False,True
+0.98,0.29,relaxed_diagnostic,0,0,42,37,1500,1200,0.9680035854905796,0.7848724373057823,False,strict_failure,density_relaxation_required,False,True
+0.98,0.5,relaxed_diagnostic,0,0,42,50,1300,1200,0.9769855651714584,0.9612515639946628,False,strict_failure,grain_relaxation_required,False,True
+0.98,1.0,relaxed_diagnostic,6,0,42,40,1500,1200,0.9798229858709196,1.031899232398675,False,relaxed_success_no_window,grain_relaxation_required,False,True
+0.98,2.0,relaxed_diagnostic,36,0,42,30,1500,1200,0.9798229858709196,1.031899232398675,False,relaxed_success_no_window,grain_relaxation_required,False,True

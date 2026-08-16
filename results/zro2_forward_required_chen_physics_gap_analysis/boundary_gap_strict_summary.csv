@@ -1,0 +1,2 @@
+n_first_step_groups,n_both_boundaries_present,n_negative_gap,n_zero_width,n_positive_gap,n_missing_lower,n_missing_upper,min_gap_C,median_gap_C,max_gap_C,smallest_required_shift_C,state_with_smallest_required_shift,desired_min_width_C,strict_success_count,finite_strict_window_count
+60,28,28,0,0,18,20,-200.0,-200.0,-100.0,125.0,"T1=1300, switch=0.7, hold=10 h",25.0,0,0

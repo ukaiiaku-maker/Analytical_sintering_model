@@ -1,0 +1,2 @@
+first_grain_threshold_with_success_um,first_density_target_with_finite_window,finite_windows_require_grain_threshold_um,interpretation,strict_result_preserved,strict_success_count,strict_finite_window_count,relaxed_windows_pathway_consistent
+1.0,0.95,2.0,success first appears at 1.0 um without windows; finite windows require both 2.0 um and rho 0.95 relaxation,True,0,0,False

@@ -1,0 +1,8 @@
+decision,evidence_for,evidence_against,required_data,risk,recommended_priority
+A. Calibrate initial pore-size distribution first,pore D50 gives largest rho50 main effect,does not by itself create strict window,950 C D50/D90/connectivity,moderate; target-selection overfit,1 - highest
+B. Obtain exact Mazaheri TSS schedule and interrupted pore data,boundary states and high-T comparator are incomplete,requires new experiments/source recovery,exact T1/T2/rates/holds plus switch pore/grain state,low scientific risk,1 - highest
+C. Modify low-T2 closed-pore shrinkage/accommodation law,late densification is a candidate lever,closed pathway is not identified as dominant,"open/closed fraction, closure density, trapped gas",high nonidentifiability,3 - only after data
+D. Modify Zener/pore-pinning law,attained paths show pin-loss/growth failures,OAT produces no pathway-consistent strict window,pore-boundary attachment and mobility,high target-fitting risk,3 - only after data
+E. Modify barrier extrapolation / low-T activity law,all T2 states are below fitted barrier range,conditioned barrier diagnostics were modest,low-T stress-dependent barrier/creep data,very high extrapolation risk,3 - only after data
+F. Add microwave-specific physics for HMS only,thermal HMS miss remains,cannot explain thermal TSS boundary ordering,microwave field/temperature and matched thermal controls,high schedule-specific overfit,4 - separate future study
+G. Stop model development and report negative thermal baseline,strict result is robustly negative in current audit,key pore and schedule data could still discriminate causes,none,low,2 - valid interim outcome
