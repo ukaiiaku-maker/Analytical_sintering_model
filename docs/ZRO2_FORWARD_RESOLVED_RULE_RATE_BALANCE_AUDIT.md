@@ -1,0 +1,7 @@
+# ZrO2 resolved-rule rate-balance audit
+
+This is a diagnostic decomposition, not validation. The resolved-rule implementation activates PR memory, precursor/closed stores, and closed accommodation, but it still has zero strict Chen successes and zero finite windows. Its boundary gap remains -300/-200/-200 °C (minimum/median/maximum), and intrinsic-mobility variation cannot rescue the missing window.
+
+The fixed-path audit identifies a density-channel imbalance rather than a missing state. Relative to the previous PDF-conditioned 50 °C/min path, final density falls by 0.0587. Integrated open-pore shrinkage falls by 0.0634, whereas attained closed-pore shrinkage is only 1.6e-8 on that short path. Direct precursor/closed transfer is only about 2.7e-4 pore fraction, too small by itself to explain the density loss. The primary defect is reduced open-channel rate followed by a closed channel that is far too slow to compensate, not excessive intrinsic mobility.
+
+At low T2, barrier-limited renewal and slow closed shrinkage prevent density attainment. Near the density boundary, remaining open-path exhaustion and slow closed shrinkage are mixed. At high T2, density is attained only where intrinsic grain growth overwhelms the available migration suppression. The next implementation decision should therefore target the density rate balance and its open-path/closed-shrinkage handoff, not mobility.

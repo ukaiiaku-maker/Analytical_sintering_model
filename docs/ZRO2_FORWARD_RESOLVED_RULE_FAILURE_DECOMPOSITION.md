@@ -1,0 +1,5 @@
+# Resolved-rule failure decomposition
+
+This analysis is not validation. The 50 °C/min density loss is not primarily caused by physically moving a large pore inventory into the precursor/closed store: that transfer is small. Instead, the serial-cycle/open-eligibility formulation supplies substantially less open shrinkage than the previous PDF-conditioned law, while closed shrinkage remains negligible over the fast ramp. Open-path eligibility reaches the audit collapse threshold only near 1500 °C, so the evidence does not support calling the transfer globally premature or too strong.
+
+For two-step paths, 900 °C is barrier-activity and closed-rate limited. The 1200 °C representative remains 0.0177 below the density target despite 0.0356 integrated closed contribution; its handoff is mixed open-exhaustion/closed-rate limited. At 1300 °C density is attainable, but final grain size is 2.29 µm. Actual integrated growth is strongly suppressed relative to intrinsic growth, yet the intrinsic Arrhenius contribution is so large that suppression is insufficient. Thus the upper boundary is intrinsic-growth dominated, not evidence that migration activity is inactive.

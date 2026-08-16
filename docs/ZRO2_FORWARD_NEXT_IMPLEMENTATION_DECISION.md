@@ -1,0 +1,5 @@
+# Next resolved-rule implementation decision
+
+This recommendation is diagnostic and not validation. Preserve the barrier, diffusivities, schedules, targets, and intrinsic mobility audit. The next change should examine the local rate-balance handoff between open shrinkage and closed shrinkage: serial-cycle renewal, open-path eligibility, and the temperature/time scale for attained closed shrinkage.
+
+Candidate 693168 is only a conditional comparator, not a calibrated model. Existing exact reports give a 925–1200 °C success interval (275 °C width). It enters the second step with about 0.65 closed fraction versus at most 0.0758 in the resolved map, and with fully developed PR memory versus 0.282. Conversely, the resolved implementation can prepare accommodation near unity while candidate 693168 has much lower accommodation remaining at the sampled switch state. This points to a mismatch in how prepared state is converted into useful closed shrinkage—not a reason to tune mobility. Any future law change requires a new parent-window test before ablations become causally interpretable.
