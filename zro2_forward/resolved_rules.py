@@ -11,6 +11,7 @@ from .grain_growth import growth_state
 from .integrator import ForwardModel, ModelParameters, ModelState
 from .material_zro2 import MaterialParameters, R
 from .pore_population import diagnostics, removal_weights
+from .closed_channel_laws import closed_channel_rates
 
 
 @dataclass
@@ -22,6 +23,22 @@ class ResolvedRuleParameters(ModelParameters):
     handoff_beta: float = .8
     handoff_closed_beta: float = 9.
     closed_tau0_s: float = 3.0e3
+    closed_channel_law: str = "resolved_proxy_current"
+    closed_radius_exponent: int = 3
+    C_closed_GB: float = 1.0
+    closed_prefactor_factor: float = 1.0
+    closed_GB_use_renewal_activity: bool = True
+    C_sigma_closed: float = 1.0
+    C_transport_closed: float = 1.0
+    closed_transport_length_factor: float = 1.0
+    closed_exchange_tau_s: float = 1.0
+    closed_event_strain: float = 1.0e-3
+    closed_gas_pressure_fraction: float = .25
+    C_surface_accommodation: float = 1.0e-24
+    k0_closed_emp_sinv: float = 1.0e-3
+    Q_closed_emp_J_mol: float = 130000.
+    closed_empirical_size_exponent: float = 4.
+    closed_rate_cap_time_s: float = 10.
     activity_mid: float = .15
     activity_width: float = .06
     activity_power: float = 1.5
@@ -100,8 +117,8 @@ class ResolvedRuleModel(ForwardModel):
         open_dot=open_shrink+pr-to_iso-to_closed_open;iso_dot=to_iso-to_closed_iso;closed_dot=to_closed.copy()
         A=1. if q.infinite_closed_accommodation else np.clip(state.A_closed,0,q.accommodation_max)
         closed_activation=renewal*np.exp(np.clip(-.35*q.Q_PR_J_mol/R*(1/T_K-1/q.T_PR_ref_K),-30,30))
-        tau_closed=q.closed_tau0_s*(p.radii_m/25e-9)**4/max(closed_activation*A,1e-12)
-        closed_availability=float(np.sum(p.phi_closed/tau_closed));open_availability=max(rho_open,0.);handoff_readiness=closed_availability/(closed_availability+open_availability+1e-300)
+        shrink_law,closed_law_diag=closed_channel_rates(state,T_K,self.barrier,m,q,renewal)
+        closed_availability=float(shrink_law.sum());open_availability=max(rho_open,0.);handoff_readiness=closed_availability/(closed_availability+open_availability+1e-300)
         closed_factor=q.closed_rate_factor if q.open_closed_handoff_mode=="closed_rate_boost_only" else 1.
         if q.open_closed_handoff_mode=="balanced_handoff":
             open_path_eligibility=open_eligibility_base*(1-q.handoff_beta*handoff_readiness)
@@ -110,21 +127,24 @@ class ResolvedRuleModel(ForwardModel):
             rho_open=density_rate(state.rho,edot);open_shrink=-removal_weights(p)*rho_open
             open_dot=open_shrink+pr-to_iso-to_closed_open
             closed_factor=1+q.handoff_closed_beta*state.PR_memory*A
-        shrink=np.zeros_like(p.phi_closed) if q.no_closed_shrinkage else closed_factor*p.phi_closed/tau_closed;closed_dot-=shrink;rho_closed=float(shrink.sum())
+        shrink=np.zeros_like(p.phi_closed) if q.no_closed_shrinkage else closed_factor*shrink_law;closed_dot-=shrink;rho_closed=float(shrink.sum())
         base=growth_state(state.G_m,p.radii_m,p.phi_open,T_K,m,zener_strength=q.zener_strength,mobile_drag_scale=q.mobile_drag_scale)
         intrinsic=m.M_GB(T_K)*m.gamma_GB_J_m2/max(state.G_m,1e-30);pore_gamma=1. if q.no_pore_drag else base["Gamma_growth"]
         closed_drag=1/(1+q.closed_migration_drag*float(p.phi_closed.sum())/max(1-state.rho,1e-12));pr_drag=1/(1+q.PR_migration_drag*state.PR_memory);event_gamma=.1+.9*np.sqrt(np.clip(renewal,0,1));Gamma=float(np.clip(pore_gamma*closed_drag*pr_drag*event_gamma,0,1));actual=intrinsic*Gamma
         growth={**base,"M_GB_intrinsic":m.M_GB(T_K),"Gamma_migration":Gamma,"G_dot_intrinsic_m_s":intrinsic,"G_dot_actual_m_s":actual,"G_dot_m_s":actual,"pore_Zener_drag_contribution":pore_gamma,"closed_accommodation_migration_contribution":closed_drag,"persistent_TJ_contribution":1.}
         total_open=open_shrink+pr-to_iso-to_closed_open;ta=np.full_like(p.radii_m,np.inf);mask=(p.phi_open>0)&(total_open<0);ta[mask]=p.phi_open[mask]/(-total_open[mask])
         arrays={"pore_radii_m_json":json.dumps(p.radii_m.tolist()),"phi_open_json":json.dumps(p.phi_open.tolist()),"phi_iso_json":json.dumps(p.phi_iso.tolist()),"phi_closed_json":json.dumps(p.phi_closed.tolist()),"phi_open_dot_json":json.dumps(open_dot.tolist()),"phi_iso_dot_json":json.dumps(iso_dot.tolist()),"phi_closed_dot_json":json.dumps(closed_dot.tolist()),"tau_remove_s_json":json.dumps(ta.tolist())}
-        diag={**kin,**growth,**power.__dict__,**diagnostics(p),**arrays,"tau_nuc_s":tau_nuc,"tau_exchange_s":tau_exchange,"tau_transport_s":tau_transport,"tau_cycle_s":tau_cycle,"activity":renewal,"activity_open":renewal,"activity_closed":closed_activation,"connected_removable_factor":removable,"open_path_eligibility":open_path_eligibility,"open_eligibility_base":open_eligibility_base,"open_eligibility_eff":open_path_eligibility,"closed_availability":closed_availability,"handoff_readiness":handoff_readiness,"tau_open_s":open_phi/max(rho_open,1e-300),"tau_closed_s":float(p.phi_closed.sum())/max(rho_closed,1e-300),"local_activation_stress_Pa":power.sigma_eff_Pa,"rho_dot_open_sinv":rho_open,"rho_dot_closed_sinv":rho_closed,"rho_dot_total_sinv":rho_open+rho_closed,"PR_coarsening_flux":float(crossing.sum()),"PR_relocation_flux":float(crossing.sum()),"PR_to_isolated_flux":float(to_iso.sum()),"PR_to_closed_precursor_flux":float(to_closed.sum()),"bin_crossing_rate":float(crossing.sum()),"isolation_rate":float(to_iso.sum()),"closure_rate":float(to_closed.sum()),"closed_shrinkage_flux":rho_closed,"PR_low_activity_gate":low,"PR_thermal_factor":theta,"PR_memory":state.PR_memory,"cumulative_PR_work":state.cumulative_PR_work,"A_closed":A,"mechanism_mode":"resolved_rules","open_closed_handoff_mode":q.open_closed_handoff_mode,"gb_mobility_mode":q.gb_mobility_mode,"M0_factor":q.M0_factor,"Q_M_kJ_mol":m.Q_M_J_mol/1000}
+        diag={**kin,**growth,**power.__dict__,**diagnostics(p),**arrays,**closed_law_diag,"tau_nuc_s":tau_nuc,"tau_exchange_s":tau_exchange,"tau_transport_s":tau_transport,"tau_cycle_s":tau_cycle,"activity":renewal,"activity_open":renewal,"activity_closed":closed_activation,"connected_removable_factor":removable,"open_path_eligibility":open_path_eligibility,"open_eligibility_base":open_eligibility_base,"open_eligibility_eff":open_path_eligibility,"closed_availability":closed_availability,"handoff_readiness":handoff_readiness,"tau_open_s":open_phi/max(rho_open,1e-300),"tau_closed_s":float(p.phi_closed.sum())/max(rho_closed,1e-300),"local_activation_stress_Pa":power.sigma_eff_Pa,"rho_dot_open_sinv":rho_open,"rho_dot_closed_sinv":rho_closed,"rho_dot_total_sinv":rho_open+rho_closed,"PR_coarsening_flux":float(crossing.sum()),"PR_relocation_flux":float(crossing.sum()),"PR_to_isolated_flux":float(to_iso.sum()),"PR_to_closed_precursor_flux":float(to_closed.sum()),"bin_crossing_rate":float(crossing.sum()),"isolation_rate":float(to_iso.sum()),"closure_rate":float(to_closed.sum()),"closed_shrinkage_flux":rho_closed,"PR_low_activity_gate":low,"PR_thermal_factor":theta,"PR_memory":state.PR_memory,"cumulative_PR_work":state.cumulative_PR_work,"A_closed":A,"mechanism_mode":"resolved_rules","open_closed_handoff_mode":q.open_closed_handoff_mode,"gb_mobility_mode":q.gb_mobility_mode,"M0_factor":q.M0_factor,"Q_M_kJ_mol":m.Q_M_J_mol/1000}
         return open_dot,iso_dot,closed_dot,rho_closed,growth,diag
 
     def step(self,state,T_K,dt_s):
         od,ii,cc,closed_rate,growth,diag=self.rates(state,T_K);p=state.pores.copy();p.phi_open=np.maximum(0,p.phi_open+dt_s*od);p.phi_iso=np.maximum(0,p.phi_iso+dt_s*ii);p.phi_closed=np.maximum(0,p.phi_closed+dt_s*cc)
         pr_rate=diag["PR_coarsening_flux"]/self.parameters.PR_memory_phi_scale;memory=np.clip(state.PR_memory+dt_s*(pr_rate*(1-state.PR_memory)-state.PR_memory/self.parameters.PR_memory_decay_s),0,1)
         if self.parameters.infinite_closed_accommodation:A=1.
-        else:A=np.clip(state.A_closed+dt_s*(memory*(self.parameters.accommodation_max-state.A_closed)/self.parameters.accommodation_prepare_tau_s-closed_rate/self.parameters.accommodation_capacity_phi),0,self.parameters.accommodation_max)
+        else:
+            preparation=memory*(self.parameters.accommodation_max-state.A_closed)/self.parameters.accommodation_prepare_tau_s
+            if self.parameters.closed_channel_law=="surface_diffusion_accommodation_only": preparation+=diag["A_dot_closed_sinv"]
+            A=np.clip(state.A_closed+dt_s*(preparation-closed_rate/self.parameters.accommodation_capacity_phi),0,self.parameters.accommodation_max)
         work=state.cumulative_PR_work+dt_s*diag["PR_coarsening_flux"]
         diag.update(diagnostics(p));diag.update({"pore_radii_m_json":json.dumps(p.radii_m.tolist()),"phi_open_json":json.dumps(p.phi_open.tolist()),"phi_iso_json":json.dumps(p.phi_iso.tolist()),"phi_closed_json":json.dumps(p.phi_closed.tolist()),"A_closed":float(A),"PR_memory":float(memory),"cumulative_PR_work":work})
         return ModelState(state.t_s+dt_s,T_K,1-p.total,state.G_m+dt_s*growth["G_dot_m_s"],p,float(A),float(memory),work),diag

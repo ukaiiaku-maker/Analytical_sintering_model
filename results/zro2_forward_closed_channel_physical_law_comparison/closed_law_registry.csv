@@ -1,0 +1,7 @@
+closed_channel_law,description,direct_density_change,schedule_blind,status,empirical
+resolved_proxy_current,inherited reduced proxy,True,True,default inherited,False
+GB_diffusion_closed_shrinkage,dimensional GB diffusion and capillary pressure,True,True,candidate; not calibrated; not validation,False
+renewal_limited_closed_shrinkage,serial nucleation/exchange/GB transport,True,True,candidate; not calibrated; not validation,False
+surface_diffusion_accommodation_only,bounded shape relaxation; no volume removal,False,True,candidate; not calibrated; not validation,False
+gas_accommodation_limited,bounded gas-pressure factor times GB transport,True,True,candidate; not calibrated; not validation,False
+empirical_closed_rate_scale,diagnostic Arrhenius reduced closure,True,True,candidate; not calibrated; not validation,True

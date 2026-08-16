@@ -1,0 +1,6 @@
+config_id,law,groups,strict_success_groups,finite_window_count,lower_boundary_count,upper_boundary_count,min_boundary_gap_C,max_boundary_gap_C
+GB_diffusion_closed_shrinkage__m3__x1,GB_diffusion_closed_shrinkage,60,0,0,0,0,,
+GB_diffusion_closed_shrinkage__m4__x1,GB_diffusion_closed_shrinkage,60,0,0,0,0,,
+gas_accommodation_limited__m3__x1,gas_accommodation_limited,60,0,0,0,0,,
+renewal_limited_closed_shrinkage__m3__x1,renewal_limited_closed_shrinkage,60,0,0,0,0,,
+resolved_proxy_current__m3__x1,resolved_proxy_current,60,0,0,0,0,,

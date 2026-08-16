@@ -1,0 +1,23 @@
+{
+  "branch": "codex/zro2-forward-closed-channel-physical-law-comparison",
+  "source_commit": "ebf82941db9b8789d018e5e7986b8e6750587e20",
+  "barrier_sha256": "fa7c9a2fb30e55596d9cdf47d2b03d530ef073cbe15f6210282285b2fcee7f37",
+  "laws": [
+    "resolved_proxy_current",
+    "GB_diffusion_closed_shrinkage",
+    "renewal_limited_closed_shrinkage",
+    "surface_diffusion_accommodation_only",
+    "gas_accommodation_limited",
+    "empirical_closed_rate_scale"
+  ],
+  "mapped_configurations": [
+    "resolved_proxy_current__m3__x1",
+    "renewal_limited_closed_shrinkage__m3__x1",
+    "GB_diffusion_closed_shrinkage__m3__x1",
+    "GB_diffusion_closed_shrinkage__m4__x1",
+    "gas_accommodation_limited__m3__x1"
+  ],
+  "candidate_injection_diagnostic_only": true,
+  "Q_closed_app_physical_input": false,
+  "validation": false
+}

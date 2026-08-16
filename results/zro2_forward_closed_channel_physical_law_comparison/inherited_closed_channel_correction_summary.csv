@@ -1,0 +1,6 @@
+item,value
+correction_branch,model physics was not changed; barrier/diffusivities/mobility unchanged
+Q_closed_app,"apparent diagnostic only, not a material property"
+closed_channel,current rate too small
+candidate_693168,conditional comparator only
+validation,no validation claim
