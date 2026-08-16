@@ -1,0 +1,8 @@
+evidence,interpretation,value,non_validation
+fast_density_loss,reduced open shrinkage,0.0587 density loss; open integral -0.0634,True
+direct_transfer,too small to explain loss,2.7e-4 pore fraction,True
+fast_closed_shrinkage,negligible,1.6e-8 density,True
+low_T2,barrier/closed-rate limited,inherited,True
+high_T2,intrinsic-growth dominated,inherited,True
+mobility,cannot rescue pathway,best gap -100 C; zero all-gate cases,True
+candidate_693168,"conditional comparator, not calibration",closed fraction 0.649 at switch,True

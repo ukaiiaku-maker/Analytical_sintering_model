@@ -1,0 +1,12 @@
+{
+  "status": "complete_not_validated",
+  "strict_target_rho": 0.976,
+  "strict_target_G_um": 0.29,
+  "mode_count": 11,
+  "strict_success_count_forward_modes": 0,
+  "finite_window_count_forward_modes": 0,
+  "candidate_injection_successes": 0,
+  "all_gate_mode_count": 0,
+  "barrier_sha256": "fa7c9a2fb30e55596d9cdf47d2b03d530ef073cbe15f6210282285b2fcee7f37",
+  "validation_claim": false
+}

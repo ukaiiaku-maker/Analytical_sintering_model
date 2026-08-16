@@ -1,0 +1,6 @@
+limitation,status
+barrier extrapolation,unchanged
+handoff factors,"bounded diagnostic, not calibrated"
+candidate injection,external state sufficiency diagnostic only
+mini-map,"bounded, not broad calibration"
+validation,none

@@ -1,0 +1,12 @@
+mode_id,strict_success_count,finite_window_count,min_gap_C,median_gap_C,max_gap_C,forward_prediction_eligible
+balanced_handoff,0,0,-175.0,-125.0,-100.0,True
+candidate_state_injection_diagnostic,0,0,-125.0,-75.0,-75.0,False
+closed_inventory_10x,0,0,-150.0,-100.0,-75.0,True
+closed_inventory_30x,0,0,-125.0,-100.0,-75.0,True
+closed_inventory_3x,0,0,-150.0,-100.0,-100.0,True
+closed_rate_100x,0,0,-200.0,-75.0,50.0,True
+closed_rate_10x,0,0,-175.0,-75.0,-75.0,True
+closed_rate_30x,0,0,-175.0,-75.0,-25.0,True
+closed_rate_3x,0,0,-175.0,-125.0,-100.0,True
+diagnostic_open_recovery,0,0,-25.0,0.0,0.0,True
+resolved_default,0,0,-200.0,-150.0,-100.0,True

@@ -1,0 +1,12 @@
+mode_id,fast_density_substantially_recovered,smaller_grain_sign_preserved,named_flux_identity,closed_shrinkage_non_negligible,finite_bracketed_window,forward_prediction_eligible,all_gates
+balanced_handoff,False,True,True,False,False,True,False
+candidate_state_injection_diagnostic,False,True,True,False,False,False,False
+closed_inventory_10x,False,True,True,False,False,True,False
+closed_inventory_30x,False,True,True,False,False,True,False
+closed_inventory_3x,False,True,True,False,False,True,False
+closed_rate_100x,False,True,True,False,False,True,False
+closed_rate_10x,False,True,True,False,False,True,False
+closed_rate_30x,False,True,True,False,False,True,False
+closed_rate_3x,False,True,True,False,False,True,False
+diagnostic_open_recovery,True,True,True,False,False,True,False
+resolved_default,False,True,True,False,False,True,False
