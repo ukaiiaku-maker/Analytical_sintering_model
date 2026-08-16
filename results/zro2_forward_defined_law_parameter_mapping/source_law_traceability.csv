@@ -1,0 +1,13 @@
+law_id,source_file,source_section_or_line_hint,current_forward_function,implementation_status,missing_mapping
+serial_renewal_densification,twostep_renewal_powerchannels.py,lines 226-236,kinetic_state/density_rate,physical and directly implemented,
+capillary_onsager_stress_balance,run_sinter_onsager_export_pressureless_memory_3rate_aluminaGG_renewalpicard.m,lines 2116-2197,solve_effective_stress,physical and directly implemented,
+excess_power_PR_desintering,twostep_renewal_powerchannels.py,lines 394-438,ResolvedRuleModel.rates,reduced phenomenological,absolute excess-power mapping
+conservative_pore_population_evolution,twostep_renewal_powerchannels.py,lines 506-517,ResolvedRuleModel.rates,physical and directly implemented,
+removable_to_trapped_or_closed_transition,discussion5 brief,closed transition rule,ResolvedRuleModel.rates,reduced phenomenological,transition kinetics
+closed_pore_shrinkage_with_finite_accommodation,candidate laws / physical-law comparison,closed-law registry,closed_channel_rates,physical but missing parameters,accommodation kinetics/pressure
+Zener_pore_size_pinning,twostep_renewal_powerchannels.py,lines 327-339,growth_state,physical and directly implemented,k_Z transfer
+intrinsic_growth_times_activity,discussion5 brief,growth rule,ResolvedRuleModel.rates,physical and directly implemented,mobility uncertainty
+PR_prepared_closed_accommodation_memory,candidate 693168 Tier B,required mechanism ablations,ResolvedRuleModel.step,reduced phenomenological,physical accommodation mapping
+Chen_window_classification,resolved-rule map utilities,window_rows,window_rows,computed diagnostic,
+fast_firing_nucleation_onset,discussion5 brief / barrier JSON,onset rule,kinetic_state,physical and directly implemented,sub-950C extrapolation
+candidate693168_reduced_closed_channel,candidate 693168 Tier B,conditional comparator,reduced transfer mode,reduced phenomenological,not transferable as ZrO2 inputs

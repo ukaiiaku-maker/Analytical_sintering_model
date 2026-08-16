@@ -17,6 +17,8 @@ from .closed_channel_laws import closed_channel_rates
 @dataclass
 class ResolvedRuleParameters(ModelParameters):
     mechanism_mode: str = "resolved_rules"
+    closed_mapping_mode: str = "baseline_forward_current"
+    closed_mapping_rate_factor: float = 1.
     open_closed_handoff_mode: str = "resolved_default"
     closed_rate_factor: float = 1.
     closed_inventory_factor: float = 1.
@@ -85,7 +87,11 @@ def conservative_adjacent_PR(phi_open,rate):
 class ResolvedRuleModel(ForwardModel):
     def __init__(self, barrier=None, material=None, parameters=None):
         q=parameters or ResolvedRuleParameters()
-        if q.mechanism_mode != "resolved_rules": raise ValueError("resolved model requires mechanism_mode='resolved_rules'")
+        if q.mechanism_mode not in {"resolved_rules","defined_laws_port"}: raise ValueError("unsupported mechanism_mode")
+        mapping={"baseline_forward_current":"resolved_proxy_current","defined_laws_port":"resolved_proxy_current","reduced_candidate_law_transfer":"resolved_proxy_current","mechanistic_GB_diffusion":"GB_diffusion_closed_shrinkage","mechanistic_renewal_limited":"renewal_limited_closed_shrinkage","mechanistic_gas_accommodation":"gas_accommodation_limited","empirical_rate_scale_diagnostic":"empirical_closed_rate_scale"}
+        if q.closed_mapping_mode not in mapping: raise ValueError(f"unknown closed_mapping_mode: {q.closed_mapping_mode}")
+        expected=mapping[q.closed_mapping_mode]
+        if q.closed_channel_law != expected:q=replace(q,closed_channel_law=expected)
         m=resolved_material(material,q.M0_factor,q.Q_M_J_mol_override)
         super().__init__(barrier or BarrierModel.load(BARRIER),m,q)
 
@@ -127,14 +133,14 @@ class ResolvedRuleModel(ForwardModel):
             rho_open=density_rate(state.rho,edot);open_shrink=-removal_weights(p)*rho_open
             open_dot=open_shrink+pr-to_iso-to_closed_open
             closed_factor=1+q.handoff_closed_beta*state.PR_memory*A
-        shrink=np.zeros_like(p.phi_closed) if q.no_closed_shrinkage else closed_factor*shrink_law;closed_dot-=shrink;rho_closed=float(shrink.sum())
+        shrink=np.zeros_like(p.phi_closed) if q.no_closed_shrinkage else closed_factor*q.closed_mapping_rate_factor*shrink_law;closed_dot-=shrink;rho_closed=float(shrink.sum())
         base=growth_state(state.G_m,p.radii_m,p.phi_open,T_K,m,zener_strength=q.zener_strength,mobile_drag_scale=q.mobile_drag_scale)
         intrinsic=m.M_GB(T_K)*m.gamma_GB_J_m2/max(state.G_m,1e-30);pore_gamma=1. if q.no_pore_drag else base["Gamma_growth"]
         closed_drag=1/(1+q.closed_migration_drag*float(p.phi_closed.sum())/max(1-state.rho,1e-12));pr_drag=1/(1+q.PR_migration_drag*state.PR_memory);event_gamma=.1+.9*np.sqrt(np.clip(renewal,0,1));Gamma=float(np.clip(pore_gamma*closed_drag*pr_drag*event_gamma,0,1));actual=intrinsic*Gamma
         growth={**base,"M_GB_intrinsic":m.M_GB(T_K),"Gamma_migration":Gamma,"G_dot_intrinsic_m_s":intrinsic,"G_dot_actual_m_s":actual,"G_dot_m_s":actual,"pore_Zener_drag_contribution":pore_gamma,"closed_accommodation_migration_contribution":closed_drag,"persistent_TJ_contribution":1.}
         total_open=open_shrink+pr-to_iso-to_closed_open;ta=np.full_like(p.radii_m,np.inf);mask=(p.phi_open>0)&(total_open<0);ta[mask]=p.phi_open[mask]/(-total_open[mask])
         arrays={"pore_radii_m_json":json.dumps(p.radii_m.tolist()),"phi_open_json":json.dumps(p.phi_open.tolist()),"phi_iso_json":json.dumps(p.phi_iso.tolist()),"phi_closed_json":json.dumps(p.phi_closed.tolist()),"phi_open_dot_json":json.dumps(open_dot.tolist()),"phi_iso_dot_json":json.dumps(iso_dot.tolist()),"phi_closed_dot_json":json.dumps(closed_dot.tolist()),"tau_remove_s_json":json.dumps(ta.tolist())}
-        diag={**kin,**growth,**power.__dict__,**diagnostics(p),**arrays,**closed_law_diag,"tau_nuc_s":tau_nuc,"tau_exchange_s":tau_exchange,"tau_transport_s":tau_transport,"tau_cycle_s":tau_cycle,"activity":renewal,"activity_open":renewal,"activity_closed":closed_activation,"connected_removable_factor":removable,"open_path_eligibility":open_path_eligibility,"open_eligibility_base":open_eligibility_base,"open_eligibility_eff":open_path_eligibility,"closed_availability":closed_availability,"handoff_readiness":handoff_readiness,"tau_open_s":open_phi/max(rho_open,1e-300),"tau_closed_s":float(p.phi_closed.sum())/max(rho_closed,1e-300),"local_activation_stress_Pa":power.sigma_eff_Pa,"rho_dot_open_sinv":rho_open,"rho_dot_closed_sinv":rho_closed,"rho_dot_total_sinv":rho_open+rho_closed,"PR_coarsening_flux":float(crossing.sum()),"PR_relocation_flux":float(crossing.sum()),"PR_to_isolated_flux":float(to_iso.sum()),"PR_to_closed_precursor_flux":float(to_closed.sum()),"bin_crossing_rate":float(crossing.sum()),"isolation_rate":float(to_iso.sum()),"closure_rate":float(to_closed.sum()),"closed_shrinkage_flux":rho_closed,"PR_low_activity_gate":low,"PR_thermal_factor":theta,"PR_memory":state.PR_memory,"cumulative_PR_work":state.cumulative_PR_work,"A_closed":A,"mechanism_mode":"resolved_rules","open_closed_handoff_mode":q.open_closed_handoff_mode,"gb_mobility_mode":q.gb_mobility_mode,"M0_factor":q.M0_factor,"Q_M_kJ_mol":m.Q_M_J_mol/1000}
+        diag={**kin,**growth,**power.__dict__,**diagnostics(p),**arrays,**closed_law_diag,"tau_nuc_s":tau_nuc,"tau_exchange_s":tau_exchange,"tau_transport_s":tau_transport,"tau_cycle_s":tau_cycle,"activity":renewal,"activity_open":renewal,"activity_closed":closed_activation,"chi_eligible":removable,"F_pore_open":1-state.rho,"connected_removable_factor":removable,"open_path_eligibility":open_path_eligibility,"open_eligibility_base":open_eligibility_base,"open_eligibility_eff":open_path_eligibility,"closed_availability":closed_availability,"handoff_readiness":handoff_readiness,"tau_open_s":open_phi/max(rho_open,1e-300),"tau_closed_s":float(p.phi_closed.sum())/max(rho_closed,1e-300),"local_activation_stress_Pa":power.sigma_eff_Pa,"rho_dot_open_sinv":rho_open,"rho_dot_closed_sinv":rho_closed,"rho_dot_total_sinv":rho_open+rho_closed,"PR_coarsening_flux":float(crossing.sum()),"PR_relocation_flux":float(crossing.sum()),"PR_to_isolated_flux":float(to_iso.sum()),"PR_to_closed_precursor_flux":float(to_closed.sum()),"bin_crossing_rate":float(crossing.sum()),"isolation_rate":float(to_iso.sum()),"closure_rate":float(to_closed.sum()),"closed_shrinkage_flux":rho_closed,"PR_low_activity_gate":low,"PR_thermal_factor":theta,"PR_memory":state.PR_memory,"cumulative_PR_work":state.cumulative_PR_work,"A_closed":A,"mechanism_mode":q.mechanism_mode,"closed_mapping_mode":q.closed_mapping_mode,"open_closed_handoff_mode":q.open_closed_handoff_mode,"gb_mobility_mode":q.gb_mobility_mode,"M0_factor":q.M0_factor,"Q_M_kJ_mol":m.Q_M_J_mol/1000,"sigma_bound_hit":bool(power.sigma_eff_Pa<=q.stress_min_Pa*(1+1e-9) or power.sigma_eff_Pa>=q.stress_max_Pa*(1-1e-9)),"Pi_power":power.P_dens_W_m3/max(power.P_surf_W_m3,1e-300),"excess_power_fraction":max(0.,1-power.P_dens_W_m3/max(power.P_surf_W_m3,1e-300))}
         return open_dot,iso_dot,closed_dot,rho_closed,growth,diag
 
     def step(self,state,T_K,dt_s):

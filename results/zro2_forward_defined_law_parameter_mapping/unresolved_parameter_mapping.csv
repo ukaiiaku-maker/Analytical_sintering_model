@@ -1,0 +1,8 @@
+parameter,parameter_class,source,used_by,physical_ZrO2_input,requires_calibration,notes
+M0_growth,global_calibration,defined reduced/geometry law,defined_laws_port,False,True,
+Q_growth,bounded_uncertainty,defined reduced/geometry law,defined_laws_port,False,False,
+A_closed_max,reduced_phenomenological,defined reduced/geometry law,defined_laws_port,False,True,
+Q_closed_app,empirical_diagnostic,defined reduced/geometry law,defined_laws_port,False,False,apparent only; not a material property
+k_closed_eff,missing_physical_mapping,defined reduced/geometry law,defined_laws_port,False,True,
+candidate693168_rate_and_capacity_set,reduced_phenomenological,candidate 693168 conditional Tier B,reduced_candidate_law_transfer,False,True,comparator logic only; values not calibrated ZrO2 inputs
+Q_closed_emp_and_k0_closed_emp,empirical_diagnostic,physical-law comparison diagnostic,empirical_rate_scale_diagnostic,False,False,nonphysical and nonvalidated

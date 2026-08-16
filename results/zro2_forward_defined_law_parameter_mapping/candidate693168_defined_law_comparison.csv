@@ -1,0 +1,9 @@
+model,switch_density,switch_G_nm,first_step_growth,closed_fraction_at_switch,A_closed,PR_memory,closed_density_contribution,low_T2_failure,success_band,high_T2_growth_failure,finite_accommodation_role,destructive_ablations,conditional_comparator,validated
+baseline_forward_current,0.88,117,1.3399999999999999,0.649,0.152,1.0,0.08660905600198536,True,none,True,enabled and bounded,not rerun; inherited Tier-B evidence,False,False
+defined_laws_port,0.88,117,1.3399999999999999,0.649,0.152,1.0,0.08660905600198536,True,none,True,enabled and bounded,not rerun; inherited Tier-B evidence,False,False
+empirical_rate_scale_diagnostic,0.88,117,1.3399999999999999,0.649,0.152,1.0,0.057533307303103465,True,none,True,enabled and bounded,not rerun; inherited Tier-B evidence,False,False
+mechanistic_GB_diffusion,0.88,117,1.3399999999999999,0.649,0.152,1.0,0.12,False,900-1125,True,enabled and bounded,not rerun; inherited Tier-B evidence,False,False
+mechanistic_gas_accommodation,0.88,117,1.3399999999999999,0.649,0.152,1.0,0.12,False,900-1125,True,enabled and bounded,not rerun; inherited Tier-B evidence,False,False
+mechanistic_renewal_limited,0.88,117,1.3399999999999999,0.649,0.152,1.0,0.0031949305494242625,True,none,True,enabled and bounded,not rerun; inherited Tier-B evidence,False,False
+reduced_candidate_law_transfer,0.88,117,1.3399999999999999,0.649,0.152,1.0,0.10495256252562656,True,1100-1200,True,enabled and bounded,not rerun; inherited Tier-B evidence,False,False
+candidate_693168,0.88,117,0.137,0.649,0.152,1.0,0.244,True,conditional inherited interval,True,required; infinite accommodation destructive,"PR damage, transition, shrinkage, finite accommodation required",True,False
