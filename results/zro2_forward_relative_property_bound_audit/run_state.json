@@ -1,0 +1,13 @@
+{
+  "status": "complete_not_validated",
+  "barrier_sha256": "fa7c9a2fb30e55596d9cdf47d2b03d530ef073cbe15f6210282285b2fcee7f37",
+  "Q_transport_kJ_mol": 380.0,
+  "Q_PR_surface_kJ_mol": 380.0,
+  "Q_PR_separate_kJ_mol": 180.0,
+  "Q_growth_kJ_mol": 405.238394904,
+  "Q_closed_status": "proxy/unidentified; finite-difference effective values reported where closed inventory exists",
+  "effective_Gstar_eV_min": 4.567143305406176,
+  "effective_Gstar_eV_max": 4.682539816167582,
+  "model_physics_changed": false,
+  "validation_claim": false
+}

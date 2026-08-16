@@ -1,0 +1,14 @@
+window,lower,upper,window_type,source,universal_constant,note
+Q_nuc_minus_Q_growth_kJ,-50.0,96.0,exact_promoted_both_pass,results/relative_material_property_window_attribution/source_tables/material_property_window_scorecard.csv,False,
+Q_nuc_minus_Q_PR_kJ,51.0,251.0,exact_promoted_both_pass,results/relative_material_property_window_attribution/source_tables/material_property_window_scorecard.csv,False,
+Q_nuc_minus_Q_transport_kJ,15.0,202.0,exact_promoted_both_pass,results/relative_material_property_window_attribution/source_tables/material_property_window_scorecard.csv,False,
+Q_closed_minus_Q_growth_kJ,-252.0,-127.0,exact_promoted_both_pass,results/relative_material_property_window_attribution/source_tables/material_property_window_scorecard.csv,False,
+Q_PR_minus_Q_closed_kJ,-74.0,212.0,exact_promoted_both_pass,results/relative_material_property_window_attribution/source_tables/material_property_window_scorecard.csv,False,
+log10_kclosed_over_kgrowth,-1.52,1.5,exact_promoted_both_pass,results/relative_material_property_window_attribution/source_tables/material_property_window_scorecard.csv,False,
+log10_kPR_over_kgrowth,-1.48,1.48,exact_promoted_both_pass,results/relative_material_property_window_attribution/source_tables/material_property_window_scorecard.csv,False,
+log10_knuc_over_ktransport,-1.48,1.52,exact_promoted_both_pass,results/relative_material_property_window_attribution/source_tables/material_property_window_scorecard.csv,False,
+OAT_Delta_Q_nuc,0.0,50.0,OAT_local,docs/FINAL_MECHANISM_SYNTHESIS_CAPTIONS.md and source scorecard,False,-25 and +75 fail
+OAT_Delta_Q_closed,-25.0,100.0,OAT_local,docs/FINAL_MECHANISM_SYNTHESIS_CAPTIONS.md and source scorecard,False,-50 loses lower boundary
+OAT_Delta_Q_growth,-100.0,100.0,OAT_local,docs/FINAL_MECHANISM_SYNTHESIS_CAPTIONS.md and source scorecard,False,limit not found
+OAT_PR_prefactor_factor,0.3,inf,OAT_local,docs/FINAL_MECHANISM_SYNTHESIS_CAPTIONS.md and source scorecard,False,0.1 fails
+OAT_growth_prefactor_factor,0.1,inf,OAT_local,docs/FINAL_MECHANISM_SYNTHESIS_CAPTIONS.md and source scorecard,False,0.03 loses upper boundary

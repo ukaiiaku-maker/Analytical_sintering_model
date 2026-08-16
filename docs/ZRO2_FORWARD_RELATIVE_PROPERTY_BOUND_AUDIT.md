@@ -1,0 +1,7 @@
+# ZrO2 relative-property bound audit
+
+This is a diagnostic comparison with observed promoted-property ranges, not validation. No model physics, barrier data, diffusivity, mobility law, schedule, or target was changed.
+
+The fitted stress-resolved nucleation barrier spans 4.57–4.68 eV (440.7–451.8 kJ/mol) across representative states and existing histories. This gives `Q_nuc,eff−Q_growth` of about 35–47 kJ/mol and `Q_nuc,eff−Q_transport` of about 61–72 kJ/mol, both inside the promoted envelopes. Against the surface-controlled PR value of 380 kJ/mol, `Q_nuc,eff−Q_PR` is also inside at about 61–72 kJ/mol. Against the separate resolved PR barrier of 180 kJ/mol, the alternate difference is 261–272 kJ/mol and is just above the promoted upper bound of 251 kJ/mol.
+
+The implemented closed law has no independent physical `Q_closed`; it combines renewal activity, 0.35 times the 180 kJ/mol PR barrier, accommodation, pore size, and inventory. Finite-difference effective proxies are 118–137 kJ/mol where closed inventory exists. This is below—not above—the 153–278 kJ/mol value implied by the promoted closed/growth range. Nevertheless, closed rates remain too small because effective prefactor and availability ratios are usually outside low. Thus the closed channel remains the primary property gap, but the evidence points to effective availability/prefactor coupling rather than an excessively high activation barrier.

@@ -1,0 +1,4 @@
+priority,action,reason,change_model_now
+1,identify/calibrate physical closed-channel activation and availability,Q_closed is composite proxy and closed/growth plus closed prefactor groups are outside or unidentifiable,False
+2,retain stress-resolved nucleation barrier and fixed transport/PR diffusion,evaluate statewise; do not replace Gstar with scalar,False
+3,do not tune GB mobility as rescue,separate mobility audit produced zero all-gate cases,False

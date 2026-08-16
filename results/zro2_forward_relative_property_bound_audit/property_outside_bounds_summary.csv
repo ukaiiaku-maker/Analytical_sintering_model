@@ -1,0 +1,12 @@
+property_group,inside_count,outside_count,outside_fraction,primary_unknown
+inside_both_pass_nuc_growth,188,0,0.0,False
+inside_both_pass_nuc_PR,188,0,0.0,False
+inside_both_pass_nuc_transport,188,0,0.0,False
+inside_both_pass_closed_growth,0,188,1.0,True
+inside_both_pass_PR_closed,0,188,1.0,True
+inside_OAT_Delta_Q_nuc,188,0,0.0,False
+inside_OAT_Delta_Q_closed,0,188,1.0,False
+inside_OAT_Delta_Q_growth,188,0,0.0,False
+inside_PR_prefactor_threshold,188,0,0.0,False
+inside_growth_prefactor_threshold,188,0,0.0,False
+inside_prefactor_envelope,0,188,1.0,False

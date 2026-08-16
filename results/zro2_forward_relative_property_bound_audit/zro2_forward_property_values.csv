@@ -1,0 +1,9 @@
+property,value,unit,status_or_law
+Q_transport,380.0,kJ/mol,D_GB=0.056 exp(-380k/RT)
+Q_surface,380.0,kJ/mol,D_s=0.10 exp(-380k/RT)
+Q_PR_separate,180.0,kJ/mol,resolved Q_PR_J_mol
+Q_growth,405.238394904,kJ/mol,4.2 eV high-temperature branch
+Q_closed_physical,,kJ/mol,proxy/unidentified; composite activity uses 0.35 Q_PR
+D_GB0,0.056,m2/s,unchanged
+D_s0,0.1,m2/s,unchanged
+M0,0.0058,m4/(J s),unchanged
