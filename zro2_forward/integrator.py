@@ -7,6 +7,7 @@ from .pore_population import PorePopulation, initial_population, removal_weights
 from .densification import kinetic_state, density_rate, connectivity
 from .energy_balance import solve_effective_stress
 from .grain_growth import growth_state
+from .closed_pore_evolution import ClosedPoreEvolution
 
 
 @dataclass
@@ -19,6 +20,7 @@ class ModelState:
     A_closed: float = 1.
     PR_memory: float = 0.
     cumulative_PR_work: float = 0.
+    closed_pores: ClosedPoreEvolution | None = None
 
 
 @dataclass

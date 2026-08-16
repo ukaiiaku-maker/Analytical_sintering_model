@@ -1,0 +1,7 @@
+mode,governing_source,transport,barrier,radius_exponent_m,dimensional_status,Q_closed_input,validation
+renewal_m4,closed-pore evolution law addendum,D_GB fixed,"fixed Gstar(sigma,T)",4,physical mapping with phenomenological geometry/accommodation,False,False
+renewal_m3_sensitivity,closed-pore evolution law addendum,D_GB fixed,"fixed Gstar(sigma,T)",3,physical mapping with phenomenological geometry/accommodation,False,False
+GB_transport_m4,closed-pore evolution law addendum,D_GB fixed,"fixed Gstar(sigma,T)",4,semi-phenomenological C_GB_closed,False,False
+GB_transport_m3,closed-pore evolution law addendum,D_GB fixed,"fixed Gstar(sigma,T)",3,semi-phenomenological C_GB_closed,False,False
+gas_accommodation_m4,closed-pore evolution law addendum,D_GB fixed,"fixed Gstar(sigma,T)",4,physical mapping with phenomenological geometry/accommodation,False,False
+surface_accommodation_only,closed-pore evolution law addendum,D_s fixed; accommodation only,"fixed Gstar(sigma,T)",4,physical mapping with phenomenological geometry/accommodation,False,False

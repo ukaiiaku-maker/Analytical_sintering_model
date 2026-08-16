@@ -1,0 +1,8 @@
+{
+  "branch": "codex/zro2-forward-binwise-closed-pore-evolution",
+  "source_commit": "b70ac1b40b2b0c34d9791d61bcd160b61a17f92e",
+  "barrier_sha256": "fa7c9a2fb30e55596d9cdf47d2b03d530ef073cbe15f6210282285b2fcee7f37",
+  "Q_closed_physical_input": false,
+  "mini_map_run": false,
+  "validation": false
+}

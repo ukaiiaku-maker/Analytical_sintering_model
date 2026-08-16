@@ -12,6 +12,7 @@ from .integrator import ForwardModel, ModelParameters, ModelState
 from .material_zro2 import MaterialParameters, R
 from .pore_population import diagnostics, removal_weights
 from .closed_channel_laws import closed_channel_rates
+from .closed_pore_evolution import ClosedPoreEvolution
 
 
 @dataclass
@@ -41,6 +42,14 @@ class ResolvedRuleParameters(ModelParameters):
     Q_closed_emp_J_mol: float = 130000.
     closed_empirical_size_exponent: float = 4.
     closed_rate_cap_time_s: float = 10.
+    closed_geometry_factor: float = 1.
+    closed_shrinkable_fraction: float = 1.
+    closed_gas_enabled: bool = False
+    closed_gas_initial_fraction: float = .25
+    closed_accommodation_beta: float = 1.
+    closed_accommodation_recovery_sinv: float = 0.
+    closed_transport_length_basis: str = "pore_radius"
+    binwise_closed_state: bool = False
     activity_mid: float = .15
     activity_width: float = .06
     activity_power: float = 1.5
@@ -88,10 +97,12 @@ class ResolvedRuleModel(ForwardModel):
     def __init__(self, barrier=None, material=None, parameters=None):
         q=parameters or ResolvedRuleParameters()
         if q.mechanism_mode not in {"resolved_rules","defined_laws_port"}: raise ValueError("unsupported mechanism_mode")
-        mapping={"baseline_forward_current":"resolved_proxy_current","defined_laws_port":"resolved_proxy_current","reduced_candidate_law_transfer":"resolved_proxy_current","mechanistic_GB_diffusion":"GB_diffusion_closed_shrinkage","mechanistic_renewal_limited":"renewal_limited_closed_shrinkage","mechanistic_gas_accommodation":"gas_accommodation_limited","empirical_rate_scale_diagnostic":"empirical_closed_rate_scale"}
+        mapping={"baseline_forward_current":"resolved_proxy_current","defined_laws_port":"resolved_proxy_current","reduced_candidate_law_transfer":"resolved_proxy_current","mechanistic_GB_diffusion":"GB_diffusion_closed_shrinkage","mechanistic_renewal_limited":"renewal_limited_closed_shrinkage","mechanistic_gas_accommodation":"gas_accommodation_limited","mechanistic_surface_accommodation":"surface_diffusion_accommodation_only","empirical_rate_scale_diagnostic":"empirical_closed_rate_scale"}
         if q.closed_mapping_mode not in mapping: raise ValueError(f"unknown closed_mapping_mode: {q.closed_mapping_mode}")
         expected=mapping[q.closed_mapping_mode]
-        if q.closed_channel_law != expected:q=replace(q,closed_channel_law=expected)
+        if (q.mechanism_mode=="defined_laws_port" or q.closed_mapping_mode!="baseline_forward_current") and q.closed_channel_law != expected:q=replace(q,closed_channel_law=expected)
+        if q.closed_mapping_mode=="mechanistic_gas_accommodation" and not q.closed_gas_enabled:q=replace(q,closed_gas_enabled=True)
+        if q.closed_mapping_mode in {"reduced_candidate_law_transfer","mechanistic_GB_diffusion","mechanistic_renewal_limited","mechanistic_gas_accommodation","mechanistic_surface_accommodation","empirical_rate_scale_diagnostic"} and not q.binwise_closed_state:q=replace(q,binwise_closed_state=True)
         m=resolved_material(material,q.M0_factor,q.Q_M_J_mol_override)
         super().__init__(barrier or BarrierModel.load(BARRIER),m,q)
 
@@ -141,6 +152,7 @@ class ResolvedRuleModel(ForwardModel):
         total_open=open_shrink+pr-to_iso-to_closed_open;ta=np.full_like(p.radii_m,np.inf);mask=(p.phi_open>0)&(total_open<0);ta[mask]=p.phi_open[mask]/(-total_open[mask])
         arrays={"pore_radii_m_json":json.dumps(p.radii_m.tolist()),"phi_open_json":json.dumps(p.phi_open.tolist()),"phi_iso_json":json.dumps(p.phi_iso.tolist()),"phi_closed_json":json.dumps(p.phi_closed.tolist()),"phi_open_dot_json":json.dumps(open_dot.tolist()),"phi_iso_dot_json":json.dumps(iso_dot.tolist()),"phi_closed_dot_json":json.dumps(closed_dot.tolist()),"tau_remove_s_json":json.dumps(ta.tolist())}
         diag={**kin,**growth,**power.__dict__,**diagnostics(p),**arrays,**closed_law_diag,"tau_nuc_s":tau_nuc,"tau_exchange_s":tau_exchange,"tau_transport_s":tau_transport,"tau_cycle_s":tau_cycle,"activity":renewal,"activity_open":renewal,"activity_closed":closed_activation,"chi_eligible":removable,"F_pore_open":1-state.rho,"connected_removable_factor":removable,"open_path_eligibility":open_path_eligibility,"open_eligibility_base":open_eligibility_base,"open_eligibility_eff":open_path_eligibility,"closed_availability":closed_availability,"handoff_readiness":handoff_readiness,"tau_open_s":open_phi/max(rho_open,1e-300),"tau_closed_s":float(p.phi_closed.sum())/max(rho_closed,1e-300),"local_activation_stress_Pa":power.sigma_eff_Pa,"rho_dot_open_sinv":rho_open,"rho_dot_closed_sinv":rho_closed,"rho_dot_total_sinv":rho_open+rho_closed,"PR_coarsening_flux":float(crossing.sum()),"PR_relocation_flux":float(crossing.sum()),"PR_to_isolated_flux":float(to_iso.sum()),"PR_to_closed_precursor_flux":float(to_closed.sum()),"bin_crossing_rate":float(crossing.sum()),"isolation_rate":float(to_iso.sum()),"closure_rate":float(to_closed.sum()),"closed_shrinkage_flux":rho_closed,"PR_low_activity_gate":low,"PR_thermal_factor":theta,"PR_memory":state.PR_memory,"cumulative_PR_work":state.cumulative_PR_work,"A_closed":A,"mechanism_mode":q.mechanism_mode,"closed_mapping_mode":q.closed_mapping_mode,"open_closed_handoff_mode":q.open_closed_handoff_mode,"gb_mobility_mode":q.gb_mobility_mode,"M0_factor":q.M0_factor,"Q_M_kJ_mol":m.Q_M_J_mol/1000,"sigma_bound_hit":bool(power.sigma_eff_Pa<=q.stress_min_Pa*(1+1e-9) or power.sigma_eff_Pa>=q.stress_max_Pa*(1-1e-9)),"Pi_power":power.P_dens_W_m3/max(power.P_surf_W_m3,1e-300),"excess_power_fraction":max(0.,1-power.P_dens_W_m3/max(power.P_surf_W_m3,1e-300))}
+        diag["rho_dot_open_i_json"]=json.dumps((-open_shrink).tolist())
         return open_dot,iso_dot,closed_dot,rho_closed,growth,diag
 
     def step(self,state,T_K,dt_s):
@@ -152,12 +164,15 @@ class ResolvedRuleModel(ForwardModel):
             if self.parameters.closed_channel_law=="surface_diffusion_accommodation_only": preparation+=diag["A_dot_closed_sinv"]
             A=np.clip(state.A_closed+dt_s*(preparation-closed_rate/self.parameters.accommodation_capacity_phi),0,self.parameters.accommodation_max)
         work=state.cumulative_PR_work+dt_s*diag["PR_coarsening_flux"]
+        cp=state.closed_pores or ClosedPoreEvolution.initialize(state.pores,state.T_K,self.parameters.accommodation_max,self.parameters.closed_geometry_factor,self.parameters.closed_shrinkable_fraction,self.parameters.closed_gas_enabled,self.parameters.closed_gas_initial_fraction,self.material.gamma_s_J_m2,state.A_closed)
+        shrink=np.asarray(json.loads(diag["rho_dot_closed_i_json"]),float)
+        cp=cp.advance(state.pores.phi_closed,p.phi_closed,shrink,dt_s,T_K,self.material.D_s(T_K),self.parameters.closed_accommodation_beta,self.parameters.closed_accommodation_recovery_sinv,self.parameters.C_surface_accommodation if self.parameters.closed_channel_law=="surface_diffusion_accommodation_only" else 0.)
         diag.update(diagnostics(p));diag.update({"pore_radii_m_json":json.dumps(p.radii_m.tolist()),"phi_open_json":json.dumps(p.phi_open.tolist()),"phi_iso_json":json.dumps(p.phi_iso.tolist()),"phi_closed_json":json.dumps(p.phi_closed.tolist()),"A_closed":float(A),"PR_memory":float(memory),"cumulative_PR_work":work})
-        return ModelState(state.t_s+dt_s,T_K,1-p.total,state.G_m+dt_s*growth["G_dot_m_s"],p,float(A),float(memory),work),diag
+        return ModelState(state.t_s+dt_s,T_K,1-p.total,state.G_m+dt_s*growth["G_dot_m_s"],p,float(A),float(memory),work,cp),diag
 
 
 def resolved_initial_state(state):
-    return replace(state,A_closed=0.,PR_memory=0.,cumulative_PR_work=0.)
+    return replace(state,A_closed=0.,PR_memory=0.,cumulative_PR_work=0.,closed_pores=None)
 
 
 ABLATIONS=("no_PR_damage","no_closed_transition","no_closed_shrinkage","infinite_closed_accommodation","no_TJ_multihit","no_residual_stress","no_pore_drag","no_persistent_junction_state","no_sweep_coalescence","no_network_heterogeneity")

@@ -1,0 +1,13 @@
+mode,state_kind,low_density_failure,intermediate_success,high_growth_failure,universal_density_success,plausible_topology,acceptance
+GB_transport_m3,candidate_like_injected,False,True,True,True,False,diagnostic_or_reject
+GB_transport_m3,naturally_prepared,True,False,True,False,False,diagnostic_or_reject
+GB_transport_m4,candidate_like_injected,False,True,True,True,False,diagnostic_or_reject
+GB_transport_m4,naturally_prepared,True,False,True,False,False,diagnostic_or_reject
+gas_accommodation_m4,candidate_like_injected,False,True,True,True,False,diagnostic_or_reject
+gas_accommodation_m4,naturally_prepared,True,False,True,False,False,diagnostic_or_reject
+renewal_m3_sensitivity,candidate_like_injected,True,False,True,False,False,diagnostic_or_reject
+renewal_m3_sensitivity,naturally_prepared,True,False,True,False,False,diagnostic_or_reject
+renewal_m4,candidate_like_injected,True,False,True,False,False,diagnostic_or_reject
+renewal_m4,naturally_prepared,True,False,True,False,False,diagnostic_or_reject
+surface_accommodation_only,candidate_like_injected,True,False,True,False,False,diagnostic_or_reject
+surface_accommodation_only,naturally_prepared,True,False,True,False,False,diagnostic_or_reject

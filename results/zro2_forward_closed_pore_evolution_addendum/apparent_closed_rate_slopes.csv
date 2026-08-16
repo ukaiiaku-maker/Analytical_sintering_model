@@ -1,0 +1,6 @@
+mode,Q_closed_app_kJ_mol,diagnostic_only,material_input
+GB_transport_m3,0.047487590729297494,True,False
+GB_transport_m4,8.73815736172125e-14,True,False
+gas_accommodation_m4,387.45204625957496,True,False
+renewal_m3_sensitivity,417.2704967115379,True,False
+renewal_m4,384.2480697251168,True,False
