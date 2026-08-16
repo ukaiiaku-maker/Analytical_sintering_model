@@ -1,0 +1,9 @@
+metric,value,corrected_interpretation
+original_CS_final_density,0.9753769917210872,full-process endpoint
+original_CS_final_G_um,2.140674977447517,full-process endpoint
+original_CS_density_curve_delay_C,330.17,initialization/pre-950 C prediction mismatch plus possible barrier extrapolation effect
+original_rate50_density,0.8875606561695272,full-process thermal prediction
+original_rate50_G_um,0.5599609887944867,full-process thermal prediction
+original_HMS_density_miss,-0.09243934383047281,thermal model versus microwave experiment
+original_Chen_success_count,0.0,full-process map; no finite band
+original_onset_error_label,,replaced: initialization/pre-950 C prediction mismatch plus possible barrier extrapolation effect

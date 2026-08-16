@@ -1,0 +1,4 @@
+calibration_mode,site,work,M0
+endpoint_only_conditioned,30.0,3.0,0.0058
+observed_curve_conditioned,100.0,0.3,0.0058
+density_plus_grain_trajectory_conditioned,100.0,0.3,0.0058

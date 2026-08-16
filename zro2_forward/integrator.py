@@ -81,8 +81,8 @@ class ForwardModel:
         nxt=ModelState(state.t_s+dt_s,T_K,1-p.total,state.G_m+dt_s*growth["G_dot_m_s"],p,float(A))
         return nxt,diag
 
-    def run(self, thermal_path, dt_s=10., record_every_s=60.):
-        state=self.initial_state(); rows=[]
+    def run(self, thermal_path, dt_s=10., record_every_s=60., initial_state=None):
+        state=initial_state if initial_state is not None else self.initial_state(); rows=[]
         next_record=0.
         while state.t_s < thermal_path.t_end_s:
             T=thermal_path.temperature_K(state.t_s,state.rho)

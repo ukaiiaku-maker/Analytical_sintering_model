@@ -1,0 +1,43 @@
+{
+  "status": "complete_negative_result",
+  "analysis_split": {
+    "full_process": "25 C green compact to 1500 C",
+    "pdf_conditioned": "common 950 C state onward"
+  },
+  "common_initial_state": {
+    "T_C": 950.0,
+    "rho": 0.66,
+    "G_nm": 50.0,
+    "pore_mode": "common_open_lognormal",
+    "requested_pore_D50_nm": 25.0,
+    "pore_log_width": 0.65
+  },
+  "full_process_at_950C": {
+    "CS_rho": 0.48418,
+    "CS_G_nm": 10.725,
+    "rate50_rho": 0.484074,
+    "rate50_G_nm": 10.35
+  },
+  "conditioned_joint_calibration": {
+    "CS_final_rho": 0.99504,
+    "CS_final_G_um": 2.192492,
+    "rate50_final_rho": 0.959215,
+    "rate50_final_G_um": 0.687985
+  },
+  "conditioned_chen": {
+    "case_count": 195,
+    "strict_success_count": 0,
+    "finite_window_count": 0,
+    "failure_counts": {
+      "first_step_unattainable": 60,
+      "lower_density_exhaustion": 124,
+      "upper_grain_growth": 11
+    }
+  },
+  "validation": {
+    "pytest": "environment_exit_139",
+    "direct_guardrails": "7 groups passed",
+    "py_compile": "passed"
+  },
+  "interpretation": "Initialization/pre-950 C prediction mismatch is separated from post-950 kinetics and possible barrier extrapolation effects; no validation claim."
+}
