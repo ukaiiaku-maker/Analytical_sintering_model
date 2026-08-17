@@ -1,0 +1,11 @@
+model,switch_density,switch_G_nm,closed_fraction_at_switch,A_closed,PR_memory,closed_density_contribution,low_T2_failure,success_band,high_T2_growth_failure,finite_accommodation_role,conditional_comparator,validated
+candidate_reduced_transfer,0.88,117,0.649,0.152,1.0,0.12,True,1200-1200,True,bounded binwise state,False,False
+empirical_closed_rate_diagnostic,0.88,117,0.649,0.152,1.0,0.03381160801253717,True,none,True,bounded binwise state,False,False
+mechanistic_GB_diffusion_closed_m3,0.88,117,0.649,0.152,1.0,0.12,False,900-1125,True,bounded binwise state,False,False
+mechanistic_GB_diffusion_closed_m4,0.88,117,0.649,0.152,1.0,0.12,False,900-1125,True,bounded binwise state,False,False
+mechanistic_gas_accommodation,0.88,117,0.649,0.152,1.0,0.12,False,900-1200,True,bounded binwise state,False,False
+mechanistic_renewal_closed_m3,0.88,117,0.649,0.152,1.0,0.12,True,none,True,bounded binwise state,False,False
+mechanistic_renewal_closed_m4,0.88,117,0.649,0.152,1.0,0.12,True,none,True,bounded binwise state,False,False
+mechanistic_surface_accommodation,0.88,117,0.649,0.152,1.0,0.0,True,none,True,bounded binwise state,False,False
+resolved_proxy_current,0.88,117,0.649,0.152,1.0,0.08660905600198536,True,none,True,bounded binwise state,False,False
+candidate_693168,0.88,117,0.649,0.152,1.0,0.244,True,conditional inherited interval,True,required; infinite accommodation destructive,True,False

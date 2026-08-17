@@ -103,6 +103,7 @@ def closed_channel_rates(state, T_K, barrier, material, q, renewal):
         "P_gas_i_json":json.dumps(gas.tolist()),"sigma_closed_i_json":json.dumps(sigma.tolist()),"Gstar_closed_i_json":json.dumps(Gstar.tolist()),
         "r_nuc_closed_i_json":json.dumps(r_nuc.tolist()),"tau_transport_closed_i_json":json.dumps(tau_transport.tolist()),"tau_cycle_closed_i_json":json.dumps(tau_cycle.tolist()),
         "A_closed_i_json":json.dumps(A.tolist()),"A_closed_max_i_json":json.dumps(Amax.tolist()),
+        "A_closed_available_i_json":json.dumps(A.tolist()),
         "A_closed_used_i_json":json.dumps((cp.A_used if cp is not None else np.zeros_like(r)).tolist()),"A_closed_recovered_i_json":json.dumps((cp.A_recovered if cp is not None else np.zeros_like(r)).tolist()),
         "rho_dot_closed_i_json":json.dumps(shrink.tolist()),"surface_diffusion_accommodation_rate_i_json":json.dumps(accommodation_rate.tolist()),
         "gas_pressure_factor_i_json":json.dumps(gas_factor.tolist()),"radius_exponent_m":mexp,

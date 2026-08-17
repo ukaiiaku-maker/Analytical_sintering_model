@@ -1,0 +1,10 @@
+parameter_name,parameter_class,physical_source,forward_location,calibration_required,notes
+M0_growth,global_calibration,defined law/current state,defined_closed_laws_port,True,
+Q_growth,bounded_uncertainty,defined law/current state,defined_closed_laws_port,False,
+A_closed_max_i,reduced_phenomenological,defined law/current state,defined_closed_laws_port,True,
+tau_exchange,missing_physical_mapping,defined law/current state,defined_closed_laws_port,True,
+chi_shrink_i,missing_physical_mapping,defined law/current state,defined_closed_laws_port,True,
+C_geom_i,missing_physical_mapping,defined law/current state,defined_closed_laws_port,True,
+k_closed_eff,missing_physical_mapping,defined law/current state,defined_closed_laws_port,True,
+"Q_closed_emp,k0_closed_emp",empirical_diagnostic,none,empirical_closed_rate_diagnostic,False,nonphysical diagnostic only
+candidate693168_rate_capacity_set,reduced_phenomenological,conditional Tier B comparator,candidate_reduced_transfer,True,not calibrated ZrO2 inputs

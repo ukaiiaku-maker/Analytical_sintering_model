@@ -1,0 +1,13 @@
+{
+  "branch": "codex/zro2-forward-port-defined-closed-laws",
+  "source_commit": "986aabb",
+  "prior_binwise_branch_preserved": true,
+  "barrier_sha256": "fa7c9a2fb30e55596d9cdf47d2b03d530ef073cbe15f6210282285b2fcee7f37",
+  "discussion_doc_available": false,
+  "eligible_modes": [],
+  "mini_map_run": false,
+  "strict_success_count": 0,
+  "finite_window_count": 0,
+  "Q_closed_physical_input": false,
+  "validation": false
+}

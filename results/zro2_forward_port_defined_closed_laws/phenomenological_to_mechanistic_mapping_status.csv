@@ -1,0 +1,12 @@
+parameter_name,reduced_value_or_range,physical_interpretation,forward_model_equivalent,mapping_status,data_needed,controls_lower_boundary,controls_upper_boundary
+PR_damage_rate,candidate range,surface-diffusion/excess-power topology preparation,"C_PR,Q_PR,low-activity gate",phenomenological_unmapped,PR/topology-resolved experiment,True,False
+closed_transition_rate,candidate range,precursor-to-closed topology change,closed_transition_tau,phenomenological_unmapped,closed fraction versus first-step history,True,False
+closed_shrinkage_transport,candidate rate scale,GB transport or serial renewal,"D_GB,Gstar,r,sigma_closed",mechanistically_derived,closed pore radius/pressure/transport length,True,False
+finite_accommodation_capacity,candidate finite value,available rearrangement capacity,"A_max,A_used,A_recovered",measurable_state,shape/coordination evolution,True,False
+accommodation_consumption,candidate coefficient,capacity consumed per removed volume,beta_A,phenomenological_unmapped,in-situ pore shape versus volume,True,False
+accommodation_recovery,candidate rate,surface/topology recovery,"k_A_recover,D_s",phenomenological_unmapped,hold-temperature recovery data,True,False
+closed_pore_radius,candidate reduced size,measured/evolved pore radius,"r_closed_i,N_closed_i",measurable_state,3D pore size/count data,True,False
+geometry_shrinkability,candidate topology factor,coordination/dihedral factor,"C_geom_i,chi_shrink_i",geometry_derived,3D coordination/dihedral data,True,False
+gas_pressure,not explicit in candidate,trapped-gas opposition to capillarity,P_gas_i,measurable_state,gas content and pore volume,True,False
+Q_closed_app,apparent only,post-run composite slope,diagnostic fit,empirical_only,none; never physical input,False,False
+intrinsic_growth_mobility,candidate reduced growth branch,M_GB gamma/G,fixed/bounded growth inputs,direct_physical,high-T grain-growth data,False,True

@@ -1,0 +1,5 @@
+decision,action
+law transfer,already-defined laws ported; no new mechanism
+state preparation,measure PR-to-closed inventory and geometry evolution
+closed mapping,"constrain pressure, shrinkability, exchange/transport length, accommodation capacity/recovery"
+candidate 693168,conditional comparator only

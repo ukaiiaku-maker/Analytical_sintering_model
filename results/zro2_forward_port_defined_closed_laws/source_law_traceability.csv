@@ -1,0 +1,14 @@
+law_id,source_document,source_code_or_section,current_forward_mapping,implementation_status,missing_mapping
+renewal_open_densification,twostep_renewal_powerchannels.py,renewal_edot lines 226-236,kinetic_state + density_rate,physical directly implemented,
+capillary_onsager_stress_balance,renewal/Onsager MATLAB export,solve_renewal_onsager_picard lines 2116-2197,solve_effective_stress,physical directly implemented,
+conservative_PR_topology_preparation,discussion brief / powerchannels,PR lines 394-438,conservative_adjacent_PR,reduced phenomenological,power-to-transfer mapping
+open_to_precursor_to_closed_transition,candidate Tier-B reports,required transition structure,ResolvedRuleModel.rates,reduced phenomenological,transition kinetics
+finite_accommodation_state,closed-pore addendum,finite accommodation section,ClosedPoreEvolution,physical state with phenomenological kinetics,capacity/recovery measurements
+renewal_limited_closed_shrinkage,closed-pore addendum,renewal closed equation,closed_channel_rates,physical but missing parameters,exchange/length/shrinkability
+GB_diffusion_closed_shrinkage,closed-pore addendum,GB alternative,closed_channel_rates,semi-phenomenological,dimensional prefactor derivation
+surface_diffusion_accommodation_only,closed-pore addendum,surface accommodation,closed_channel_rates/advance,physical transport; non-densifying,k_shape mapping
+gas_accommodation_pressure_limit,closed-pore addendum,gas option,ClosedPoreEvolution.gas_pressure_Pa,physical proxy missing measurements,gas content/escape
+Zener_pore_size_pinning,twostep_renewal_powerchannels.py,Zener lines 327-339,growth_state,geometry law implemented,k_Z transfer
+intrinsic_growth_times_activity,discussion brief,growth rule,ResolvedRuleModel.rates,physical with bounded uncertainty,mobility uncertainty
+Chen_window_classification,resolved map utilities,window_rows,window classifier,computed diagnostic,
+candidate693168_reduced_closed_channel,candidate 693168 Tier B,required/destructive ablations,candidate_reduced_transfer,reduced phenomenological; not validated,not transferable as inputs

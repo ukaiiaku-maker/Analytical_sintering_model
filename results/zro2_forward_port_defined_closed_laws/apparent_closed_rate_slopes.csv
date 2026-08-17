@@ -1,0 +1,9 @@
+mode,Q_closed_app_kJ_mol,diagnostic_only,material_input
+candidate_reduced_transfer,224.96444483676814,True,False
+empirical_closed_rate_diagnostic,109.1953815805311,True,False
+mechanistic_GB_diffusion_closed_m3,0.04748758843559538,True,False
+mechanistic_GB_diffusion_closed_m4,8.73815736172125e-14,True,False
+mechanistic_gas_accommodation,387.4517916465638,True,False
+mechanistic_renewal_closed_m3,417.2704814130721,True,False
+mechanistic_renewal_closed_m4,384.2480466814364,True,False
+resolved_proxy_current,168.1919258020103,True,False
