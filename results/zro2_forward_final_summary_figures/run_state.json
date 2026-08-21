@@ -1,0 +1,15 @@
+{
+  "branch": "codex/zro2-forward-final-summary-figures",
+  "source_branch": "codex/zro2-forward-processing-window-prediction-figures",
+  "source_commit": "255446c",
+  "model_physics_changed": false,
+  "material_fitting": false,
+  "mobility_optimization": false,
+  "broad_search_run": false,
+  "selected_trajectory_reconstruction_only": true,
+  "heating_case": "P001",
+  "twostep_case": "P014",
+  "twostep_strict_success": true,
+  "finite_chen_window": true,
+  "validation": false
+}
