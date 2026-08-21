@@ -1,0 +1,13 @@
+{
+  "branch": "codex/zro2-forward-processing-window-prediction-figures",
+  "source_branch": "codex/zro2-forward-port-defined-closed-laws",
+  "source_commit": "2249f02",
+  "screen_states": 5020,
+  "promoted_states": 24,
+  "second_step_points": 27216,
+  "finite_windows": 20,
+  "failed_global_mobility_active": false,
+  "candidate_693168_parameter_values_used": false,
+  "model_physics_changed": false,
+  "validation": false
+}

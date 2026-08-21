@@ -1,0 +1,3 @@
+response,maximum_ratio,median_ratio,density_span_ratio_ge_1p2,density_span_ratio_ge_1p5,density_span_ratio_ge_2p0,best_initial_state,best_rates,finite_window_count,maximum_window_width_C,smallest_G1_nm,lower_boundary_cause,upper_boundary_cause,scale_class,outcome_label,not_validated
+heating_rate,46.836280515272016,1.3338952136246833,0.3425051871163949,0.3401131154739415,0.3378614236972989,P001,0.2/100,,,,not applicable,not applicable,nanoscale,response_form_present,True
+two_step,,,,,,P014,not applicable,20.0,150.0,37.81641972714815,density exhaustion,grain growth,nanoscale,response_form_present,True

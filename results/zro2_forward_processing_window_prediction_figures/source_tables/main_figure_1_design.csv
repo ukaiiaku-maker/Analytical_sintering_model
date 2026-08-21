@@ -1,0 +1,12 @@
+panel,item
+A,"barrier G*(sigma,T)"
+A,fixed diffusivities
+A,provisional default mobility
+B,rho0/G0/pore state
+B,T1/switch/G1
+B,T2/hold
+C,693168 response form
+C,ZrO2 independent state
+D,coarse screen
+D,exact cloned T2 scan
+D,boundary/QC figures

@@ -1,0 +1,9 @@
+parameter,value,units,status
+barrier,fa7c9a2fb30e55596d9cdf47d2b03d530ef073cbe15f6210282285b2fcee7f37,sha256,fixed
+D_GB0,0.056,m2/s,fixed
+Q_GB,380000,J/mol,fixed
+D_s0,0.1,m2/s,fixed
+Q_s,380000,J/mol,fixed
+M0_growth,0.0058,m4/J/s,current default provisional
+mechanism_mode,defined_closed_laws_port,,fixed
+closed_mapping,resolved_proxy_current,,fixed

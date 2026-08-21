@@ -1,0 +1,8 @@
+case_id,reason_selected,T2_C,hold_h,classification,finite_window_width_C,density_target,grain_tolerance,notes,rho0,G0_nm,pore_D50_nm,T1_C,rate_T1_C_min,rho_switch,G1_nm
+P001,best heating-rate response,,2,heating_rate,,0.9458450794408958,,0.2 vs 100 C/min,0.65,15.0,10.0,1550,100,0.75,17.80110020548829
+P014,best two-step window,937.5,96,SUCCESS,125.0,0.9,0.2,fixed physics,0.75,33.0,10.0,1500,100,0.83,37.81641972714815
+P014,best nanoscale two-step case,1012.5,30,SUCCESS,25.0,0.9,0.2,smallest Tier-like-B G1 with finite window,0.75,33.0,10.0,1500,100,0.83,37.81641972714815
+P014,low-T2 density-exhaustion path,975.0,30,DENSIFICATION_EXHAUSTION_FAILURE,25.0,0.9,0.2,boundary-order representative,0.75,33.0,10.0,1500,100,0.83,37.81641972714815
+P014,intermediate T2 success path,1012.5,30,SUCCESS,25.0,0.9,0.2,boundary-order representative,0.75,33.0,10.0,1500,100,0.83,37.81641972714815
+P014,high-T2 growth-failure path,1050.0,30,GRAIN_GROWTH_FAILURE,25.0,0.9,0.2,boundary-order representative,0.75,33.0,10.0,1500,100,0.83,37.81641972714815
+P003,near-miss nanoscale case,,96,NEAR_MISS,0.0,0.9,0.2,success points lack both finite boundaries,0.7,24.5,10.0,1350,50,0.75,27.373757833544403

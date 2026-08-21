@@ -1,0 +1,12 @@
+figure_id,pdf_exists,png_exists,source_table_exists,pdf_size_ok,png_size_ok,pixel_variance_nonzero,render_width_px,render_height_px,nominal_png_dpi,axes_labels_nonempty,legend_required_check,forbidden_figure_text_absent,qc_pass
+main_figure_1_fixed_model_search_design,True,True,True,True,True,True,4278,3314,600,True,True,True,True
+main_figure_2_heating_rate_response,True,True,True,True,True,True,4269,3440,600,True,True,True,True
+main_figure_3_matched_density_fast_firing_map,True,True,True,True,True,True,4259,3441,600,True,True,True,True
+main_figure_4_twostep_preparation_state_map,True,True,True,True,True,True,4276,3442,600,True,True,True,True
+main_figure_5_chen_style_G1_T2_map,True,True,True,True,True,True,4271,3438,600,True,True,True,True
+main_figure_6_twostep_vs_isothermal,True,True,True,True,True,True,4276,3440,600,True,True,True,True
+main_figure_7_mechanistic_state_evolution,True,True,True,True,True,True,4275,3440,600,True,True,True,True
+main_figure_8_initial_switch_state_sensitivity,True,True,True,True,True,True,4274,3441,600,True,True,True,True
+main_figure_9_prior_reference_vs_zro2,True,True,True,True,True,True,4275,1884,600,True,True,True,True
+supplement_figure_1_all_window_boundaries,True,True,True,True,True,True,3795,2840,600,True,True,True,True
+supplement_figure_2_screen_distribution,True,True,True,True,True,True,3795,2840,600,True,True,True,True

@@ -1,0 +1,10 @@
+density_target,tolerance_tier,finite_window_count,max_window_width_C,minimum_G1_finite_nm
+0.9,Diagnostic,10,150.0,35.987987989341626
+0.9,Tier_like_A,1,75.0,37.81641972714815
+0.9,Tier_like_B,8,125.0,37.81641972714815
+0.95,Diagnostic,1,25.0,37.81641972714815
+0.95,Tier_like_A,0,0.0,
+0.95,Tier_like_B,0,0.0,
+0.98,Diagnostic,0,0.0,
+0.98,Tier_like_A,0,0.0,
+0.98,Tier_like_B,0,0.0,

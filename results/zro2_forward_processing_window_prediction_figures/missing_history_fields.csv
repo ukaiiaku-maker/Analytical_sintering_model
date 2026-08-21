@@ -1,0 +1,2 @@
+field,status,handling
+A_closed_used/A_closed_recovered,available only when closed-law diagnostics emit fields,"NaN, not fabricated"
