@@ -1,0 +1,10 @@
+rule_id,source_file,source_section,statement,implementation_implication,status
+R1,docs/ZRO2_FORWARD_ACTIVE_MODEL_EQUATIONS_AND_PARAMETERS.md,physical interpretation,Fast firing is primarily nucleation-limited onset.,Retain the stress-resolved fitted barrier.,already_implemented
+R2,docs/FINAL_FAST_FIRING_AND_TWO_STEP_MECHANISM_SYNTHESIS.md,mechanism separation,Two-step response uses PR-prepared closed/accommodation memory.,Audit preparation and shrinkage separately.,implemented_as_proxy
+R3,docs/ZRO2_FORWARD_CLOSED_CHANNEL_PHYSICAL_MAPPING.md,density identity,Only named pore-volume shrinkage changes density.,Keep redistribution conservative.,already_implemented
+R4,docs/ZRO2_FORWARD_CLOSED_CHANNEL_PROPERTY_GAP.md,property gap,The closed rate lacks a fully derived dimensional prefactor.,Expose the prefactor as a calibration target.,missing_physical_mapping
+R5,docs/ZRO2_FORWARD_QCLOSED_APPARENT_PROPERTY_CORRECTION.md,apparent slope,Q_closed_app is post-run and not a material property.,Never introduce physical Q_closed.,already_implemented
+R6,docs/ZRO2_FORWARD_FINAL_SUMMARY_FIGURES.md,energy closure,The strict GB-area-loss equality generated the displayed diagnostic trajectories.,Retain only as an ablation until a full ledger is audited.,conflicting_current_model
+R7,docs/ZRO2_FORWARD_NEXT_DECISION_FROM_PROPERTY_BOUNDS.md,next decision,Physical property mapping precedes new mechanism search.,Run fixed-state analytical tests first.,already_implemented
+R8,1_2-step_discussion5(2).docx,unavailable,Requested manuscript/SI discussion was not supplied or found.,Do not infer its contents; use repository-derived windows only.,literature_needed
+R9,results/final_mechanism_synthesis_and_property_windows,candidate family,Candidate 693168 is conditional mechanism evidence only.,Do not copy its values into ZrO2 physical parameters.,already_implemented

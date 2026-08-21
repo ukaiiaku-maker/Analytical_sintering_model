@@ -1,0 +1,5 @@
+source_history,run_id,n_points,violation_fraction,maximum_Pi_dens,maximum_Pi_total,minimum_residual_W_m3,accepted_forward_trajectory_changed,interpretation
+final_heating_rate_panel_source.csv,0.2 C/min,977,0.6683725690890481,4.999816502397431,7.6305841540944055,-3211.880512066041,False,"diagnostic reconstruction; violations are recorded, not rescaled"
+final_heating_rate_panel_source.csv,100 C/min,741,0.8326585695006747,2.7810788488456504e+31,7.554185480096217e+32,-452029.5456100207,False,"diagnostic reconstruction; violations are recorded, not rescaled"
+final_twostep_panel_source.csv,high-T isothermal comparator,191,0.8010471204188482,8.52889162851257,8.948743676882456,-4451230.993351059,False,"diagnostic reconstruction; violations are recorded, not rescaled"
+final_twostep_panel_source.csv,low T2 density failure,195,0.3230769230769231,1.0442311078114915e+32,8.777878407352004e+32,-1632.9483672567007,False,"diagnostic reconstruction; violations are recorded, not rescaled"

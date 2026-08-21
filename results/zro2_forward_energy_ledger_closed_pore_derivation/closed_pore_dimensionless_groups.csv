@@ -1,0 +1,6 @@
+group_id,definition,interpretation
+capillary_to_gas,Pgas/(2 gamma/r),gas arrest as group approaches one
+renewal_transport,r_nuc tau_sink,activity=Lambda/(1+Lambda)
+relative_radius,r/r_ref,controls m=3 or m=4 size sensitivity
+closed_availability,phi_closed chi_shrink A_closed,required multiplicative inventory
+zener_ratio,G f_v/(C_Z r_p),migration increasingly constrained above unity

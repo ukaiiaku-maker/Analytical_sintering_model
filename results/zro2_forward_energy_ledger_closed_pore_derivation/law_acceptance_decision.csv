@@ -1,0 +1,6 @@
+law_id,schedule_label_free,conservative_inventory_requirement,unit_check_pass,uses_physical_Q_closed,surface_only_non_densifying,limiting_tests_pass,lower_success_upper_topology,observed_classes,promoted_to_bounded_map,decision,dominant_gap,non_validation
+renewal_limited_closed_shrinkage,True,True,True,False,True,True,False,DENSIFICATION_EXHAUSTION_FAILURE|MIXED_FAILURE,False,not_promoted,closed inventory and accommodation at fixed state,True
+GB_diffusion_closed_shrinkage,True,True,True,False,True,True,False,DENSIFICATION_EXHAUSTION_FAILURE|MIXED_FAILURE,False,not_promoted,closed inventory and accommodation at fixed state,True
+surface_diffusion_accommodation_only,True,True,True,False,True,True,False,DENSIFICATION_EXHAUSTION_FAILURE|MIXED_FAILURE,False,not_promoted,closed inventory and accommodation at fixed state,True
+gas_limited_closed_shrinkage,True,True,True,False,True,True,False,DENSIFICATION_EXHAUSTION_FAILURE|MIXED_FAILURE,False,not_promoted,closed inventory and accommodation at fixed state,True
+empirical_reduced_closure,True,True,True,False,True,True,False,DENSIFICATION_EXHAUSTION_FAILURE|MIXED_FAILURE,False,not_promoted,closed inventory and accommodation at fixed state,True

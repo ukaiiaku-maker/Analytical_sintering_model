@@ -1,0 +1,4 @@
+closure_id,sigma_source,uses_GB_area_loss_only,uses_surface_area,uses_pore_area,uses_gas_pressure,uses_energy_ledger,changes_density_rate,changes_closed_rate,schedule_label_free,physical_status
+capillary_force_closure,local pore curvature minus gas,False,True,True,True,False,False,False,True,primary candidate; diagnostic only
+bounded_power_consistency_closure,local capillary force plus ledger deficit check,False,True,True,True,True,False,False,True,primary candidate with explicit deficit
+strict_GB_area_loss_balance,root of Pdens=GB-area-loss power,True,False,False,False,False,True,True,True,diagnostic_only

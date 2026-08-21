@@ -1,0 +1,11 @@
+quantity,physical_candidate,reduced_works_envelope,comparison,interpretation
+Gstar_effective_Q,stress- and temperature-resolved; no scalar input,Delta Q_nuc survival 0 to +50 kJ/mol,diagnostic only,barrier slices start above all tested process temperatures
+Q_GB,380.0,fixed 380 kJ/mol,inside,unchanged physical input
+Q_s,380.0,fixed 380 kJ/mol,inside,unchanged physical input
+Q_growth,405.238394904,current fixed mobility law,reference,not refit here
+Q_closed_app,computed slope only,reduced Delta Q_closed -25 to +100 kJ/mol OAT,not comparable,inventory/activity must be removed before interpretation
+closed_availability_ratio,actual first-state phi*chi*A is very small,candidate-family threshold not copied,below,inventory/availability gap
+PR_rate_scale,D_s r^-4 topology law,PR prefactor threshold 0.3x base,unmapped,geometry coefficient missing
+growth_prefactor,current fixed mobility,0.1x base threshold,not changed,candidate 693168 not copied
+density_boundary,fixed-state scan result,lower boundary required,tested,see boundary table
+growth_boundary,fixed-state scan result,upper boundary required,tested,see boundary table

@@ -1,0 +1,6 @@
+term,law,status,coupling
+intrinsic,M_GB gamma_GB/G,physical mobility,changes G only
+pore_Zener,R_Z=C_Z r_p/f_v,geometry-derived with C_Z unresolved,changes migration only
+junction,Gamma_TJ,state/proxy,changes migration only
+preparation,Gamma_PR,state/proxy,changes migration only
+accommodation,Gamma_accommodation,state/proxy,changes migration only

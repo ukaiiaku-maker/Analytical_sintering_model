@@ -1,0 +1,11 @@
+parameter,mapping,category,value,units
+gamma_s,MaterialParameters.gamma_s_J_m2,physical,1.0,J m^-2
+D_GB,0.056 exp(-380000/RT),physical/current fixed,0.056,m2 s^-1 prefactor
+D_s,0.10 exp(-380000/RT),physical/current fixed,0.1,m2 s^-1 prefactor
+Omega,MaterialParameters.Omega_m3,physical,3.35e-29,m3
+Gstar,fitted barrier JSON,physical fit; extrapolated below fit,,J
+phi_closed,evolving closed inventory,state-derived,,1
+chi_shrink,closed-bin shrinkability,state-derived/proxy,,1
+A_closed,available accommodation,state-derived/proxy,,1
+C_GB_c,r_ref^(m-2),semi-phenomenological dimensional target,,m^(m-2)
+Q_closed_emp,empirical comparator only,empirical,300.0,kJ mol^-1

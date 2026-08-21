@@ -1,0 +1,9 @@
+channel,definition,changes_density,interpretation
+P_open_dens,sigma_open rho_dot_open,True,densifying work
+P_closed_dens,sum sigma_closed_i rho_dot_closed_i,True,densifying work
+P_surface_smooth,surface diffusion accommodation,False,shape dissipation
+P_pore_coarsen,conservative PR/coarsening,False,topology dissipation
+P_GB_growth,grain-boundary area release/migration,False,migration channel
+P_drag,pore/Zener/junction resistance,False,resistance channel
+P_gas,gas compression/pressure work,False,counter-work
+P_other,unresolved nonnegative residual channel,False,never silently rescaled

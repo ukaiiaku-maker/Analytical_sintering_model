@@ -1,0 +1,6 @@
+law_id,equation,physical_inputs,unresolved_terms,changes_density_directly,uses_empirical_Q,physical_status
+renewal_limited_closed_shrinkage,phi chi A (r_ref/r)^m/tau_cycle,"G*(sigma,T),D_GB,D_s",event strain/geometry,True,False,semi-phenomenological
+GB_diffusion_closed_shrinkage,C phi chi A D_GB Omega sigma/(kBT) r^-m,"D_GB,Omega,sigma,T,r",C has units m^(m-2),True,False,dimensional calibration target
+surface_diffusion_accommodation_only,A_dot proportional D_s r^-4(Amax-A),"D_s,r,shape",shape coefficient,False,False,physical scaling
+gas_limited_closed_shrinkage,"GB law with sigma=max(2gamma/r-Pgas,0)","D_GB,gamma,r,Pgas",gas inventory and geometry C,True,False,physical plus geometry target
+empirical_reduced_closure,phi chi A k0 exp(-Qemp/RT),state and empirical pair,"k0,Qemp",True,True,empirical diagnostic only

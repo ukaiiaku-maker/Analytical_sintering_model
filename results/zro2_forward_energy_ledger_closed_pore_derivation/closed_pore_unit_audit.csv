@@ -1,0 +1,9 @@
+law_id,exponent,rate_units,prefactor_units,unit_check_pass,note
+renewal_limited_closed_shrinkage,3,s^-1,1,True,dimensionless inventory and radius ratio divided by cycle time
+GB_diffusion_closed_shrinkage,3,s^-1,m^1,True,required dimensional coefficient is not yet geometry-derived
+gas_limited_closed_shrinkage,3,s^-1,m^1,True,same transport audit with explicit counterpressure
+renewal_limited_closed_shrinkage,4,s^-1,1,True,dimensionless inventory and radius ratio divided by cycle time
+GB_diffusion_closed_shrinkage,4,s^-1,m^2,True,required dimensional coefficient is not yet geometry-derived
+gas_limited_closed_shrinkage,4,s^-1,m^2,True,same transport audit with explicit counterpressure
+surface_diffusion_accommodation_only,4,shape s^-1,1,True,D_s/r^2 rate form; density contribution identically zero
+empirical_reduced_closure,0,s^-1,s^-1,True,diagnostic empirical comparator; not promotable
