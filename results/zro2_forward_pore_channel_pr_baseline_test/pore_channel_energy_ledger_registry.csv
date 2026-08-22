@@ -1,0 +1,12 @@
+channel,diagnostic,forced_equality
+P_open_dens,True,False
+P_closed_dens,True,False
+P_PR_regularization,True,False
+P_PR_damage,True,False
+P_surface_smooth,True,False
+P_pore_coarsen,True,False
+P_pinch,True,False
+P_GB_growth,True,False
+P_drag,True,False
+P_gas,True,False
+P_residual,True,False

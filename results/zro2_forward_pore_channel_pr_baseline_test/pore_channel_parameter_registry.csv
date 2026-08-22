@@ -1,0 +1,10 @@
+parameter,classification,mapping
+D_s,physical,fixed 0.10 exp(-380000/RT) m2/s
+gamma_s,physical,fixed 1 J/m2
+Omega,physical,fixed 3.35e-29 m3
+C_s,semi-phenomenological,dimensionless geometry product set to one
+F_GB,geometry-derived,bounded surrogate from gamma_GB/gamma_s
+w_I,bounded uncertainty,dimensionless transition width 0.15
+eta_partition,bounded uncertainty,conservative 0.45/0.35/0.20
+width thresholds,bounded uncertainty,regularization/damage crossover 0.65-0.75
+Q_closed_app,empirical diagnostic,post-run only
