@@ -1,0 +1,11 @@
+channel,named,silently_rescaled
+P_open_dens,True,False
+P_closed_dens,True,False
+P_PR,True,False
+P_surface_smooth,True,False
+P_pore_coarsen,True,False
+P_GB_growth,True,False
+P_drag,True,False
+P_gas,True,False
+P_other,True,False
+P_residual,True,False

@@ -1,0 +1,16 @@
+term,dimensions,classification,mapping
+phi_c,1,evolved state,closed pore-volume fraction
+chi_c,1,evolved state,shrinkable/connective fraction
+A_c,1,evolved state,finite accommodation
+C_geom,1,geometry-derived,curvature factor
+P_gas,Pa,evolved state,bounded trapped-gas counterpressure
+Gstar,J,physical,fixed fitted barrier
+D_GB,m2 s^-1,physical,fixed Arrhenius diffusivity
+D_s,m2 s^-1,physical,fixed Arrhenius diffusivity
+C_c,1,bounded uncertainty,sink geometry coefficient set to one
+ell_c,m,geometry-derived,closed-pore radius in this audit
+r_ref,m,semi-phenomenological,fixed 25 nm reference size
+m,1,bounded uncertainty,tested at 3 and 4
+C_GB_c,m^(m-2),semi-phenomenological,r_ref^(m-2); unit-correct magnitude unresolved
+k_shape,m2,bounded uncertainty,1e-6 r_ref^2; shape recovery only
+Q_closed_app,kJ mol^-1,empirical diagnostic,post-run slope only

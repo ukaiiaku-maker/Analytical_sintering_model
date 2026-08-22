@@ -1,0 +1,5 @@
+source_store,destination_store,flux_name,changes_density,power_channel,local_state_variables
+open_bin_i,open_bin_i_plus_1,PR_coarsening,False,P_PR,"D_s,r,activity,topology,available inventory"
+open_bin_i,precursor_i,topology_preparation,False,P_PR,"D_s,r,activity,connected fine fraction"
+precursor_i,closed_bin_i,closure_transition,False,P_pore_coarsen,topology and precursor inventory
+isolated_i,closed_bin_i,closure_transition,False,P_pore_coarsen,topology and isolated inventory

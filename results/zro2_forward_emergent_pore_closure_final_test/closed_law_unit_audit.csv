@@ -1,0 +1,6 @@
+term,equation,result_units,pass,note
+renewal_rate,phi chi A (rref/r)^m tau_sink^-1 Lambda/(1+Lambda),s^-1,True,dimensionless factors times inverse time
+tau_sink,(kBT/(sigma Omega)) ell^2/D_GB,s,True,dimensionless stress factor times diffusion time
+GB_rate,C phi chi A D_GB Omega sigma/(kBT) r^-m,s^-1,True,C requires m^(m-2)
+shape_recovery,k_shape D_s r^-4 (1-A),s^-1,True,k_shape requires m2
+closed_work,sigma rho_dot_closed,W m^-3,True,Pa s^-1

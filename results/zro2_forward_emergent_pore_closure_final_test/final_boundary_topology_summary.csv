@@ -1,0 +1,13 @@
+state_id,state_status,kernel,m,observed_classes,success_points,lower_boundary,upper_boundary,strict_finite_window,minimum_success_T2_C,maximum_success_T2_C
+actual_selected,naturally_prepared_export,GB_diffusion,3,DENSIFICATION_EXHAUSTION_FAILURE|MIXED_FAILURE,0,False,False,False,,
+actual_selected,naturally_prepared_export,GB_diffusion,4,DENSIFICATION_EXHAUSTION_FAILURE|MIXED_FAILURE,0,False,False,False,,
+actual_selected,naturally_prepared_export,renewal,3,DENSIFICATION_EXHAUSTION_FAILURE|MIXED_FAILURE,0,False,False,False,,
+actual_selected,naturally_prepared_export,renewal,4,DENSIFICATION_EXHAUSTION_FAILURE|MIXED_FAILURE,0,False,False,False,,
+candidate_like_high,injected_diagnostic_only,GB_diffusion,3,GRAIN_GROWTH_FAILURE|SUCCESS,2,False,True,False,850.0,875.0
+candidate_like_high,injected_diagnostic_only,GB_diffusion,4,GRAIN_GROWTH_FAILURE|SUCCESS,2,False,True,False,850.0,875.0
+candidate_like_high,injected_diagnostic_only,renewal,3,DENSIFICATION_EXHAUSTION_FAILURE|GRAIN_GROWTH_FAILURE|MIXED_FAILURE,0,False,False,False,,
+candidate_like_high,injected_diagnostic_only,renewal,4,DENSIFICATION_EXHAUSTION_FAILURE|GRAIN_GROWTH_FAILURE|MIXED_FAILURE,0,False,False,False,,
+moderate_bracket,bounded_diagnostic_bracket,GB_diffusion,3,GRAIN_GROWTH_FAILURE|SUCCESS,2,False,True,False,850.0,875.0
+moderate_bracket,bounded_diagnostic_bracket,GB_diffusion,4,GRAIN_GROWTH_FAILURE|SUCCESS,2,False,True,False,850.0,875.0
+moderate_bracket,bounded_diagnostic_bracket,renewal,3,DENSIFICATION_EXHAUSTION_FAILURE|GRAIN_GROWTH_FAILURE|MIXED_FAILURE,0,False,False,False,,
+moderate_bracket,bounded_diagnostic_bracket,renewal,4,DENSIFICATION_EXHAUSTION_FAILURE|GRAIN_GROWTH_FAILURE|MIXED_FAILURE,0,False,False,False,,
