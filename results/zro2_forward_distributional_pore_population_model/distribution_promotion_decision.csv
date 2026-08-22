@@ -1,0 +1,2 @@
+final_interpretation,limiting_tests_pass,synthetic_successes,finite_Chen_windows,broad_process_grid_run,accepted_model_physics_changed,physical_Q_closed_introduced,dominant_failure,promoted,validation_claim
+diagnostic_negative_result,True,36,0,False,False,False,successes begin at minimum T2; no lower boundary; heating-rate sign mostly reversed; distributional Zener/regularization/damage noncausal in best ablation,False,False

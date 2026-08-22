@@ -1,0 +1,23 @@
+{
+  "branch": "codex/zro2-forward-distributional-pore-population-model",
+  "source_branch": "codex/zro2-forward-pore-channel-pr-baseline-test",
+  "source_commit": "c26020e9dfb52ebc6c13afb043720a3524708ada",
+  "barrier_sha256": "fa7c9a2fb30e55596d9cdf47d2b03d530ef073cbe15f6210282285b2fcee7f37",
+  "D_GB_unchanged": true,
+  "D_s_unchanged": true,
+  "failed_global_mobility_fit_active": false,
+  "physical_Q_closed_introduced": false,
+  "Q_closed_app_diagnostic_only": true,
+  "accepted_model_physics_changed": false,
+  "distributional_model_form_test": true,
+  "all_conservation_tests_pass": true,
+  "fixed_scan_rows": 79200,
+  "validation": false,
+  "synthetic_points": 2016,
+  "synthetic_successes": 36,
+  "synthetic_finite_windows": 0,
+  "broad_process_grid_run": false,
+  "heating_paths": 525,
+  "ablation_cases": 14,
+  "final_interpretation": "diagnostic_negative_result"
+}

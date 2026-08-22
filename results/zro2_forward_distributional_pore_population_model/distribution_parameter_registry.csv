@@ -1,0 +1,12 @@
+parameter,classification,mapping
+D_GB,physical,0.056 exp(-380000/RT) m2/s
+D_s,physical,0.10 exp(-380000/RT) m2/s
+Gstar,physical,fixed barrier JSON
+C_surface_geometry,geometry-derived,1; dimensional Mullins geometry
+PR_geometry_factor,geometry-derived,bounded surrogate
+PR_width,bounded uncertainty,0.15
+eta_partition,bounded uncertainty,0.50/0.30/0.20 conservative
+width_gates,bounded uncertainty,0.65/0.75
+accommodation_recovery_geometry,semi-phenomenological,1e-6 r_ref^2; shape only
+"phi,N,r,area,age,origin",evolved state,topology/bin resolved
+Q_closed_app,empirical diagnostic,post-run only; absent from local laws
